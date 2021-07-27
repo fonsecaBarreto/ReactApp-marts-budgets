@@ -1,0 +1,50 @@
+
+:root {
+    --admin-aside-color: rgb(42, 61, 165);
+    --admin-header-height: 76px;
+}
+
+#admin-layout{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "menu content" "menu content";
+}
+
+header.admin-header{
+    grid-area: header;
+    position: sticky;
+    top: 0;
+    height: var( --admin-header-height);
+    background-color: var( --admin-aside-color );
+    background: #457fca;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: none;
+}
+
+aside.admin-menu{
+    width: 300px;
+    position: sticky;
+    left: 0; top: 0;
+    grid-area: menu;
+    height: 100vh;
+    background-color: var( --admin-aside-color );
+    background: #457fca;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   
+}
+
+main.admin-content{
+    grid-area: content  ;
+    background: rgb(233, 233, 233)
+}
+
+@media only screen and (max-width: 960px){
+    #admin-layout {  grid-template-areas: "header header" "content content"; }
+    header.admin-header{  display: block; }
+
+    
+}

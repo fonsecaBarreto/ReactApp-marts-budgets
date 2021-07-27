@@ -19,7 +19,7 @@ body {
   top: 0; left: 0; bottom: 0;
   margin: auto;
   width: calc(100vw); height: calc(100vh);
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: rgba(255, 255, 255, 1);
   background-image: url(./assets/loading.svg); 
   background-repeat: no-repeat;
   background-size: 150px;
@@ -31,7 +31,7 @@ body {
 .app-container{
   width: 100%;
   max-width: 1224px;
-  padding: 0 16px;
+  padding: 0 32px;
   margin: auto;
 }
 
@@ -65,10 +65,16 @@ body {
   gap: 2px;
 }
 
-@media only screen and (min-width: 756px){
+@media only screen and (min-width: 960px){
   .mobile-only{
       display: none;
   }
+
+
+}
+
+@media only screen and (max-width: 960px){
+
   .desktop-only{
       display: none!important;
   }
@@ -89,18 +95,30 @@ body {
   margin: 8px;
 }
 
+.ml-auto  {
+  margin-left: auto;
+}
+.mr-0 {
+  margin-right: 0;
+}
+
 
 /* button */
 .light-button{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
   background-color: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
-  font-size: 17px;
-  line-height: 1.8em;
+  font-size: 16px;
+  line-height: 1.6em;
+  color: #444;
+  gap: 6px;
 }
-.light-button:hover{
-  color: rgb(0, 81, 255);
-  text-decoration: underline solid 1pt rgb(0, 81, 255);
 
+.light-button:hover{
+  color: rgb(53, 117, 255);
+  text-decoration: underline solid 1pt rgb(53, 117, 255);
 }

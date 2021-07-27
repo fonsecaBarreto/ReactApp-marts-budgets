@@ -7,6 +7,8 @@ import { FaUserShield } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '../../../../store/reducers/global/actions'
 import { signInService } from '../../../../services/admin-login-service'
+import { setAdmin } from '../../../../store/reducers/global/actions'
+
 const INITIAL_SIGNIN_DATA = {
     username: "",
     password: "",
@@ -35,7 +37,11 @@ export default withRouter(({ history }) =>{
     const { inputs, errors, handleInputs } = LoginState()
 
     const handleErrors = (err) => { dialogState.showFailure(err.message) }
-    const handleSuccess = () => {  { history.push("/admins/dashboard") }  }
+    const handleSuccess = () => { 
+        dispatch(setAdmin(null))
+        history.push("/admins/dashboard")  
+        
+    }
 
     const submit = async(e) =>{
         e.preventDefault()
@@ -65,7 +71,7 @@ export default withRouter(({ history }) =>{
                 <form  className="admin-login-form">
             
                     <FormRow label="Nome de usuario" error={errors?.['username']}>
-                        <input value={username} type="text" onInput={e=>handleInputs('username',e.target.value)}></input>
+                        <input autoFocus value={username} type="text" onInput={e=>handleInputs('username',e.target.value)}></input>
                     </FormRow>
 
                     <FormRow label="Senha de acesso" error={errors?.['password']}>

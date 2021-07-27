@@ -5,7 +5,6 @@ import StrictInfoRow from "./StrictInfoRow"
 import { signUpService } from '../../../../../services/mart-login-service'
 import { withRouter } from 'react-router-dom'
 import InputMask from 'react-input-mask';
-
 const INITIAL_SIGNUP_DATA = {
     name: "",
     email: "",
@@ -90,7 +89,8 @@ export default withRouter(( { setLoading, inputs, setAnnex, errors, setErrors, h
                 Cadastrar
             </button>
 
-            <button className="light-button" onClick={toggleMode}> Ja Estou cadastrado </button>
+            <button className="light-button" onClick={toggleMode}> 
+                Ja sou cadastrado </button>
 
         </form>
     )

@@ -1,0 +1,76 @@
+#primary-layout{
+    position: relative; 
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "header header" "content content";
+    box-sizing: border-box!important;
+    border: solid 1px red;
+}
+
+#primary-header{
+    grid-area: header;
+    position: fixed; top: 0; z-index: 99;
+    background-color: white;
+    display: flex;flex-direction: column; justify-content: flex-start;
+}
+
+#primary-content{
+    grid-area: content;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.aside-menu {
+    height: calc(100vh - 64px); width: 300px;
+    position: sticky; top:64px;
+    z-index: 9;
+    transition: all .2s ease-in-out; 
+    background-color: rgb(255, 255, 255);
+    display: flex; flex-direction: column;
+    width: 0;
+    overflow: hidden;
+}
+/* asside */
+#main-menu{
+    grid-area: mainmenu;
+    left: -300px;
+    margin-left: -300px;
+   
+}
+
+#user-menu{
+    grid-area: usermenu;
+    right: -300px; 
+    margin-right: -300px; 
+    
+}
+
+#main-menu.show{ 
+    margin-left: 0;
+    width: 300px;
+    overflow: unset;
+    border-right: solid 1px #aaa;
+}
+#user-menu.show{ 
+    margin-right: 0;
+    width: 300px;
+    overflow: unset; 
+    border-left: solid 1px #aaa;
+}
+
+@media only screen and (max-width: 1300px){
+    #main-menu {  position: fixed; top: 64px;  left: 0; 
+        box-shadow: 2px 0px 4px 2px #0002;}  
+
+    #user-menu{ position: fixed; top: 64px;  right: 0; 
+        box-shadow: 2px 0px 5px 2px #0003;
+    }  
+} 
+
+
+

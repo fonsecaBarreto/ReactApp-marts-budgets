@@ -9,6 +9,15 @@ export const signInService = async (data) => {
   localStorage.setItem(global.storage_key_mart, result.data['accessToken'])
 }
 
+export const forgotPasswordService = async (credentials) =>{
+  await martloginApi.send({method: "post", url:"/reset-password",data:{credentials} }) 
+}
+
+export const changePassword = async (inputs) =>{
+  const { password, passwordConfirmation, token } = inputs
+   await martloginApi.send({method: "post", url:`/change-password?v=${token}`,data: { password, passwordConfirmation } }) 
+}
+
 export const signUpService = async (inputs) =>  {
   const { name, email, cnpj_cpf, phone, transfer_allowed, annex} = inputs
   const formData = new FormData()

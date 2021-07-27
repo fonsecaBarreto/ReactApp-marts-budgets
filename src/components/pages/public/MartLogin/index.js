@@ -53,6 +53,14 @@ export default withRouter(({ history }) =>{
 
     const handleSignInSuccess = () => { history.push("/") }
 
+    const handleForgotSuccess = () =>{
+        dialogState.showSuccess( 
+            "...", 
+            "Voce Recebera em breve um E-mail para resetar sua senha",
+            "Sucesso!",
+            async () => {  history.push("/") })
+    }
+
     return (
         <div id="login-screen"> 
 
@@ -65,7 +73,8 @@ export default withRouter(({ history }) =>{
                         { ...signinState } 
                         toggleMode={toggleMode}
                         onError={handleErrors}
-                        onSuccess={handleSignInSuccess}>
+                        onSuccess={handleSignInSuccess}
+                        forgotSuccess={handleForgotSuccess}>
                     </SignInForm>
                 </div>
             </div>

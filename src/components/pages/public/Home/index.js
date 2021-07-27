@@ -1,10 +1,27 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import './style.css'
 
-export default () =>{
+import { withRouter } from 'react-router-dom'
+
+export default withRouter(({history}) =>{
+    const inicio = useRef()
+    const sobre = useRef()
+    const contato = useRef()
+    useEffect(()=>{
+     
+        switch(history.location.hash){
+            case "#sobre" : sobre.current.scrollIntoView({behavior: 'smooth'});break;
+            case "#contato" : contato.current.scrollIntoView({behavior: 'smooth'});break;    
+            default: inicio.current.scrollIntoView({behavior: 'smooth'});  
+        }
+      
+    },[history.location, history.location.hash ])
+
     return (
         <div id="home-page">
-            Home Page
+            <div ref={inicio} id="home"></div>
+            <div ref={sobre} id="sobre"></div>
+            <div ref={contato} id="contato"></div>
         </div>
     )
-}
+})

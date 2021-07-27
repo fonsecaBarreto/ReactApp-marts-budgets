@@ -103,7 +103,19 @@
     font-weight: bold;
 }
 
+.signin-opt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
 
+}
+
+.signin-opt .bearer {
+    height: 16px;
+    width: 1pt;
+    background-color: #888;
+}
 
 
 

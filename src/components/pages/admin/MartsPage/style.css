@@ -1,0 +1,37 @@
+
+#admin-marts-page{
+    padding:24px 0;
+    min-height: 100vh;
+}   
+
+
+.admin-marts-flow{
+    display: grid;
+    min-height: 50vh;
+    gap: 6px;
+}
+
+
+.admin-marts-flow.loading{
+    position: relative; 
+} 
+
+.admin-marts-flow.loading::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    margin: auto;
+    width: calc(100%); 
+    height: calc(100%);
+    background-color: rgba(255, 255, 255, 0.1);
+    background-image: url(../../../../assets//loading.svg); 
+    background-repeat: no-repeat;
+    background-size: 120px;
+    background-position: center 64px;
+    z-index: 2;
+}  
+/* 
+.admin-marts-flow{
+    display: grid;
+
+} */

@@ -16,7 +16,6 @@ const NOT_FOUND = "Rota não existe."
 const UNKNOWN_ERROR = "Erro inesperado."
 
 export function errorHandler(err) {
-    console.log(err)
     if(!err.response) return new ResultError(UNKNOWN_ERROR)
     const { status } = err.response
     if(status === 404 ) return new ResultError(NOT_FOUND)
