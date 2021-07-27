@@ -1,0 +1,102 @@
+
+ @keyframes showup {
+    0% {transform: scale(.4); opacity: 0;}
+    60% {transform: scale(1.06); opacity: 1;}
+    100% {transform: scale(1);}
+  }
+
+.app-dialog {
+    width: 100%; height: 100%;
+    position: fixed; top: 0;  left: 0;
+    background: rgb(0, 0, 0,.8);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 120px 16px;
+    z-index: 999999;
+    overflow: auto;
+}
+
+.app-dialog .app-dialog-content{
+    position: relative;
+    display: flex; justify-content: flex-start; align-items: center; flex-direction: column;
+    background-color: white;
+    box-shadow: 0px 4px 6px #0009;
+    width: fit-content; height: fit-content;
+    border-radius: 4px;
+    height: fit-content;
+    animation-name: showup;
+    animation-duration: .25s;
+    animation-timing-function: ease
+}
+.app-dialog .app-dialog-content > .app-dialog-header{
+    display: flex; justify-content: flex-start; align-items: center; flex-direction: row;
+    width: 100%; 
+    padding: 8px 8px 8px 16px;
+    font-size: 18px;
+    border-bottom: solid 1px #ddd;
+} 
+
+/* body */
+
+.app-dialog .app-dialog-content .app-dialog-body{
+    display: flex; justify-content: flex-start; align-items: center; flex-direction: column;
+    height: fit-content;
+    min-height: 120px;
+    min-width: 280px;
+    flex:1;  
+    padding: 12px 16px 24px;
+    overflow: hidden;
+
+}
+
+
+@media only screen and (max-width:960px){
+    .app-dialog .app-dialog-content{
+        min-width: fit-content;
+        min-height: fit-content;
+        width: 100% !important;
+    }
+
+}
+
+.app-dialog .app-dialog-content .app-dialog-body{
+    width: 100%;
+}
+
+
+/* close button */
+.app-dialog .app-dialog-content .adc-close{
+    width: 32px; height: 32px;
+    cursor: pointer;
+    margin-right: 0;  margin-left: auto;
+    border-radius: 50%;
+    background-color: rgb(248, 248, 248);
+    display: flex; align-items: center; justify-content: center; flex-direction: row;
+    font-size: 16px;font-weight: bolder;
+    color: #444; border: none;
+
+}
+.app-dialog .app-dialog-content .adc-close:hover{
+    color: rgb(0, 0, 0)
+}
+.app-dialog .app-dialog-content .adc-close:active{
+    color: rgb(209, 3, 3);
+}
+
+
+.div-loading{
+    position: relative;
+  } 
+  
+.div-loading::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    margin: auto;
+    width: 100%; height: 100%;
+    background-color: rgba(248, 248, 248, 0.8);
+    background-image: url(../../../assets//loading.svg);
+    background-repeat: no-repeat;
+    background-size: 20%;
+    background-position: center;
+    z-index: 999
+} 

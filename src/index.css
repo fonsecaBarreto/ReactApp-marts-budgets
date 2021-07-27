@@ -1,13 +1,106 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.App * { box-sizing: border-box; }
+
+.App.loading::before{
+  content: "";
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  margin: auto;
+  width: calc(100vw); height: calc(100vh);
+  background-color: rgba(255, 255, 255, 0.92);
+  background-image: url(./assets/loading.svg); 
+  background-repeat: no-repeat;
+  background-size: 150px;
+  background-position: center;
+  z-index: 99999;
+  
+}  
+
+.app-container{
+  width: 100%;
+  max-width: 1224px;
+  padding: 0 16px;
+  margin: auto;
+}
+
+
+/* fonts */
+.font-bold { font-weight: bold; }
+.font-regular{ font-weight: normal; }
+
+.small {
+  font-size: 16px;
+  line-height: .8em;
+}
+.muted {
+   color: #666;
+}
+
+/* display */
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2px;
+}
+
+@media only screen and (min-width: 756px){
+  .mobile-only{
+      display: none;
+  }
+  .desktop-only{
+      display: none!important;
+  }
+  .app-container, .app-padding { padding: 0 10px; }
+
+}
+
+.m-0{
+  margin: 0;
+}
+.mb-1{
+  margin-bottom: 8px;
+}
+.mt-2{
+  margin-top: 8px!important;
+}
+.m-1{
+  margin: 8px;
+}
+
+
+/* button */
+.light-button{
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 17px;
+  line-height: 1.8em;
+}
+.light-button:hover{
+  color: rgb(0, 81, 255);
+  text-decoration: underline solid 1pt rgb(0, 81, 255);
+
 }

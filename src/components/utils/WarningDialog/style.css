@@ -1,0 +1,82 @@
+
+
+.warning-dialog{
+   height: 100%;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 0px 16px ;
+   max-width: 400px;
+   gap: 16px;
+}
+
+.warning-dialog .wd-content{ 
+  
+   display: block;
+   text-align: center; margin: auto;
+   font-size: 22px;
+   line-height: 1em;
+}
+
+.warning-dialog .wd-icon{
+   display: block;
+   font-size: 52px;
+   padding: 0;
+   margin: 0;
+   line-height: 0px;
+   animation-duration: 1s;
+   color: rgb(179, 9, 46);
+   animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+   margin-bottom: 12px;
+}
+ .warning-dialog .wd-btns{
+    width: 100%; margin: auto auto 0;
+    gap: 10px;
+    display: flex; flex-direction: row;  align-items: center;
+}
+
+ .warning-dialog .wd-btns .wdbutton{
+    position: relative;
+    width: fit-content; height: 38px;
+    padding: 0 64px;
+    margin: auto;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1;
+    border: none;
+    background:#194fcc;
+    color: white!important;
+   
+}
+ .warning-dialog .wd-btns .wdbutton:hover{
+   background:#2e63df;
+}
+
+
+.warning-dialog .wd-btns .wdbutton.cancel{
+    background-color: rgb(218, 65, 65);
+    color: white;
+}
+
+
+.warning-dialog .wd-btns .wdbutton.ok{
+   background-color: rgb(17, 182, 94);
+   color: white;
+}
+
+
+/* fonts */
+.wd-bold { 
+   font-weight: bold;
+   font-size: 18px;
+   line-height: 1.3em;
+
+ }
+
+
+.wd-small {
+  font-size: 16px;
+  line-height: .8em;
+} 
