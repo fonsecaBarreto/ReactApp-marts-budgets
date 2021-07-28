@@ -29,7 +29,7 @@ export default ({mart}) =>{
 
                      { isActive === false && <span onClick={join} className="mart-status" > Aguardando </span> } 
 
-                    <div className="mart-item-arrow-btn" onClick={()=>setShow(!show)}>
+                    <div className={`mart-item-arrow-btn ${show ? 'flip' : ''}`} onClick={()=>setShow(!show)}>
                         <HiChevronDown></HiChevronDown>
                     </div>
                 </div>

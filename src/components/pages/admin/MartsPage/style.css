@@ -7,13 +7,14 @@
 
 .admin-marts-flow{
     display: grid;
-    min-height: 50vh;
+    min-height: fit-content;
     gap: 6px;
 }
 
 
 .admin-marts-flow.loading{
     position: relative; 
+    min-height: 200px;
 } 
 
 .admin-marts-flow.loading::before{

@@ -12,7 +12,6 @@
     animation-name: slideUp;
     animation-duration: .25s;
     animation-timing-function: ease ;
-
     border-radius: 12px;
 }
 
@@ -30,12 +29,9 @@
     background-color: rgb(241, 241, 241,.8);
 }
 
-.mart-item:hover{
+.mart-item .mart-item-row:hover{
    background-color: rgba(125, 170, 230, 0.3);
    outline: solid 2px rgba(66, 110, 204, 0.3); 
-
-    
-  
 }
 
 .mart-item .mart-item-icon{
@@ -73,6 +69,11 @@
     margin-left: auto;
     font-size: 28px;
     cursor: pointer;
+}
+
+.mart-item-arrow-btn.flip{
+    transform: rotate(180deg) translateY(8px);
+
 }
 
 

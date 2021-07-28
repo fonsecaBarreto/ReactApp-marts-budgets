@@ -19,7 +19,7 @@ export default ({value, setValue, onFile, file}) =>{
                     setValue(!value) 
                 }}></input>
 
-                <label>  Estou ciente que minhas informçaes podem ser disponibilizadas a fonercedores
+                <label> Declaro favorável a disponibilização de meus dados cadastrais a fornecedores
                 </label>
             </div>
         </div>

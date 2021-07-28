@@ -46,9 +46,9 @@ export default withRouter(({ history }) =>{
     const handleSuccess = (data) => {
         dialogState.showSuccess( 
             "Cadastrado com successo!", 
-            "Obrigados pela confiança, entraremos em contato em breve!",
+            "Obrigado pela confiança, entraremos em contato em breve!",
             "Sucesso!",
-            async () => {  history.push("/login/saudacoes") })
+            async () => {  history.push("/") })
     }
 
     const handleSignInSuccess = () => { history.push("/") }
