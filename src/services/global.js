@@ -1,6 +1,6 @@
 
-/*  const DOMAIN_URL = "http://10.0.10.193:9000"   */
-const DOMAIN_URL = "https://sherwoodnodebackend.herokuapp.com" 
+const DOMAIN_URL = "http://10.0.10.193:9000"  
+/* const DOMAIN_URL = "https://sherwoodnodebackend.herokuapp.com"  */
 
 export const global = {
   storage_key_mart: "unocompras_mart",

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.css'
 import { withRouter } from 'react-router-dom'
 import WarningDialog, { WarningState } from '../../../utils/WarningDialog'
@@ -35,6 +35,11 @@ export default withRouter(({ history }) =>{
     const dispatch = useDispatch()
     const dialogState = WarningState()
     const { inputs, errors, handleInputs } = LoginState()
+    
+    useEffect(()=>{
+        const err = history.location.search.split("?e=")[1]
+        if(err) return dialogState.showFailure( err.replace(/%20/g, " "))
+    },[history, history.location])
 
     const handleErrors = (err) => { dialogState.showFailure(err.message) }
     const handleSuccess = () => { 

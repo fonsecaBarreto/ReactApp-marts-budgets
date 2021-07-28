@@ -1,5 +1,5 @@
 
-import Routes from './routes' 
+import Routes from './routes/index' 
 import { useSelector } from 'react-redux'
 import './index.css'
 function App() {

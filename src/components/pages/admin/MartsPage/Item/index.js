@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import './style.css'
 
-import { AiOutlineShop, AiOutlineBell } from 'react-icons/ai'
+import { AiOutlineShop, AiOutlineBell, AiOutlinePaperClip } from 'react-icons/ai'
 import { HiChevronDown } from 'react-icons/hi'
-
+import { getFilePath } from '../../../../../services/utils-service'
 export default ({mart, onView}) =>{
 
 
     const [ show, setShow ] = useState(false)
-    const { name, email, phone, cnpj_cpf, isActive } = mart
+    const { name, email, phone, cnpj_cpf, isActive, annex } = mart
     return (
         <div className="mart-item">
 
@@ -46,6 +46,15 @@ export default ({mart, onView}) =>{
 
                     <span className="mart-item-info">
                         <span className={'font-bold '}> Cnpj/cpf: </span> {cnpj_cpf} </span>
+
+
+                    { annex && 
+                        <a href={getFilePath(annex)} target='_blank' className="mart-item-info">
+                            <span className={'font-bold '}>  <AiOutlinePaperClip></AiOutlinePaperClip> 
+                                Anexo 
+                            </span> 
+                        </a>
+                    }
                 </div>
 
             </div>

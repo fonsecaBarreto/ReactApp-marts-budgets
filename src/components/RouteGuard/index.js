@@ -13,38 +13,32 @@ const Guard = withRouter(({ history, access, location, component: Component, pat
   const { mart, admin }  = useSelector(state=>state.global) 
 
   useEffect(()=>{
-    dispatch(setLoading(true)) 
     login(access)
   },[ path ]) 
 
-  const login = async () =>{
-      setRequestWasMade(false)
+  const login = async (access) =>{
+
+      dispatch(setLoading(true)) 
+
+      if(!access) dispatch(setLoading(false))
+      else if(access === "martonly" && mart) dispatch(setLoading(false))
+      else if(access === "adminonly" && admin) dispatch(setLoading(false))
+
       Promise.all([  
         !mart &&
         AuthMart()
           .then(r=>dispatch(setMart(r)))
-          .catch(_=>{}),  
-
+          .catch( err => { if(access == "martonly") return history.push(`/login?e=${err.message}`);  }),  
         !admin &&
         AuthAdmin()
           .then(r=>dispatch(setAdmin(r)))
-          .catch(_=>{})
+          .catch( err => { if(access == "adminonly") return history.push(`/admins/login?e=${err.message}`); })
       ])
-      .finally(() => setRequestWasMade(true))
+      .finally(() =>{ 
+        dispatch(setLoading(false)) 
+      })
   }
 
-  useEffect(()=>{
-    if(!access) return dispatch(setLoading(false))
-    else if(access === "martonly" && mart) return dispatch(setLoading(false))
-    else if(access === "adminonly" && admin) return dispatch(setLoading(false))
-
-    if(requestWasMade === true){
-      if(access === "martonly" && !mart) return history.push("/login")
-      if(access === "adminonly" && !admin) return history.push("/admins/login")
-      return dispatch(setLoading(false))
-    } 
-    
-  },[ requestWasMade ]) 
   return <Route location={location} {...rest} render={(props) => ( <Component { ...props } path={path} /> )} ></Route>
 })
 

@@ -14,7 +14,7 @@ export default withRouter(({children}) =>{
 
         <AdminHeader toggle={()=>setShowMenu(!showMenu)}></AdminHeader>
 
-        <AdminMenu show={showMenu}></AdminMenu>
+        <AdminMenu show={showMenu} onItemClick={()=> setShowMenu(false)}></AdminMenu>
 
         <main className="admin-content">
             {children}

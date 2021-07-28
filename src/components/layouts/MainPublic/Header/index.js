@@ -5,12 +5,11 @@ import { FaBars } from 'react-icons/fa'
 import Logo from '../../../../assets/logo.jpg'
 import HeaderLink from './HeaderLink'
 import { withRouter } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 
-export default withRouter(({toggleMenu, history}) => {
+export default withRouter(({toggleMenu, history, admin, mart}) => {
 
-    const {mart, admin} = useSelector(state=>state.global)
+
     const [colorFull, setColorFull] = useState(false)
     const [currentPage, setCurrentPage ] = useState(null)
 
@@ -42,6 +41,9 @@ export default withRouter(({toggleMenu, history}) => {
             
                 <section className="section-one">
                     <img className="ph-logo"  src={Logo} alt="logo"></img> 
+                    mercado: {mart?.name}
+                    <br></br>
+                    admin: {admin?.username}
                 </section>
                 
                 <section className="section-two">
@@ -49,8 +51,10 @@ export default withRouter(({toggleMenu, history}) => {
                    
                         <ul >
                             <HeaderLink to="/inicio" currentPage={currentPage}>Inicio</HeaderLink>
-                            <HeaderLink to="/inicio/#sobre" currentPage={currentPage}>Sobre</HeaderLink>
-                            <HeaderLink to="/inicio/#contato" currentPage={currentPage}>Contato</HeaderLink>
+                            <HeaderLink to="/admin" currentPage={currentPage}>Admin</HeaderLink>
+                            <HeaderLink to="/marts/orcamento" currentPage={currentPage}>Mercado</HeaderLink>
+                          {/*   <HeaderLink to="/inicio/#sobre" currentPage={currentPage}>Sobre</HeaderLink>
+                            <HeaderLink to="/inicio/#contato" currentPage={currentPage}>Contato</HeaderLink> */}
                          {
                             mart ?
                                 <button className="signup-button" onClick={()=>goTo('/marts/orcamento')}> Cotar </button> 

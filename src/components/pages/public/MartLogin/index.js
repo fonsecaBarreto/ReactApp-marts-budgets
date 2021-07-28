@@ -28,6 +28,9 @@ export default withRouter(({ history }) =>{
             case 'signup': setToSignup(true); break;
             default: setToSignup(false); break;
         }
+
+        const err = history.location.search.split("?e=")[1]
+        if(err) return dialogState.showFailure(  err.replace(/%20/g, " "))
         
     },[history, history.location])
 
@@ -56,7 +59,7 @@ export default withRouter(({ history }) =>{
     const handleForgotSuccess = () =>{
         dialogState.showSuccess( 
             "...", 
-            "Voce Recebera em instantes um E-mail para redefinição de senha",
+            "Você recebera em instantes um E-mail para redefinição de senha",
             "Sucesso!",
             async () => {  history.push("/") })
     }

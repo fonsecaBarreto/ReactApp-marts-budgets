@@ -7,7 +7,7 @@ export default ({value, setValue, onFile, file}) =>{
         <div className="strict-info-content">
 
             <div className="login-warnin-texts">
-                <h4> Seu cadastro pássara por uma validação</h4>
+                <h4> Seu cadastro passará por uma validação </h4>
                 <span> Para Acelerar esse processo é opcional, anexo de um documento capaz de comprovar a sua identidade como pessoa fisica ou jurica </span>
             </div>
 

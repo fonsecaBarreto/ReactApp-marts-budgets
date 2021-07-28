@@ -74,7 +74,7 @@ export default () =>{
 
             <div className="app-container">
 
-                <ControlBar filters={filters} setFilters={setFilters} onAdd={()=>alert("Redirecionar para cadasto")}></ControlBar>
+                <ControlBar filters={filters} setFilters={setFilters} ></ControlBar>
 
                 <div className={` admin-marts-flow ${`${loading ? 'loading' : ''}`}`}>
                     {

@@ -1,6 +1,7 @@
 .form-row{
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     width: auto;
     width: 100%;
 }
@@ -24,6 +25,17 @@
     padding: 0 16px;
     color: #222;
     width: 100%;
+}
+.form-row textarea, input[type=checkbox]{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    width: 20px;
+    height: 20px;
+    border: solid 1px #bbb;
+    color: #222;
+    margin-right: 6px;
+ 
 }
 .form-row textarea{
     height: 180px;
@@ -49,6 +61,11 @@
     
     border-radius: 10px;
     border-top-left-radius: 0;
+}
+.form-checkbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 @media only screen and (max-width: 756px){

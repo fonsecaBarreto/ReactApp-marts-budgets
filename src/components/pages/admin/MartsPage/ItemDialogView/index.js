@@ -3,14 +3,14 @@ import './style.css'
 import Dialog from '../../../../utils/Dialog'
 import { joinService } from '../../../../../services/mart-service'
 import WarningDialog, { WarningState } from '../../../../../components/utils/WarningDialog'
-import { AiFillShop } from 'react-icons/ai'
- 
+import { AiFillShop, AiOutlinePaperClip } from 'react-icons/ai'
+import { getFilePath } from '../../../../../services/utils-service'
 
 export default ({ mart, setMart, updateMart}) => {
 
     const warningState = WarningState()
     const [ sending, setSending ] = useState(false)
-    const { name, email, phone, cnpj_cpf, isActive } = mart
+    const { name, email, phone, cnpj_cpf, isActive, annex } = mart
 
     const join  = async () =>{
         setSending(true)
@@ -49,6 +49,14 @@ export default ({ mart, setMart, updateMart}) => {
                             <span className="midv-info">
                             Cnpj/cpf: <span className={'font-bold'}> {cnpj_cpf} </span>  
                             </span>
+
+                            { annex && 
+                                <a href={getFilePath(annex)} target='_blank' className="mart-item-info">
+                                    <span className={'font-bold '}>  <AiOutlinePaperClip></AiOutlinePaperClip> 
+                                        Anexo 
+                                    </span> 
+                                </a>
+                            }
 
                     </div>
 
