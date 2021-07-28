@@ -107,11 +107,12 @@ background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, F
 .una-login-form-button.loading::after{}
 
 .login-header-text{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 5px;
+    font-weight: 400;
     text-transform: uppercase;
     color: #333;
     font-size: 22px;
-    font-weight: bold;
+
 }
 
 .signin-opt{
