@@ -1,0 +1,57 @@
+.mart-item-dialog-view{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.mart-item-dialog-view .midv-content{
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;
+    padding: 12px 22px 20px;
+    gap: 12px;
+}
+
+.midv-content .midv-info{
+    font-size: 20px;
+    color: #444;
+    white-space: pre-wrap;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mart-item-dialog-view .midv-status {
+    padding: 10px 20px;
+    width: 100%;
+    display: flex; flex-direction: row;
+    align-items: flex-start; justify-content: flex-start;
+    gap: 10px;
+}
+
+.mart-item-dialog-view .midv-status button{
+    height: 36px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    border-radius: 16px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+button.midv-success-btn{ background-color: rgb(84, 161, 125); }
+button.midv-success-btn:hover{ background-color: rgb(114, 179, 149); }
+
+button.midv-warning-btn{ background-color: rgb(179, 61, 96); }
+button.midv-warning-btn:hover{ background-color: rgb(196, 78, 113); }
+@media only screen and (max-width: 756px){
+    .mart-item-dialog-view{
+        width: 100%;
+    }
+    .mart-item-dialog-view .midv-status button{
+        width: 100%;
+    }
+    
+    
+}

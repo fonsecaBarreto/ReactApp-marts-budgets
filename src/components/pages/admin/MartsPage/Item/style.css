@@ -18,12 +18,13 @@
 
 .mart-item .mart-item-row{
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
-    padding: 10px 20px;
+    padding: 10px 18px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     background-color: rgb(241, 241, 241,.8);
@@ -43,27 +44,48 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }   
 
+.mart-item .mart-item-name{
+    overflow: hidden;
+    font-weight: bold;
+    width: fit-content;
+}
+/* RIGHT */
 .mart-right{
     margin-left: auto;
     margin-right: 0;
     display: flex; flex-direction: row;
     align-items: center;
+    gap: 14px;
+    padding-left: 12px;
 }
 
 .mart-status{
     cursor: pointer;
     border: solid 2px rgb(13, 151, 98);
     color: rgb(13, 151, 98);
-
+    
     padding: 4px 10px;
     border-radius: 20px;
 }
+
 .mart-status:hover{
+    background-color: rgb(240, 240, 240);
     border: solid 2px rgb(30, 192, 130);
 }
 
+
+.bell-status {
+    display: flex; flex-direction: row; align-items: center; justify-content: center;
+    font-size: 26px;
+    background-color: rgb(32, 184, 125);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    color: rgb(236, 235, 235);
+}
 .mart-item-arrow-btn{
     margin-right: 0;
     margin-left: auto;
@@ -110,3 +132,14 @@
     color: #444;
 }
 
+@media only screen and (max-width: 756px){
+    .mart-item .mart-item-row{
+
+        gap: 8px;
+        padding: 8px 12px 8px 8px; 
+    }
+
+    .mart-item-arrow-btn{
+        font-size: 32px;
+    }
+}

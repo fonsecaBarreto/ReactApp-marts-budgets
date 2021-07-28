@@ -56,7 +56,7 @@ export default withRouter(({ history }) =>{
     const handleForgotSuccess = () =>{
         dialogState.showSuccess( 
             "...", 
-            "Voce Recebera em breve um E-mail para resetar sua senha",
+            "Voce Recebera em instantes um E-mail para redefinição de senha",
             "Sucesso!",
             async () => {  history.push("/") })
     }

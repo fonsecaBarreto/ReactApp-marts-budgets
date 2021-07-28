@@ -46,7 +46,6 @@ export default withRouter(( { setLoading, inputs, setAnnex, errors, setErrors, h
         try{
             //shouw remove all non number from phone if phone exists
             const result  = await signUpService(inputs)
-            clearInputs()
             setErrors({})
             onSuccess && onSuccess(result)
         }catch(err){

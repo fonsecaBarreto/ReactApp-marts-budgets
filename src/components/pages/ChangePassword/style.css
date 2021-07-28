@@ -1,6 +1,6 @@
 #change-passowrd-page {
     min-height: 100vh;
-    padding-top: 92px;
+    padding-top: 54px;
 }
 
 #change-passowrd-page .change-passowrd-form{
@@ -10,14 +10,23 @@
     justify-content: flex-start;
     gap: 8px;
     margin: auto;
+    padding: 0 20px;
+
+}
+#change-passowrd-page .change-passowrd-form span{
+    text-align: center;
+    width: 100%;
 }
 .change-password-title{
     margin: 0;
+    text-align: center;
+    width: 100%;
+    line-height: 1em;
 }
 .change-password-logo{
     height: 150px;
     margin: auto;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .change-password-button {
@@ -43,7 +52,8 @@
 
 @media only screen and (max-width: 756px){
     #change-passowrd-page .change-passowrd-form{
-        width: 100%
+        width: 100%;
+    
     }
     .change-password-button  {
         height: 56px;

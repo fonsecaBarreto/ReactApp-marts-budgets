@@ -73,7 +73,7 @@ export default withRouter(({history}) =>{
             <img src={Logo} className="change-password-logo" ></img>
             <h2 className="change-password-title"> Insira sua noma senha </h2>
             <span> Bem vindo de volta, 
-                <span className="font-bold"> {name} </span>
+                <span className="font-bold"> { name.replace(/%20/g, " ")} </span>
                 </span>
             <FormRow label="Senha" error={errors?.['password']}>
                 <input autoFocus value={password} type="password" onInput={e=>handleInputs('password',e.target.value)}></input>

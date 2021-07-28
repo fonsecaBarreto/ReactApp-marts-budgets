@@ -3,11 +3,12 @@ import './style.css'
 import { listMartsService } from '../../../../services/mart-service'
 import MartItem from './Item'
 import ControlBar from "./ControlBar"
-
+import ItemDialogView from './ItemDialogView'
 
 
 const INITIAL_FILTERS = {
     text: "",
+    status: 0
 }
 
 export const MartsState = () =>{
@@ -15,6 +16,13 @@ export const MartsState = () =>{
     const [ filters, setFilters ] = useState(INITIAL_FILTERS)
     const [ marts, setMarts ] = useState([])
     const [ loading, setLoading ] = useState(true)
+
+    const updateMart = (mart) =>{
+        console.log("autlaizado?", mart)
+        const less = marts.filter(m =>(m.id !== mart.id))
+        setMarts([mart, ...less])
+    }   
+
     useEffect(()=>{
         setLoading(true)
         if(marts.length === 0 ){
@@ -25,19 +33,28 @@ export const MartsState = () =>{
         }
     },[ ])
 
-    return { marts, filters, setFilters, loading }
+    return { marts, filters, setFilters, loading, updateMart }
 }
 
 
 export default () =>{
 
+    const [ currentMart, setCurrentMart ] = useState(null)
     const state = MartsState()
-    const { filters, setFilters, loading } = state
+    const { filters, setFilters, loading, updateMart } = state
+
 
     const filterMarts = (martsList) =>{
  
-        const { text } = filters
+        const { text, status } = filters
         var marts = [ ...martsList ]
+
+
+        switch (status) {
+            case 1: marts = marts.filter(m=>(m.isActive === true)); break;
+            case 2 :marts = marts.filter(m=>(m.isActive === false)); break;
+            default : marts = marts
+        }
 
         if( text !== ""  ) marts = marts.filter(n=>{
             const text_filter = text.toLowerCase()
@@ -51,7 +68,6 @@ export default () =>{
         return marts
     }
 
-
     const { marts } = state
     return (
         <div id="admin-marts-page">
@@ -64,13 +80,19 @@ export default () =>{
                     {
                         marts.length > 0 && filterMarts(marts).map((m,i)=>{
                             return(
-                                <MartItem key={i} mart={m}></MartItem>
+                                <MartItem key={i} mart={m} onView={()=>setCurrentMart(m)}></MartItem>
                                 )
                             })
                         }
                 
                 </div>
             </div>
+
+            { currentMart && <ItemDialogView 
+                mart={currentMart}
+                setMart ={setCurrentMart}
+                updateMart={updateMart}
+            ></ItemDialogView>}
        
         </div>
     )
