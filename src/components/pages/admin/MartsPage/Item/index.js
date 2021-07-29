@@ -4,11 +4,12 @@ import './style.css'
 import { AiOutlineShop, AiOutlineBell, AiOutlinePaperClip } from 'react-icons/ai'
 import { HiChevronDown } from 'react-icons/hi'
 import { getFilePath } from '../../../../../services/utils-service'
+import { Link } from 'react-router-dom'
 export default ({mart, onView}) =>{
 
 
     const [ show, setShow ] = useState(false)
-    const { name, email, phone, cnpj_cpf, isActive, annex } = mart
+    const { id, name, email, phone, cnpj_cpf, isActive, annex } = mart
     return (
         <div className="mart-item">
 
@@ -47,6 +48,12 @@ export default ({mart, onView}) =>{
                     <span className="mart-item-info">
                         <span className={'font-bold '}> Cnpj/cpf: </span> {cnpj_cpf} </span>
 
+
+                        <Link to={`/admins/marts/${id}/update`} className="mart-item-info">
+                            <span className={'font-bold '}> 
+                                Editar 
+                            </span> 
+                        </Link>
 
                     { annex && 
                         <a href={getFilePath(annex)} target='_blank' className="mart-item-info">

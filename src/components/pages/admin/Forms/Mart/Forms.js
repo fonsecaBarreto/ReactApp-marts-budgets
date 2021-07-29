@@ -38,7 +38,7 @@ export const PasswordForm = ({ inputs, handleInputs, errors, freeze }) =>{
 }
 
 export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
-    const { id, name, email, cnpj_cpf, phone, transfer_allowed,  } = inputs
+    const { id, name, email, cnpj_cpf, phone, transfer_allowed } = inputs
     return (
         <AdminForm title={"Geral"} columns={[6,6,6,6,6]} loading={freeze}>
 
@@ -57,17 +57,18 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
             <FormRow label="Telefone Celular" error={errors?.['phone']}>
                 <input value={phone} type="text" onInput={e=>handleInputs('phone',e.target.value)}></input>
             </FormRow>
+
             <FormRow className="form-checkbox" error={errors?.['transfer_allowed']}>
                 <input type="checkbox" checked={transfer_allowed} onChange={(e)=>handleInputs('transfer_allowed',!transfer_allowed)}></input>
                 <label> Autorização pra re-envio </label>
             </FormRow>
-
 
         </AdminForm>
     )
 }
 
 export const MartState = () =>{
+    const [ loading, setLoading ] = useState(false)
     const [ freeze, setFreeze ] = useState(false)
     const [ inputs, setInputs, ] = useState({ ...INITIAL_DATA })
     const [ errors, setErrors ]= useState({})
@@ -89,15 +90,15 @@ export const MartState = () =>{
     }
 
     const load = async (id) =>{
-        setFreeze(true)
+        setLoading(true)
         try{
             const result = await findMartService(id)
             setInputs(result)
         } catch(err) {
             throw err.message
-        } finally { setFreeze(false) }
+        } finally { setLoading(false) }
     }
 
-    return { handleInputs, inputs, setInputs, errors, setErrors, clearInputs, save, freeze, load }
+    return { handleInputs, inputs, setInputs, errors, setErrors, clearInputs, save, load,  freeze, loading }
 }
 

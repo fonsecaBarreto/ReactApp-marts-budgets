@@ -13,15 +13,11 @@ export default withRouter( ({ history, filters, setFilters}) => {
         setFilters( prev => ({...prev, status: Number(e.target.value) }))
     };
 
-    const add = () =>{
-        history.push('/admins/marts/create')
-    }
+
 
     return (
         <div className="control-bar app-container">
-                <button className="control-bar-btn" onClick={add}> 
-                    <AiOutlinePlus></AiOutlinePlus> Novo
-                </button> 
+             
                 <div className="filter-row">
                     <select className="status-select-box" onChange={handleChange} value={status} defaultValue={0} >
                         <option value={2}> Pendentes</option>

@@ -16,5 +16,5 @@ export const authService = async () =>{
 
 export function logoutService() {
   localStorage.removeItem(global.storage_key_admin)
-  window.location.href="/"
+  window.location.href="/admins/login"
 }

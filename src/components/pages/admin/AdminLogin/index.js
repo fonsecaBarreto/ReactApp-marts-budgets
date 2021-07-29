@@ -44,7 +44,7 @@ export default withRouter(({ history }) =>{
     const handleErrors = (err) => { dialogState.showFailure(err.message) }
     const handleSuccess = () => { 
         dispatch(setAdmin(null))
-        history.push("/admins/dashboard")  
+        history.push("/admin")  
         
     }
 

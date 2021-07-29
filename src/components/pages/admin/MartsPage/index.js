@@ -4,7 +4,8 @@ import { listMartsService } from '../../../../services/mart-service'
 import MartItem from './Item'
 import ControlBar from "./ControlBar"
 import ItemDialogView from './ItemDialogView'
-
+import AdminCommonToolBar from "../../../layouts/Admin/AdminCommonToolBar"
+import { withRouter } from "react-router-dom"
 
 const INITIAL_FILTERS = {
     text: "",
@@ -37,7 +38,7 @@ export const MartsState = () =>{
 }
 
 
-export default () =>{
+export default withRouter(({history}) =>{
 
     const [ currentMart, setCurrentMart ] = useState(null)
     const state = MartsState()
@@ -68,32 +69,43 @@ export default () =>{
         return marts
     }
 
+    const add = () =>{
+       history.push('/admins/marts/create') 
+    }
+
     const { marts } = state
     return (
         <div id="admin-marts-page">
 
-            <div className="app-container">
-
-                <ControlBar filters={filters} setFilters={setFilters} ></ControlBar>
-
-                <div className={` admin-marts-flow ${`${loading ? 'loading' : ''}`}`}>
-                    {
-                        marts.length > 0 && filterMarts(marts).map((m,i)=>{
-                            return(
-                                <MartItem key={i} mart={m} onView={()=>setCurrentMart(m)}></MartItem>
-                                )
-                            })
-                        }
+                <AdminCommonToolBar>
+                    <button onClick={add}> 
+                        Novo
+                    </button> 
                 
-                </div>
-            </div>
+                </AdminCommonToolBar>
+                
+                <div className="app-container">
 
-            { currentMart && <ItemDialogView 
-                mart={currentMart}
-                setMart ={setCurrentMart}
-                updateMart={updateMart}
-            ></ItemDialogView>}
+                    <ControlBar filters={filters} setFilters={setFilters} ></ControlBar>
+
+                    <div className={` admin-marts-flow ${`${loading ? 'loading' : ''}`}`}>
+                        {
+                            marts.length > 0 && filterMarts(marts).map((m,i)=>{
+                                return(
+                                    <MartItem key={i} mart={m} onView={()=>setCurrentMart(m)}></MartItem>
+                                    )
+                                })
+                            }
+                    
+                    </div>
+                </div>
+
+                { currentMart && <ItemDialogView 
+                    mart={currentMart}
+                    setMart ={setCurrentMart}
+                    updateMart={updateMart}
+                    ></ItemDialogView>}
        
         </div>
     )
-}
+})

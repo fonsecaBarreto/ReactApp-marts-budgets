@@ -1,0 +1,49 @@
+.admin-common-tool-bar{
+    height: fit-content;
+    overflow: hidden;
+    border: solid 1px #ddd;
+    background-color: rgb(224, 224, 224);
+    margin-bottom: 16px;
+    padding: 2px;
+    
+}
+.admin-common-tool-bar-content{
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.admin-common-tool-bar button{
+    height: 100%;
+    width: fit-content;
+    padding: 0 42px;
+
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    background-color: rgb(235, 235, 235);
+    color: #333;
+    cursor: pointer;
+}
+
+.admin-common-tool-bar button.freeze{
+    position: relative;
+}
+.admin-common-tool-bar button.freeze::before{
+    content: "enviando...";
+   position: absolute;
+   top: 0; left: 0; 
+   width: calc(100%); height: calc(100%);
+   background-color: rgba(255, 255, 255, 1);
+}
+.admin-common-tool-bar button:hover{
+
+    background-color: white
+
+}
+
+

@@ -38,5 +38,5 @@ export const authService = async () =>{
 
 export function logoutService() {
   localStorage.removeItem(global.storage_key_mart)
-  window.location.href="/"
+  window.location.href="/login"
 }

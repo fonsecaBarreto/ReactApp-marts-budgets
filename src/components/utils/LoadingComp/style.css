@@ -1,0 +1,11 @@
+
+
+.loading-comp{
+
+
+    width: calc(100%); height: 200px;
+    background-image: url(../../../assets/loading.svg); 
+    background-repeat: no-repeat;
+    background-size: 150px;
+    background-position: center;
+}

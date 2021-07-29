@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import './style.css'
 import { MartState } from './Forms'
 import WarningDialog, { WarningState } from '../../../../utils/WarningDialog'
 import { withRouter } from 'react-router-dom'
-import CreateMart from './Create'
-import UpdateMart from './Update'
+import LoadingComp from '../../../../utils/LoadingComp';
+
+import AdminCommonToolBar from '../../../../layouts/Admin/AdminCommonToolBar';
+import { PasswordForm, RootForm } from './Forms'
+
+
 export default withRouter(({history}) =>{
 
     const state = MartState()
@@ -15,24 +20,61 @@ export default withRouter(({history}) =>{
         const mart_id = pathname.split('marts/')[1].split('/update')[0]
         if(mart_id && mart_id !== "create") return  state.load(mart_id)
     }, [history.location, history.location.pathname])
+
+    const { save, inputs, freeze, loading } = state
+
+    const create = async () => {
+        try{
+            const result = await save()
+            dialogState.showSuccess("Novo Cliente Cadastrado com sucesso")
+            return history.push(`/admins/marts/${result.id}/update`)
+        }catch(errMessage){
+            dialogState.showFailure(errMessage)
+        }
+    }
+
+    const update  = async () => {
+        try{
+            const result = await save(inputs)
+            dialogState.showSuccess("Cliente Atualizado!")
+        }catch(errMessage){
+            dialogState.showFailure(errMessage)
+        }
+    }
   
     const { id } = state.inputs
     return ( 
         <div id="create-mart-page"> 
-            <div className="app-container">
+       
+            {loading  ? <LoadingComp></LoadingComp> :
+            
 
-              { !id ?
-                <React.Fragment>
-                    <h1> Create a new Mart </h1>
-                    <CreateMart state={state} dialogHandler={dialogState}></CreateMart>
-                </React.Fragment>
-                :
-                <React.Fragment>
-                    <h1> Atualizar </h1>
-                    <UpdateMart state={state} dialogHandler={dialogState}></UpdateMart>
-                </React.Fragment>
-            }
-            </div>
+
+            <React.Fragment>
+                <AdminCommonToolBar>
+                    <button className={`${freeze ? 'freeze' : ''}`}
+                        onClick={()=>{
+                        id ? update() : create()
+                    }}>  { id ? "Atualizar" : "Cadastrar" } </button> 
+                </AdminCommonToolBar>
+
+        
+                <div className="app-container">
+                    { !id ?
+                            <React.Fragment>
+                                <RootForm {...state} ></RootForm>
+                                <PasswordForm {...state} ></PasswordForm> 
+                            </React.Fragment>
+                            :
+                            <React.Fragment>
+                                <RootForm {...state} ></RootForm>
+                            </React.Fragment>
+                    }
+                </div>
+            </React.Fragment>
+        }
+           
+        
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         </div>
     )

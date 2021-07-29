@@ -1,13 +1,28 @@
 .admin-menu{
-    background: #457fca;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 48px 0;
-    box-shadow: 1px 0px 4px 2px #0005;
 }
-.admin-menu .adm-layout-menu-logo{
-    width: calc( 100% - 150px);
+
+.admin-menu .adm-layout-menu-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: rgb(233, 233, 233);
+    padding: 32px 36px;
+    font-size: 16px;
+    gap: 2px;
 }
+
+.admin-menu .adm-layout-menu-logo img{
+    width: 100%
+}
+
+.admin-menu .adm-layout-menu-logo span{
+    display: flex; flex-direction: row;
+    align-items: flex-start; justify-content: flex-start;
+    gap: 6px;
+}
+
 .admin-menu ul{
     text-decoration: none;
     list-style: none;
@@ -19,7 +34,6 @@
     padding: 6px;
     gap: 4px;
 }
-
 
 .admin-menu li.adm-menu-item{
     position: relative;
@@ -41,6 +55,7 @@
 .admin-menu li.adm-menu-item.selected{
     background-color: rgba(255, 255, 255, 0.1);
 }
+
 .admin-menu li.adm-menu-item.selected::after{
     content: "";
     position: absolute;
@@ -61,11 +76,7 @@
     color: rgb(255, 255, 255);
 }
 
-
-
-@media only screen and (max-width: 960px){
-
-        
+@media only screen and (max-width: 960px){  
     aside.admin-menu { 
         margin-left: -100%;
         position: fixed;
@@ -73,13 +84,16 @@
         left: 0;
         width: 100%;
         box-shadow: unset;
-        transition: all .24s
-    }
-    aside.admin-menu.show { 
-        margin-left: unset
+        transition: all .24s;
+        z-index: 9999!important;
+        
     }
 
-        /*  */
+    aside.admin-menu.show { 
+        margin-left: unset;
+      
+    }
+
     .admin-menu li.adm-menu-item{
         height: 46px;
         width: 100%;
