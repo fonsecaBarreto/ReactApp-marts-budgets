@@ -61,7 +61,7 @@ export default withRouter(({history}) =>{
         try{
             await remove(inputs.id) 
             dialogState.showSuccess("Categoria deletada com sucesso!", "", "", () =>{
-                history.push("/admins/providers")
+                history.push("/admins/categories")
             })
         }catch(errMessage){
             dialogState.showFailure(errMessage)
