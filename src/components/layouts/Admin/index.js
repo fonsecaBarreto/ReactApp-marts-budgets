@@ -8,47 +8,76 @@ import AdminMenu from './AdminMenu'
 import AdminBar from './AdminBar'
 
 
-import { AiFillShop, AiTwotoneShopping, AiFillDashboard} from 'react-icons/ai'
+import { AiFillShop, AiTwotoneShopping, AiFillDashboard, AiOutlineUnorderedList, AiFillPlusCircle} from 'react-icons/ai'
 import { FaArchive, FaTimes, FaTruck } from 'react-icons/fa'
 import { CgNotes } from 'react-icons/cg'
+import { RiPriceTag2Fill } from 'react-icons/ri'
 
-const ADMIN_PAGES = [
+
+const MENU_STRUCT = [
 
     {
-        title: "Painel",
+        title: "Painel", to: "/admins/panel",
         icon: <AiFillDashboard></AiFillDashboard>,
-        to: "/admins/panel"
     },
     {
         title: "Estabelecimentos",
         icon: <AiFillShop></AiFillShop>,
-        to: "/admins/marts"
+        subs: [
+            {
+                title: "Listagem",  to: "/admins/marts",
+                icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
+            },
+            {
+                title: "Adicionar Novo",  to: "/admins/marts/create",
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
+            },
+            {
+                title: "Editar estabelecimento",  to: "/admins/marts/update",
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                hide: true
+            },
+        ]
     },
-        {
-            title: "Cadastrar novo estabelecimento",
-            icon: <AiFillShop></AiFillShop>,
-            to: "/admins/marts/create",
-            hideMenu: true
-        },
     {
         title: "Produtos",
         icon: <AiTwotoneShopping></AiTwotoneShopping>,
-        to: "/admins/products"
+        subs: [
+            {
+                title: "Listagem",  to: "/admins/products",
+                icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
+            },
+            {
+                title: "Categorias", to: "/admins/categories",
+                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
+            },
+        ]
     },
     {
-        title: "Fornecedores",
+        title: "Fornecedores",  to: "/admins/providers",
         icon: <FaTruck></FaTruck>,
-        to: "/admins/providers"
+        subs: [
+            {
+                title: "Listagem",  to: "/admins/providers",
+                icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
+           
+            },
+            {
+                title: "Novo",  to: "/admins/providers/create",
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
+     
+            },
+            {
+                title: "Editar Fornecedor",  to: "/admins/providers/update",
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                hide: true
+            },
+        ]
     },
+  
     {
-        title: "Categorias",
-        icon: <FaArchive></FaArchive>,
-        to: "/admins/categories"
-    },
-    {
-        title: "Orçamentos",
+        title: "Orçamentos",   to: "/admins/budgets",
         icon: <CgNotes></CgNotes>,
-        to: "/admins/budgets"
     },
 ]
 
@@ -60,7 +89,7 @@ export default withRouter(({ history, children}) =>{
 
     const handleClick = (to) =>{
         setShowMenu(false)
-        setCurrentPage(to)
+       /*  setCurrentPage(to) */
     }
     useEffect(()=>{
         if(!history.location) return 
@@ -72,9 +101,9 @@ export default withRouter(({ history, children}) =>{
 
         <AdminHeader toggle={()=>setShowMenu(!showMenu)}></AdminHeader>
 
-        <AdminBar pages={ADMIN_PAGES} currentPage={currentPage} ></AdminBar>
+        <AdminBar pages={MENU_STRUCT} currentPage={currentPage} ></AdminBar>
 
-        <AdminMenu pages={ADMIN_PAGES} currentPage={currentPage} show={showMenu} onItemClick={handleClick} ></AdminMenu>
+        <AdminMenu pages={MENU_STRUCT} currentPage={currentPage} show={showMenu} onItemClick={handleClick} ></AdminMenu>
 
         <main className="admin-content">
             {children}

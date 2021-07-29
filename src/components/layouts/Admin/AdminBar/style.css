@@ -38,7 +38,11 @@
 }
 
 .admin-bar .admb-left .admb-title{
-    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px;
     text-transform: uppercase;
 }
 

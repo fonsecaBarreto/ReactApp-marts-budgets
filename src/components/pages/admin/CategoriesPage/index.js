@@ -58,7 +58,7 @@ export default withRouter(({history}) =>{
                         <div className={`admin-categories-flow`}>
                             {
                                 categories.map((c,i)=>( 
-                                <CategoryItem category={c}></CategoryItem>)
+                                <CategoryItem category={c} onEdit={edit} key={i}></CategoryItem>)
                                 )
                             }
                         

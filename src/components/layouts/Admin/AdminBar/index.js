@@ -1,14 +1,34 @@
 import React from 'react'
 import  './style.css'
 import AdminDropDown from '../AdminDropDown'
-import { IoIosArrowBack } from 'react-icons/io'
+import { IoIosArrowBack, IoMdArrowDropright } from 'react-icons/io'
 
 export default ({admin, pages, currentPage}) =>{
 
     const GetTitle = () =>{
-        const page = pages.find(p=>p.to === currentPage)
-        if(!page) return ""
-        return page.title
+        var page = pages.find(p=>p.to === currentPage)
+        if(page) return page.title
+        
+
+        var title = ""
+        if(!page){
+            pages.map(p => {
+                if(!p.subs) return
+                const subs = p.subs.forEach(sp=>{ 
+                    if(sp.to === currentPage){
+                        title = 
+                        <React.Fragment> { p.title}  <IoMdArrowDropright/>  {sp.title} </React.Fragment>
+                    }
+                    
+                })
+                
+            })
+        }
+
+        
+        return title
+
+        
     }
     return (
         <div className="admin-bar app-padding"> 

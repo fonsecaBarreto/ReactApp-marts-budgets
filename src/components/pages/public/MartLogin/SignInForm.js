@@ -84,7 +84,7 @@ export default ({setLoading, inputs, errors, setErrors, handleInputs, toggleMode
 
             <div className="signin-opt">
 
-                <button className="light-button " onClick={toggleMode}>  Me Cadastrar</button>
+                <button className="light-button " onClick={toggleMode}>  Cadastrar</button>
 
                 <div className="bearer "></div>
 

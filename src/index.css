@@ -1,3 +1,9 @@
+
+:root {
+  --main-color: #007CDC;
+  --main-light-color: #1388e2;
+}
+
 body {
   margin: 0;
   font-family: 'Yanone Kaffeesatz', sans-serif;

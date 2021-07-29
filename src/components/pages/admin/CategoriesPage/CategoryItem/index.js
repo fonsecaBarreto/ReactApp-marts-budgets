@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import './style.css'
 import ChildrenItem from './CategoriesChildren'
 import { HiChevronDown, HiChevronUp } from 'react-icons/hi'
-
-export default ({category}) =>{
+import { FiEdit } from 'react-icons/fi'
+export default ({category, onEdit }) =>{
     if(!category) return undefined
 
     const [ open, setOpen ] = useState(false)
 
-    const { name, children } = category
+    const { id, name, children } = category
     return (
         <div className="category-item">
 
@@ -17,11 +17,14 @@ export default ({category}) =>{
                     { !open ? <HiChevronDown/> : <HiChevronUp/> }
                 </button>
                 {name}
+                <button className="category-opt-btn" onClick={()=>onEdit(id)}>
+                    <FiEdit></FiEdit>
+                </button> 
             </div>
             
             <div className={`category-body ${open ? "show" : ''}`}>
-                { children.length > 0 ? children.map(c=>(
-                    <ChildrenItem category={c}></ChildrenItem>
+                { children.length > 0 ? children.map((c,i)=>(
+                    <ChildrenItem category={c} key={i} onEdit={onEdit}></ChildrenItem>
                 )) : "Nenhuma Categoria aqui" }
             </div>
 

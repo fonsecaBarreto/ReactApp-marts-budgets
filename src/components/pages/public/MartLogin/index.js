@@ -3,9 +3,9 @@ import './style.css'
 
 import SignUpForm, { SignUpState } from './SignUpForm'
 import SignInForm, { SignInState } from './SignInForm.js'
-import Logo from '../../../../assets/logo.jpg'
 import { withRouter } from 'react-router-dom'
 import WarningDialog, { WarningState } from '../../../utils/WarningDialog'
+import Logo from '../../../../assets/logo2.svg'
 
 export default withRouter(({ history }) =>{
 
@@ -68,8 +68,8 @@ export default withRouter(({ history }) =>{
         <div id="login-screen"> 
 
             <div className={`login-box ${!toSignup? 'show':''} ${ loading ? 'loading' : ''}`}>
+                <img src={Logo} className="login-logo" ></img>
                 <div className="login-box-content">
-                    <img src={Logo} className="login-logo"></img>
                     <span className="login-header-text"> Login </span>
                     <SignInForm 
                         setLoading={setLoading}
@@ -84,9 +84,10 @@ export default withRouter(({ history }) =>{
 
 
             <div className={` login-box ${toSignup? 'show': '' } ${loading ? 'loading' : ''} `}>
-                 <div className="login-box-content">
-                    <img src={Logo} className="login-logo"></img>
-                    <span className="login-header-text"> Cadastrar-se </span>
+                <img src={Logo} className="login-logo" ></img>
+                <div className="login-box-content">
+    
+                    <span className="login-header-text"> Cadastro</span>
                     <SignUpForm 
                         setLoading={setLoading}
                         { ...signupState } 
