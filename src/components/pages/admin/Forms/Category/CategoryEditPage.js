@@ -15,6 +15,7 @@ export default withRouter(({history}) =>{
 
     useEffect(() => {
 
+   
         const pathname = history.location ? history.location.pathname : null;
         if(!pathname) return
 

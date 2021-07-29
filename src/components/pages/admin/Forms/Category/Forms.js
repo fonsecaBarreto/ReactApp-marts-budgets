@@ -89,6 +89,7 @@ export const CategoryState = () =>{
     }
 
     const load = async (id) =>{
+        clearInputs()
         if(!id) return;
         setLoading(true)
         try{

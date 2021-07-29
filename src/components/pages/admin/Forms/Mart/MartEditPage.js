@@ -16,7 +16,7 @@ export default withRouter(({history}) =>{
     const dialogState = WarningState()
 
     useEffect(() => {
-
+     
         const pathname = history.location ? history.location.pathname : null;
         if(!pathname) return
 

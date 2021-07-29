@@ -93,7 +93,8 @@ export const MartState = () =>{
     }
 
     const load = async (id) =>{
-        if(!id) return;
+        clearInputs()
+        if(!id) return ;
         setLoading(true)
         try{
             const result = await findMartService(id)
