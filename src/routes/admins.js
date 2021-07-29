@@ -12,8 +12,11 @@ import MartsPage from '../components/pages/admin/MartsPage'
 import BudgetsPage from '../components/pages/admin/BudgetsPage'
 import ProductsPage from '../components/pages/admin/ProductsPage'
 import ProvidersPage from '../components/pages/admin/ProvidersPage'
+import CategoriesPage from '../components/pages/admin/CategoriesPage'
 /* forms */
 import MartEditPage from '../components/pages/admin/Forms/Mart/MartEditPage'
+import ProviderEditPage from '../components/pages/admin/Forms/Provider/ProviderEditPage'
+import CategoryEditPage from '../components/pages/admin/Forms/Category/CategoryEditPage'
 
 export default () => {
     return (
@@ -23,13 +26,21 @@ export default () => {
         <Guard path="/admins/login" exact>  <AdminLoginPage> </AdminLoginPage> </Guard>
         {/* admin only */}
         <Guard path="/admins/panel" exact access="adminonly" >  <AdminLayout>  <AdminDashBoardPage >  </AdminDashBoardPage>  </AdminLayout></Guard>
-        <Guard path="/admins/marts" exact access="adminonly" >  <AdminLayout>  <MartsPage >  </MartsPage>  </AdminLayout></Guard>
         <Guard path="/admins/products" exact access="adminonly" >  <AdminLayout>  <ProductsPage >  </ProductsPage>  </AdminLayout></Guard>
         <Guard path="/admins/budgets" exact access="adminonly" >  <AdminLayout>  <BudgetsPage >  </BudgetsPage>  </AdminLayout></Guard>
-        <Guard path="/admins/providers" exact access="adminonly" >  <AdminLayout>  <ProvidersPage >  </ProvidersPage>  </AdminLayout></Guard>
 
+        <Guard path="/admins/marts" exact access="adminonly" >  <AdminLayout>  <MartsPage >  </MartsPage>  </AdminLayout></Guard>
         <Guard path="/admins/marts/create" exact access="adminonly" >  <AdminLayout>  <MartEditPage >  </MartEditPage>  </AdminLayout></Guard>
-        <Guard path="/admins/marts/:mart_id/update" exact access="adminonly" >  <AdminLayout>  <MartEditPage >  </MartEditPage>  </AdminLayout></Guard>
+        <Guard path="/admins/marts/update" exact access="adminonly" >  <AdminLayout>  <MartEditPage >  </MartEditPage>  </AdminLayout></Guard>
+
+        <Guard path="/admins/providers" exact access="adminonly" >  <AdminLayout>  <ProvidersPage >  </ProvidersPage>  </AdminLayout></Guard>
+        <Guard path="/admins/providers/create" exact access="adminonly" >  <AdminLayout>  <ProviderEditPage >  </ProviderEditPage>  </AdminLayout></Guard>
+        <Guard path="/admins/providers/update" exact access="adminonly" >  <AdminLayout>  <ProviderEditPage >  </ProviderEditPage>  </AdminLayout></Guard>
+
+
+        <Guard path="/admins/categories" exact access="adminonly" >  <AdminLayout>  <CategoriesPage >  </CategoriesPage>  </AdminLayout></Guard>
+        <Guard path="/admins/categories/create" exact access="adminonly" >  <AdminLayout>  <CategoryEditPage >  </CategoryEditPage>  </AdminLayout></Guard>
+        <Guard path="/admins/categories/update" exact access="adminonly" >  <AdminLayout>  <CategoryEditPage >  </CategoryEditPage>  </AdminLayout></Guard>
       </Switch>
 
     )

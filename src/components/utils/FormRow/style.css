@@ -14,7 +14,7 @@
     line-height: 1.5em;
     color: rgb(5, 9, 63);
 }
-.form-row textarea, input[type=text], input[type=password], .text-input{
+.form-row select, textarea, input[type=text], input[type=password], .text-input{
     width: fit-content;
     display: flex;
     flex-direction: column;

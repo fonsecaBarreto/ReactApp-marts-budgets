@@ -1,0 +1,5 @@
+.admin-providers-flow{
+    display: grid;
+    min-height: fit-content;
+    gap: 6px;
+}

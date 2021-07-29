@@ -49,7 +49,7 @@ export default ({mart, onView}) =>{
                         <span className={'font-bold '}> Cnpj/cpf: </span> {cnpj_cpf} </span>
 
 
-                        <Link to={`/admins/marts/${id}/update`} className="mart-item-info">
+                        <Link to={`/admins/marts/update?md=${id}`} className="mart-item-info">
                             <span className={'font-bold '}> 
                                 Editar 
                             </span> 

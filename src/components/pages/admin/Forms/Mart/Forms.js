@@ -2,7 +2,7 @@ import AdminForm from '../../../../utils/AdminForm'
 import InputMask from 'react-input-mask';
 import React, { useState, useEffect } from 'react';
 import FormRow from '../../../../utils/FormRow'
-import { saveMartService, findMartService } from '../../../../../services/mart-service'
+import { saveMartService, findMartService, removeMartService } from '../../../../../services/mart-service'
 
 const INITIAL_DATA = {
     /* update */
@@ -75,30 +75,45 @@ export const MartState = () =>{
 
     const handleInputs = (key,value) => setInputs(prev => ({  ...prev,  [key]:value  }))
 
-    const clearInputs = () => setInputs({ ...INITIAL_DATA })
+    const clearInputs = (inputs = {}) => setInputs({ ...INITIAL_DATA, ...inputs })
+
+    /* actions */
 
     const save = async () =>{
         setFreeze(true)
         try{
             const result = await saveMartService(inputs)
+            clearInputs(result)
             setErrors({})
             return result
         } catch(err) {
             if(err.params) setErrors(err.params)
             throw err.message
-        } finally {  setFreeze(false) }
+        } finally {  setFreeze(false) } 
     }
 
     const load = async (id) =>{
+        if(!id) return;
         setLoading(true)
         try{
             const result = await findMartService(id)
+            if(!result) throw { message: "Não foi possivel encontrar estabelecimento requerido"}
             setInputs(result)
-        } catch(err) {
-            throw err.message
-        } finally { setLoading(false) }
+        } catch(err) { throw err.message } 
+        finally { setLoading(false) }
     }
 
-    return { handleInputs, inputs, setInputs, errors, setErrors, clearInputs, save, load,  freeze, loading }
+
+    const remove = async (id) =>{
+        if(!id) return;
+        setLoading(true)
+        try{ await removeMartService(id) } 
+        catch(err) { throw err.message} 
+        finally { setLoading(false) }
+    }
+
+
+
+    return { handleInputs, inputs, setInputs, errors, setErrors, clearInputs,   freeze, loading, save, load, remove }
 }
 

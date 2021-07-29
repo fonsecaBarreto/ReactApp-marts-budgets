@@ -35,9 +35,10 @@ export function WarningState(){
             </React.Fragment>)
     })
 
-    const showFailure = (message, description, title) =>  setDialogConfig ({ 
+    const showFailure = (message, description, title, done) =>  setDialogConfig ({ 
         ...DIALOG_INITIAL_DATA, show: true,
         title:"Atenção!" || title, 
+        onResult: done,
         content: (
             <React.Fragment>
                 <span className="wd-icon"> 

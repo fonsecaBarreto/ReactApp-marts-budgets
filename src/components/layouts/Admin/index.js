@@ -9,7 +9,7 @@ import AdminBar from './AdminBar'
 
 
 import { AiFillShop, AiTwotoneShopping, AiFillDashboard} from 'react-icons/ai'
-import { FaArchive, FaTruck } from 'react-icons/fa'
+import { FaArchive, FaTimes, FaTruck } from 'react-icons/fa'
 import { CgNotes } from 'react-icons/cg'
 
 const ADMIN_PAGES = [
@@ -39,6 +39,11 @@ const ADMIN_PAGES = [
         title: "Fornecedores",
         icon: <FaTruck></FaTruck>,
         to: "/admins/providers"
+    },
+    {
+        title: "Categorias",
+        icon: <FaArchive></FaArchive>,
+        to: "/admins/categories"
     },
     {
         title: "Orçamentos",

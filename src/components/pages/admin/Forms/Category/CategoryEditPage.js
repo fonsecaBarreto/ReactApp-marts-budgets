@@ -1,18 +1,16 @@
 import React, { useEffect } from 'react';
-import queryString from 'query-string';
 import './style.css'
-import { MartState } from './Forms'
-import WarningDialog, { WarningState } from '../../../../utils/WarningDialog'
 import { withRouter } from 'react-router-dom'
-import LoadingComp from '../../../../utils/LoadingComp';
-
 import AdminCommonToolBar from '../../../../layouts/Admin/AdminCommonToolBar';
-import { PasswordForm, RootForm } from './Forms'
+import WarningDialog, { WarningState } from '../../../../utils/WarningDialog'
+import LoadingComp from '../../../../utils/LoadingComp';
+import queryString from 'query-string';
 
+import { CategoryState, RootForm, PrimaryUpdateForm } from './Forms'
 
 export default withRouter(({history}) =>{
 
-    const state = MartState()
+    const state = CategoryState()
     const dialogState = WarningState()
 
     useEffect(() => {
@@ -20,22 +18,20 @@ export default withRouter(({history}) =>{
         const pathname = history.location ? history.location.pathname : null;
         if(!pathname) return
 
-        const action = pathname.split("/marts/")[1]
+        const action = pathname.split("/categories/")[1]
         switch (action) {
         
             case "update": 
-                const mart_id = queryString.parse(history.location.search).md
-                if(mart_id) return state.load(mart_id).catch((errMessage) =>{ 
+                const category_id = queryString.parse(history.location.search).cd
+                if(category_id) return state.load(category_id).catch((errMessage) =>{ 
                     dialogState.showFailure(errMessage,"","", () =>{
-                        history.push("/admins/marts")
+                        history.push("/admins/categories")
                     });
                 })
                 history.push("/admin")
             ;break;
 
-            default: 
-                state.load(null)    
-            ; break;
+            default: state.load(null); break;
         }
 
     }, [history.location, history.location.pathname])
@@ -45,8 +41,8 @@ export default withRouter(({history}) =>{
     const create = async () => {
         try{
             const result = await save()
-            dialogState.showSuccess("Novo estabelecimento cadastrado com sucesso")
-            return history.push(`/admins/marts/update?md=${result.id}`)
+            dialogState.showSuccess("Nova Categoria cadastrado com sucesso")
+            return history.push(`/admins/categories/update?cd=${result.id}`)
         }catch(errMessage){
             dialogState.showFailure(errMessage)
         }
@@ -55,7 +51,7 @@ export default withRouter(({history}) =>{
     const update  = async () => {
         try{
             await save(inputs)
-            dialogState.showSuccess("Estabelecimento Atualizado!")
+            dialogState.showSuccess("Categoria Atualizada!")
         }catch(errMessage){
             dialogState.showFailure(errMessage)
         }
@@ -64,38 +60,35 @@ export default withRouter(({history}) =>{
     const removeHandler  = async () => {
         try{
             await remove(inputs.id) 
-            dialogState.showSuccess("Estabelecimento Deletado com sucesso!", "", "", () =>{
-                history.push("/admins/marts")
+            dialogState.showSuccess("Categoria deletada com sucesso!", "", "", () =>{
+                history.push("/admins/providers")
             })
         }catch(errMessage){
             dialogState.showFailure(errMessage)
         }
     }
   
-    const { id } = state.inputs
+    const { id, category_id } = state.inputs
+
     return ( 
-        <div id="create-mart-page"> 
+        <div id="create-category-page"> 
        
             {loading  ? <LoadingComp></LoadingComp> :
             
             <React.Fragment>
+
                 <AdminCommonToolBar freeze={freeze}>
                     {id &&  <button className="warning"  onClick={removeHandler}>  Deletar </button> }
                     <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
-                  
                 </AdminCommonToolBar>
 
-        
                 <div className="app-container">
-                    { !id ?
-                        <React.Fragment>
-                            <RootForm {...state} ></RootForm>
-                            <PasswordForm {...state} ></PasswordForm> 
-                        </React.Fragment>
+
+                    {
+                        (id && !category_id) ?
+                        <PrimaryUpdateForm {...state} ></PrimaryUpdateForm>
                         :
-                        <React.Fragment>
-                            <RootForm {...state} ></RootForm>
-                        </React.Fragment>
+                        <RootForm {...state} ></RootForm>
                     }
                 </div>
             </React.Fragment>

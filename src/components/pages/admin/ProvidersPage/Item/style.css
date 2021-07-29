@@ -1,0 +1,108 @@
+
+@keyframes slideUp {
+    0% { opacity: .3;}
+    100% { opacity: 1;}
+  }
+
+.provider-item{
+    animation-name: slideUp;
+    animation-duration: .25s;
+    animation-timing-function: ease ;
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 16px;
+    padding: 18px 18px;
+    border-radius: 6px;
+    background-color: rgb(241, 241, 241,.8);
+}
+
+.provider-item .provider-item-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-items: flex-start;
+    gap: 10px;
+}
+
+.provider-item:hover{
+   background-color: rgba(125, 170, 230, 0.3);
+   outline: solid 2px rgba(66, 110, 204, 0.3); 
+}
+
+.provider-item .provider-item-icon{
+    height: 48px; 
+    width: 48px;
+    font-size: 24px;
+    background-color: #efefef;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}   
+
+.provider-item .provider-item-info{
+    font-size: 18px;
+    line-height: 1em;
+    white-space: pre-line;
+    text-align: left;
+    max-height: 2em;
+    display: block; 
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* RIGHT */
+.provider-right{
+    margin-left: auto;
+    margin-right: 0;
+    display: flex; flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    padding-left: 12px;
+}
+
+
+
+
+
+.provider-opt-btn{
+    width: 32px; height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+
+    color: #222;
+    margin-right: 0;
+    margin-left: auto;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.provider-opt-btn:hover{
+    transition: all .1s ease-in-out;
+  
+
+    background-color: #333;
+    color: white;
+}
+
+
+
+
+
+@media only screen and (max-width: 756px){
+    .provider-item{
+        gap: 8px;
+        padding: 8px 12px 8px 8px; 
+    }
+}

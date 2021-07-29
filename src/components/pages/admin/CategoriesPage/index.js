@@ -2,45 +2,47 @@ import { useEffect, useState } from "react"
 import { withRouter } from "react-router-dom"
 import './style.css'
 
-import { listProvidersService } from '../../../../services/provider-service'
+import {  listCategoriesTreeService } from '../../../../services/category-service'
 import AdminCommonToolBar from "../../../layouts/Admin/AdminCommonToolBar"
 import LoadingComp from "../../../utils/LoadingComp"
-import ProviderItem from './Item'
-export const ProviderState = () =>{
 
-    const [ providers, setProviders ] = useState([])
+import CategoryItem from './CategoryItem'
+
+export const CategoryState = () =>{
+
+    const [ categories, setCategories ] = useState([])
     const [ loading, setLoading ] = useState(false)
 
     useEffect(()=>{
         setLoading(true)
-        if(providers.length === 0 ){
-            listProvidersService()
-            .then(providers=>setProviders(providers))
+        if(categories.length === 0 ){
+            listCategoriesTreeService()
+            .then(setCategories)
             .catch(err=>{})
             .finally(()=>setLoading(false))
         }
     },[ ])
 
-    return { providers, loading }
+    return { categories, loading }
 }
 
 
 export default withRouter(({history}) =>{
 
-    const state = ProviderState()
-    const { loading, providers } = state
+    const state = CategoryState()
+    const { loading, categories } = state
 
     const add = () =>{
-       history.push('/admins/providers/create') 
+       history.push('/admins/categories/create') 
     }
 
     const edit = (id) =>{
-        history.push(`/admins/providers/update?pd=${id}`) 
+        history.push(`/admins/categories/update?cd=${id}`) 
     }
  
 
     return (
-        <div id="admin-provider-page">
+        <div id="admin-category-page">
 
                 <AdminCommonToolBar>
                     <button onClick={add}> 
@@ -53,10 +55,11 @@ export default withRouter(({history}) =>{
 
                     { loading  ? <LoadingComp></LoadingComp> :
 
-                        <div className={`admin-providers-flow`}>
+                        <div className={`admin-categories-flow`}>
                             {
-                                providers.map((p,i)=>( 
-                                    <ProviderItem key={i} provider={p} onEdit={edit}></ProviderItem> ))
+                                categories.map((c,i)=>( 
+                                <CategoryItem category={c}></CategoryItem>)
+                                )
                             }
                         
                         </div>
