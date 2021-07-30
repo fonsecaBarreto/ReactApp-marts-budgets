@@ -19,21 +19,14 @@ export default withRouter(({history}) =>{
         if(!pathname) return
 
         const action = pathname.split("/providers/")[1]
-        switch (action) {
+        const provider_id = queryString.parse(history.location.search).pd
+        if(action === "update" && ! provider_id) return history.push("/admins/providers")
+
+        state.load( action === "update" ? provider_id : null)
+        .catch(errMessage => {
+            dialogState.showFailure(errMessage,"","", () =>{ history.push("/admins/providers")});
+        })
         
-            case "update": 
-                const provider_id = queryString.parse(history.location.search).pd
-                if(provider_id) return state.load(provider_id).catch((errMessage) =>{ 
-                    dialogState.showFailure(errMessage,"","", () =>{
-                        history.push("/admins/providers")
-                    });
-                })
-                history.push("/admin")
-            ;break;
-
-            default: state.load(null); break;
-        }
-
     }, [history.location, history.location.pathname])
 
     const { save, remove,  inputs, freeze, loading } = state
@@ -41,7 +34,7 @@ export default withRouter(({history}) =>{
     const create = async () => {
         try{
             const result = await save()
-            dialogState.showSuccess("Novo Fornecedor cadastrado com sucesso")
+            dialogState.showSuccess("Novo Fornecedor cadastrado com sucesso.")
             return history.push(`/admins/providers/update?pd=${result.id}`)
         }catch(errMessage){
             dialogState.showFailure(errMessage)
@@ -73,23 +66,20 @@ export default withRouter(({history}) =>{
     return ( 
         <div id="create-provider-page"> 
        
-            {loading  ? <LoadingComp></LoadingComp> :
-            
-            <React.Fragment>
-
-                <AdminCommonToolBar freeze={freeze}>
-                    {id &&  <button className="warning"  onClick={removeHandler}>  Deletar </button> }
-                    <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
-                </AdminCommonToolBar>
-
+            { loading  ? <LoadingComp></LoadingComp> :
                 <div className="app-container">
+                    
+                    <AdminCommonToolBar freeze={freeze}>
+                        {id &&  <button className={` warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}>  Deletar </button> }
+                        <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
+                    </AdminCommonToolBar>
+
                     <RootForm {...state} ></RootForm>
+                     
                 </div>
-            </React.Fragment>
-        }
+            }
            
-        
-        <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
+            <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         </div>
     )
 })

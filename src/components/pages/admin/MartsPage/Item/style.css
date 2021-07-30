@@ -98,26 +98,21 @@
 .mart-item-arrow-btn{
     margin-right: 0;
     margin-left: auto;
-    font-size: 28px;
+    font-size: 24px;
     cursor: pointer;
+    color: #333;
 }
 
 .mart-item-arrow-btn.flip{
-    transform: rotate(180deg) translateY(8px);
+    transform: rotate(180deg) translateY(5px);
     z-index: 0;
-
-
-       -webkit-transform: rotate(180deg) translateY(8px);
-
-   
-
+    -webkit-transform: rotate(180deg) translateY(5px);
 }
 
 
 /* body */
 
 .mart-item .mart-item-body{
- 
     overflow: hidden;
     gap: 4px;
     width: 100%; height: 0;
@@ -156,4 +151,25 @@
     .mart-item-arrow-btn{
         font-size: 32px;
     }
+}
+
+
+/*  */
+
+
+.mart-opt-btn{
+    width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    border: none;
+    color: #555;
+    margin-right: 0;
+    margin-left: auto;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.mart-opt-btn:hover{
+    transition: all .1s ease-in-out;
+    color: rgb(0, 0, 0);
 }

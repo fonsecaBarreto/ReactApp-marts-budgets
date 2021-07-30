@@ -3,6 +3,7 @@
     --admin-aside-color: #007CDC;
     --admin-aside-light-color: #1388e2;
     --admin-header-height: 76px;
+    --admin-bg-color: #eeeeee;
 }
 
 #admin-layout{
@@ -11,7 +12,7 @@
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto 1fr;
     grid-template-areas: "menu adminBar" "menu content";
-    background: rgb(233, 233, 233);
+    background: var(--admin-bg-color)
 }
 
 .admin-bar {

@@ -17,7 +17,7 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze, primaries }) =>
     }
 
     return (
-        <AdminForm title={"Fornecedor"} columns={[6,6,6]} loading={freeze}>
+        <AdminForm title={ id ? "Atualizar Categoria" : "Nova Categoria"} columns={[6,6,6]} loading={freeze}>
 
             <FormRow label="Nome" error={errors?.['name']}>
                 <input value={name} type="text" onInput={e=>handleInputs('name',e.target.value)}></input>
@@ -41,7 +41,7 @@ export const PrimaryUpdateForm = ({ inputs, handleInputs, errors, freeze }) =>{
     const { id, name } = inputs
 
     return (
-        <AdminForm title={"Fornecedor"} columns={[6,6,6]} loading={freeze}>
+        <AdminForm title={"Atualizar Categoria Primaria"} columns={[6,6,6]} loading={freeze}>
 
             <FormRow label="Nome" error={errors?.['name']}>
                 <input value={name} type="text" onInput={e=>handleInputs('name',e.target.value)}></input>
@@ -53,27 +53,32 @@ export const PrimaryUpdateForm = ({ inputs, handleInputs, errors, freeze }) =>{
 
 export const CategoryState = () =>{
 
-
     const [ primaries, setPrimaries ] = useState([])
-    const [ loading, setLoading ] = useState(false)
+    const [ loading, setLoading ] = useState(true)
     const [ freeze, setFreeze ] = useState(false)
     const [ inputs, setInputs, ] = useState({ ...INITIAL_DATA })
     const [ errors, setErrors ]= useState({})
-
-
-    useEffect(()=>{
-        setLoading(true)
-        listCategoriesPrimariesService()
-            .then(setPrimaries)
-            .catch((_=>{}))
-            .finally(()=>setLoading(false))
-    },[])
 
     const handleInputs = (key,value) => setInputs(prev => ({  ...prev,  [key]:value  }))
 
     const clearInputs = (inputs = {}) => setInputs({ ...INITIAL_DATA, ...inputs })
 
-    /* actions */
+    const load = async (id) =>{
+        setLoading(true)
+        clearInputs()
+        await Promise.all([  
+            primaries.length === 0 &&
+                listCategoriesPrimariesService()
+                .then(setPrimaries)
+                .catch((_=>{})),
+            id && 
+                findCategoriesService(id)
+                .then(result => {
+                    if(!result) throw { message: "Não foi possivel encontrar Categoria requerida"}
+                    setInputs(result)
+                }).catch(err => { throw err.message })
+        ]).finally(()=>setLoading(false))
+    }
 
     const save = async () =>{
         setFreeze(true)
@@ -88,24 +93,12 @@ export const CategoryState = () =>{
         } finally {  setFreeze(false) } 
     }
 
-    const load = async (id) =>{
-        clearInputs()
-        if(!id) return;
-        setLoading(true)
-        try{
-            const result = await findCategoriesService(id)
-            if(!result) throw { message: "Não foi possivel encontrar Categoria requerida"}
-            setInputs(result)
-        } catch(err) { throw err.message } 
-        finally { setLoading(false) }
-    }
-
     const remove = async (id) =>{
         if(!id) return;
-        setLoading(true)
+        setFreeze(true)
         try{ await removeCategoriesService(id) } 
         catch(err) { throw err.message} 
-        finally { setLoading(false) }
+        finally { setFreeze(false) }
     }
 
 

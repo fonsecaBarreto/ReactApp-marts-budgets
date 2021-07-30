@@ -1,37 +1,43 @@
 .admin-form-container{
     width: 100%;
     display: flex; flex-direction: column; align-content: flex-start; justify-content: flex-start;
-    background-color: rgb(255, 255, 255, .35);
+    background-color: rgb(255, 255, 255, .8);
     box-sizing: border-box;
     margin: 0;
-    padding: 8px 18px 36px;
-    margin-bottom: 16px;
-    border-radius: 4px;
-    box-shadow: 0px 3px 3px 2px rgb(236, 236, 236);
-    border: solid 1px #bbb;
+    padding: 32px 18px 48px;
+    margin-bottom: 24px;
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px 2px rgb(234, 234, 234);
+    position: relative;
+    border: solid 2px rgb(196, 196, 196)
 }
-
 
 .admin-form{
     width: 100%;
     display: flex; flex-direction: column; align-content: flex-start; justify-content: flex-start;
 }
 
-.admin-form .ad-title{
-    position: relative;
-    font-size: 16px;
-    line-height: 3em;
-    color: #333;
-    margin-bottom: 12px;
+.admin-form-container .admin-form  .ad-title{
+
+    position: absolute; top: -14px; left: 20px;
+    font-size: 20px;
+    color: rgb(37, 63, 119);
     text-align: left;
+    font-weight: bold;
+    z-index: 0
+/*     background-color: white; */
 }
 
-.admin-form .ad-title::after{
+
+
+
+ .admin-form .ad-title::before{
     content: "";
-    position: absolute; bottom: 12px; left: 0;
-    width: 100%;  height: 1px;
-    background-color: #ccc
-}
+    position: absolute; bottom: 10px; left: -5px;
+    width: calc(100% + 10px);  height: 2px;
+    background-color: rgb(255, 255, 255);
+    z-index: -1
+} 
 
 
 /* grid  */
@@ -77,11 +83,35 @@
 /* laoad here */
 .admin-form-container.load{
     position: relative;
+    border: none;
 }
 
+.admin-form-container.load .admin-form .ad-title{ color: transparent }
+
+
+
 .admin-form-container.load::before{
-    content: "";  position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(246, 246, 246, 0.2);
-    z-index: 22;
+    content: "";  position: absolute; top: -2px; left: -2px;
+    width: calc(100% + 4px); height: calc(100% + 4px);
+    z-index: 16;
+    background: linear-gradient(270deg, #e7e7e7, #dddd, #eeeeee);
+    background-size: 300% 300%;
+    -webkit-animation: AnimationName 1.2s ease infinite;
+    animation: AnimationName 1.2s ease infinite;
+    opacity: .7;
+    border-radius: 5px;
 }
+
+
+@-webkit-keyframes AnimationName {
+ 0%{background-position:0% 50%}
+ 50%{background-position:100% 50%}
+ 100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+ 0%{background-position:0% 50%}
+ 50%{background-position:100% 50%}
+ 100%{background-position:0% 50%}
+}
+
+

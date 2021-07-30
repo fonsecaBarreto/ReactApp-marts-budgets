@@ -6,7 +6,8 @@ import ControlBar from "./ControlBar"
 import ItemDialogView from './ItemDialogView'
 import AdminCommonToolBar from "../../../layouts/Admin/AdminCommonToolBar"
 import { withRouter } from "react-router-dom"
-
+import React from "react"
+import LoadingComp from "../../../utils/LoadingComp"
 const INITIAL_FILTERS = {
     text: "",
     status: 0
@@ -77,27 +78,25 @@ export default withRouter(({history}) =>{
     return (
         <div id="admin-marts-page">
 
-                <AdminCommonToolBar>
-                    <button onClick={add}> 
-                        Novo
-                    </button> 
-                
-                </AdminCommonToolBar>
-                
                 <div className="app-container">
+                    <AdminCommonToolBar>
+                        <button onClick={add}> 
+                            Novo
+                        </button> 
+                    </AdminCommonToolBar>
 
                     <ControlBar filters={filters} setFilters={setFilters} ></ControlBar>
 
-                    <div className={` admin-marts-flow ${`${loading ? 'loading' : ''}`}`}>
-                        {
-                            marts.length > 0 && filterMarts(marts).map((m,i)=>{
-                                return(
-                                    <MartItem key={i} mart={m} onView={()=>setCurrentMart(m)}></MartItem>
-                                    )
+                    { loading  ? <LoadingComp></LoadingComp> :
+                        <div className={` admin-marts-flow `}>
+                            {
+                                marts.length > 0 && filterMarts(marts).map((m,i)=>{
+                                    return( <MartItem key={i} mart={m} onView={()=>setCurrentMart(m)}></MartItem>)
                                 })
                             }
+                        </div>
+                    }
                     
-                    </div>
                 </div>
 
                 { currentMart && <ItemDialogView 

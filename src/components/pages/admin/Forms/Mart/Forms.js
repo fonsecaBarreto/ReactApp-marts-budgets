@@ -68,7 +68,7 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
 }
 
 export const MartState = () =>{
-    const [ loading, setLoading ] = useState(false)
+    const [ loading, setLoading ] = useState(true)
     const [ freeze, setFreeze ] = useState(false)
     const [ inputs, setInputs, ] = useState({ ...INITIAL_DATA })
     const [ errors, setErrors ]= useState({})
@@ -78,6 +78,20 @@ export const MartState = () =>{
     const clearInputs = (inputs = {}) => setInputs({ ...INITIAL_DATA, ...inputs })
 
     /* actions */
+
+    const load = async (id) =>{
+        setLoading(true)
+        clearInputs()
+
+        await Promise.all([  
+            id && 
+                findMartService(id)
+                .then(result => {
+                    if(!result) throw { message: "Não foi possivel encontrar Estabelecimento requerido"}
+                    setInputs(result)
+                }).catch(err => { throw err.message })
+        ]).finally(()=>setLoading(false))
+    }
 
     const save = async () =>{
         setFreeze(true)
@@ -92,25 +106,15 @@ export const MartState = () =>{
         } finally {  setFreeze(false) } 
     }
 
-    const load = async (id) =>{
-        clearInputs()
-        if(!id) return ;
-        setLoading(true)
-        try{
-            const result = await findMartService(id)
-            if(!result) throw { message: "Não foi possivel encontrar estabelecimento requerido"}
-            setInputs(result)
-        } catch(err) { throw err.message } 
-        finally { setLoading(false) }
-    }
+    
 
 
     const remove = async (id) =>{
         if(!id) return;
-        setLoading(true)
+        setFreeze(true)
         try{ await removeMartService(id) } 
         catch(err) { throw err.message} 
-        finally { setLoading(false) }
+        finally { setFreeze(false) }
     }
 
 

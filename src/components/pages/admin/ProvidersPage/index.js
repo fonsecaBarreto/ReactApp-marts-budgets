@@ -41,30 +41,22 @@ export default withRouter(({history}) =>{
 
     return (
         <div id="admin-provider-page">
-
+            <div className="app-container">
                 <AdminCommonToolBar>
                     <button onClick={add}> 
                         Novo
                     </button> 
                 </AdminCommonToolBar>
                 
-                <div className="app-container">
-
-
-                    { loading  ? <LoadingComp></LoadingComp> :
-
-                        <div className={`admin-providers-flow`}>
-                            {
-                                providers.map((p,i)=>( 
-                                    <ProviderItem key={i} provider={p} onEdit={edit}></ProviderItem> ))
-                            }
-                        
-                        </div>
-                    }
-                </div>
-
-      
-       
+                { loading  ? <LoadingComp></LoadingComp> :
+                    <div className={`admin-providers-flow`}>
+                        {
+                            providers.map((p,i)=>( 
+                                <ProviderItem key={i} provider={p} onEdit={edit}></ProviderItem> ))
+                        }
+                    </div>
+                }
+            </div>
         </div>
     )
 })

@@ -33,7 +33,7 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
 
 export const ProviderState = () =>{
 
-    const [ loading, setLoading ] = useState(false)
+    const [ loading, setLoading ] = useState(true)
     const [ freeze, setFreeze ] = useState(false)
     const [ inputs, setInputs, ] = useState({ ...INITIAL_DATA })
     const [ errors, setErrors ]= useState({})
@@ -42,7 +42,18 @@ export const ProviderState = () =>{
 
     const clearInputs = (inputs = {}) => setInputs({ ...INITIAL_DATA, ...inputs })
 
-    /* actions */
+    const load = async (id) =>{
+        setLoading(true)
+        clearInputs()
+        await Promise.all([
+            id &&
+            findProviderService(id)
+            .then(result => {
+                if(!result) throw { message: "Não foi possivel encontrar fornecedor requerido"}
+                setInputs(result)
+            }).catch(err => { throw err.message })
+        ]).finally(()=>setLoading(false))
+    }
 
     const save = async () =>{
         setFreeze(true)
@@ -57,24 +68,12 @@ export const ProviderState = () =>{
         } finally {  setFreeze(false) } 
     }
 
-    const load = async (id) =>{
-        clearInputs()
-        if(!id) return;
-        setLoading(true)
-        try{
-            const result = await findProviderService(id)
-            if(!result) throw { message: "Não foi possivel encontrar fornecedor requerido"}
-            setInputs(result)
-        } catch(err) { throw err.message } 
-        finally { setLoading(false) }
-    }
-
     const remove = async (id) =>{
         if(!id) return;
-        setLoading(true)
+        setFreeze(true)
         try{ await removeProviderService(id) } 
         catch(err) { throw err.message} 
-        finally { setLoading(false) }
+        finally { setFreeze(false) }
     }
 
 

@@ -1,49 +1,84 @@
 .admin-common-tool-bar{
+    box-sizing: border-box;
     height: fit-content;
     overflow: hidden;
-    border: solid 1px #ddd;
-    background-color: rgb(224, 224, 224);
-    margin-bottom: 16px;
-    padding: 2px;
-    
+    height: 50px;
+    border-radius: 6px;
+    margin: 6px auto 2px;
+  /*   box-shadow: 0px 1px 2px 2px rgb(230, 230, 230); */
 }
+
 .admin-common-tool-bar-content{
-    height: 32px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+    height: 100%;
+    gap: 10px;
 }
+/* Buttons */
 
 .admin-common-tool-bar button{
-    height: 100%;
-    width: fit-content;
-    padding: 0 42px;
+    position: relative;
+    width: fit-content; height: 34px;
+    cursor: pointer; border: none;
+    padding: 0 52px;
+    font-size: 14px; font-weight: bold;
+    border-radius: 5px;
+    color: white;
+    background-color: var(--admin-aside-color);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0px 1px 2px 2px rgb(223, 223, 223);
 
-    cursor: pointer;
-    border: none;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 4px;
-    background-color: rgb(235, 235, 235);
-    color: #333;
-    cursor: pointer;
+}
+.admin-common-tool-bar button.success{
+    background-color: rgb(52, 177, 104)
+}
+.admin-common-tool-bar button.warning{
+    background-color: rgb(151, 43, 66)
 }
 
+.admin-common-tool-bar button:hover::after{
+    content: ""; position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgb(255, 255, 255,.1);
+    border-radius: 5px;
+}
+
+
+/*  */
 .admin-common-tool-bar button.freeze{
     position: relative;
+    background-color: unset;
 }
-.admin-common-tool-bar button.freeze::before{
-    content: "enviando...";
+
+.admin-common-tool-bar button.freeze::after{
+    content: "";
    position: absolute;
    top: 0; left: 0; 
    width: calc(100%); height: calc(100%);
-   background-color: rgba(255, 255, 255, 1);
+   border-radius: 6px;
+/* background-image: url(../../../../assets//loading-line.svg); 
+   background-repeat: no-repeat;
+   background-position: center;  */
+   
+   background: linear-gradient(270deg, #e7e7e7, #dddd, #eeeeee);
+   background-size: 300% 300%;
+   -webkit-animation: AnimationName 2s ease infinite;
+   animation: AnimationName 2s ease infinite;
+   opacity: .7;
 }
-.admin-common-tool-bar button:hover{
 
-    background-color: white
-
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 

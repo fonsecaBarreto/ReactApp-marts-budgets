@@ -21,22 +21,13 @@ export default withRouter(({history}) =>{
         if(!pathname) return
 
         const action = pathname.split("/marts/")[1]
-        switch (action) {
-        
-            case "update": 
-                const mart_id = queryString.parse(history.location.search).md
-                if(mart_id) return state.load(mart_id).catch((errMessage) =>{ 
-                    dialogState.showFailure(errMessage,"","", () =>{
-                        history.push("/admins/marts")
-                    });
-                })
-                history.push("/admin")
-            ;break;
+        const mart_id = queryString.parse(history.location.search).md
+        if(action === "update" && !mart_id) return history.push("/admins/marts") // not a app interaction
 
-            default: 
-                state.load(null)    
-            ; break;
-        }
+        state.load(action === "update"  ? mart_id : null)
+        .catch((errMessage) =>{ 
+            dialogState.showFailure(errMessage,"","", () => history.push("/admins/marts")  );
+        })
 
     }, [history.location, history.location.pathname])
 
@@ -78,27 +69,26 @@ export default withRouter(({history}) =>{
        
             {loading  ? <LoadingComp></LoadingComp> :
             
-            <React.Fragment>
-                <AdminCommonToolBar freeze={freeze}>
-                    {id &&  <button className="warning"  onClick={removeHandler}>  Deletar </button> }
-                    <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
-                  
-                </AdminCommonToolBar>
-
-        
                 <div className="app-container">
-                    { !id ?
-                        <React.Fragment>
-                            <RootForm {...state} ></RootForm>
-                            <PasswordForm {...state} ></PasswordForm> 
-                        </React.Fragment>
-                        :
-                        <React.Fragment>
-                            <RootForm {...state} ></RootForm>
-                        </React.Fragment>
-                    }
+                    <React.Fragment>
+                        <AdminCommonToolBar freeze={freeze}>
+                            {id &&  <button className={`warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}>  Deletar </button> }
+                            <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
+                        </AdminCommonToolBar>
+
+                
+                            { !id ?
+                                <React.Fragment>
+                                    <RootForm {...state} ></RootForm>
+                                    <PasswordForm {...state} ></PasswordForm> 
+                                </React.Fragment>
+                                :
+                                <React.Fragment>
+                                    <RootForm {...state} ></RootForm>
+                                </React.Fragment>
+                            }
+                    </React.Fragment>
                 </div>
-            </React.Fragment>
         }
            
         

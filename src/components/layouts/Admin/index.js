@@ -29,11 +29,11 @@ const MENU_STRUCT = [
                 icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
             },
             {
-                title: "Adicionar Novo",  to: "/admins/marts/create",
+                title: "Adicionar",  to: "/admins/marts/create",
                 icon: <AiFillPlusCircle></AiFillPlusCircle>,
             },
             {
-                title: "Editar estabelecimento",  to: "/admins/marts/update",
+                title: "Editar",  to: "/admins/marts/update",
                 icon: <AiFillPlusCircle></AiFillPlusCircle>,
                 hide: true
             },
@@ -51,10 +51,20 @@ const MENU_STRUCT = [
                 title: "Categorias", to: "/admins/categories",
                 icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
             },
+            {
+                title: "Adicionar Categoria", to: "/admins/categories/create",
+                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
+                hide: true
+            },
+            {
+                title: "Editar Categoria", to: "/admins/categories/update",
+                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
+                hide: true
+            },
         ]
     },
     {
-        title: "Fornecedores",  to: "/admins/providers",
+        title: "Fornecedores",
         icon: <FaTruck></FaTruck>,
         subs: [
             {
@@ -63,12 +73,12 @@ const MENU_STRUCT = [
            
             },
             {
-                title: "Novo",  to: "/admins/providers/create",
+                title: "Adicionar",  to: "/admins/providers/create",
                 icon: <AiFillPlusCircle></AiFillPlusCircle>,
      
             },
             {
-                title: "Editar Fornecedor",  to: "/admins/providers/update",
+                title: "Editar",  to: "/admins/providers/update",
                 icon: <AiFillPlusCircle></AiFillPlusCircle>,
                 hide: true
             },

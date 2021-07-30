@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import './style.css'
 
 import { AiOutlineShop, AiOutlineBell, AiOutlinePaperClip } from 'react-icons/ai'
+
+import { FiEdit } from 'react-icons/fi'
 import { HiChevronDown } from 'react-icons/hi'
+
 import { getFilePath } from '../../../../../services/utils-service'
 import { Link } from 'react-router-dom'
+
 export default ({mart, onView}) =>{
 
 
@@ -29,6 +33,13 @@ export default ({mart, onView}) =>{
                         </React.Fragment>
                      } 
 
+
+                    <Link to={`/admins/marts/update?md=${id}`} className="mart-opt-btn">
+                        <span className={'font-bold '}> 
+                            <FiEdit></FiEdit> 
+                        </span> 
+                    </Link>
+
                     <div className={`mart-item-arrow-btn ${show ? 'flip' : ''}`} onClick={()=>setShow(!show)}>
                         <HiChevronDown></HiChevronDown>
                     </div>
@@ -49,12 +60,6 @@ export default ({mart, onView}) =>{
                         <span className={'font-bold '}> Cnpj/cpf: </span> {cnpj_cpf} </span>
 
 
-                        <Link to={`/admins/marts/update?md=${id}`} className="mart-item-info">
-                            <span className={'font-bold '}> 
-                                Editar 
-                            </span> 
-                        </Link>
-
                     { annex && 
                         <a href={getFilePath(annex)} target='_blank' className="mart-item-info">
                             <span className={'font-bold '}>  <AiOutlinePaperClip></AiOutlinePaperClip> 
@@ -62,6 +67,8 @@ export default ({mart, onView}) =>{
                             </span> 
                         </a>
                     }
+
+                    
                 </div>
 
             </div>

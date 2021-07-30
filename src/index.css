@@ -2,6 +2,7 @@
 :root {
   --main-color: #007CDC;
   --main-light-color: #1388e2;
+  --main-bg-color: #E3EDFF;
 }
 
 body {
@@ -26,13 +27,12 @@ body {
   top: 0; left: 0; bottom: 0;
   margin: auto;
   width: calc(100vw); height: calc(100vh);
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--main-bg-color);
   background-image: url(./assets/loading.svg); 
   background-repeat: no-repeat;
-  background-size: 150px;
+  background-size: 140px;
   background-position: center;
-  z-index: 99999;
-  
+  z-index: 9999999;
 }  
 
 
@@ -68,11 +68,8 @@ body {
   margin: auto;
 }
 
-
 .app-padding{
-
   padding: 0 32px;
-
 }
 
 

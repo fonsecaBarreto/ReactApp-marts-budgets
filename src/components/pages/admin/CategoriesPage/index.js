@@ -44,27 +44,28 @@ export default withRouter(({history}) =>{
     return (
         <div id="admin-category-page">
 
+            <div className="app-container">
                 <AdminCommonToolBar>
                     <button onClick={add}> 
                         Novo
                     </button> 
                 </AdminCommonToolBar>
+            
+
+
+                { loading  ? <LoadingComp></LoadingComp> :
+
+                    <div className={`admin-categories-flow`}>
+                        {
+                            categories.map((c,i)=>( 
+                            <CategoryItem category={c} onEdit={edit} key={i}></CategoryItem>)
+                            )
+                        }
+                    
+                    </div>
+                }
                 
-                <div className="app-container">
-
-
-                    { loading  ? <LoadingComp></LoadingComp> :
-
-                        <div className={`admin-categories-flow`}>
-                            {
-                                categories.map((c,i)=>( 
-                                <CategoryItem category={c} onEdit={edit} key={i}></CategoryItem>)
-                                )
-                            }
-                        
-                        </div>
-                    }
-                </div>
+            </div>
 
       
        

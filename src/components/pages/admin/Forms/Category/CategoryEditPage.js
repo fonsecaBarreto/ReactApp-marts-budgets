@@ -15,25 +15,17 @@ export default withRouter(({history}) =>{
 
     useEffect(() => {
 
-   
         const pathname = history.location ? history.location.pathname : null;
         if(!pathname) return
 
         const action = pathname.split("/categories/")[1]
-        switch (action) {
-        
-            case "update": 
-                const category_id = queryString.parse(history.location.search).cd
-                if(category_id) return state.load(category_id).catch((errMessage) =>{ 
-                    dialogState.showFailure(errMessage,"","", () =>{
-                        history.push("/admins/categories")
-                    });
-                })
-                history.push("/admin")
-            ;break;
+        const category_id = queryString.parse(history.location.search).cd
+        if(action === "update" && !category_id) return history.push("/admins/categories") // not a app interaction
 
-            default: state.load(null); break;
-        }
+        state.load(action === "update"  ? category_id : null)
+        .catch((errMessage) =>{ 
+            dialogState.showFailure(errMessage,"","", () => history.push("/admins/categories")  );
+        })
 
     }, [history.location, history.location.pathname])
 
@@ -42,7 +34,7 @@ export default withRouter(({history}) =>{
     const create = async () => {
         try{
             const result = await save()
-            dialogState.showSuccess("Nova Categoria cadastrado com sucesso")
+            dialogState.showSuccess("Nova Categoria cadastrado com sucesso.")
             return history.push(`/admins/categories/update?cd=${result.id}`)
         }catch(errMessage){
             dialogState.showFailure(errMessage)
@@ -74,16 +66,14 @@ export default withRouter(({history}) =>{
     return ( 
         <div id="create-category-page"> 
        
-            {loading  ? <LoadingComp></LoadingComp> :
+            { loading  ===true ? <LoadingComp></LoadingComp> :
             
-            <React.Fragment>
-
-                <AdminCommonToolBar freeze={freeze}>
-                    {id &&  <button className="warning"  onClick={removeHandler}>  Deletar </button> }
-                    <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
-                </AdminCommonToolBar>
-
                 <div className="app-container">
+                
+                    <AdminCommonToolBar freeze={freeze}>
+                        {id &&  <button className={`warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}>  Deletar </button> }
+                        <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
+                    </AdminCommonToolBar>
 
                     {
                         (id && !category_id) ?
@@ -91,12 +81,11 @@ export default withRouter(({history}) =>{
                         :
                         <RootForm {...state} ></RootForm>
                     }
+
                 </div>
-            </React.Fragment>
-        }
+            }
            
-        
-        <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
+            <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         </div>
     )
 })

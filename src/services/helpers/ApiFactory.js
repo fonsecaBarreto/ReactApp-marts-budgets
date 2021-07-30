@@ -23,7 +23,7 @@ export function MakeApi(base_url, errorHelper, storage_key){
             const result = await axiosApi({ method,url: `${base_url}${url}`, data, headers })
             return resolve(result)
           }catch(err){ return reject(errorHelper(err)) } 
-        }, 0)
+        }, 1000)
       })
 
 
