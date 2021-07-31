@@ -71,14 +71,16 @@ export default withRouter(({history}) =>{
             
                 <div className="app-container">
                 
+                    
+                  
+                    <RootForm {...state} ></RootForm>
+                 
+
                     <AdminCommonToolBar freeze={freeze}>
                         {id &&  <button className={`warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}>  Deletar </button> }
                         <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
                     </AdminCommonToolBar>
 
-                    {
-                        <RootForm {...state} ></RootForm>
-                    }
 
 
                 </div>

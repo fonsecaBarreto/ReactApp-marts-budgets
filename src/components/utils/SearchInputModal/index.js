@@ -25,31 +25,26 @@ export default ({ tree, list,  title, value, onInput }) =>{
         <React.Fragment>
 
             <div className="search-input-modal-row">
-                <button onClick={()=>setShow(true)} disabled={tree.length > 0 ? false : true}> <CgSelect></CgSelect> </button>
             
                 <select disabled value={value || ''} onClick={e=>e.preventDefault()}>
                     {list.map((v,i)=>{
                         return (<option disabled key={i} value={v.value} >{v.label}</option>)
                     })}
                 </select> 
+                <button onClick={()=>setShow(true)} disabled={tree.length > 0 ? false : true}> <CgSelect></CgSelect> </button>
 
             </div>
 
             <Dialog title={title} show={show} onClose={() => setShow(false)}>
                 <div className="search-input-modal-dialog">
-
                     {
                         !tree ? <LoadingComp></LoadingComp> : 
                         <Treeview component={TreeComponent} useCheckBox={true} tree={tree} onSelected={setSelected} ></Treeview> 
                     }
-
                     <FormRow label="Categoria selecionada:">
-
                         <div className="semd-bottom-bar">
-
                             <input type="text" disabled value={ selected ? selected.name : ''}></input>
                             <button onClick={selecionar} className="select-btn"> Selecionar </button>
-                        
                         </div>
                     </FormRow>
                 </div>

@@ -71,22 +71,23 @@ export default withRouter(({history}) =>{
             
                 <div className="app-container">
                     <React.Fragment>
+                        
+                        { !id ?
+                            <React.Fragment>
+                                <RootForm {...state} ></RootForm>
+                                <PasswordForm {...state} ></PasswordForm> 
+                            </React.Fragment>
+                            :
+                            <React.Fragment>
+                                <RootForm {...state} ></RootForm>
+                            </React.Fragment>
+                        }
+
                         <AdminCommonToolBar freeze={freeze}>
                             {id &&  <button className={`warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}>  Deletar </button> }
                             <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
                         </AdminCommonToolBar>
 
-                
-                            { !id ?
-                                <React.Fragment>
-                                    <RootForm {...state} ></RootForm>
-                                    <PasswordForm {...state} ></PasswordForm> 
-                                </React.Fragment>
-                                :
-                                <React.Fragment>
-                                    <RootForm {...state} ></RootForm>
-                                </React.Fragment>
-                            }
                     </React.Fragment>
                 </div>
         }

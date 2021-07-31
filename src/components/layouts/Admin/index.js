@@ -23,18 +23,23 @@ const MENU_STRUCT = [
     {
         title: "Estabelecimentos",
         icon: <AiFillShop></AiFillShop>,
+    
         subs: [
             {
                 title: "Listagem",  to: "/admins/marts",
                 icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
+                back: "/admins/panel",
             },
             {
                 title: "Adicionar",  to: "/admins/marts/create",
                 icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                back: "/admins/marts",
+        
             },
             {
                 title: "Editar",  to: "/admins/marts/update",
                 icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                back: "/admins/marts",
                 hide: true
             },
         ]
@@ -46,19 +51,23 @@ const MENU_STRUCT = [
             {
                 title: "Listagem",  to: "/admins/products",
                 icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
+                back: "/admins/panel",
             },
             {
                 title: "Categorias", to: "/admins/categories",
                 icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
+                back: "/admins/panel",
             },
             {
                 title: "Adicionar Categoria", to: "/admins/categories/create",
                 icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
+                back: "/admins/categories",
                 hide: true
             },
             {
                 title: "Editar Categoria", to: "/admins/categories/update",
                 icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
+                back: "/admins/categories",
                 hide: true
             },
         ]
@@ -70,16 +79,18 @@ const MENU_STRUCT = [
             {
                 title: "Listagem",  to: "/admins/providers",
                 icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-           
+                back: "/admins/panel",
             },
             {
                 title: "Adicionar",  to: "/admins/providers/create",
                 icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                back: "/admins/providers",
      
             },
             {
                 title: "Editar",  to: "/admins/providers/update",
                 icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                back: "/admins/providers",
                 hide: true
             },
         ]

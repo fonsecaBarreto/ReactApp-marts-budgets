@@ -79,7 +79,7 @@ export default withRouter(({history}) =>{
         <div id="admin-marts-page">
 
                 <div className="app-container">
-                    <AdminCommonToolBar>
+                    <AdminCommonToolBar className="mobile-only">
                         <button onClick={add}> 
                             Novo
                         </button> 

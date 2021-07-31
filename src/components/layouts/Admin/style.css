@@ -17,7 +17,7 @@
 
 .admin-bar {
     grid-area: adminBar;
-    height: 80px;
+    height: 76px;
     width: 100%;
 }
 
@@ -43,6 +43,7 @@ aside.admin-menu{
 
 main.admin-content{
     grid-area: content;
+    padding-top: 24px;
     padding-bottom: 180px;
     margin: 0;
     min-height: 100vh;
@@ -51,6 +52,9 @@ main.admin-content{
 @media only screen and (max-width: 960px){
     #admin-layout {  grid-template-areas: "header header" "adminBar adminBar" "content content"; }
     header.admin-header{  display: block; }
+    .admin-bar {
+        height: 56px;
+    }
 
     
 }

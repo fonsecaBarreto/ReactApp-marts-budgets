@@ -2,26 +2,34 @@
     display: grid;
     grid-template-columns: 1fr auto; grid-template-rows: 1fr;
     align-items: center;
-    height: calc(100% - 4px);
-    width: 100%;
-    padding: 0 8px;
+    height: 46px;
+    width: calc(100% - 40px); 
+    padding: 0 10px;
     border-radius: 6px;
+    cursor: default;
+    margin-left: 9px;
+
 }
 .category-tree-item:hover{
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: 1fr;
-    width: 100%;
     background-color: rgba(125, 170, 230, 0.3);
     outline: solid 2px rgba(66, 110, 204, 0.3); 
-    cursor: default;
 }
 
 
 .category-tree-item .category-tree-item-name{
     width: 100%;
-    font-size: 18px;
+    font-size: 20px;
+    
+    white-space: normal;
     text-align: left;
+    max-height: 1.2em;
+    height: 1.2em;
+    display: block; 
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .cti-btn{
@@ -39,3 +47,12 @@
     color: rgb(0, 0, 0);
 }
 
+
+
+@media only screen and (max-width: 756px){
+    .cti-btn{
+
+        width: 32px; height: 32px;
+
+    }
+}
