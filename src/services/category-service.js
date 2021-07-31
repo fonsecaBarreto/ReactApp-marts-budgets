@@ -9,16 +9,10 @@ export const listCategoriesService = async () => {
   return data
 }
 
-export const listCategoriesPrimariesService = async () => {
-  const { data } = await categoryApi.send({method: "get", url:"/primaries"}) 
+export const listCategoriesTreeService = async (list) => {
+  const { data } = await categoryApi.send({method: "get", url:`/tree${list ? '?v=list ': ''}`}) 
   return data
 }
-export const listCategoriesTreeService = async () => {
-  const { data } = await categoryApi.send({method: "get", url:"/tree"}) 
-  return data
-}
-
-
 
 export const findCategoriesService = async ( id ) => {
   const resp = await categoryApi.send({method: 'GET', url: `/${id}` })

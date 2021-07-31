@@ -1,19 +1,31 @@
 import AdminForm from '../../../../utils/AdminForm'
 import React, { useState, useEffect } from 'react';
 import FormRow from '../../../../utils/FormRow'
-import { findCategoriesService, listCategoriesPrimariesService, removeCategoriesService, saveCategoriesService } from '../../../../../services/category-service'
-
+import { findCategoriesService, listCategoriesTreeService, listCategoriesService, removeCategoriesService, saveCategoriesService } from '../../../../../services/category-service'
+import SearchInputModal from '../../../../utils/SearchInputModal';
 const INITIAL_DATA = {
     id: null,
-    category_id:null,
+    category_id:"",
     name: "",
 }
 
-export const RootForm = ({ inputs, handleInputs, errors, freeze, primaries }) =>{
+export const RootForm = ({ inputs, handleInputs, errors, freeze, tree, categories}) =>{
     const { id, name, category_id } = inputs
 
-    const mapOptions = (primaries) =>{
-        return [ { value:"", label:"Nenhum"}, ...primaries.map(p=>({ value:p.id, label: p.name })) ]
+    const mapCategoriesTree = (categories) =>{
+        return categories.map(c=>{
+            let selected = false
+            if( category_id && (category_id === c.id)) selected= true
+            return { ...c, root: true, selected}
+        })
+    }
+
+    const mapCategoriesList = (categories)=>{
+        return ([{value:"", label: "Nenhum"}, ...categories.map(c=>({ value: c.id, label: c.name }))])
+    }
+
+    const handleCategorySelected = (data) =>{
+        handleInputs('category_id', data)
     }
 
     return (
@@ -23,37 +35,18 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze, primaries }) =>
                 <input value={name} type="text" onInput={e=>handleInputs('name',e.target.value)}></input>
             </FormRow>
 
-            <FormRow label="Categoria" error={errors?.['category_id']}>
-
-                <select onChange={e=> handleInputs('category_id', e.target.value)}  value={category_id} defaultValue={category_id} >
-                    { mapOptions(primaries).map((v,i)=>{
-                        return (<option key={i} value={v.value} >{v.label}</option>)
-                    })}
-                </select> 
-
+            <FormRow label="Categoria Proveniente" error={errors?.['category_id']}>
+                <SearchInputModal value={category_id} title="Categoria" list={mapCategoriesList(categories)} tree={mapCategoriesTree(tree)} onInput={handleCategorySelected}></SearchInputModal>
             </FormRow>
 
         </AdminForm>
     )
 }
 
-export const PrimaryUpdateForm = ({ inputs, handleInputs, errors, freeze }) =>{
-    const { id, name } = inputs
-
-    return (
-        <AdminForm title={"Atualizar Categoria Primaria"} columns={[6,6,6]} loading={freeze}>
-
-            <FormRow label="Nome" error={errors?.['name']}>
-                <input value={name} type="text" onInput={e=>handleInputs('name',e.target.value)}></input>
-            </FormRow>
-
-        </AdminForm>
-    )
-}
 
 export const CategoryState = () =>{
-
-    const [ primaries, setPrimaries ] = useState([])
+    const [ categories, setCategories ] = useState([])
+    const [ tree, setTree ] = useState([])
     const [ loading, setLoading ] = useState(true)
     const [ freeze, setFreeze ] = useState(false)
     const [ inputs, setInputs, ] = useState({ ...INITIAL_DATA })
@@ -63,13 +56,17 @@ export const CategoryState = () =>{
 
     const clearInputs = (inputs = {}) => setInputs({ ...INITIAL_DATA, ...inputs })
 
-    const load = async (id) =>{
+    const load = async (id, category_id) =>{
         setLoading(true)
         clearInputs()
         await Promise.all([  
-            primaries.length === 0 &&
-                listCategoriesPrimariesService()
-                .then(setPrimaries)
+            categories.length === 0 &&
+                listCategoriesService()
+                .then(setCategories)
+                .catch((_=>{})),
+            tree.length === 0 &&
+                listCategoriesTreeService(true)
+                .then(setTree)
                 .catch((_=>{})),
             id && 
                 findCategoriesService(id)
@@ -78,6 +75,7 @@ export const CategoryState = () =>{
                     setInputs(result)
                 }).catch(err => { throw err.message })
         ]).finally(()=>setLoading(false))
+        if(category_id) setInputs({...inputs, category_id })
     }
 
     const save = async () =>{
@@ -102,6 +100,21 @@ export const CategoryState = () =>{
     }
 
 
-    return { handleInputs, inputs, setInputs, errors, setErrors, clearInputs, freeze, loading, save, load, remove, primaries }
+    return { handleInputs, inputs, setInputs, errors, setErrors, clearInputs, freeze, loading, save, load, remove, tree, categories }
 }
 
+
+
+/* export const PrimaryUpdateForm = ({ inputs, handleInputs, errors, freeze }) =>{
+    const { id, name } = inputs
+
+    return (
+        <AdminForm title={"Atualizar Categoria Primaria"} columns={[6,6,6]} loading={freeze}>
+
+            <FormRow label="Nome" error={errors?.['name']}>
+                <input value={name} type="text" onInput={e=>handleInputs('name',e.target.value)}></input>
+            </FormRow>
+
+        </AdminForm>
+    )
+} */

@@ -6,8 +6,8 @@ import {  listCategoriesTreeService } from '../../../../services/category-servic
 import AdminCommonToolBar from "../../../layouts/Admin/AdminCommonToolBar"
 import LoadingComp from "../../../utils/LoadingComp"
 
-import CategoryItem from './CategoryItem'
-
+import TreeView, { TestComp } from '../../../utils/TreeView'
+import CategoryItem from "./CategoryItem"
 export const CategoryState = () =>{
 
     const [ categories, setCategories ] = useState([])
@@ -40,10 +40,11 @@ export default withRouter(({history}) =>{
         history.push(`/admins/categories/update?cd=${id}`) 
     }
  
-
+    const mapCategoriesTree = (categories) =>{
+        return categories.map(c=>({...c, root: true}))
+    }
     return (
         <div id="admin-category-page">
-
             <div className="app-container">
                 <AdminCommonToolBar>
                     <button onClick={add}> 
@@ -51,24 +52,10 @@ export default withRouter(({history}) =>{
                     </button> 
                 </AdminCommonToolBar>
             
-
-
                 { loading  ? <LoadingComp></LoadingComp> :
-
-                    <div className={`admin-categories-flow`}>
-                        {
-                            categories.map((c,i)=>( 
-                            <CategoryItem category={c} onEdit={edit} key={i}></CategoryItem>)
-                            )
-                        }
-                    
-                    </div>
+                    <TreeView tree={mapCategoriesTree(categories)} component={CategoryItem} useCheckBox={false}></TreeView>
                 }
-                
             </div>
-
-      
-       
         </div>
     )
 })

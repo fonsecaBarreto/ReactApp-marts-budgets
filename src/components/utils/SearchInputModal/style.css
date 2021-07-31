@@ -1,0 +1,52 @@
+.search-input-modal-row{
+    display: flex; flex-direction: row; align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.search-input-modal-row button{
+    display: flex; flex-direction: row; align-items: center; justify-content: center;
+    width: 36px; height: 36px;
+    border-radius: 50%; border: none;
+    background-color: var(--admin-aside-color);
+    color: white;
+    font-size: 28px;
+}
+.search-input-modal-row button:hover{
+    cursor: pointer;
+    background-color: var(--admin-aside-light-color);
+
+}
+
+
+/*  */
+
+.search-input-modal-dialog{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+
+.semd-bottom-bar{
+    width: 100%;
+    gap: 10px;
+    display: flex;
+}
+.semd-bottom-bar input, button{
+    height: 42px;
+}
+
+
+
+@media only screen and (max-width: 960px){
+
+    .search-input-modal-dialog{
+        width: 100%;
+    }
+
+
+}

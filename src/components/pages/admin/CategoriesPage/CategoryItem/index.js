@@ -1,33 +1,28 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './style.css'
-import ChildrenItem from './CategoriesChildren'
-import { HiChevronDown, HiChevronUp } from 'react-icons/hi'
 import { FiEdit } from 'react-icons/fi'
-export default ({category, onEdit }) =>{
-    if(!category) return undefined
+import { IoMdAddCircleOutline } from 'react-icons/io'
+import { withRouter } from 'react-router-dom'
+export default withRouter(({history, data}) => {
 
-    const [ open, setOpen ] = useState(false)
 
-    const { id, name, children } = category
+    const add = () =>{
+        history.push(`/admins/categories/create?cs=${data.id}`) 
+     }
+ 
+     const edit = (id) =>{
+         history.push(`/admins/categories/update?cd=${data.id}`) 
+     }
+
     return (
-        <div className="category-item">
+        <div className="category-tree-item">
+            <span className="category-tree-item-name"> {data.name}</span>
 
-            <div className="category-row">
-                <button className="category-arrow" onClick={()=>setOpen(!open)}>
-                    { !open ? <HiChevronDown/> : <HiChevronUp/> }
-                </button>
-                {name}
-                <button className="category-opt-btn" onClick={()=>onEdit(id)}>
-                    <FiEdit></FiEdit>
-                </button> 
-            </div>
-            
-            <div className={`category-body ${open ? "show" : ''}`}>
-                { children.length > 0 ? children.map((c,i)=>(
-                    <ChildrenItem category={c} key={i} onEdit={onEdit}></ChildrenItem>
-                )) : "Nenhuma Categoria aqui" }
-            </div>
+            <div className="flex-row">
 
+                <button className="cti-btn" onClick={add}> <IoMdAddCircleOutline></IoMdAddCircleOutline> </button>
+                <button className="cti-btn" onClick={edit}> <FiEdit></FiEdit> </button>
+            </div>
         </div>
     )
-}
+})

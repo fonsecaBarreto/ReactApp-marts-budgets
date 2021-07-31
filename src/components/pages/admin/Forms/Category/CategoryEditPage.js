@@ -19,10 +19,11 @@ export default withRouter(({history}) =>{
         if(!pathname) return
 
         const action = pathname.split("/categories/")[1]
-        const category_id = queryString.parse(history.location.search).cd
-        if(action === "update" && !category_id) return history.push("/admins/categories") // not a app interaction
+        const id = queryString.parse(history.location.search).cd
+        const category_id = queryString.parse(history.location.search).cs
 
-        state.load(action === "update"  ? category_id : null)
+        if(action === "update" && !id) return history.push("/admins/categories") // not a app interaction
+        state.load(action === "update"  ? id : null, category_id)
         .catch((errMessage) =>{ 
             dialogState.showFailure(errMessage,"","", () => history.push("/admins/categories")  );
         })
@@ -76,11 +77,9 @@ export default withRouter(({history}) =>{
                     </AdminCommonToolBar>
 
                     {
-                        (id && !category_id) ?
-                        <PrimaryUpdateForm {...state} ></PrimaryUpdateForm>
-                        :
                         <RootForm {...state} ></RootForm>
                     }
+
 
                 </div>
             }
