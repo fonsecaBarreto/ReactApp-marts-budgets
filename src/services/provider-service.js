@@ -9,6 +9,15 @@ export const listProvidersService = async () => {
   return data
 }
 
+
+export const listProvidersWithFilterService = async (params={}) => {
+  const offset = params.offset || 0
+  const queries = params.queries || {}
+  const text = queries.text || ''
+  const { data } = await providerApi.send({method: "get", url:`/list?v=${text}&o=${offset}`}) 
+  return data
+}
+
 export const findProviderService = async ( id ) => {
   const resp = await providerApi.send({method: 'GET', url: `/${id}` })
   return resp.data

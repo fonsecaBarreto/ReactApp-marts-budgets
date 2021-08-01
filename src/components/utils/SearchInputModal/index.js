@@ -11,6 +11,9 @@ const TreeComponent = ({data}) =>{
         <span> {data.name}</span>
     )
 }
+
+
+
 export default ({ tree, list,  title, value, onInput }) =>{
 
     const [ show, setShow ] = useState(false)
@@ -25,14 +28,12 @@ export default ({ tree, list,  title, value, onInput }) =>{
         <React.Fragment>
 
             <div className="search-input-modal-row">
-            
                 <select disabled value={value || ''} onClick={e=>e.preventDefault()}>
                     {list.map((v,i)=>{
                         return (<option disabled key={i} value={v.value} >{v.label}</option>)
                     })}
                 </select> 
                 <button onClick={()=>setShow(true)} disabled={tree.length > 0 ? false : true}> <CgSelect></CgSelect> </button>
-
             </div>
 
             <Dialog title={title} show={show} onClose={() => setShow(false)}>

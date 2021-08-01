@@ -3,28 +3,19 @@
     min-height: 100vh;
 }   
 
-.admin-marts-flow{
-    display: grid;
-    min-height: fit-content;
-    gap: 6px;
+.status-select-box{
+    background-color: rgb(229, 229, 229);
+    width: 120px; height: 48px;
+    border: none;
+    color: rgb(58, 58, 58);
+    border: solid 1px #ddd;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 10px;
 }
 
-.admin-marts-flow.loading{
-    position: relative; 
-    min-height: 200px;
-} 
+.status-select-box:hover{
+    background-color: rgb(235, 235, 235);
+}
 
-.admin-marts-flow.loading::before{
-    content: "";
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    margin: auto;
-    width: calc(100%); 
-    height: calc(100%);
-    background-color: rgba(255, 255, 255, 0.1);
-    background-image: url(../../../../assets//loading.svg); 
-    background-repeat: no-repeat;
-    background-size: 120px;
-    background-position: center 64px;
-    z-index: 2;
-}  
+

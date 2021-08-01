@@ -1,61 +1,37 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef, useCallback } from "react"
 import { withRouter } from "react-router-dom"
 import './style.css'
-
-import { listProvidersService } from '../../../../services/provider-service'
-import AdminCommonToolBar from "../../../layouts/Admin/AdminCommonToolBar"
-import LoadingComp from "../../../utils/LoadingComp"
+import { listProvidersWithFilterService } from '../../../../services/provider-service'
 import ProviderItem from './Item'
-export const ProviderState = () =>{
-
-    const [ providers, setProviders ] = useState([])
-    const [ loading, setLoading ] = useState(false)
-
-    useEffect(()=>{
-        setLoading(true)
-        if(providers.length === 0 ){
-            listProvidersService()
-            .then(providers=>setProviders(providers))
-            .catch(err=>{})
-            .finally(()=>setLoading(false))
-        }
-    },[ ])
-
-    return { providers, loading }
-}
-
+import { AiOutlinePlus } from 'react-icons/ai'
+import AppFeed, { FeedState } from '../../../utils/Feed'
+import SearchBar from '../../../utils/Feed/SearchBar'
 
 export default withRouter(({history}) =>{
 
-    const state = ProviderState()
-    const { loading, providers } = state
+    const feedState = FeedState(listProvidersWithFilterService, {text:""})
+    const { feed, setFeed, loadFeed } = feedState
 
-    const add = () =>{
-       history.push('/admins/providers/create') 
+    const handleText = (value) =>{
+        setFeed(prev=> ( { ...prev, queries : { ...prev.queries, text: value } } )) 
     }
 
-    const edit = (id) =>{
-        history.push(`/admins/providers/update?pd=${id}`) 
-    }
- 
+    const add = () =>{ history.push('/admins/providers/create')  }
 
     return (
         <div id="admin-provider-page">
             <div className="app-container">
-                <AdminCommonToolBar>
-                    <button onClick={add}> 
-                        Novo
-                    </button> 
-                </AdminCommonToolBar>
-                
-                { loading  ? <LoadingComp></LoadingComp> :
-                    <div className={`admin-providers-flow`}>
-                        {
-                            providers.map((p,i)=>( 
-                                <ProviderItem key={i} provider={p} onEdit={edit}></ProviderItem> ))
-                        }
-                    </div>
-                }
+
+                <SearchBar 
+                    onAdd={add}
+                    label="Nome, Telefone ou E-mail " 
+                    toSearch={()=> loadFeed(0, false)} 
+                    text={feed.queries.text}
+                    onText={handleText}> 
+                </SearchBar>
+             
+                <AppFeed state={feedState} component={ProviderItem}> </AppFeed> 
+     
             </div>
         </div>
     )

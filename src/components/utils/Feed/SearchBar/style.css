@@ -1,0 +1,75 @@
+.app-feed-tool-bar{
+    width: 100%;
+    padding: 0;
+}
+
+.app-feed-tool-bar .aftb-grid{
+    display: grid;
+    grid-template-columns: auto 1fr auto auto ; 
+    grid-template-rows: 1fr;
+    width: 100%; height: 48px;
+    padding: 0;
+    align-items: center;    
+}
+
+.app-feed-tool-bar .aftb-grid button{
+    background-color: rgb(229, 229, 229);
+}
+.app-feed-tool-bar .aftb-grid button:hover{
+    background-color: rgb(235, 235, 235);
+}
+
+.aftb-add-button{
+    display: flex; align-items: center; justify-content: center;
+    width: 48px; height: 100%;
+  
+    background-color: rgb(229, 229, 229);
+    border: none;
+    color: rgb(58, 58, 58);
+    border-top-left-radius: 8px; 
+    border-bottom-left-radius: 8px;
+    border: solid 1px #ddd;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.app-feed-tool-bar .aftb-grid input.aftb-search-bar{
+    height: 100%;width: 100%;
+    font-size: 18px;
+    border: solid 1px #ddd;
+}
+
+
+.app-feed-tool-bar .aftb-grid .aftb-search-bar:focus{
+    outline: 1px solid rgba(95, 115, 160, 0.2);
+}
+
+/* buttton */
+
+.app-feed-tool-bar .aftb-grid .aftb-search-btn{
+    display: flex; align-items: center; gap: 8px;
+    justify-content: center;
+    width: 100px; height: 100%;  
+    border: solid 1px #ddd;
+    cursor: pointer;
+    font-size: 14px; font-weight: bold;
+    border-top-right-radius: 8px; 
+    border-bottom-right-radius: 8px;
+    background-color: rgb(229, 229, 229);
+    color: rgb(58, 58, 58);
+}
+/* 
+
+.app-feed-tool-bar .aftb-grid .aftb-search-btn:hover{
+    background-color: rgb(235, 235, 235);
+}
+ */
+
+
+@media only screen and (max-width: 960px){
+    .app-feed-tool-bar .aftb-grid .aftb-search-btn{
+
+        width: 60px; height: 100%;  
+      
+    } 
+}

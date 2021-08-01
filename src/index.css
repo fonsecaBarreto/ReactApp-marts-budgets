@@ -94,6 +94,9 @@ body {
   justify-content: flex-start;
   gap: 10px;
 }
+.aln-center {
+  align-items: center;
+}
 .flex-column{
   display: flex;
   flex-direction: column;

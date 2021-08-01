@@ -9,17 +9,17 @@ import { HiChevronDown } from 'react-icons/hi'
 import { getFilePath } from '../../../../../services/utils-service'
 import { Link } from 'react-router-dom'
 
-export default ({mart, onView}) =>{
+export default ({data}) =>{
 
 
     const [ show, setShow ] = useState(false)
-    const { id, name, email, phone, cnpj_cpf, isActive, annex } = mart
+    const { id, name, email, phone, cnpj_cpf, isActive, annex } = data
     return (
         <div className="mart-item">
 
             <div className="mart-item-row">
 
-                <div className="mart-item-icon" onClick={onView}>
+                <div className="mart-item-icon" onClick={()=>{}}>
                     <AiOutlineShop></AiOutlineShop>
                 </div>
                 <span className="mart-item-name">{name}</span>
@@ -28,8 +28,8 @@ export default ({mart, onView}) =>{
 
                      { isActive === false && 
                         <React.Fragment >
-                            <span className="mart-status desktop-only" onClick={onView} > <AiOutlineBell></AiOutlineBell>  Aguardando </span>
-                            <span className="bell-status mobile-only" onClick={onView}>  <AiOutlineBell></AiOutlineBell> </span>
+                            <span className="mart-status desktop-only" onClick={()=>{}} > <AiOutlineBell></AiOutlineBell>  Aguardando </span>
+                            <span className="bell-status mobile-only" onClick={()=>{}}>  <AiOutlineBell></AiOutlineBell> </span>
                         </React.Fragment>
                      } 
 

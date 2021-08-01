@@ -1,0 +1,66 @@
+.admin-control-bar{
+    width: 100%;
+    padding: 0;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+ 
+}
+
+.admin-control-bar .admin-cb-filter-row{
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0px;
+}
+
+.admin-control-bar .admin-cb-filter-row .admin-control-bar-search {
+    height: 48px;
+    width: 100%;
+    font-size: 18px;
+    border: solid 1px #ddd;
+/*     border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px; */
+}
+
+.admin-control-bar .admin-cb-filter-row .admin-control-bar-search:focus{
+    outline: 2px solid rgba(95, 115, 160, 0.2);
+}
+
+
+/* buttton */
+.admin-control-bar .admin-cb-filter-row button {
+    display: flex; align-items: center; gap: 8px;
+    height: 42px;  border: none; color: white;
+    background-color: var(--admin-aside-color);
+    cursor: pointer;
+    font-size: 16px; line-height: .7em;font-weight: bold;
+    padding: 0 24px;
+    height: 48px;
+    width: 130px;
+    border-top-left-radius: 8px; 
+    border-bottom-left-radius: 8px;
+    
+}
+
+.admin-control-bar .admin-cb-filter-row button.admin-cb-searchbutton{
+    background-color: rgb(231, 231, 231);
+    color: rgb(58, 58, 58);
+    border-top-left-radius: 0px; 
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 8px; border-bottom-right-radius: 8px;
+
+    border: solid 1px #ddd;
+
+}
+.admin-control-bar .admin-cb-filter-row button.admin-cb-searchbutton:hover{
+    background-color: rgb(235, 235, 235);
+}
+
+.admin-control-bar .admin-cb-filter-row button:hover {
+    background-color: var(--admin-aside-light-color);
+}

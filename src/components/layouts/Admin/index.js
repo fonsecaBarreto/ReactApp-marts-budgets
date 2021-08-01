@@ -45,6 +45,29 @@ const MENU_STRUCT = [
         ]
     },
     {
+        title: "Fornecedores",
+        icon: <FaTruck></FaTruck>,
+        subs: [
+            {
+                title: "Listagem",  to: "/admins/providers",
+                icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
+                back: "/admins/panel",
+            },
+            {
+                title: "Adicionar",  to: "/admins/providers/create",
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                back: "/admins/providers",
+     
+            },
+            {
+                title: "Editar",  to: "/admins/providers/update",
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                back: "/admins/providers",
+                hide: true
+            },
+        ]
+    },
+    {
         title: "Produtos",
         icon: <AiTwotoneShopping></AiTwotoneShopping>,
         subs: [
@@ -72,30 +95,7 @@ const MENU_STRUCT = [
             },
         ]
     },
-    {
-        title: "Fornecedores",
-        icon: <FaTruck></FaTruck>,
-        subs: [
-            {
-                title: "Listagem",  to: "/admins/providers",
-                icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-                back: "/admins/panel",
-            },
-            {
-                title: "Adicionar",  to: "/admins/providers/create",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/providers",
-     
-            },
-            {
-                title: "Editar",  to: "/admins/providers/update",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/providers",
-                hide: true
-            },
-        ]
-    },
-  
+   
     {
         title: "Orçamentos",   to: "/admins/budgets",
         icon: <CgNotes></CgNotes>,

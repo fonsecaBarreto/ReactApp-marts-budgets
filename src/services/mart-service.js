@@ -9,6 +9,15 @@ export const listMartsService = async () => {
   return data
 }
 
+export const listMartsWithFilterService = async (params={}) => {
+  const offset = params.offset || 0
+  const queries = params.queries || {}
+  const text = queries.text || ''
+  const status = queries.status || 0
+  const { data } = await martApi.send({method: "get", url:`/list?v=${text}&o=${offset}&s=${status}`}) 
+  return data
+}
+
 export const joinService = async (id) => {
   const { data } = await martApi.send({method: "patch", url:`/${id}/join`}) 
   return data

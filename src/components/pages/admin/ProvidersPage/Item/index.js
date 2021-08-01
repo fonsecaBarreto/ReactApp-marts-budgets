@@ -2,14 +2,18 @@ import React, { useState } from 'react'
 import './style.css'
 import { FaTruck } from 'react-icons/fa'
 import { RiEditBoxFill } from 'react-icons/ri'
-export default ({provider, onView, onEdit}) =>{
+import { withRouter } from 'react-router-dom'
 
-    const { id, name, email, phone } = provider
+import { FiEdit } from 'react-icons/fi'
+export default withRouter(({ history, data }) =>{
+
+    const { id, name, email, phone } = data
+
+    const edit = () =>{  history.push(`/admins/providers/update?pd=${id}`)  }
     return (
         <div className="provider-item">
 
-
-            <div className="provider-item-icon" onClick={onView}>
+            <div className="provider-item-icon" onClick={()=>{}}>
                 <FaTruck></FaTruck>
             </div>
 
@@ -17,19 +21,14 @@ export default ({provider, onView, onEdit}) =>{
                 <span className="provider-item-info">{name}</span>
                 <span className="provider-item-info">{email}</span>
                 <span className="provider-item-info font-bold">{phone}</span>
-
             </div>
 
-
             <div className="provider-right">
-
-                
-                <button className="provider-opt-btn" onClick={()=>onEdit(id)}>
-                    <RiEditBoxFill></RiEditBoxFill>
+                <button className="provider-opt-btn" onClick={edit}>
+                    <FiEdit></FiEdit>
                 </button> 
-
             </div>
             
         </div>
     )
-}
+})
