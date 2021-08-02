@@ -30,11 +30,11 @@
 
 .tree-view-row.child .tree-view-header::after{
     content: ""; position: absolute;
-    top: 0; left: -6px; bottom: 0;
+    top: 0; left: -7px; bottom: 0;
     margin: auto;
     width: 6px;
     height: 1px;
-    border-top: solid 2px rgb(255, 255, 255);
+    border-top: solid 2px rgb(202, 202, 202);
 }
  
 /* .tree-view-row.root .tree-view-header::after{
@@ -58,12 +58,13 @@
     display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
     width: 100%; max-height: 0;
     padding:  0 0 0 20px;
+    border-bottom: solid 1px #ddd ;
 }
 
 .tree-view-row .tree-view-body.show{
     overflow-y: auto;
     height: auto;
-    max-height: 1000px;
+    max-height: 500px;
     transition: max-height .2s ease-in;
 
 }
@@ -74,7 +75,7 @@
     top: 0; left: 13px;
     width: 10px;
     height: calc( 100% - 24px);
-    border-left: solid 2px rgb(255, 255, 255);
+    border-left: dashed 2px rgb(202, 202, 202);
 } 
 
 

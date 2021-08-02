@@ -40,7 +40,7 @@ export const ProviderState = () =>{
 
     const handleInputs = (key,value) => setInputs(prev => ({  ...prev,  [key]:value  }))
 
-    const clearInputs = (inputs = {}) => setInputs({ ...INITIAL_DATA, ...inputs })
+    const clearInputs = (inputs = {}) =>{ setInputs({ ...INITIAL_DATA, ...inputs }); setErrors({})}
 
     const load = async (id) =>{
         setLoading(true)

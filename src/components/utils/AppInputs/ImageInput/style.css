@@ -1,0 +1,81 @@
+.image-input{
+   
+    display: flex; flex-direction: row; align-items: center; justify-content: center;
+    width: 100%;
+    padding: 4px 0;
+    gap: 10px;
+   
+}
+
+.image-input .image-content{
+    position: relative;
+    overflow: hidden;
+    font: inherit;
+    border-radius: 6px;
+    height: 180px;
+    min-width: 180px;
+    background-color: rgb(233, 233, 233);
+    border: dashed 2px #ddd;
+}
+
+.image-input .image-content::after{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    border-radius: 5px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all .04s ease-in;
+    background-image: url(../../../../assets/exchange.png);
+    opacity: 0;
+}
+
+.image-input .image-content:hover::after{
+    transition: all .04s ease-in;
+    border: solid 3px rgb(250, 250, 250);
+    opacity: .7;
+}
+
+
+
+.image-input .image-content.empty::after{
+    border: solid 3px rgb(71, 71, 71);
+    transition: all .04s ease-in;
+    background-image: url(../../../../assets/camera.png);
+    opacity: .5;
+}
+
+
+.image-input .image-content.empty:hover::after{
+    opacity: .6;
+}
+
+
+
+
+
+
+
+
+/* 
+.image-input .image-content:hover::after{
+
+} */
+
+.image-input img {
+
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+
+.image-input button {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+}

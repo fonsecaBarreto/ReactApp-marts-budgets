@@ -14,7 +14,7 @@
     line-height: 1.5em;
     color: rgb(5, 9, 63);
 }
-.form-row select, textarea, input[type=text], input[type=password], .text-input{
+.form-row select, textarea, input[type=text], input[type=number],input[type=password], .text-input{
     width: fit-content;
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@
     color: #222;
     width: 100%;
 }
-.form-row textarea, input[type=checkbox]{
+.form-row input[type=checkbox]{
     width: fit-content;
     display: flex;
     flex-direction: column;
@@ -42,9 +42,8 @@
 .form-row textarea{
     height: 180px;
     padding: 12px 16px;
-
 }
-.form-row input:focus{
+.form-row textarea, input:focus{
     outline: 2px solid rgba(95, 115, 160, 0.2);
 }
 

@@ -45,8 +45,8 @@
 .admin-menu li.adm-menu-item .adm-menu-item-row{
     position: relative;
     display: flex; flex-direction: row; align-items: center; justify-content: flex-start;
-    gap: 6px;  padding: 0 20px;
-    font-size: 18px;
+    gap: 8px;  padding: 0 20px;
+    font-size: 17px;
     cursor: pointer;
     height: 46px;
     border-radius: 2px;

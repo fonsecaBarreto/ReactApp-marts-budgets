@@ -14,7 +14,14 @@ const Guard = withRouter(({ history, access, location, component: Component, pat
 
   useEffect(()=>{
     login(access)
+    window.scroll({
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth'
+    });
   },[ path ]) 
+
+ 
 
   const login = async (access) =>{
 

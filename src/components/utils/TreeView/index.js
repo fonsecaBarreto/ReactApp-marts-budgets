@@ -13,7 +13,7 @@ export const TestComp = ({data}) =>{
 
 export const TreeViewRow = ({ component: Component, data, onSelected }) =>{
      const [ open, setOpen ] = useState(false) 
-     const handleRadio = () =>{
+     const handleRadio = () => {
         onSelected && onSelected({ name: data.name, id: data.id})
      }
      return ( 

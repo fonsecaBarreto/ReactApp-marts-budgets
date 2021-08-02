@@ -58,18 +58,16 @@
     background-color: rgb(229, 229, 229);
     color: rgb(58, 58, 58);
 }
-/* 
-
-.app-feed-tool-bar .aftb-grid .aftb-search-btn:hover{
-    background-color: rgb(235, 235, 235);
-}
- */
 
 
 @media only screen and (max-width: 960px){
     .app-feed-tool-bar .aftb-grid .aftb-search-btn{
-
-        width: 60px; height: 100%;  
-      
+        width: 56px; height: 100%;  
+        padding: 0;
     } 
+
+    .app-feed-tool-bar .aftb-grid .aftb-add-button{
+        width: 64px; height: 100%;  
+        padding: 0;
+    }
 }

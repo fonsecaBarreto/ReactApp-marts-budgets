@@ -35,7 +35,7 @@ export const FeedState = (loadFunction, queries) =>{
     return { feed, setFeed, loading, setLoading, loadFeed, setQueries}
 }
 
-export default ({ component: Component, state, children }) =>{
+export default ({ component: Component, state, children, onClick }) =>{
 
     const { feed, setFeed, loading, loadFeed } = state
 
@@ -64,7 +64,7 @@ export default ({ component: Component, state, children }) =>{
 
             <div className={`app-feed-flow`}>
                 { feed.data.map((n,i)=>{
-                    return <Component key={i} data={n}> </Component> 
+                    return <Component key={i} data={n} onClick={onClick}> </Component> 
                 })}
             </div> 
 

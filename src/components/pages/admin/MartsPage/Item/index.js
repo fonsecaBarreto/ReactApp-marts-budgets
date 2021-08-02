@@ -9,7 +9,7 @@ import { HiChevronDown } from 'react-icons/hi'
 import { getFilePath } from '../../../../../services/utils-service'
 import { Link } from 'react-router-dom'
 
-export default ({data}) =>{
+export default ({data, onClick}) =>{
 
 
     const [ show, setShow ] = useState(false)
@@ -19,7 +19,7 @@ export default ({data}) =>{
 
             <div className="mart-item-row">
 
-                <div className="mart-item-icon" onClick={()=>{}}>
+                <div className="mart-item-icon" onClick={()=>onClick({key:"open", data})}>
                     <AiOutlineShop></AiOutlineShop>
                 </div>
                 <span className="mart-item-name">{name}</span>
@@ -28,8 +28,8 @@ export default ({data}) =>{
 
                      { isActive === false && 
                         <React.Fragment >
-                            <span className="mart-status desktop-only" onClick={()=>{}} > <AiOutlineBell></AiOutlineBell>  Aguardando </span>
-                            <span className="bell-status mobile-only" onClick={()=>{}}>  <AiOutlineBell></AiOutlineBell> </span>
+                            <span className="mart-status desktop-only" onClick={()=>onClick({key:"open", data})} > <AiOutlineBell></AiOutlineBell>  Aguardando </span>
+                            <span className="bell-status mobile-only" onClick={()=>onClick({key:"open", data})}>  <AiOutlineBell></AiOutlineBell> </span>
                         </React.Fragment>
                      } 
 

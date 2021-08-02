@@ -16,12 +16,8 @@ export default withRouter(({history}) =>{
     const feedState = FeedState(listMartsWithFilterService,{ text:"", status:0 })
     const { feed, setFeed, loadFeed, setQueries } = feedState
 
-
-
     const updateMart = (mart) =>{
-        /*   console.log("autlaizado?", mart)
-          const less = marts.filter(m =>(m.id !== mart.id))
-          setMarts([mart, ...less]) */
+          loadFeed(0,false)
     } 
 
     const handleText = (value) =>{
@@ -29,9 +25,14 @@ export default withRouter(({history}) =>{
     }
     const handleChange = e => {
         setQueries({status: e.target.value})
-  /*       setFeed(prev=>({ ...prev, queries: { ...prev.queires, status: e.target.value} })) */
-        /* setFilters( prev => ({...prev, status: Number(e.target.value) })) */
+
     };
+
+    const openModal = (a) =>{
+        if(a?.key && a.key === "open"){
+            setCurrentMart(a.data)
+        }
+    }
 
 
     const add = () =>{ history.push('/admins/marts/create')  }
@@ -54,15 +55,15 @@ export default withRouter(({history}) =>{
                     </select>
                 </SearchBar>
              
-                <AppFeed state={feedState} component={MartItem}> </AppFeed> 
+                <AppFeed state={feedState} component={MartItem} onClick={openModal}> </AppFeed> 
      
             </div>
 
-           {/*  { currentMart && <ItemDialogView 
+           { currentMart && <ItemDialogView 
                 mart={currentMart}
                 setMart ={setCurrentMart}
                 updateMart={updateMart}
-                ></ItemDialogView>} */}
+                ></ItemDialogView>} 
        
         </div>
     )

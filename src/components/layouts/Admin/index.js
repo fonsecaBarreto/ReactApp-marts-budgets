@@ -10,6 +10,8 @@ import AdminBar from './AdminBar'
 
 import { AiFillShop, AiTwotoneShopping, AiFillDashboard, AiOutlineUnorderedList, AiFillPlusCircle} from 'react-icons/ai'
 import { FaArchive, FaTimes, FaTruck } from 'react-icons/fa'
+
+import { BiPackage} from 'react-icons/bi'
 import { CgNotes } from 'react-icons/cg'
 import { RiPriceTag2Fill } from 'react-icons/ri'
 
@@ -19,6 +21,46 @@ const MENU_STRUCT = [
     {
         title: "Painel", to: "/admins/panel",
         icon: <AiFillDashboard></AiFillDashboard>,
+    },
+   
+    {
+        title: "Produtos",
+        icon: <BiPackage></BiPackage>,
+        subs: [
+            {
+                title: "Listagem",  to: "/admins/products",
+                icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
+                back: "/admins/panel",
+            },
+            {
+                title: "Adicionar",  to: "/admins/products/create",
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                back: "/admins/products",
+            },
+            {
+                title: "Adicionar",  to: "/admins/products/update",
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                back: "/admins/products",
+                hide: true
+            },
+            {
+                title: "Categorias", to: "/admins/categories",
+                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
+                back: "/admins/panel",
+            },
+            {
+                title: "Adicionar Categoria", to: "/admins/categories/create",
+                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
+                back: "/admins/categories",
+                hide: true
+            },
+            {
+                title: "Editar Categoria", to: "/admins/categories/update",
+                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
+                back: "/admins/categories",
+                hide: true
+            },
+        ]
     },
     {
         title: "Estabelecimentos",
@@ -63,34 +105,6 @@ const MENU_STRUCT = [
                 title: "Editar",  to: "/admins/providers/update",
                 icon: <AiFillPlusCircle></AiFillPlusCircle>,
                 back: "/admins/providers",
-                hide: true
-            },
-        ]
-    },
-    {
-        title: "Produtos",
-        icon: <AiTwotoneShopping></AiTwotoneShopping>,
-        subs: [
-            {
-                title: "Listagem",  to: "/admins/products",
-                icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-                back: "/admins/panel",
-            },
-            {
-                title: "Categorias", to: "/admins/categories",
-                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
-                back: "/admins/panel",
-            },
-            {
-                title: "Adicionar Categoria", to: "/admins/categories/create",
-                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
-                back: "/admins/categories",
-                hide: true
-            },
-            {
-                title: "Editar Categoria", to: "/admins/categories/update",
-                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
-                back: "/admins/categories",
                 hide: true
             },
         ]

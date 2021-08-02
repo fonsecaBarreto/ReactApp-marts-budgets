@@ -9,8 +9,17 @@ export const listCategoriesService = async () => {
   return data
 }
 
-export const listCategoriesTreeService = async (list) => {
-  const { data } = await categoryApi.send({method: "get", url:`/tree${list ? '?v=list ': ''}`}) 
+export const listCategoriesWithFilterService = async (params={}) => {
+  const offset = params.offset || 0
+  const queries = params.queries || {}
+  const text = queries.text || ''
+  const { data } = await categoryApi.send({method: "get", url:`/list?v=${text}&o=${offset}`}) 
+  return data
+}
+
+
+export const listCategoriesTreeService = async () => {
+  const { data } = await categoryApi.send({method: "get", url:`/tree`}) 
   return data
 }
 

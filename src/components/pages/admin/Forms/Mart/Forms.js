@@ -75,7 +75,7 @@ export const MartState = () =>{
 
     const handleInputs = (key,value) => setInputs(prev => ({  ...prev,  [key]:value  }))
 
-    const clearInputs = (inputs = {}) => setInputs({ ...INITIAL_DATA, ...inputs })
+    const clearInputs = (inputs = {}) =>{ setInputs({ ...INITIAL_DATA, ...inputs }); setErrors({})}
 
     /* actions */
 
