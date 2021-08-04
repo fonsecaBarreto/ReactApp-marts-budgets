@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import './style.css'
-import AppSelectorfrom from '../../../utils/AppSelector'
-import { MartslistCategoriesWithFilter } from '../../../../services/mart-product-search-service'
-import AppSelector from '../../../utils/AppSelector'
+
 export default ({state}) =>{
     const handleInput = (e) => {
         state.setText(e.target.value)

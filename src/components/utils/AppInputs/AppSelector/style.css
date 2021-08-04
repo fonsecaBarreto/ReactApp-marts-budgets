@@ -64,6 +64,30 @@
 
 }
 
+.acs-close {
+    display: flex; flex-direction: row; align-items: center; justify-content: center;
+    position: absolute;
+    top: 14px; right: 12px;
+    font-size: 21px;
+    display: none;
+    width: 28px; height: 28px;
+    color: #bbb;
+/*     border: solid 2px red; */
+}
+
+.acs-close.show{
+    display: block;
+}
+
+
+.acs-close.show:hover{
+    color: rgb(41, 16, 16);
+    transition: all .05s;
+    cursor: pointer;
+}
+
+
+/*  */
 .acs-status{
     position: absolute;
     top: 14px;

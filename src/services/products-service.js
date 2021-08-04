@@ -31,7 +31,7 @@ export const removeProductService = async ( id ) => {
 
 export const saveProductservice = async ( inputs ) => {
 
-  const { id, description, presentation, stock, price, ncm, ean, sku, image, brand, category, image_file } = inputs
+  const { id, description, presentation, stock, price, ncm, ean, sku, brand, category, image_file } = inputs
 
   const METHOD = id ? 'PUT' : 'POST' 
   const URL = id ? `/${id}` : '/'
@@ -45,8 +45,8 @@ export const saveProductservice = async ( inputs ) => {
     formData.append('ncm',ncm || '')
     formData.append('ean',ean || '')
     formData.append('sku',sku || '')
-    formData.append('brand',brand || '')
-    formData.append('category_id',category.value || '')
+    formData.append('brand_id', brand.value || '')
+    formData.append('category_id', category.value || '')
     formData.append('image',image_file)
 
   const resp = await productsApi.send({method: METHOD, url:URL, data: formData })

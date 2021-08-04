@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import '../style.css'
 import './style.css'
 
-import { listPrimariesService, MartslistCategoriesWithFilter } from '../../../../../services/mart-product-search-service'
-import AppSelector from '../../../../utils/AppSelector'
+import { listPrimariesService } from '../../../../../services/mart-product-search-service'
+
 
 export default ({state}) =>{
 

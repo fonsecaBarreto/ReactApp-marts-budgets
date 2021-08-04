@@ -3,10 +3,13 @@ import React, { useState, useEffect } from 'react';
 import FormRow from '../../../../utils/FormRow'
 import { findProductService, saveProductservice, removeProductService } from '../../../../../services/products-service'
 import { ListCategoriesScrew } from '../../../../../services/category-service'
+import { ListBrandsScrew } from '../../../../../services/brand-service'
 import ImageInput from '../../../../utils/AppInputs/ImageInput';
 import { getFilePath } from '../../../../../services/utils-service'
 import AppSelector from '../../../../utils/AppInputs/AppSelector'
-import { IoMdArrowDropleft } from 'react-icons/io'
+
+import { BrandItemView, CategoyItemView } from './ScrewViews'
+
 const INITIAL_DATA = {
     id: "",
     description: "",
@@ -16,31 +19,19 @@ const INITIAL_DATA = {
     ncm: "",
     ean: "",
     sku: "",
-    brand: "" ,
     image: null,
     image_file: null,
+    brand: {
+        label: "",
+        value: ""
+    },
     category: {
         label: "",
         value: ""
     }
 }
 
-export const CategoyItemView = ({entry}) => {
 
-    const { name, bread_crumbs } = entry
-
-
-    return (<span className="category-item-view">
-        
-        <span className="font-bold  ">
-            {entry.name}
-        </span>
-
-        {bread_crumbs?.length > 0 && bread_crumbs.map((b,i)=>(
-            <span key={i} className="smaller muted" style={{padding:2} }><IoMdArrowDropleft></IoMdArrowDropleft> {b}</span> 
-        ))}
-    </span>)
-}
 
 export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
     const { id, category, description, presentation, stock, price, ncm, ean, sku, brand, image, image_file } = inputs
@@ -62,16 +53,26 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
                 <input value={presentation || ''} type="text" onInput={e=>handleInputs('presentation',e.target.value)}></input>
             </FormRow>
 
-            <FormRow label="Marca" error={errors?.['brand']}>
-                <input value={brand || ''} type="text" onInput={e=>handleInputs('brand',e.target.value)}></input>
+            <FormRow label="Marcas" error={errors?.['brand_id']}>
+
+                <AppSelector 
+                    onLoad={ListBrandsScrew}
+                    value={brand}
+                    component={BrandItemView}
+                    onInput={brand =>{
+                        if(!brand) return handleInputs('brand',INITIAL_DATA.brand)
+                        handleInputs('brand',{label: brand.name, value: brand.id})
+                    }}>
+                </AppSelector>
+    
             </FormRow>
 
             <FormRow label="Quantidade em estoque" error={errors?.['stock']}>
-                <input value={stock || 0} type="number" onInput={e=>handleInputs('stock',e.target.value)}></input>
+                <input value={stock || 0} type="number"  step="1" pattern="\d*"  onInput={e=>handleInputs('stock',e.target.value)}></input>
             </FormRow>
 
             <FormRow label="Preço (R$)" error={errors?.['price']}>
-                <input value={price || 0} type="number"  step="0.01" onInput={e=>handleInputs('price',e.target.value)}></input>
+                <input value={price || 0} type="number"  step="0.5" onInput={e=>handleInputs('price',e.target.value)}></input>
             </FormRow>
 
             <FormRow label="SKU" error={errors?.['sku']}>
@@ -99,6 +100,7 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
                 </AppSelector>
     
             </FormRow>
+
 
         </AdminForm>
     )

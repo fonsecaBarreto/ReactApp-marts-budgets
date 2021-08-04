@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react"
 import './style.css'
 import SelectorBody from './Body'
 import { useOutsideAlerter, useCounter } from './Utils'
-import { AiOutlineCheckCircle } from 'react-icons/ai'
+import { AiOutlineCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 import { HiOutlineSearchCircle } from  'react-icons/hi'
 const INITIAL_DATA = {
     total: 0, //Real amount
@@ -62,12 +62,15 @@ export default ({onLoad, value,  onInput, component:Component}) =>{
         <div className="app-custom-selector" ref={componentRef}>
        
             <span className={`acs-status ${(value.label && value.value) ? 'success' : '' }`}>
-                
                 { (value.label && value.value) ? <AiOutlineCheckCircle/> : <HiOutlineSearchCircle/> }
             </span>
             <input type="text" value={value.label || text} onInput={handleText} onClick={open} onKeyUp={handleKey}>
                 
             </input>
+
+            <span className={`acs-close ${(value.label && value.value) ? 'show' : '' }`} onClick={handleKey}>
+                <AiFillCloseCircle/> 
+            </span>
         
             <SelectorBody state={state} component={Component} onItemClick={onInput}></SelectorBody>
 
