@@ -2,11 +2,11 @@ import AdminForm from '../../../../utils/AdminForm'
 import React, { useState, useEffect } from 'react';
 import FormRow from '../../../../utils/FormRow'
 import { findProductService, saveProductservice, removeProductService } from '../../../../../services/products-service'
-import { listCategoriesWithFilterService } from '../../../../../services/category-service'
+import { ListCategoriesScrew } from '../../../../../services/category-service'
 import ImageInput from '../../../../utils/AppInputs/ImageInput';
 import { getFilePath } from '../../../../../services/utils-service'
-import AppSelectorfrom from '../../../../utils/AppSelector'
-
+import AppSelector from '../../../../utils/AppInputs/AppSelector'
+import { IoMdArrowDropleft } from 'react-icons/io'
 const INITIAL_DATA = {
     id: "",
     description: "",
@@ -23,6 +23,23 @@ const INITIAL_DATA = {
         label: "",
         value: ""
     }
+}
+
+export const CategoyItemView = ({entry}) => {
+
+    const { name, bread_crumbs } = entry
+
+
+    return (<span className="category-item-view">
+        
+        <span className="font-bold  ">
+            {entry.name}
+        </span>
+
+        {bread_crumbs?.length > 0 && bread_crumbs.map((b,i)=>(
+            <span key={i} className="smaller muted" style={{padding:2} }><IoMdArrowDropleft></IoMdArrowDropleft> {b}</span> 
+        ))}
+    </span>)
 }
 
 export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
@@ -71,11 +88,15 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
 
             <FormRow label="Categoria" error={errors?.['category_id']}>
 
-                <AppSelectorfrom
-                  value={category} onInput={value => handleInputs('category', value)} //returns label and value
-                  loadFunction={listCategoriesWithFilterService} 
-                  serializeTo={{ label:"name", value: "id" }} // transform date coming from loadfunction intro label and value
-                ></AppSelectorfrom>
+                <AppSelector 
+                    onLoad={ListCategoriesScrew}
+                    value={category}
+                    component={CategoyItemView}
+                    onInput={category =>{
+                        if(!category) return handleInputs('category',INITIAL_DATA.category)
+                        handleInputs('category',{label: category.name, value: category.id})
+                    }}>
+                </AppSelector>
     
             </FormRow>
 

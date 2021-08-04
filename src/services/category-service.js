@@ -4,6 +4,13 @@ import { errorHandler } from './helpers/ErrorHandler'
 
 export const categoryApi = MakeApi(`${global.base_url}/categories`, errorHandler, global.storage_key_admin)
 
+export const ListCategoriesScrew = async (offset=0, text="") => {
+  const { data } = await categoryApi.send({method: "get", url:`/screw?v=${text}&o=${offset}`}) 
+  return data
+}
+
+/*  */
+
 export const listPrimariesService = async () => {
     const { data } = await categoryApi.send({method: "get", url:"/primaries"}) 
     return data
