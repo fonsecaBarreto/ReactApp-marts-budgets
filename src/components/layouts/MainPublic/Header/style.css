@@ -9,6 +9,7 @@ header#primary-header{
 }
 header#primary-header.colorful{
     background-color: #113aaa; 
+    background-color: var(--main-color);
     transition: all .5s;
 
 }
@@ -97,7 +98,7 @@ header#primary-header.colorful{
 
 
 .ph-logo{
-    height: 50px;
+    width: 120px;
 }
 /* toggle button */
 

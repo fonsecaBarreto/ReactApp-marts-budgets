@@ -7,8 +7,8 @@ export default ({value, setValue, onFile, file}) =>{
         <div className="strict-info-content">
 
             <div className="login-warnin-texts">
-                <h4> Seu cadastro passará por uma validação </h4>
-                <span> Para Acelerar esse processo é opcional, anexo de um documento capaz de comprovar a sua identidade como pessoa fisica ou jurica </span>
+                <h4> Seu cadastro passará por uma validação: </h4>
+                <span>Para acelerar esse processo, anexe um documento capaz de comprovar a sua identidade como PF ou PJ (opcional).</span>
             </div>
 
             <FileInput value={file} setValue={onFile}></FileInput>
@@ -19,7 +19,7 @@ export default ({value, setValue, onFile, file}) =>{
                     setValue(!value) 
                 }}></input>
 
-                <label> Declaro favorável a disponibilização de meus dados cadastrais a fornecedores
+                <label> Declaro-me favorável a disponibilizar os meus dados cadastrais à fornecedores.
                 </label>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './style.css'
 const fileInput = document.createElement('input')
 fileInput.type="file"
 fileInput.multiple = true
@@ -17,9 +17,9 @@ export default ({ value, setValue }) => {
     }
 
     return (
-        <div>
-            <button onClick={submit}> Selecionar </button>
-            <span className="small muted">  { value ? value.name : "Nenhum arquivo Selecionado" } </span> 
+        <div className="app-file-input">
+            <button onClick={submit}> selecionar </button>
+            <span className="small muted">  { value ? value.name : "Nenhum arquivo selecionado." } </span> 
         </div>
         
     )

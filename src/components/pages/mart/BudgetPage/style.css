@@ -1,6 +1,36 @@
 #budget-page{
-    background-color: rgb(223, 223, 255);
+    background-color: var(--main-bg-color);
     min-height: 100vh;
-    padding: 32PX;
-    font-size: 40PX;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#budget-page .budget-page-search-content{
+    width: 100%; height: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 300px 1fr;
+    gap: 18px;
+
+}
+
+.filtering-column{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0 10px;
+}
+
+@media screen and (max-width: 960px){
+    #budget-page .budget-page-search-content{
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    } 
+    
 }

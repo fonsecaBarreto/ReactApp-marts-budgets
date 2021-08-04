@@ -110,10 +110,10 @@ const MENU_STRUCT = [
         ]
     },
    
-    {
+   /*  {
         title: "Orçamentos",   to: "/admins/budgets",
         icon: <CgNotes></CgNotes>,
-    },
+    }, */
 ]
 
 export default withRouter(({ history, children}) =>{

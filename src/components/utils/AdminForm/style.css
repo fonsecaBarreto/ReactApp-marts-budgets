@@ -19,8 +19,8 @@
 }
 
 .admin-form-container .admin-form  .ad-title{
-    position: absolute; top: -11px; left: 20px;
-    font-size: 18px;
+    position: absolute; top: -12px; left: 20px;
+    font-size: 20px;
     color: rgb(69, 76, 90);
     text-align: left;
     font-weight: bold;
@@ -29,8 +29,8 @@
 
 .admin-form .ad-title::before{
     content: "";
-    position: absolute; bottom: 9px; left: -5px;
-    width: calc(100% + 12px);  height: 2px;
+    position: absolute; bottom: 12px; left: -6px;
+    width: calc(100% + 12px);  height: 1px;
     background-color: rgb(255, 255, 255);
     z-index: -1
 } 

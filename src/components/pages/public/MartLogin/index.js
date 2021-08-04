@@ -51,10 +51,10 @@ export default withRouter(({ history }) =>{
             "Cadastrado com successo!", 
             "Obrigado pela confiança, entraremos em contato em breve!",
             "Sucesso!",
-            async () => {  history.push("/") })
+            async () => {  history.push("/marts/orcamento") })
     }
 
-    const handleSignInSuccess = () => { history.push("/") }
+    const handleSignInSuccess = () => { history.push("/marts/orcamento") }
 
     const handleForgotSuccess = () =>{
         dialogState.showSuccess( 
@@ -79,6 +79,7 @@ export default withRouter(({ history }) =>{
                         onSuccess={handleSignInSuccess}
                         forgotSuccess={handleForgotSuccess}>
                     </SignInForm>
+                    <span className="small-span">Copyright©2021, UnaCompras. Todos os direitos reservados.</span>
                 </div>
             </div>
 
@@ -95,6 +96,7 @@ export default withRouter(({ history }) =>{
                         onError={handleErrors}
                         onSuccess={handleSuccess}>
                     </SignUpForm> 
+                    <span className="small-span">Copyright©2021, UnaCompras. Todos os direitos reservados.</span>
                 </div>
             </div>
 

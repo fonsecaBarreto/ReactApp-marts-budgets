@@ -25,7 +25,7 @@ export default withRouter(({history}) =>{
 
                 <SearchBar 
                     onAdd={add}
-                    label=" Procure o produto aqui " 
+                    label=" Descrição, marca, SKU, NCM e EAN  " 
                     toSearch={()=> loadFeed(0, false)} 
                     text={feed.queries.text}
                     onText={handleText}> 

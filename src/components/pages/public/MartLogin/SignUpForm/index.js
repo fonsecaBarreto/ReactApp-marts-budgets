@@ -53,7 +53,6 @@ export default withRouter(( { setLoading, inputs, setAnnex, errors, setErrors, h
             onError && onError(err)
         }
         setLoading(false)
-       
     }
 
     const { name, email, phone, cnpj_cpf, transfer_allowed, annex } = inputs
@@ -62,22 +61,20 @@ export default withRouter(( { setLoading, inputs, setAnnex, errors, setErrors, h
 
         <form className={`login-form signup-form`}>
 
-            <FormRow label="Nome da empresa *" error={errors?.['name']}>
+            <FormRow label="Nome da Empresa *" error={errors?.['name']}>
                 <input value={name} type="text" onInput={e=>handleInputs('name',e.target.value)}></input>
             </FormRow>
 
-            <FormRow label="Email de Trabalho *" error={errors?.['email']}>
+            <FormRow label="E-mail de Trabalho *" error={errors?.['email']}>
                 <input value={email} type="text" onInput={e=>handleInputs('email',e.target.value)}></input>
             </FormRow>
 
-            <FormRow label="Cnpj ou Cpf *" error={errors?.['cnpj_cpf']}>
+            <FormRow label="CNPJ ou CPF *" error={errors?.['cnpj_cpf']}>
                 <input value={cnpj_cpf} type="text" onInput={e=>handleInputs('cnpj_cpf',e.target.value)}></input>
             </FormRow>
 
             <FormRow label="Telefone Celular" error={errors?.['phone']}>
-
                 <InputMask className="text-input" mask="(99) 99999-9999" maskChar={" "} value={phone} onChange={e=>handleInputs('phone',e.target.value)}/>
-               
             </FormRow>
 
             <StrictInfoRow value={transfer_allowed} setValue={setTransfer_allowed} 
@@ -89,7 +86,7 @@ export default withRouter(( { setLoading, inputs, setAnnex, errors, setErrors, h
             </button>
 
             <button className="light-button" onClick={toggleMode}> 
-                Ja sou cadastrado </button>
+                Já sou Cadastrado </button>
 
         </form>
     )

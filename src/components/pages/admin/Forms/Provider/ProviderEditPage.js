@@ -14,7 +14,8 @@ export default withRouter(({history}) =>{
     const dialogState = WarningState()
 
     useEffect(() => {
-
+        let isMounted = true;    
+     
         const pathname = history.location ? history.location.pathname : null;
         if(!pathname) return
 
@@ -26,7 +27,7 @@ export default withRouter(({history}) =>{
         .catch(errMessage => {
             dialogState.showFailure(errMessage,"","", () =>{ history.push("/admins/providers")});
         })
-        
+        return () => { isMounted = false }; // cl
     }, [history.location, history.location.pathname])
 
     const { save, remove,  inputs, freeze, loading } = state
@@ -53,8 +54,8 @@ export default withRouter(({history}) =>{
     const removeHandler  = async () => {
         try{
             await remove(inputs.id) 
-            dialogState.showSuccess("Fornecedor deletado com sucesso!", "", "", () =>{
-                history.push("/admins/providers")
+            return dialogState.showSuccess("Fornecedor deletado com sucesso!", "", "", () =>{
+                return history.push("/admins/providers") 
             })
         }catch(errMessage){
             dialogState.showFailure(errMessage)

@@ -1,17 +1,21 @@
 #change-passowrd-page {
-    min-height: 100vh;
-    padding-top: 54px;
+    position: relative;
+    display: flex; flex-direction: column; align-items:center; justify-content: flex-start;
+    height: 100%; width: 100%; min-height: 100vh;
+    padding: 86px 0 120px 0;
+    background-color: rgb(227, 237, 255);
 }
 
+
 #change-passowrd-page .change-passowrd-form{
+    background-color: white;
     width: 500px;
     display: flex; flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 8px;
-    margin: auto;
-    padding: 0 20px;
-
+    padding: 30px 20px;  gap: 8px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 3px 2px #0002;
 }
 #change-passowrd-page .change-passowrd-form span{
     text-align: center;
@@ -23,11 +27,21 @@
     width: 100%;
     line-height: 1em;
 }
-.change-password-logo{
+
+/* Logo */
+#change-passowrd-page .change-password-logo{
+    height: 108px;
+    width:100%;
+    fill: green;
+    background-color: var( --main-color);
+    padding: 28px;
+    width: 500px;
+}
+/* .change-password-logo{
     height: 150px;
     margin: auto;
     margin-bottom: 14px;
-}
+} */
 
 .change-password-button {
     height: 42px;
@@ -47,16 +61,30 @@
     background-color: rgb(42, 122, 226);
 }
 
+@media only screen and (max-width: 960px){
 
+ 
+}
 
 
 @media only screen and (max-width: 756px){
+
+    #change-passowrd-page { padding: 16px; }
+    
     #change-passowrd-page .change-passowrd-form{
         width: 100%;
-    
+        padding: 36px 12px; 
+        height: 100%; 
+        min-height: calc(100vh - 100px);
     }
     .change-password-button  {
         height: 56px;
         width: 100%
     }
+    #change-passowrd-page .change-password-logo{
+        width: 100%;
+
+    }
+
+  
 }

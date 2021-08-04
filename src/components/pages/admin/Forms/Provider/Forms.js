@@ -7,25 +7,42 @@ const INITIAL_DATA = {
     id: null,
     name: "",
     email: "",
-    phone: ""
+    phone: "",
+    obs: "",
+    cnpj: "",
+    corporate_name: ""
 }
 
 export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
-    const { id, name, email, phone } = inputs
+    const { id, name, email, phone, obs, cnpj, corporate_name } = inputs
     return (
-        <AdminForm title={"Fornecedor"} columns={[6,6,6,6,6]} loading={freeze}>
+        <AdminForm title={"Fornecedor"} columns={[6,6,6,6,6,6]} loading={freeze}>
+
+            <FormRow label="Razão social" error={errors?.['corporate_name']}>
+                <input value={corporate_name} type="text" onInput={e=>handleInputs('corporate_name',e.target.value)}></input>
+            </FormRow>
 
             <FormRow label="Nome" error={errors?.['name']}>
                 <input value={name} type="text" onInput={e=>handleInputs('name',e.target.value)}></input>
             </FormRow>
 
-            <FormRow label="Email" error={errors?.['email']}>
+            <FormRow label="E-mail" error={errors?.['email']}>
                 <input value={email} type="text" onInput={e=>handleInputs('email',e.target.value)}></input>
             </FormRow>
 
-            <FormRow label="Telefone" error={errors?.['phone']}>
-                <input value={phone} type="text" onInput={e=>handleInputs('phone',e.target.value)}></input>
+            <FormRow label="CNPJ" error={errors?.['cnpj']}>
+                <input value={cnpj} type="text" onInput={e=>handleInputs('cnpj',e.target.value)}></input>
             </FormRow>
+
+            <FormRow label="Telefone" error={errors?.['phone']}>
+                <input value={phone || ""} type="text" onInput={e=>handleInputs('phone',e.target.value)}></input>
+            </FormRow>
+          
+            <FormRow label="Observações" error={errors?.['obs']}>
+                <textarea value={obs || ""} onInput={e=>handleInputs('obs',e.target.value)}></textarea>
+            </FormRow>
+            
+
 
         </AdminForm>
     )
@@ -73,7 +90,6 @@ export const ProviderState = () =>{
         setFreeze(true)
         try{ await removeProviderService(id) } 
         catch(err) { throw err.message} 
-        finally { setFreeze(false) }
     }
 
 

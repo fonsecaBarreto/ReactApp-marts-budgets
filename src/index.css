@@ -5,6 +5,18 @@
   --main-bg-color: #E3EDFF;
 }
 
+@font-face {
+  font-family: "Biysk";
+  src: url(./assets//fonts/biysk/Biysk.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Biysk";
+  src: url(./assets//fonts/biysk/Biysk-Bold.ttf);
+  font-weight: 600;
+}
+
+
 body {
   margin: 0;
   font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -19,7 +31,7 @@ body {
   box-sizing: border-box;
 }
 
-.App * { box-sizing: border-box;   font-family: 'Georama', sans-serif;}
+.App * { box-sizing: border-box;   font-family:  Verdana, Geneva, Tahoma, sans-serif}
 
 .App.loading::before{
   content: "";
@@ -78,8 +90,13 @@ body {
 .font-regular{ font-weight: normal; }
 
 .small {
-  font-size: 16px;
+  font-size: 15px;
   line-height: .8em;
+}
+.smaller {
+  font-size: 12px;
+  line-height: .8em;
+
 }
 .muted {
    color: #666;

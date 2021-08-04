@@ -2,7 +2,7 @@
 import './style.css'
 export default  ({children, label, error, className}) => {
     return (
-    <div className={`form-row ${className}`}>
+    <div className={`form-row ${className} ${error ? "warning" : ''}`}>
         <label>{label}</label>
         {children}
         {error && 

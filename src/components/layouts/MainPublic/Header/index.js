@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './style.css'
 
 import { FaBars } from 'react-icons/fa'
-import Logo from '../../../../assets/logo.jpg'
+import Logo from '../../../../assets/logo.svg'
 import HeaderLink from './HeaderLink'
 import { withRouter } from 'react-router-dom'
 
@@ -41,9 +41,6 @@ export default withRouter(({toggleMenu, history, admin, mart}) => {
             
                 <section className="section-one">
                     <img className="ph-logo"  src={Logo} alt="logo"></img> 
-                    mercado: {mart?.name}
-                    <br></br>
-                    admin: {admin?.username}
                 </section>
                 
                 <section className="section-two">

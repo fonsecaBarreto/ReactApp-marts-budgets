@@ -1,0 +1,20 @@
+.mart-budget-search-bar{
+    grid-column: 1 span;
+    
+}
+
+.mart-budget-tags  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4px;
+    gap: 2px;
+}
+
+.search-tag{
+    font-size: 10px;
+    background-color: rgb(209, 209, 209);
+    padding: 2px 8px;
+    border-radius: 6px;
+}

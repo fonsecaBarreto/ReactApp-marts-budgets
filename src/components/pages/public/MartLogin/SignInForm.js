@@ -5,7 +5,8 @@ import { signInService, forgotPasswordService} from '../../../../services/mart-l
 import { RiShieldKeyholeLine, RiShieldUserLine } from 'react-icons/ri'
 import { useDispatch } from  'react-redux'
 import { setMart } from '../../../../store/reducers/global/actions'
-
+import { FaRegUserCircle } from 'react-icons/fa'
+import { RiLockPasswordLine } from 'react-icons/ri'
 const INITIAL_SIGNIN_DATA = {
     credentials: "",
     password: "",
@@ -22,8 +23,6 @@ export const SignInState = () =>{
     const clearInputs = () => {
         return setInputs({ ...INITIAL_SIGNIN_DATA })
     }
-
-
 
     return { handleInputs, inputs, setInputs, errors, setErrors, clearInputs }
 }
@@ -69,12 +68,18 @@ export default ({setLoading, inputs, errors, setErrors, handleInputs, toggleMode
     return(
         <form className={` login-form signin-form `}>
 
-            <FormRow label="Email, Telefone ou cnpj/cpf" error={errors?.['credentials']}>
-                <input autoFocus value={credentials} type="text" onInput={e=>handleInputs('credentials',e.target.value)}></input>
+            <FormRow label="E-mail, Telefone ou CNPJ/CPF" error={errors?.['credentials']}>
+                <div className="login-input-wrapper">
+                    <FaRegUserCircle className="liw-icon"></FaRegUserCircle>
+                    <input autoFocus value={credentials} type="text" onInput={e=>handleInputs('credentials',e.target.value)}></input>
+                </div>
             </FormRow>
 
-            <FormRow label="Senha de acesso" error={errors?.['password']}>
-                <input value={password} type="password" onInput={e=>handleInputs('password',e.target.value)}></input>
+            <FormRow label="Senha de Acesso" error={errors?.['password']}>
+                <div className="login-input-wrapper">
+                    <RiLockPasswordLine className="liw-icon"></RiLockPasswordLine>
+                    <input value={password} type="password" onInput={e=>handleInputs('password',e.target.value)}></input>
+                </div>
             </FormRow>
 
             <button onClick={submit} 
@@ -84,7 +89,7 @@ export default ({setLoading, inputs, errors, setErrors, handleInputs, toggleMode
 
             <div className="signin-opt">
 
-                <button className="light-button " onClick={toggleMode}>  Cadastrar</button>
+                <button className="light-button " onClick={toggleMode}> Cadastrar </button>
 
                 <div className="bearer "></div>
 

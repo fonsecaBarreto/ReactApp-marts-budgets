@@ -6,7 +6,7 @@ import { listCategoriesWithFilterService } from '../../../../../services/categor
 import ImageInput from '../../../../utils/AppInputs/ImageInput';
 import { getFilePath } from '../../../../../services/utils-service'
 import AppSelectorfrom from '../../../../utils/AppSelector'
-import { string } from 'prop-types';
+
 const INITIAL_DATA = {
     id: "",
     description: "",
@@ -30,7 +30,7 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
     return (
         <AdminForm title={"Produto"} columns={[6,6,6,6,3,3,2,2,2,6]} loading={freeze}>
 
-            <FormRow label="Image" error={errors?.['image']}>
+            <FormRow label="Imagem" error={errors?.['image']}>
                 <ImageInput src={image} file={image_file} 
                     setFile={value=> handleInputs('image_file', value)}
                     setSrc={value=> handleInputs('image', value)} >
@@ -41,7 +41,7 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
                 <textarea value={description} type="text" onInput={e=>handleInputs('description',e.target.value)}></textarea>
             </FormRow>
 
-            <FormRow label="Aprensentação" error={errors?.['presentation']}>
+            <FormRow label="Apresentação" error={errors?.['presentation']}>
                 <input value={presentation || ''} type="text" onInput={e=>handleInputs('presentation',e.target.value)}></input>
             </FormRow>
 
@@ -53,8 +53,8 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
                 <input value={stock || 0} type="number" onInput={e=>handleInputs('stock',e.target.value)}></input>
             </FormRow>
 
-            <FormRow label="Preço" error={errors?.['price']}>
-                <input value={price || 0} type="number" onInput={e=>handleInputs('price',e.target.value)}></input>
+            <FormRow label="Preço (R$)" error={errors?.['price']}>
+                <input value={price || 0} type="number"  step="0.01" onInput={e=>handleInputs('price',e.target.value)}></input>
             </FormRow>
 
             <FormRow label="SKU" error={errors?.['sku']}>

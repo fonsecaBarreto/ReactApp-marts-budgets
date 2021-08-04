@@ -1,0 +1,39 @@
+.mart-product-feed{
+
+    height: 100%;
+    padding: 32px 0;
+    grid-row: 2 span;
+}
+
+
+.mart-product-feed-flow{
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+
+@media screen and (max-width: 1224px){
+    .mart-product-feed-flow{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}
+
+
+@media screen and (max-width: 960px){
+    .mart-product-feed-flow{
+        grid-template-columns: repeat(2, 1fr);
+        grid-row: 1 span;
+    }
+    
+}
+
+@media screen and (max-width: 756px){
+    .mart-product-feed-flow{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+}

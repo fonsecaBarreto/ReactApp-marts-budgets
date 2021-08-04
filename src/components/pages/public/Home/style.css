@@ -1,11 +1,11 @@
 #home-page{
-    background-color: rgb(77, 72, 57);
+    background-color: rgb(68, 95, 184);
 }
 
 #home{
     height: 40vh;
     width: 100%;
-    background-color: rgb(244, 247, 208);
+    background-color: rgb(57, 78, 146);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -15,10 +15,10 @@
 #sobre{
     height: 60vh;
     width: 100%;
-    background-color: rgb(194, 235, 211);
+    background-color: rgb(171, 185, 230);
 }
 #contato{
     height: 80vh;
     width: 100%;
-    background-color: rgb(153, 151, 238);
+    background-color: rgb(171, 185, 230);
 }

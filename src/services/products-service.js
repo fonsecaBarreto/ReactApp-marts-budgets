@@ -4,6 +4,7 @@ import { errorHandler } from './helpers/ErrorHandler'
 
 export const productsApi = MakeApi(`${global.base_url}/products`, errorHandler, global.storage_key_admin)
 
+
 export const listProductsService = async () => {
   const { data } = await productsApi.send({method: "get", url:"/"}) 
   return data

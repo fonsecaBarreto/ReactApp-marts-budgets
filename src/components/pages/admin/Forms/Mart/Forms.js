@@ -50,7 +50,7 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
                 <input value={email} type="text" onInput={e=>handleInputs('email',e.target.value)}></input>
             </FormRow>
 
-            <FormRow label="Cnpj ou Cpf *" error={errors?.['cnpj_cpf']}>
+            <FormRow label="CNPJ ou CPF *" error={errors?.['cnpj_cpf']}>
                 <input value={cnpj_cpf} type="text" onInput={e=>handleInputs('cnpj_cpf',e.target.value)}></input>
             </FormRow>
 

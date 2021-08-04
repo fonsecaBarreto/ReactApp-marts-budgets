@@ -3,7 +3,7 @@ import './style.css'
 import { withRouter } from 'react-router-dom'
 import WarningDialog, { WarningState } from '../../utils/WarningDialog'
 import FormRow from '../../utils/FormRow'
-import Logo from '../../../assets/logo.jpg'
+import Logo from '../../../assets/logo2.svg'
 import { changePassword } from '../../../services/mart-login-service'
 import { setLoading } from '../../../store/reducers/global/actions'
 import { useDispatch } from 'react-redux'
@@ -68,9 +68,11 @@ export default withRouter(({history}) =>{
     const { password, passwordConfirmation, name, token } = inputs
     return ( <div id="change-passowrd-page">
 
+
+        <img src={Logo} className="change-password-logo" ></img> 
         <form className="change-passowrd-form">
 
-            <img src={Logo} className="change-password-logo" ></img>
+
             <h2 className="change-password-title"> Insira sua noma senha </h2>
             <span> Bem vindo de volta, 
                 <span className="font-bold"> { name.replace(/%20/g, " ")} </span>
