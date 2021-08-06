@@ -15,13 +15,13 @@ export default ({state}) =>{
         setvalue(result) */
     }
 
-    const toggleToTheList = (id) =>{
+    const toggleToTheList = (category) =>{
         var queryCategories = state.queries.categories
         
-        if(queryCategories.includes(id)){
-            queryCategories = queryCategories.filter(c=>(c != id))
+        if(queryCategories.includes(category)){
+            queryCategories = queryCategories.filter(c=>(c != category))
         }else{
-            queryCategories.push(id)
+            queryCategories.push(category)
         }
         
         state.setCategories(queryCategories)
@@ -45,15 +45,16 @@ export default ({state}) =>{
            { loading ? "loading" :
             <nav>
 
-              {/*   <AppSelector
-                    loadFunction={MartslistCategoriesWithFilter} onInput={handleInput}
-                    serializeTo={{ label:"name", value: "id" }} // transform date coming from loadfunction intro label and value
-                ></AppSelector> */}
-
                 <ul>
-                    <li onClick={()=>clearList()} className={state.queries.categories.length ===0 ? 'search-selector-selected' : ''} > Todos Categorias </li>
+                    <li onClick={()=>clearList()} className={state.queries.categories.length ===0 ? 'search-selector-selected' : ''} >
+                        <input readOnly type="checkbox" checked={state.queries.categories.length ===0 }></input>Todas Categorias
+                    </li>
                     {categories.map((c,i)=>(
-                        <li key={i} onClick={()=>toggleToTheList(c.id)} className={state.queries.categories.includes(c.id) ? 'search-selector-selected' : ''} > {c.name} </li>
+                        <li key={i} onClick={()=>toggleToTheList(c)} 
+                        className={state.queries.categories.includes(c) ? 'search-selector-selected' : ''} >
+                        <input readOnly type="checkbox" checked={state.queries.categories.includes(c)}></input>
+                             {c.name}
+                        </li>
                     ))}
                 </ul>
             </nav>

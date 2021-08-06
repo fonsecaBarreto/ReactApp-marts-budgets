@@ -13,10 +13,14 @@
 }
 
 .app-feed-tool-bar .aftb-grid button{
+    border: none;
+    color: white;
     background-color: rgb(229, 229, 229);
+    background-color: var(--admin-aside-color);
 }
 .app-feed-tool-bar .aftb-grid button:hover{
-    background-color: rgb(235, 235, 235);
+    /* background-color: rgb(235, 235, 235); */
+    background-color: var(--admin-aside-light-color);
 }
 
 .aftb-add-button{
@@ -28,7 +32,7 @@
     color: rgb(58, 58, 58);
     border-top-left-radius: 8px; 
     border-bottom-left-radius: 8px;
-    border: solid 1px #ddd;
+
     font-size: 22px;
     cursor: pointer;
 }
@@ -50,13 +54,13 @@
     display: flex; align-items: center; gap: 8px;
     justify-content: center;
     width: 100px; height: 100%;  
-    border: solid 1px #ddd;
+/*     border: solid 1px #ddd; */
     cursor: pointer;
     font-size: 14px; font-weight: bold;
     border-top-right-radius: 8px; 
     border-bottom-right-radius: 8px;
-    background-color: rgb(229, 229, 229);
-    color: rgb(58, 58, 58);
+  /*   background-color: rgb(229, 229, 229); */
+/*     color: rgb(58, 58, 58); */
 }
 
 

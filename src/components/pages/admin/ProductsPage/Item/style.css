@@ -15,8 +15,9 @@
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
-    padding: 5px 16px;
-    background-color: rgb(241, 241, 241,.8);
+    padding: 10px 16px;
+    background-color: rgba(248, 248, 248, 0.8);
+    border-radius: 6px;
 }
 
 

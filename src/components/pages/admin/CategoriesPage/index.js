@@ -49,7 +49,9 @@ export default withRouter(({history}) =>{
                 </AdminCommonToolBar>
 
                 { loading  ? <LoadingComp></LoadingComp> :
-                    <TreeView tree={mapCategoriesTree(categories)} component={CategoryItem} useCheckBox={false}></TreeView>
+                    <div className="w100 mt-m">
+                        <TreeView tree={mapCategoriesTree(categories)} component={CategoryItem} useCheckBox={false}></TreeView>
+                    </div>
                 }
             </div>
         </div>

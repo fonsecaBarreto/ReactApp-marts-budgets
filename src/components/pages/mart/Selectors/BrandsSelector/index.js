@@ -3,32 +3,32 @@ import '../style.css'
 import './style.css'
 
 import { listBrandsService } from '../../../../../services/mart-product-search-service'
+import { batch } from 'react-redux'
 
 export default ({state}) =>{
 
     const [ loading, setLoading ] = useState(false)
     const [ brands, setBrands ] = useState([])
 
-    const toggleToTheList = (brandName) =>{
+    const toggleToTheList = (brand) =>{
         var queryBrands = state.queries.brands
         
-        if(queryBrands.includes(brandName)){
-            queryBrands = queryBrands.filter(b=>(b != brandName))
+        if(queryBrands.includes(brand)){
+            queryBrands = queryBrands.filter(b=>(b.id != brand.id))
         }else{
-            queryBrands.push(brandName)
+            queryBrands.push(brand)
         }
         
         state.setBrands(queryBrands)
     }
 
-    const clearList = () =>{
-        state.setBrands([])
-    }
+    const clearList = () =>{  state.setBrands([]) }
+
     useEffect(()=>{
         if(brands.length == 0 ){
             setLoading(true)
             listBrandsService(false)
-            .then( brands => setBrands(brands))
+            .then( setBrands)
             .catch(()=>{})
             .finally(()=>setLoading(false))
         }
@@ -40,9 +40,18 @@ export default ({state}) =>{
            { loading ? "loading" :
             <nav>
                 <ul>
-                    <li onClick={()=>clearList()} className={state.queries.brands.length ===0 ? 'search-selector-selected' : ''} > Todos Marcas </li>
-                    {brands.map((b,i)=>(
-                        <li key={i} onClick={()=>toggleToTheList(b)} className={state.queries.brands.includes(b) ? 'search-selector-selected' : ''} > {b} </li>
+                    <li onClick={()=>clearList()} className={state.queries.brands.length ===0 ? 'search-selector-selected' : ''} > 
+                        <input readOnly type="checkbox" checked={state.queries.brands.length ===0 }></input>Todas Marcas
+                    </li>
+                    {brands.map((b,i)=>( 
+                       
+                        <li key={i} 
+                            onClick={()=>toggleToTheList(b)} 
+                            className={state.queries.brands.includes(b) ? 'search-selector-selected' : ''} > 
+
+                            <input readOnly type="checkbox" checked={state.queries.brands.includes(b)}></input>
+                            {b.name} 
+                        </li> 
                     ))}
                 </ul>
             </nav>

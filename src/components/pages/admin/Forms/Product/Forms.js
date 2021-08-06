@@ -36,11 +36,11 @@ const INITIAL_DATA = {
 
 
 
-export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
+export const RootForm = ({ inputs, handleInputs, errors, freeze, children }) =>{
 
     const { id, category, description, presentation, stock, price, ncm, ean, sku, brand, image, image_file } = inputs
     return (
-        <AdminForm title={"Produto"} columns={[6,6,6,6,6,3,3,2,2,2,6,6]} loading={freeze}>
+        <AdminForm title={"Produto"} columns={[6,6,6,6,6,3,3,2,2,2,6,6]} loading={freeze} toolbar={children}>
 
             <FormRow label="Imagem" error={errors?.['image']}>
                 <ImageInput src={image} file={image_file} 
@@ -100,10 +100,7 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
                 <input value={ncm || ''} type="text" onInput={e=>handleInputs('ncm',e.target.value)}></input>
             </FormRow>
 
-           
-                
-       
-
+        
         </AdminForm>
     )
 }

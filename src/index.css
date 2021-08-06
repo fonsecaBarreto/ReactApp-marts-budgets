@@ -6,6 +6,35 @@
 }
 
 @font-face {
+  font-family: "Oxygen";
+  src: url(./assets//fonts/Oxygen/Oxygen-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Oxygen";
+  src: url(./assets//fonts/Oxygen/Oxygen-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Oxygen";
+  src: url(./assets//fonts/Oxygen/Oxygen-Bold.ttf);
+  font-weight: 600;
+}
+
+
+@font-face {
+  font-family: "Noir";
+  src: url(./assets//fonts/noir/Noir_medium.otf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Noir";
+  src: url(./assets//fonts/noir/Noir_regular.otf);
+  font-weight: 400;
+}
+
+
+@font-face {
   font-family: "Biysk";
   src: url(./assets//fonts/biysk/Biysk.ttf);
   font-weight: 400;
@@ -19,10 +48,10 @@
 
 body {
   margin: 0;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   overflow-y: scroll;
+   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+  font-family: "Oxygen", 'Times New Roman', Times, serif;
 }
 
 .App {
@@ -31,7 +60,7 @@ body {
   box-sizing: border-box;
 }
 
-.App * { box-sizing: border-box;   font-family:  Verdana, Geneva, Tahoma, sans-serif}
+.App * { box-sizing: border-box;   }
 
 .App.loading::before{
   content: "";
@@ -46,11 +75,6 @@ body {
   background-position: center;
   z-index: 9999999;
 }  
-
-
-/*  */
-
-
 
 .div-loading::before{
   position: relative;
@@ -70,15 +94,14 @@ body {
   z-index: 99;
   
 }  
-
-
 /*  */
 .app-container{
   width: 100%;
   max-width: 1224px;
-  padding: 0 32px;
+  padding: 0 16px;
   margin: auto;
 }
+
 
 .app-padding{
   padding: 0 32px;
@@ -86,6 +109,9 @@ body {
 
 
 /* fonts */
+.text-black{
+  color: black!important;
+}
 .font-bold { font-weight: bold; }
 .font-regular{ font-weight: normal; }
 
@@ -125,11 +151,10 @@ body {
   gap: 2px;
 }
 
-@media only screen and (min-width: 960px){
+@media only screen and (min-width: 961px){
   .mobile-only{
       display: none!important;
   }
-
 
 }
 
@@ -155,6 +180,9 @@ body {
   margin: 8px;
 }
 
+.mt-m{
+  margin-top: 16px;
+}
 .ml-auto  {
   margin-left: auto;
 }

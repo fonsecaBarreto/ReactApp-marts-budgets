@@ -5,7 +5,8 @@ import AdminCommonToolBar from '../../../../layouts/Admin/AdminCommonToolBar';
 import WarningDialog, { WarningState } from '../../../../utils/WarningDialog'
 import LoadingComp from '../../../../utils/LoadingComp';
 import queryString from 'query-string';
-
+import { RiSave3Fill } from 'react-icons/ri'
+import { FaTrashAlt } from 'react-icons/fa'
 import { ProductState, RootForm } from './Forms'
 
 export default withRouter(({history}) =>{
@@ -60,14 +61,27 @@ export default withRouter(({history}) =>{
        
             { loading  ? <LoadingComp></LoadingComp> :
                 <div className="app-container">
-                    
-                    <RootForm {...state} ></RootForm>
 
-                    <AdminCommonToolBar freeze={freeze}>
-                        {id &&  <button className={` warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}>  Deletar </button> }
-                        <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
+
+
+                    <AdminCommonToolBar className="desktop-only">
+                        {id &&  <button className={` warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}> 
+                        <FaTrashAlt></FaTrashAlt> Deletar </button> }
+                        <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}> 
+                        <RiSave3Fill></RiSave3Fill> { id ? "Atualizar" : "Cadastrar" }  </button>
                     </AdminCommonToolBar>
-                     
+                    
+                    <RootForm {...state} > </RootForm>
+
+                    <AdminCommonToolBar className="mobile-only">
+                        {id &&  <button className={` warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}> 
+                        <FaTrashAlt></FaTrashAlt> Deletar </button> }
+                        <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}> 
+                        <RiSave3Fill></RiSave3Fill> { id ? "Atualizar" : "Cadastrar" }  </button>
+                    </AdminCommonToolBar>
+
+                   
+                 
                 </div>
             }
            
@@ -76,3 +90,6 @@ export default withRouter(({history}) =>{
     )
 })
 
+const TollBar = () =>{
+    
+}

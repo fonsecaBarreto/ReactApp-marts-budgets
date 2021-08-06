@@ -23,7 +23,7 @@ export default () => {
     return (
 
       <Switch>
-        <Route path="/admin" exact> <Redirect to="/admins/panel" /> </Route>
+        <Route path="/admin" exact> <Redirect to="/admins/marts" /> </Route>
         <Guard path="/admins/login" exact>  <AdminLoginPage> </AdminLoginPage> </Guard>
         {/* admin only */}
         <Guard path="/admins/panel" exact access="adminonly" >  <AdminLayout>  <AdminDashBoardPage >  </AdminDashBoardPage>  </AdminLayout></Guard>

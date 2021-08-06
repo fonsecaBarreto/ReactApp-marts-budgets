@@ -61,13 +61,13 @@ export default ({state}) =>{
                             })}
                     </div> 
 
-                    <nav> 
+                    <nav className="pages-nav"> 
                         {
                             [...Array(data.totalPages)].map((n,i)=>(
-                                <button key={i} onClick={()=>loadFeed(i)}>{i + 1}</button>
+                                <button className="pages-nav-btn" key={i} onClick={()=>loadFeed(i)}>{i + 1}</button>
                                 ))
                             }
-                        <br></br>
+                     
                         <span>
 
                             {data.currentPage}

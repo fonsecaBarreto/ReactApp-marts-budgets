@@ -3,7 +3,7 @@
     --admin-aside-color: #007CDC;
     --admin-aside-light-color: #1388e2;
     --admin-header-height: 76px;
-    --admin-bg-color: #eeeeee;
+    --admin-bg-color: #eaeef5;
 }
 
 #admin-layout{
@@ -19,6 +19,7 @@
     grid-area: adminBar;
     height: 72px;
     width: 100%;
+    background-color: rgb(245, 245, 245);
 }
 
 header.admin-header{

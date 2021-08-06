@@ -39,7 +39,9 @@ function Routes (){
         <Guard path="/login" exact>  <MartLoginPage >  </MartLoginPage> </Guard>
         <Guard path="/login/saudacoes" exact> <PrimaryLayout>  <MartLoginGreetings >  </MartLoginGreetings></PrimaryLayout> </Guard>
 
-        <Guard path="/marts/orcamento" exact access="martonly">   <MartBudgetPage >  </MartBudgetPage> </Guard>
+        <Guard path="/marts/orcamento" exact access="martonly">
+           <PrimaryLayout> <MartBudgetPage ></MartBudgetPage> </PrimaryLayout>
+        </Guard>
 
         {/* <Guard path="/*"> <NotFoundPage></NotFoundPage></Guard>   */}
         

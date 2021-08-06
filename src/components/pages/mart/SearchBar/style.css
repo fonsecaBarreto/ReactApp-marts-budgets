@@ -1,6 +1,27 @@
 .mart-budget-search-bar{
-    grid-column: 1 span;
+    position: relative;
+    grid-column: 2 span;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
     
+}
+.float-bloom{
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    z-index: 1;
+    font-size: 18px;
+    color: #888;
+
+}
+.mart-budget-search-bar .mart-bsb-input{
+    height: 52px;
+    border-radius: 32px;
+    padding-left: 56px;
+}
+.mart-budget-search-bar .mart-bsb-submit{
+    height: 52px;
 }
 
 .mart-budget-tags  {

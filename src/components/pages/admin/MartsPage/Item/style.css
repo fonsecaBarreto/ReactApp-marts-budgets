@@ -27,7 +27,7 @@
     padding: 10px 18px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    background-color: rgb(241, 241, 241,.8);
+    background-color: rgba(248, 248, 248, 0.8);
 }
 
 .mart-item .mart-item-row:hover{

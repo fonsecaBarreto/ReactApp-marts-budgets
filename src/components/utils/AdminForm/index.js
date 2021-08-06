@@ -1,7 +1,7 @@
 import React from "react";
 import './style.css'
 
-export default function AdminForm({ title, children, columns = [], loading}){
+export default function AdminForm({ title, children, columns = [], loading, toolbar }){
 
     const classNames = [ "one","two","three","four","five","six" ]
     return (
@@ -13,6 +13,8 @@ export default function AdminForm({ title, children, columns = [], loading}){
                 <div className="form-grid">
                     { React.Children.map(children, (x,i) =>(<div className={`grid-row ${classNames[columns[i]-1]}`}> {x} </div> ))}
                 </div>
+
+                { toolbar && <div className="admin-form-tool-bar"> { toolbar } </div>}
             </div>
         </div>
   

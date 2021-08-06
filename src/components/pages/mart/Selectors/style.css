@@ -4,22 +4,22 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 4px;
-    background-color: white;
-    border: solid 1px #ddd;
+    max-height: 500px;
+    overflow-y: auto;
 
 }
 
 .search-selector-title{
-    font-size: 16px;
+    font-size: 18px;
     text-align: left;
     width: 100%;
     padding: 2px 6px;
-    background-color: rgb(206, 212, 212);
+    font-weight: bold;
 }
 
 .search-selector nav{
     width: 100%;
+    padding-top: 8px;
 
 
 }
@@ -29,31 +29,27 @@
     list-style-type: none;
     margin: 0; padding: 0;
     display: flex; flex-direction: column;
-    gap: 2px;
-
-
+    gap: 4px;
 }
 .search-selector li{
     display: flex; flex-direction: row; align-items: center;
-    width: 100%; height: 40px;
-    background-color: rgb(241, 241, 241);
-    padding-left: 32px;
+    width: 100%; height: 26px;
+    border-radius: 20px;
+    padding-left: 24px;
+    cursor: pointer;
+    gap: 8px;
 }
 .search-selector li:hover{
-    display: flex; flex-direction: row; align-items: center;
-    width: 100%; height: 40px;
-    outline: solid 2px rgb(203, 220, 231);
-    padding-left: 32px;
-    cursor: default;
+    color:rgb(211, 78, 1) ;
 }
 
 .search-selector li.search-selector-selected{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255,.4);
     position: relative;
 
 }
 
-.search-selector li.search-selector-selected::after{
+/* .search-selector li.search-selector-selected::after{
     content: "selecionado";
     position: absolute;
     top: 0; right: 6px; bottom: 0;
@@ -65,3 +61,4 @@
     border-radius: 4px;
 }
 
+ */

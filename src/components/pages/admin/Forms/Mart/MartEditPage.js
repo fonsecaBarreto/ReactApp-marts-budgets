@@ -71,6 +71,11 @@ export default withRouter(({history}) =>{
             
                 <div className="app-container">
                     <React.Fragment>
+
+                        <AdminCommonToolBar freeze={freeze} className="desktop-only">
+                            {id &&  <button className={`warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}>  Deletar </button> }
+                            <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
+                        </AdminCommonToolBar>
                         
                         { !id ?
                             <React.Fragment>
@@ -83,7 +88,7 @@ export default withRouter(({history}) =>{
                             </React.Fragment>
                         }
 
-                        <AdminCommonToolBar freeze={freeze}>
+                        <AdminCommonToolBar freeze={freeze} className="mobile-only">
                             {id &&  <button className={`warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}>  Deletar </button> }
                             <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
                         </AdminCommonToolBar>

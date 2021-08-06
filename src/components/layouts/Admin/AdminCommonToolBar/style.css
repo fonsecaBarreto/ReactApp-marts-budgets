@@ -2,7 +2,7 @@
     box-sizing: border-box;
     height: fit-content;
     overflow: hidden;
-    margin-bottom: 8px;
+    margin: 0;
 }
 
 .admin-common-tool-bar-content{
@@ -16,11 +16,13 @@
 /* Buttons */
 
 .admin-common-tool-bar button{
+    display: flex; flex-direction: row; align-items: center; justify-content: center;
+    gap: 10px   ;
     position: relative;
     width: fit-content; height: 46px;
     cursor: pointer; border: none;
     padding: 0 64px;
-    font-size: 14px; font-weight: bold;
+    font-size: 16px; font-weight: bold;
     border-radius: 5px;
     color: white;
     background-color: var(--admin-aside-color);
@@ -56,10 +58,6 @@
    top: 0; left: 0; 
    width: calc(100%); height: calc(100%);
    border-radius: 6px;
-/* background-image: url(../../../../assets//loading-line.svg); 
-   background-repeat: no-repeat;
-   background-position: center;  */
-   
    background: linear-gradient(270deg, #e7e7e7, #dddd, #eeeeee);
    background-size: 300% 300%;
    -webkit-animation: AnimationName 2s ease infinite;
@@ -72,16 +70,11 @@
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
-@keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-
 
 @media only screen and (max-width: 756px){
     .admin-common-tool-bar button{
         width: 100%!important;
+        padding:0;
 
     
     }

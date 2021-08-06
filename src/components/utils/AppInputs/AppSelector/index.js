@@ -35,7 +35,7 @@ export const SelectorState = (onLoad) =>{
 
 
 
-export default ({onLoad, value,  onInput, component:Component}) =>{
+export default ({onLoad, value,  onInput, component:Component, }) =>{
     const state = SelectorState(onLoad)
     const { data, text, setText, show, setShow, loading,  handleOnLoad} = state
 

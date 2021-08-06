@@ -7,22 +7,17 @@ export const martsProductsApi = MakeApi(`${global.base_url}/products`, errorHand
 
 /* categories */
 
+export const ListCategoriesScrew = async (offset=0, text="") => {
+  const { data } = await martscategoryApi.send({method: "get", url:`/screw?v=${text}&o=${offset}`}) 
+  return data
+}
 
 export const listPrimariesService = async ( ) => {
     const { data } = await martscategoryApi.send({method: "get", url:"/primaries"}) 
     return data
 }
 
-export const MartslistCategoriesWithFilter = async (params={}) => {
-    const offset = params.offset || 0
-    const queries = params.queries || {}
-    const text = queries.text || ''
-    const { data } = await martscategoryApi.send({method: "get", url:`/list?v=${text}&o=${offset}`}) 
-    return data
-}
-
 /* products */
-
 export const listBrandsService = async ( ) => {
     const { data } = await martsProductsApi.send({method: "get", url:"/brands"}) 
     return data
@@ -30,22 +25,20 @@ export const listBrandsService = async ( ) => {
 
 export const ProductsSearchService = async (params, pageIndex) => {
 
-  console.log(params, pageIndex)
   const  { categories, brands, text } = params
+
   var query  = `?v=${text}&p=${pageIndex}`
 
   if(categories.length > 0){
-    categories.forEach(category_id=>{
-      query+=`&c=${category_id}` 
+    categories.forEach(category=>{
+      query+=`&c=${category.id}` 
     })
   }
   if(brands.length > 0){
     brands.forEach(brand=>{
-      query+=`&b=${brand}` 
+      query+=`&b=${brand.id}` 
     })
   }
-
-  console.log(query)
 
   const { data } = await martsProductsApi.send({method: "get", url:`/search/${query}`}) 
   return data
