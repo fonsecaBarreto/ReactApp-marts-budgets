@@ -51,7 +51,7 @@ export default withRouter(({ history }) =>{
             "Cadastrado com successo!", 
             "Obrigado pela confiança, entraremos em contato em breve!",
             "Sucesso!",
-            async () => {  history.push("/marts/orcamento") })
+            async () => {  history.push("/") })
     }
 
     const handleSignInSuccess = () => { history.push("/marts/orcamento") }

@@ -102,6 +102,9 @@ body {
    color: #666;
 }
 
+.w100{
+  width: 100%;
+}
 /* display */
 
 .flex-row{
@@ -178,4 +181,8 @@ body {
 .light-button:hover{
   color: rgb(53, 117, 255);
   text-decoration: underline solid 1pt rgb(53, 117, 255);
+}
+
+.bd-red{
+  border: solid 2px red;
 }

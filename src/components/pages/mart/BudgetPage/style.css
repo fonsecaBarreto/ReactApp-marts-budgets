@@ -1,10 +1,10 @@
 #budget-page{
     background-color: var(--main-bg-color);
     min-height: 100vh;
-
     display: flex;
     flex-direction: column;
     height: 100%;
+    border: solid 2px red;
 }
 
 #budget-page .budget-page-search-content{
@@ -12,17 +12,16 @@
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: 300px 1fr;
-    gap: 18px;
-
+    gap: 12px;
+    border: solid 2px blue;
 }
 
 .filtering-column{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;
+    height: 100%;
     gap: 20px;
     padding: 0 10px;
+    border: solid 2px red;
 }
 
 @media screen and (max-width: 960px){
@@ -33,4 +32,4 @@
         gap: 20px;
     } 
     
-}
+} 

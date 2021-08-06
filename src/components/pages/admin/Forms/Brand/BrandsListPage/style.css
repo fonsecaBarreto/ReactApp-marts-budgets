@@ -1,0 +1,52 @@
+.brands-flow{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+    border-radius: 6px;
+    border: solid 1px #ddd;
+    padding: 6px 0;
+}
+
+.brands-flow-item{
+
+    width: calc(100% - 10px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+    padding: 0 22px;
+    cursor: default;
+}
+
+.brands-flow-item.selected{
+    background: rgba(80, 111, 170, 0.2);
+    cursor: default;
+}
+
+.bfi-name{
+    padding: 6px 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    text-align: left;
+}
+
+.brands-flow-item:hover{
+    background-color: rgba(125, 170, 230, 0.3);
+    outline: solid 2px rgba(66, 110, 204, 0.3); 
+}
+
+.brands-flow-item .editButton{
+    border-radius: 50%;
+    margin-right: 0;
+    margin-left: auto;
+    border: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+

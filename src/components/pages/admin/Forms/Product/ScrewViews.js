@@ -23,8 +23,9 @@ export const BrandItemView = ({entry}) => {
     return (<span className="screw-item-view">
         
         <span className="font-bold  ">
-            {entry.name}
+            {name}
         </span>
+
 
     </span>)
 }

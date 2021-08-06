@@ -3,12 +3,15 @@ import React, { useState, useEffect } from 'react';
 import FormRow from '../../../../utils/FormRow'
 import { findProductService, saveProductservice, removeProductService } from '../../../../../services/products-service'
 import { ListCategoriesScrew } from '../../../../../services/category-service'
-import { ListBrandsScrew } from '../../../../../services/brand-service'
+
 import ImageInput from '../../../../utils/AppInputs/ImageInput';
 import { getFilePath } from '../../../../../services/utils-service'
 import AppSelector from '../../../../utils/AppInputs/AppSelector'
 
 import { BrandItemView, CategoyItemView } from './ScrewViews'
+
+
+import CustomSelectRowfrom from './CustomSelectRow'
 
 const INITIAL_DATA = {
     id: "",
@@ -34,15 +37,30 @@ const INITIAL_DATA = {
 
 
 export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
+
     const { id, category, description, presentation, stock, price, ncm, ean, sku, brand, image, image_file } = inputs
     return (
-        <AdminForm title={"Produto"} columns={[6,6,6,6,3,3,2,2,2,6]} loading={freeze}>
+        <AdminForm title={"Produto"} columns={[6,6,6,6,6,3,3,2,2,2,6,6]} loading={freeze}>
 
             <FormRow label="Imagem" error={errors?.['image']}>
                 <ImageInput src={image} file={image_file} 
                     setFile={value=> handleInputs('image_file', value)}
                     setSrc={value=> handleInputs('image', value)} >
                 </ImageInput>
+            </FormRow>
+
+            <FormRow label="Categoria" error={errors?.['category_id']}>
+
+                <AppSelector 
+                    onLoad={ListCategoriesScrew}
+                    value={category}
+                    component={CategoyItemView}
+                    onInput={category =>{
+                        if(!category) return handleInputs('category',INITIAL_DATA.category)
+                        handleInputs('category',{label: category.name, value: category.id})
+                    }}>
+                </AppSelector>
+
             </FormRow>
 
             <FormRow className="product-description-textarea" label="Descrição" error={errors?.['description']}>
@@ -53,19 +71,14 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
                 <input value={presentation || ''} type="text" onInput={e=>handleInputs('presentation',e.target.value)}></input>
             </FormRow>
 
-            <FormRow label="Marcas" error={errors?.['brand_id']}>
-
-                <AppSelector 
-                    onLoad={ListBrandsScrew}
-                    value={brand}
-                    component={BrandItemView}
-                    onInput={brand =>{
-                        if(!brand) return handleInputs('brand',INITIAL_DATA.brand)
-                        handleInputs('brand',{label: brand.name, value: brand.id})
-                    }}>
-                </AppSelector>
-    
-            </FormRow>
+            <CustomSelectRowfrom
+                label="Marcas" error={errors?.['brand_id']}
+                value={brand}
+                onInput={brand =>{
+                    if(!brand) return handleInputs('brand',INITIAL_DATA.brand)
+                    handleInputs('brand',{label: brand.name, value: brand.id})
+                }}
+            ></CustomSelectRowfrom>
 
             <FormRow label="Quantidade em estoque" error={errors?.['stock']}>
                 <input value={stock || 0} type="number"  step="1" pattern="\d*"  onInput={e=>handleInputs('stock',e.target.value)}></input>
@@ -87,20 +100,9 @@ export const RootForm = ({ inputs, handleInputs, errors, freeze }) =>{
                 <input value={ncm || ''} type="text" onInput={e=>handleInputs('ncm',e.target.value)}></input>
             </FormRow>
 
-            <FormRow label="Categoria" error={errors?.['category_id']}>
-
-                <AppSelector 
-                    onLoad={ListCategoriesScrew}
-                    value={category}
-                    component={CategoyItemView}
-                    onInput={category =>{
-                        if(!category) return handleInputs('category',INITIAL_DATA.category)
-                        handleInputs('category',{label: category.name, value: category.id})
-                    }}>
-                </AppSelector>
-    
-            </FormRow>
-
+           
+                
+       
 
         </AdminForm>
     )

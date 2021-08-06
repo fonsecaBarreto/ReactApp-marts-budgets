@@ -11,22 +11,20 @@ export default withRouter(({history}) =>{
     const state = FeedState()
     return (
         <div id="budget-page">
-            ORÇAMENTO ONLINE
-       
-            <div className="budget-page-search-content">
+            <div className="budget-page-search-content app-container">
        
                 <div className="filtering-column ">
                     <PrimariesCategoriesFlow state={state}></PrimariesCategoriesFlow>
-                    <BrandsSelector state={state}></BrandsSelector>
                 </div>
 
-                <div>
+                {/* <div>
                     <SearchBar state={state}></SearchBar>
                     <ProductFeed state={state}></ProductFeed>
-                </div>
+                </div>  */}
 
             </div>
           
         </div>
     )
 })
+{/*   <BrandsSelector state={state}></BrandsSelector> */}

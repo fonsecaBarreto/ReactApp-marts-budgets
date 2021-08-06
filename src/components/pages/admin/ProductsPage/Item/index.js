@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 import './style.css'
 
-import { AiOutlineShop, AiOutlineBell, AiOutlinePaperClip } from 'react-icons/ai'
-
 import { FiEdit } from 'react-icons/fi'
-import { HiChevronDown } from 'react-icons/hi'
 
 import { getFilePath } from '../../../../../services/utils-service'
 import { Link } from 'react-router-dom'

@@ -1,0 +1,17 @@
+.custom-selection-button{
+
+    display: flex; flex-direction: row; align-items: center; justify-content: center;
+    width: 36px; height: 36px;
+    border-radius: 50%; border: none;
+    background-color: var(--admin-aside-color);
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    
+}
+.custom-selection-button:hover{
+
+    background-color: var(--admin-aside-light-color);
+
+    
+}
