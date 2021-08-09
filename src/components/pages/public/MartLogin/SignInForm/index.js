@@ -1,10 +1,11 @@
 import React, { useState } from "react"
-import FormRow from '../../../utils/FormRow'
+import './style.css'
+import LoginFormRow from '../LoginFormRow'
 
-import { signInService, forgotPasswordService} from '../../../../services/mart-login-service'
-import { RiShieldKeyholeLine, RiShieldUserLine } from 'react-icons/ri'
+import { signInService, forgotPasswordService} from '../../../../../services/mart-login-service'
+import { RiShieldKeyholeLine, } from 'react-icons/ri'
 import { useDispatch } from  'react-redux'
-import { setMart } from '../../../../store/reducers/global/actions'
+import { setMart } from '../../../../../store/reducers/global/actions'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { RiLockPasswordLine } from 'react-icons/ri'
 const INITIAL_SIGNIN_DATA = {
@@ -68,19 +69,19 @@ export default ({setLoading, inputs, errors, setErrors, handleInputs, toggleMode
     return(
         <form className={` login-form signin-form `}>
 
-            <FormRow label="E-mail, Telefone ou CNPJ/CPF" error={errors?.['credentials']}>
+            <LoginFormRow label="E-mail, Telefone ou CNPJ/CPF" error={errors?.['credentials']} fixedLabel>
                 <div className="login-input-wrapper">
                     <FaRegUserCircle className="liw-icon"></FaRegUserCircle>
                     <input autoFocus value={credentials} type="text" onInput={e=>handleInputs('credentials',e.target.value)}></input>
                 </div>
-            </FormRow>
+            </LoginFormRow>
 
-            <FormRow label="Senha de Acesso" error={errors?.['password']}>
+            <LoginFormRow label="Senha de Acesso" error={errors?.['password']} fixedLabel>
                 <div className="login-input-wrapper">
                     <RiLockPasswordLine className="liw-icon"></RiLockPasswordLine>
                     <input value={password} type="password" onInput={e=>handleInputs('password',e.target.value)}></input>
                 </div>
-            </FormRow>
+            </LoginFormRow>
 
             <button onClick={submit} 
                 className={`una-login-form-button ${ sending ? 'loading': 'false' }`} > 

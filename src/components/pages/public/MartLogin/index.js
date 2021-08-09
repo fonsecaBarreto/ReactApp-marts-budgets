@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
+import './root.css'
 import './style.css'
 
+
 import SignUpForm, { SignUpState } from './SignUpForm'
-import SignInForm, { SignInState } from './SignInForm.js'
+import SignInForm, { SignInState } from './SignInForm/index.js'
 import { withRouter } from 'react-router-dom'
 import WarningDialog, { WarningState } from '../../../utils/WarningDialog'
 import Logo from '../../../../assets/logo2.svg'
 
 export default withRouter(({ history }) =>{
-
     const dialogState = WarningState()
-
     const [ loading, setLoading ] = useState(false)
     const [ toSignup, setToSignup ] = useState(false)
     const signinState = SignInState()

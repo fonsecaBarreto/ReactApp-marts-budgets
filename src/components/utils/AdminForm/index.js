@@ -1,7 +1,7 @@
 import React from "react";
 import './style.css'
 
-export default function AdminForm({ title, children, columns = [], loading, toolbar }){
+export default function AdminForm({ title, children, columns = [], loading, toolbar, created_at, updated_at }){
 
     const classNames = [ "one","two","three","four","five","six" ]
     return (
@@ -15,6 +15,14 @@ export default function AdminForm({ title, children, columns = [], loading, tool
                 </div>
 
                 { toolbar && <div className="admin-form-tool-bar"> { toolbar } </div>}
+
+
+
+              {/*   { created_at && <span className="flex-row muted small"> Criado em:
+                    <span className="font-bold"> {created_at} </span> </span>}
+
+                { updated_at && <span className="flex-row muted small"> Atualizado em:
+                    <span className="font-bold"> {updated_at} </span> </span>} */}
             </div>
         </div>
   

@@ -4,6 +4,19 @@ import { errorHandler } from './helpers/ErrorHandler'
 
 export const martApi = MakeApi(`${global.base_url}/marts`, errorHandler, global.storage_key_admin)
 
+export const addressApi = MakeApi(`${global.base_url}/addresses`, errorHandler, global.storage_key_admin)
+
+
+
+export const updateAddressService = async (inputs) =>{
+  const { id, address, address_region, address_number, address_postalcode, address_city, uf,  details } = inputs;
+  const body = { address, address_region, address_number, address_postalcode, address_city, uf,  details }
+  const { data } =await addressApi.send({method: "PUT", url:`/${id}`, data: body})
+  return data
+}
+
+
+
 export const listMartsService = async () => {
   const { data } = await martApi.send({method: "get", url:"/"}) 
   return data
@@ -35,12 +48,12 @@ export const removeMartService = async ( id ) => {
 }
 
 export const saveMartService = async ( inputs ) => {
-  const { id, name, email, phone, cnpj_cpf, transfer_allowed, password, passwordConfirmation } = inputs
+  const { id, name, email, phone, cnpj_cpf, transfer_allowed, password, passwordConfirmation, responsible_name, financial_email, corporate_name, obs, address } = inputs
   const METHOD = id ? 'PUT' : 'POST' 
   const URL = id ? `/${id}` : '/'
 
-  const data = id ? { name, email, phone, cnpj_cpf, transfer_allowed } :
-   { name, email, phone, cnpj_cpf, transfer_allowed, password, passwordConfirmation  }
+  const data = id ? { name, email, phone, cnpj_cpf, transfer_allowed, responsible_name, financial_email, corporate_name, obs } :
+   { name, email, phone, cnpj_cpf, transfer_allowed, password, passwordConfirmation, responsible_name, financial_email, corporate_name, obs, address: JSON.stringify(address)  }
 
   const resp = await martApi.send({method: METHOD, url:URL, data })
   return resp.data

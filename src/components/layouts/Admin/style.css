@@ -50,11 +50,41 @@ main.admin-content{
     min-height: 100vh;
 }
 
+.admin-form-page{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    max-width: 1224px;
+    margin: auto;
+    padding: 0 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.admin-form-page.freeze::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    margin: auto;
+    width: 100%; height: 100%;
+    background-color: rgba(250, 250, 250, 0.4);
+    background-repeat: no-repeat;
+    background-position: center 120px;
+    z-index: 99; 
+}  
+  
+
+
 @media only screen and (max-width: 960px){
     #admin-layout {  grid-template-areas: "header header" "adminBar adminBar" "content content"; }
     header.admin-header{  display: block; }
     .admin-bar {
         height: 56px;
+    }
+    .admin-form-page{
+
+        padding: 0 12px;
     }
 
     

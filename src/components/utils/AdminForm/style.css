@@ -4,9 +4,7 @@
     background-color: rgb(248, 248, 248);
     box-sizing: border-box;
     margin: 0;
-    padding: 16px 0 56px ;
-    margin-bottom: 22px;
-    margin-top: 22px;
+    padding: 16px 0 28px ;
     border-radius: 6px;
     position: relative;
     box-shadow: 0px 0px 1px 1px #0002; 
@@ -19,22 +17,21 @@
 
 .admin-form-container .admin-form  .ad-title{
     position: relative;
-    font-size: 25px;
+    font-size: 20px;
     color:var(--admin-aside-color);
     text-align: left;
     font-weight: bold;
     z-index: 0;
     margin-bottom: 24px;
     width: fit-content;
-    padding: 0px 26px;
+    padding: 0px 18px;
 }
 
  .admin-form .ad-title::before{
     content: "";
-    position: absolute; bottom: -7px; left: 0px;
-    width: calc(100% + 20px );  height: 5px;
-    background-color: var(--admin-aside-light-color);
-  /*   border-bottom: solid 3px rgb(233, 42, 42); */
+    position: absolute; bottom: -4px; left: 0px;
+    width: calc(100% + 20px );  height: 4px;
+    background-color: var(--admin-aside-color);
     z-index: -1
 } 
 
@@ -43,8 +40,8 @@
 .admin-form .form-grid{
     width: 100%; height: 100%;
     display: grid;
-    column-gap: 16px;
-    row-gap: 10px;
+    column-gap: 10px;
+    row-gap: 6px;
     grid-template-columns: repeat(6, 1fr);
     grid-row: auto;
     padding: 0 16px;
@@ -75,6 +72,10 @@
 @media only screen and (max-width: 756px){
     .admin-form .form-grid .grid-row{
         grid-column: 6 span!important;
+    }
+    .admin-form .form-grid{
+        padding: 0 8px 0px;
+     
     }
 }
 
@@ -107,12 +108,4 @@
  100%{background-position:0% 50%}
 }
 
-
-@media only screen and (max-width: 756px){
-    .admin-form .form-grid{
-        padding: 0 8px 0px;
-     
-    }
-
-}
 

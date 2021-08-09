@@ -34,7 +34,7 @@ export default ({data, onClick}) =>{
                      } 
 
 
-                    <Link to={`/admins/marts/update?md=${id}`} className="mart-opt-btn">
+                    <Link to={`/admins/marts/update?id=${id}`} className="mart-opt-btn">
                         <span className={'font-bold '}> 
                             <FiEdit></FiEdit> 
                         </span> 

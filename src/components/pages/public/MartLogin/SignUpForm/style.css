@@ -47,7 +47,6 @@
     padding: 0;
     height: fit-content;
     transform : scale(1.3);
-    border: solid 2px red;
  } 
  
 .login-check-box label{

@@ -8,6 +8,7 @@ import LoadingComp from '../../../../utils/LoadingComp';
 
 import AdminCommonToolBar from '../../../../layouts/Admin/AdminCommonToolBar';
 import { PasswordForm, RootForm } from './Forms'
+import AddressForm from './AddressForm'
 
 
 export default withRouter(({history}) =>{
@@ -80,6 +81,10 @@ export default withRouter(({history}) =>{
                         { !id ?
                             <React.Fragment>
                                 <RootForm {...state} ></RootForm>
+                                <AddressForm   inputs={state.inputs.address} onInput={state.handleAddressInputs} 
+                                    errors={ state.errors?.['address']}  setErrors={ (value) => state.setErrors(prev => ({...prev, address: value })) }>
+
+                                </AddressForm>
                                 <PasswordForm {...state} ></PasswordForm> 
                             </React.Fragment>
                             :
@@ -92,6 +97,8 @@ export default withRouter(({history}) =>{
                             {id &&  <button className={`warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}>  Deletar </button> }
                             <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
                         </AdminCommonToolBar>
+
+              
 
                     </React.Fragment>
                 </div>
