@@ -26,27 +26,25 @@
 }
 
 .app-custom-selector input{
-    height: 50px;
-    padding: 0 0 0 42px;
+    height: 50px!important;
+    padding: 0 0 0 42px!important;
 }
 .app-custom-selector-item-wrapper{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: center;
-    justify-content:center;
-    height: 36px!important;
     width: 100%;
     animation-name: slideUp;
     animation-duration: .5s;
     animation-timing-function: ease ;
     cursor: default;
     text-align: left;
+    min-height: 36px;
+
 }
+
 .app-custom-selector-item-wrapper:hover{
     outline: solid 2px rgb(58, 108, 150,.3);
     background-color: rgba(97, 156, 190, 0.2);
 }
+
 .app-custom-selector-body{
     position: absolute;
     display: flex;
@@ -61,7 +59,6 @@
     overflow-y: auto;
     transition: all .2s;
     z-index: 99;
-
 }
 
 .acs-close {
@@ -72,7 +69,6 @@
     display: none;
     width: 28px; height: 28px;
     color: #bbb;
-/*     border: solid 2px red; */
 }
 
 .acs-close.show{
@@ -104,6 +100,5 @@
 .app-custom-selector-body.show{
     height: fit-content;
     max-height: 240px;
-    box-shadow: 0px 2px 3px 2px #0003;
-    
+    box-shadow: 0px 2px 3px 2px #0004;
 }

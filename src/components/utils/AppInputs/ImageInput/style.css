@@ -1,10 +1,6 @@
 .image-input{
-   
-    display: flex; flex-direction: row; align-items: center; justify-content: center;
     width: 100%;
-    padding: 4px 0;
-    gap: 10px;
-   
+    gap: 10px; 
 }
 
 .image-input .image-content{
@@ -12,8 +8,8 @@
     overflow: hidden;
     font: inherit;
     border-radius: 6px;
-    height: 180px;
-    min-width: 180px;
+    height: 160px;
+    min-width: 160px;
     background-color: rgb(233, 233, 233);
     border: dashed 2px #ddd;
 }

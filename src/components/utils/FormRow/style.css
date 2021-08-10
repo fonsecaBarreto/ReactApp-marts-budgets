@@ -8,10 +8,11 @@
 
 .form-row label{
     width: fit-content; font-size: 14px;
-    letter-spacing: .05em; line-height: 1.5em;
+    letter-spacing: .05em; line-height: 1.2em;
+    margin-bottom: 6px;
     color: rgb(17, 56, 128);
     font-weight: bold;
-    padding-left: 4px;
+    padding-left: 2px;
     font-family: 'Oxygen', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -44,12 +45,10 @@
     margin-right: 6px;
 }
 
-
 .form-row textarea{
-    height: 120px;
+    height: 158px!important;
     padding: 8px 12px;
 }
-
 
 /* warning */
 .form-row.warning input[type=text] {

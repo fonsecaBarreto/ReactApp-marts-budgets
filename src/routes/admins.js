@@ -19,12 +19,17 @@ import CategoriesPage from '../components/pages/admin/CategoriesPage'
 import MartCreatePage from '../components/pages/admin/Forms/Mart/presentation/CreatePage'
 import MartUpdatePage from '../components/pages/admin/Forms/Mart/presentation/UpdatePage'
 
-/* provider0 */
+/* provider */
 import ProviderCreatePage from '../components/pages/admin/Forms/Provider/presentation/CreatePage'
 import ProviderUpdatePage from '../components/pages/admin/Forms/Provider/presentation/UpdatePage'
 
+/* product */
+import ProductCreatePage from '../components/pages/admin/Forms/Product/presentation/CreatePage'
+import ProductUpdatePage from '../components/pages/admin/Forms/Product/presentation/UpdatePage'
+ 
+
 import CategoryEditPage from '../components/pages/admin/Forms/Category/CategoryEditPage'
-import ProductEditPage from '../components/pages/admin/Forms/Product/ProductEditPage'
+
 
 export default () => {
     return (
@@ -37,8 +42,8 @@ export default () => {
         <Guard path="/admins/budgets" exact access="adminonly" >  <AdminLayout>  <BudgetsPage >  </BudgetsPage>  </AdminLayout></Guard>
 
         <Guard path="/admins/products" exact access="adminonly" >  <AdminLayout>  <ProductsPage >  </ProductsPage>  </AdminLayout></Guard>
-        <Guard path="/admins/products/create" exact access="adminonly" >  <AdminLayout>  <ProductEditPage >  </ProductEditPage>  </AdminLayout></Guard>
-        <Guard path="/admins/products/update" exact access="adminonly" >  <AdminLayout>  <ProductEditPage >  </ProductEditPage>  </AdminLayout></Guard>
+        <Guard path="/admins/products/create" exact access="adminonly" >  <AdminLayout>  <ProductCreatePage >  </ProductCreatePage>  </AdminLayout></Guard>
+        <Guard path="/admins/products/update" exact access="adminonly" >  <AdminLayout>  <ProductUpdatePage >  </ProductUpdatePage>  </AdminLayout></Guard>
 
         <Guard path="/admins/marts" exact access="adminonly" >  <AdminLayout>  <MartsPage >  </MartsPage>  </AdminLayout></Guard>
         <Guard path="/admins/marts/create" exact access="adminonly" >  <AdminLayout>  <MartCreatePage >  </MartCreatePage>  </AdminLayout></Guard>

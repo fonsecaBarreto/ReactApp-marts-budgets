@@ -35,7 +35,6 @@ export default ({label, error, value , onInput}) =>{
                         onInput={onInput}>
                     </AppSelector>
                 </div>
-    
             </FormRow>
 
             <BrandEditModal 

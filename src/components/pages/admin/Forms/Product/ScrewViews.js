@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { IoMdArrowDropleft } from 'react-icons/io'
 export const CategoyItemView = ({entry}) => {
 
@@ -7,7 +8,7 @@ export const CategoyItemView = ({entry}) => {
     return (<span className="screw-item-view">
         
         <span className="font-bold  ">
-            {entry.name}
+            cat {name}
         </span>
 
         {bread_crumbs?.length > 0 && bread_crumbs.map((b,i)=>(
