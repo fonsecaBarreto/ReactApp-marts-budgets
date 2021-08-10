@@ -35,12 +35,9 @@ export default withRouter(({ history }) =>{
     },[history, history.location])
 
     const handleErrors = (err) =>{
-           /*      case "InvalidRequestBodyError" : dialogState.showFailure(err.message);break
-            case "EmailInUseError": dialogState.showFailure(err.message);break  */
         switch(err.name){
             case "InvalidFileBufferError": {
                 dialogState.showFailure("Atenção!",err.message)
-                signupState.setAnnex(null)
             };break;
             default: dialogState.showFailure(err.message)
         }
@@ -96,7 +93,7 @@ export default withRouter(({ history }) =>{
                         onError={handleErrors}
                         onSuccess={handleSuccess}>
                     </SignUpForm> 
-                    <span className="small-span">Copyright©2021, UnaCompras. Todos os direitos reservados.</span>
+                    <span className="small-span">Copyright © 2021, UnaCompras. Todos os direitos reservados.</span>
                 </div>
             </div>
 

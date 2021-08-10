@@ -37,14 +37,14 @@ export const FormState = () =>{
 }
 
 
-const RootForm = ({ inputs, errorsState, clearAll }) =>{
+const RootForm = ({ inputs, errorsState, clearAll, children}) =>{
 
     const { data, handleInputs } = inputs
     const { name, email, cnpj_cpf, phone, transfer_allowed, corporate_name, financial_email, responsible_name, obs, updated_at, created_at } = data
     const { errors, setErrors } = errorsState
 
     return (
-        <AdminForm title={"Informações Gerais"} columns={[6,4,2,4,2,3,3,6,6,6]} updated_at={updated_at} created_at={created_at}>
+        <AdminForm title={"Estabelecimento"} columns={[6,4,2,4,2,3,3,6,6,6,6]} updated_at={updated_at} created_at={created_at}>
 
             <FormRow label="Nome da empresa *" error={errors?.['name']}>
                 <input value={name || ''} type="text" onInput={e=>handleInputs('name',e.target.value)}></input>
@@ -71,7 +71,7 @@ const RootForm = ({ inputs, errorsState, clearAll }) =>{
             </FormRow>
 
             <FormRow label="Email Financeiro" error={errors?.['financial_email']}>
-                <input value={financial_email || ''} type="text" onInput={e=>handleInputs('financial_email',e.target.value)}></input>
+                <input  autoComplete="off" value={financial_email || ''} type="text" onInput={e=>handleInputs('financial_email',e.target.value)}></input>
             </FormRow>
 
 
@@ -83,6 +83,8 @@ const RootForm = ({ inputs, errorsState, clearAll }) =>{
                 <input type="checkbox" checked={transfer_allowed} onChange={(e)=>handleInputs('transfer_allowed',!transfer_allowed)}></input>
                 <label> Autorização pra re-envio </label>
             </FormRow>
+
+            {children && children}
 
         </AdminForm>
     )

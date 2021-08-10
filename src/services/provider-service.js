@@ -29,11 +29,13 @@ export const removeProviderService = async ( id ) => {
 }
 
 export const saveProviderService = async ( inputs ) => {
-  const { id, name, email, phone, cnpj, obs, corporate_name } = inputs
+  const { id, name, email, phone, cnpj, obs, corporate_name, financial_email, responsible_name, address } = inputs
 
   const METHOD = id ? 'PUT' : 'POST' 
   const URL = id ? `/${id}` : '/'
-  const data = { name, email, phone, cnpj, obs, corporate_name }
+
+  const data = id ? { name, email, phone, cnpj, obs, corporate_name, financial_email, responsible_name } 
+  : { name, email, phone, cnpj, obs, corporate_name, financial_email, responsible_name, address: JSON.stringify(address) }
 
   const resp = await providerApi.send({method: METHOD, url:URL, data })
   return resp.data

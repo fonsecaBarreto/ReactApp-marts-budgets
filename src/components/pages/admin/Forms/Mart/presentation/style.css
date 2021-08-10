@@ -9,3 +9,17 @@
 
 
 }
+
+.mart-annex-item{
+    display: block;
+    text-align: left;
+    border-radius: 4px;
+    margin: 8px 6px;
+    color: #111;
+    
+}
+
+.mart-annex-item:hover{
+    color: var(--admin-aside-color);
+    
+}

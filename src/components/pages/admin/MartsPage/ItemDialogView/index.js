@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './style.css'
 import Dialog from '../../../../utils/Dialog'
-import { joinService } from '../../../../../services/mart-service'
+import { joinService, removeMartService } from '../../../../../services/mart-service'
 import WarningDialog, { WarningState } from '../../../../../components/utils/WarningDialog'
 import { AiFillShop, AiOutlinePaperClip } from 'react-icons/ai'
 import { getFilePath } from '../../../../../services/utils-service'
@@ -10,7 +10,7 @@ export default ({ mart, setMart, updateMart}) => {
 
     const warningState = WarningState()
     const [ sending, setSending ] = useState(false)
-    const { name, email, phone, cnpj_cpf, isActive, annex } = mart
+    const { name, email, phone, cnpj_cpf, isActive } = mart
 
     const join  = async () =>{
         setSending(true)
@@ -26,6 +26,23 @@ export default ({ mart, setMart, updateMart}) => {
         }
         setSending(false)
     }
+
+    const remove = async () =>{
+
+        setSending(true)
+        try{
+            const result = await removeMartService(mart.id)
+            warningState.showSuccess("Estabelecimento Deletado com sucesso!", ``, "Feito!",() =>{
+                updateMart(result)
+                setMart(null)
+            })
+          
+        }catch(err){ 
+            warningState.showFailure(err.message)
+        }
+        setSending(false)
+        
+    }
     return (
         <React.Fragment>
 
@@ -34,36 +51,28 @@ export default ({ mart, setMart, updateMart}) => {
 
                     <div className={`midv-content`}>
 
-                            <span className="midv-info">
-                                Nome: <span className={'font-bold '}> {name} </span>  
-                            </span>
-                                
-                            <span className="midv-info">
-                                E-mail: <span className={'font-bold'}> {email} </span>  
-                            </span>
-            
-                            <span className="midv-info">
-                                Telefone: <span className={'font-bold'}> {phone} </span>  
-                            </span>
+                        <span className="midv-info">
+                            Nome: <span className={'font-bold '}> {name} </span>  
+                        </span>
+                            
+                        <span className="midv-info">
+                            E-mail: <span className={'font-bold'}> {email} </span>  
+                        </span>
+        
+                        <span className="midv-info">
+                            Telefone: <span className={'font-bold'}> {phone} </span>  
+                        </span>
 
-                            <span className="midv-info">
-                            Cnpj/cpf: <span className={'font-bold'}> {cnpj_cpf} </span>  
-                            </span>
-
-                            { annex && 
-                                <a href={getFilePath(annex)} target='_blank' className="mart-item-info">
-                                    <span className={'font-bold '}>  <AiOutlinePaperClip></AiOutlinePaperClip> 
-                                        Anexo 
-                                    </span> 
-                                </a>
-                            }
+                        <span className="midv-info">
+                        Cnpj/cpf: <span className={'font-bold'}> {cnpj_cpf} </span>  
+                        </span>
 
                     </div>
 
                 {  isActive === false && <div className={`midv-status`}>
             
                         <button className="midv-success-btn" onClick={join}>Aceitar</button>
-                        <button className="midv-warning-btn ">Deletar</button>
+                        <button className="midv-warning-btn " onClick={remove}>Deletar</button>
                     </div>}
                 </div>
 

@@ -67,18 +67,23 @@ export default ({inputs, errors, setErrors, onInput}) =>{
                 </LoginFormRow> 
 
                 <LoginFormRow className="c4" label="Logradouro *" error={addressErrors?.['address']}
+                    placeholder={"Exemplo: Rua Silva"}
                     input={MakeTextInput({value:address, onInput:e=> { onInput('address',e.target.value) }})} > </LoginFormRow> 
 
                 <LoginFormRow className="c2" label="Numero *" error={addressErrors?.['address_number']}
+                    placeholder={"Exemplo: 99"}
                     input={MakeTextInput({value:address_number, onInput:e=> { onInput('address_number',e.target.value) }})} > </LoginFormRow> 
 
                 <LoginFormRow className="c6" label="Bairro *" error={addressErrors?.['address_region']}
+                    placeholder={"Exemplo: Bairro das Flores"}
                     input={MakeTextInput({value:address_region, onInput:e=> { onInput('address_region',e.target.value) }})} > </LoginFormRow> 
 
                 <LoginFormRow className="c6" label="Cidade *" error={addressErrors?.['address_city']}
+                    placeholder={"Exemplo: Macaé"}
                     input={MakeTextInput({value:address_city, onInput:e=> { onInput('address_city',e.target.value) }})} > </LoginFormRow> 
 
                 <LoginFormRow className="c6" label="Complemento " error={addressErrors?.['details']}
+                    placeholder={"Exemplo: Proximo a fármacia"}
                     input={MakeTextInput({value:details, onInput:e=> { onInput('details',e.target.value) }})} > </LoginFormRow> 
 
             </div>

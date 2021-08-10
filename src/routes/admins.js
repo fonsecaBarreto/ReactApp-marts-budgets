@@ -19,8 +19,10 @@ import CategoriesPage from '../components/pages/admin/CategoriesPage'
 import MartCreatePage from '../components/pages/admin/Forms/Mart/presentation/CreatePage'
 import MartUpdatePage from '../components/pages/admin/Forms/Mart/presentation/UpdatePage'
 
+/* provider0 */
+import ProviderCreatePage from '../components/pages/admin/Forms/Provider/presentation/CreatePage'
+import ProviderUpdatePage from '../components/pages/admin/Forms/Provider/presentation/UpdatePage'
 
-import ProviderEditPage from '../components/pages/admin/Forms/Provider/ProviderEditPage'
 import CategoryEditPage from '../components/pages/admin/Forms/Category/CategoryEditPage'
 import ProductEditPage from '../components/pages/admin/Forms/Product/ProductEditPage'
 
@@ -43,8 +45,8 @@ export default () => {
         <Guard path="/admins/marts/update" exact access="adminonly" >  <AdminLayout>  <MartUpdatePage >  </MartUpdatePage>  </AdminLayout></Guard>
 
         <Guard path="/admins/providers" exact access="adminonly" >  <AdminLayout>  <ProvidersPage >  </ProvidersPage>  </AdminLayout></Guard>
-        <Guard path="/admins/providers/create" exact access="adminonly" >  <AdminLayout>  <ProviderEditPage >  </ProviderEditPage>  </AdminLayout></Guard>
-        <Guard path="/admins/providers/update" exact access="adminonly" >  <AdminLayout>  <ProviderEditPage >  </ProviderEditPage>  </AdminLayout></Guard>
+        <Guard path="/admins/providers/create" exact access="adminonly" >  <AdminLayout>  <ProviderCreatePage >  </ProviderCreatePage>  </AdminLayout></Guard>
+        <Guard path="/admins/providers/update" exact access="adminonly" >  <AdminLayout>  <ProviderUpdatePage >  </ProviderUpdatePage>  </AdminLayout></Guard>
 
 
         <Guard path="/admins/categories" exact access="adminonly" >  <AdminLayout>  <CategoriesPage >  </CategoriesPage>  </AdminLayout></Guard>

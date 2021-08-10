@@ -16,12 +16,6 @@ export const updateAddressService = async (inputs) =>{
 }
 
 
-
-export const listMartsService = async () => {
-  const { data } = await martApi.send({method: "get", url:"/"}) 
-  return data
-}
-
 export const listMartsWithFilterService = async (params={}) => {
   const offset = params.offset || 0
   const queries = params.queries || {}
@@ -58,4 +52,10 @@ export const saveMartService = async ( inputs ) => {
   const resp = await martApi.send({method: METHOD, url:URL, data })
   return resp.data
 
+}
+
+/*  */
+export const listMartsService = async () => {
+  const { data } = await martApi.send({method: "get", url:"/"}) 
+  return data
 }

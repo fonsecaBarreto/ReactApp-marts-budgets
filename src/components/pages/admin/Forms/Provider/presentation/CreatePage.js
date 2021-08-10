@@ -4,34 +4,35 @@ import './style.css'
 
 import WarningDialog, { WarningState } from '../../../../../utils/WarningDialog'
 import AdminCommonToolBar from '../../../../../layouts/Admin/AdminCommonToolBar'
+import { saveProviderService } from '../../../../../../services/provider-service'
 
 import RootForm, { FormState } from '../RootForm';
-import SecurityForm, { FormState as SecurityFormState } from '../SecurityForm'
 import AddressForm, { FormState as AddressFormState } from '../../AddressForm';
-
-import { saveMartService } from '../../../../../../services/mart-service'
 
 export default withRouter(({history}) =>{
 
     const [ loading, setLoading ] = useState(false)
-
-    const rootState = FormState()
-    const securityState = SecurityFormState()
-    const addressState = AddressFormState()
     const dialogState = WarningState()
+    const rootState = FormState()
+    const addressState = AddressFormState()
 
-    const inputs = { ...rootState.inputs.data, ...securityState.inputs.data, address: { ...addressState.inputs.data } }
+    useEffect(()=>{
+        let isMounted = true;    
+        return () => { isMounted = false }; // cl
+    },[])
 
     const create = async () => {
         setLoading(true)
+
+        const inputs = { ...rootState.inputs.data, address: { ...addressState.inputs.data } }
+        
         try{
-            const result = await saveMartService(inputs)
-            return dialogState.showSuccess("Novo estabelecimento cadastrado com sucesso","","", () =>{
-                history.push(`/admins/marts/update?id=${result.id}`) 
+            const result = await saveProviderService(inputs)
+            return dialogState.showSuccess("Novo Fornecedor cadastrado com sucesso","","", () =>{
+                history.push(`/admins/providers/update?id=${result.id}`) 
             })
         } catch(err) {
             if(err.params) rootState.errorsState.setErrors(err.params)
-            if(err.params) securityState.errorsState.setErrors(err.params)
             if(err.params?.address && typeof err.params?.address === "object" ){
                 addressState.errorsState.setErrors(err.params.address)
             }
@@ -40,22 +41,17 @@ export default withRouter(({history}) =>{
         setLoading(false)
     }
 
-    useEffect(()=>{
-        let isMounted = true;    
-     
-        return () => { isMounted = false }; // cl
-    },[])
 
     return (
-        <div id="admin-mart-create-page" className={`admin-form-page ${loading? 'freeze' : ''}`}>
+        <div id="admin-provider-create-page" className={`admin-form-page ${loading? 'freeze' : ''}`}>
           
             <AdminCommonToolBar>
                 <button onClick={create}>  Cadastrar </button>
             </AdminCommonToolBar>
 
             <RootForm { ...rootState }></RootForm>
-            <SecurityForm { ...securityState }></SecurityForm>
-            <AddressForm {...addressState}></AddressForm>
+           
+            <AddressForm {...addressState}></AddressForm> 
 
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         

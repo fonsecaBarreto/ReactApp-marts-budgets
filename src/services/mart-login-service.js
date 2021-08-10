@@ -19,9 +19,17 @@ export const changePassword = async (inputs) =>{
 }
 
 export const signUpService = async (inputs) =>  {
-  const { name, email, cnpj_cpf, phone, transfer_allowed, responsible_name, address,  annex} = inputs
+  const { name, email, cnpj_cpf, phone, transfer_allowed, responsible_name, address, annexeses} = inputs
+
+
+  
+  
   const formData = new FormData()
-  formData.append('annex',annex)
+
+  for (const i of Object.keys(annexeses)) {
+    formData.append('annexs', annexeses[i]) 
+  }
+
   formData.append('name',name)
   formData.append('email',email)
   formData.append('phone',phone)
@@ -32,7 +40,7 @@ export const signUpService = async (inputs) =>  {
   formData.append('address',JSON.stringify(address))
 
   const {data} = await martloginApi.send({method: "post", url:"/signup", data: formData })
-  return data
+  return data 
 }
 
 export const authService = async () =>{

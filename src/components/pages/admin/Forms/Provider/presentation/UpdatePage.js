@@ -6,37 +6,28 @@ import queryString from 'query-string';
 
 import WarningDialog, { WarningState } from '../../../../../utils/WarningDialog'
 import AdminCommonToolBar from '../../../../../layouts/Admin/AdminCommonToolBar'
-import LoadingComp from '../../../../../utils/LoadingComp';
+import { findProviderService, saveProviderService, removeProviderService } from '../../../../../../services/provider-service'
+import { updateAddressService } from '../../../../../../services/mart-service'
 
 import RootForm, { FormState } from '../RootForm';
-import SecurityForm, { FormState as SecurityFormState } from '../SecurityForm'
 import AddressForm, { FormState as AddressFormState } from '../../AddressForm';
-
-
-import { saveMartService, removeMartService, findMartService, updateAddressService} from '../../../../../../services/mart-service'
-import { getFilePath } from '../../../../../../services/utils-service'
-
-import { AiOutlinePaperClip } from 'react-icons/ai'
 
 export default withRouter(({history}) =>{
 
-    const [ annexes, setAnexess ] = useState([])
     const [ loading, setLoading ] = useState(false)
-    const rootState = FormState()
-    const securityState = SecurityFormState()
-    const addressState = AddressFormState()
     const dialogState = WarningState()
-
+    const rootState = FormState()
+    const addressState = AddressFormState()
 
     useEffect(()=>{
         let isMounted = true;    
         return () => { isMounted = false }; // cl
     },[])
-    
+
     useEffect(()=>{
-        const mart_id = queryString.parse(history.location.search).id
-        if(!mart_id) return history.push("/admins/marts")
-        load(mart_id)
+        const provider_id = queryString.parse(history.location.search).id
+        if(!provider_id) return history.push("/admins/providers")
+        load(provider_id)
      
     },[history.location.search])
 
@@ -44,46 +35,41 @@ export default withRouter(({history}) =>{
         if(!id) return
         setLoading(true)
         try{
-            const result = await findMartService(id)
-            if(!result) throw { message: "Não foi possivel encontrar Estabelecimento requerido"}
+            const result = await findProviderService(id)
+            if(!result) throw { message: "Não foi possivel encontrar Fornecedor requerido"}
             rootState.inputs.setData(result)
             if(result.address){
                 addressState.inputs.setData(result.address)
             }
-            if(result.annexes){
-                setAnexess(result.annexes)
-            }
-
-
-        }catch(err){ dialogState.showFailure(err.message,"","", () => history.push("/admins/marts")  ); }
+        }catch(err){ dialogState.showFailure(err.message,"","", () => history.push("/admins/providers")  ); }
         setLoading(false)
     }
+
 
     const update = async () => {
         setLoading(true)
         try{
-            const result = await saveMartService(rootState.inputs.data)
+            const result = await saveProviderService(rootState.inputs.data)
             rootState.clearAll()
             rootState.inputs.setData(result)
-            dialogState.showSuccess("Informações de Estabelecimento atualizadas com sucesso.")
+            dialogState.showSuccess("Informações de Fornecedor atualizadas com sucesso.")
         } catch(err) {
             if(err.params) rootState.errorsState.setErrors(err.params)
             dialogState.showFailure(err.message)
         } 
-        setLoading(false)
+        setLoading(false) 
     }
 
     const remove = async () => {
-        setLoading(true)
+       setLoading(true)
         try{
-            await removeMartService(rootState.inputs.data.id)
-            rootState.clearAll()
-            dialogState.showSuccess("Estabelecimento Deletado com sucesso.","","", () => history.push("/admins/marts")  )
+            await removeProviderService(rootState.inputs.data.id)
+            dialogState.showSuccess("Fornecedor Deletado com sucesso.","","", () => history.push("/admins/providers")  )
         } catch(err) {
             if(err.params) rootState.errorsState.setErrors(err.params)
             dialogState.showFailure(err.message)
         } 
-        setLoading(false)
+        setLoading(false) 
     }
 
     const updateAddress = async () => {
@@ -91,7 +77,7 @@ export default withRouter(({history}) =>{
         try{
             const result = await updateAddressService(addressState.inputs.data)
         
-           addressState.clearAll()
+            addressState.clearAll()
             addressState.inputs.setData(result) 
             dialogState.showSuccess("Endereço Atualizado com sucesso.")
         } catch(err) {
@@ -102,33 +88,21 @@ export default withRouter(({history}) =>{
     }
 
 
+
     return (
-        <div id="admin-mart-update-page" className={`admin-form-page ${loading? 'freeze' : ''}`}>
+        <div id="admin-provider-update-page" className={`admin-form-page ${loading? 'freeze' : ''}`}>
           
+   
             <AdminCommonToolBar>
-                <button onClick={updateAddress}> Atualizar Endereço</button>
+                 <button onClick={updateAddress}> Atualizar Endereço</button>
                 <button onClick={update}>  Atualizar </button>
                 <button className="warning" onClick={remove}>  Deletar </button>
             </AdminCommonToolBar>
 
-            <RootForm { ...rootState }> </RootForm>
+            <RootForm { ...rootState }></RootForm>
+           
+            <AddressForm {...addressState}></AddressForm> 
 
-            <AddressForm {...addressState}></AddressForm>
-
-
-            { annexes?.length > 0 && <div>
-                    <h4 style={{textAlign:"left", margin: "4px"}}> Anexos:</h4>
-                    {annexes.map((a,i) =>{
-                        return (
-                            <a href={getFilePath(a.name)} key={i} target='_blank' className="mart-annex-item">
-                                <span className={'font-bold '}>  <AiOutlinePaperClip></AiOutlinePaperClip> 
-                                    {a.name} 
-                                </span> 
-                            </a>
-                        )
-                    })}
-                </div> }
-         
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         
         </div>

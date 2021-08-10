@@ -9,7 +9,7 @@ export default withRouter(({ history, data }) =>{
 
     const { id, name, email, phone } = data
 
-    const edit = () =>{  history.push(`/admins/providers/update?pd=${id}`)  }
+    const edit = () =>{  history.push(`/admins/providers/update?id=${id}`)  }
     return (
         <div className="provider-item">
 

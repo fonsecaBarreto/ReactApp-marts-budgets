@@ -1,0 +1,106 @@
+.login-uploads-componenet{
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;
+    width: 100%; height: fit-content;
+    gap: 6px;
+}
+
+.login-uploads-componenet .lup-header{
+    width: 100%; height: 36px;
+    padding: 2px 0;
+    gap: 12px;
+    display: flex; flex-direction: row; align-items: center; justify-content: flex-start;
+
+}
+.login-uploads-componenet .lup-header button{
+    height: 100%;
+    border: none;
+    background-color: var(--admin-aside-color);
+    color: white;
+    font-size: 15px;
+    border-radius: 10px;
+    padding: 0 28px;
+    cursor: pointer;
+}
+
+.login-uploads-componenet .lup-body{
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 5px;
+
+}
+
+.login-uploads-componenet .lup-body .lup-body-item{
+   
+    width: 100%; height: fit-content;
+    display: flex; flex-direction: row; align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    text-align: left;
+    padding: 6px 12px;
+    border-radius: 10px;
+    cursor: default;
+}
+.login-uploads-componenet .lup-body .lup-body-item.warning{
+   
+    background-color: rgb(243, 184, 184,.5);
+}
+
+.login-uploads-componenet .lup-body .lup-body-item:hover{
+    background-color: rgba(35, 110, 196, 0.16);
+}
+
+
+.login-uploads-componenet .lup-body .lup-body-item .lup-bi-icon{
+    font-size: 24px;
+    display: flex; flex-direction: row; align-items: center; justify-content: center;
+
+}
+.login-uploads-componenet .lup-body .lup-body-item .lup-bi-name{
+    font-size: 16px;
+}
+
+.login-uploads-componenet .lup-body .lup-body-item  .lup-bi-close{
+    display: flex; flex-direction: row; align-items: center; justify-content: center;
+    height: 24px;
+    width: 24px;
+    border: none;
+    font-size: 12px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: 0;
+    cursor: pointer;
+}
+
+/*  */
+
+.login-uploads-info{
+    text-align: left;
+    margin: 0;
+
+}
+
+.login-uploads-info ul{
+    padding: 0; padding-left: 22px;
+    border: none;
+    margin: 6px 0 ;
+    color: #222;
+    font-size: 16px;
+}
+
+.login-uploads-info h4{
+    line-height: 1.3em;
+    margin: 0;
+    color: #111;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.login-uploads-info span{
+    line-height: 1em;
+    margin: 0;
+    color: #333;
+    display: block;
+}

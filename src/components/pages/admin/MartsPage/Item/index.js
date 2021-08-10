@@ -13,7 +13,7 @@ export default ({data, onClick}) =>{
 
 
     const [ show, setShow ] = useState(false)
-    const { id, name, email, phone, cnpj_cpf, isActive, annex } = data
+    const { id, name, email, phone, cnpj_cpf, isActive } = data
     return (
         <div className="mart-item">
 
@@ -60,13 +60,13 @@ export default ({data, onClick}) =>{
                         <span className={'font-bold '}> Cnpj/cpf: </span> {cnpj_cpf} </span>
 
 
-                    { annex && 
+                   {/*  { annex && 
                         <a href={getFilePath(annex)} target='_blank' className="mart-item-info">
                             <span className={'font-bold '}>  <AiOutlinePaperClip></AiOutlinePaperClip> 
                                 Anexo 
                             </span> 
                         </a>
-                    }
+                    } */}
 
                     
                 </div>
