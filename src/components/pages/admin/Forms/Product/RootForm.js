@@ -8,6 +8,20 @@ import AppSelector from '../../../../utils/AppInputs/AppSelector'
 import { CategoyItemView } from './ScrewViews'
 
 import CustomSelectRowfrom from './CustomSelectRow'
+
+import { ListItemsScrew } from '../../../../../services/item-service'
+
+
+export const ItemSelectorView = ({entry}) => {
+    const { name } = entry
+    return (<span className="screw-item-view">
+        <span className="font-bold  ">
+            {name}
+        </span>
+    </span>)
+}
+
+
 const INITIAL_DATA = {
     id: null,
     description: "",
@@ -21,7 +35,7 @@ const INITIAL_DATA = {
         label: "",
         value: ""
     },
-    category: {
+    item: {
         label: "",
         value: ""
     }
@@ -46,78 +60,59 @@ export const FormState = () =>{
         clearAll
     }
 
- /*    const load = async (id) =>{
-        setLoading(true)
-        clearInputs()
-        await Promise.all([
-            id &&
-            findProductService(id)
-            .then(result => {
-                if(!result) throw { message: "Não foi possivel encontrar Produto requerido"}
-                clearInputs(result)
-            }).catch(err => { throw err.message })
-        ]).finally(()=>setLoading(false))
-    }
-
-    const save = async () =>{
-        setFreeze(true)
-        try{
-            const result = await saveProductservice(inputs)
-            clearInputs(result)
-            return result
-        } catch(err) {
-            if(err.params) setErrors(err.params)
-            throw err.message
-        } finally {  setFreeze(false) } 
-    }
-
-    const remove = async (id) =>{
-        if(!id) return;
-        setFreeze(true)
-        try{ await removeProductService(id) } 
-        catch(err) { throw err.message} 
-        finally { setFreeze(false) }
-    }
-
-
-    return { handleInputs, inputs, setInputs, errors, setErrors, clearInputs, freeze, loading, save, load, remove } */
 }
 
 
 export const RootForm = ({ inputs, errorsState, clearAll, children }) =>{
 
     const { data, setData, handleInputs } = inputs
-    const { id, category, description, presentation, ncm, ean, sku, brand, image, image_file } = data
+    const { id, item, description, presentation, ncm, ean, sku, brand, image, image_file } = data
     const { errors, setErrors } = errorsState
 
     return (
-        <AdminForm title={"Produto"} columns={[6,1,5,6,6,2,2,2]}>
+        <AdminForm title={"Produto"} columns={[1,5,2,2,2,3,3]}>
 
-            <FormRow label="Categoria" error={errors?.['category_id']}>
-                <AppSelector 
-                    onLoad={ListCategoriesScrew}
-                    value={category}
-                    component={CategoyItemView}
-                    onInput={category =>{
-                        if(!category) return handleInputs('category',INITIAL_DATA.category)
-                        handleInputs('category',{label: category.name, value: category.id})
-                    }}> 
-                </AppSelector>
-            </FormRow>
-
+           
             <FormRow label="Imagem" error={errors?.['image']}>
                 <ImageInput src={image} file={image_file} 
                     setFile={value=> handleInputs('image_file', value)}
                     setSrc={value=> handleInputs('image', value)} >
                 </ImageInput>
             </FormRow>
+            
+            <div className="flex-column">
 
-            <FormRow className="product-description-textarea" label="Descrição" error={errors?.['description']}>
-                <textarea value={description} type="text" onInput={e=>handleInputs('description',e.target.value)}></textarea>
+                <FormRow className="product-description-textarea" label="Especificação" error={errors?.['description']}>
+                    <textarea rows={1} value={description} type="text" onInput={e=>handleInputs('description',e.target.value)}></textarea>
+                </FormRow>
+
+                <FormRow label="Apresentação" error={errors?.['presentation']}>
+                    <input value={presentation || ''} type="text" onInput={e=>handleInputs('presentation',e.target.value)}></input>
+                </FormRow>
+            </div>
+
+            <FormRow label="SKU" error={errors?.['sku']}>
+                <input value={sku || ''} type="text" onInput={e=>handleInputs('sku',e.target.value)}></input>
+            </FormRow>
+          
+            <FormRow label="EAN" error={errors?.['ean']}>
+                <input value={ean || ''} type="text" onInput={e=>handleInputs('ean',e.target.value)}></input>
             </FormRow>
 
-            <FormRow label="Apresentação" error={errors?.['presentation']}>
-                <input value={presentation || ''} type="text" onInput={e=>handleInputs('presentation',e.target.value)}></input>
+            <FormRow label="NCM" error={errors?.['ncm']}>
+                <input value={ncm || ''} type="text" onInput={e=>handleInputs('ncm',e.target.value)}></input>
+            </FormRow>
+
+            <FormRow label={"Item"} error={errors?.['item_id']}>
+                <AppSelector 
+                    onLoad={ListItemsScrew}
+                    value={item}
+                    component={ItemSelectorView}
+                    onInput={result =>{
+                        if(!result) return handleInputs('item',INITIAL_DATA.item)
+                        handleInputs('item',{label: result.name, value: result.id})
+                    }}>
+                </AppSelector>
             </FormRow>
 
             <CustomSelectRowfrom
@@ -128,18 +123,6 @@ export const RootForm = ({ inputs, errorsState, clearAll, children }) =>{
                     handleInputs('brand',{label: brand.name, value: brand.id})
                 }}
             ></CustomSelectRowfrom>
-
-            <FormRow label="SKU" error={errors?.['sku']}>
-                <input value={sku || ''} type="text" onInput={e=>handleInputs('sku',e.target.value)}></input>
-            </FormRow>
-          
-            <FormRow label="Codigo de Barras (EAN)" error={errors?.['ean']}>
-                <input value={ean || ''} type="text" onInput={e=>handleInputs('ean',e.target.value)}></input>
-            </FormRow>
-
-            <FormRow label="NCM" error={errors?.['ncm']}>
-                <input value={ncm || ''} type="text" onInput={e=>handleInputs('ncm',e.target.value)}></input>
-            </FormRow>
         
         </AdminForm>
     )

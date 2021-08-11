@@ -29,9 +29,13 @@ export default ({ value, show, onClose, onInput}) =>{
             <div className="brand-edit-modal">
                 <div className="bem-header flex-row">
                     { editForm.show == true  && <button onClick={()=>handleClick(false, null)}> Voltar </button> }
-                    { editForm.show == false && <button onClick={()=>handleClick(true, null)} className="bem-add-btn">Adicionar</button> }
+                    { editForm.show == false && <button onClick={()=>handleClick(true, null)} >Novo </button> }
        
                 </div>
+
+        
+               
+                    
                 {
                     editForm.show == true ?
                         <BrandEditForm
@@ -41,18 +45,13 @@ export default ({ value, show, onClose, onInput}) =>{
                     :
                     <React.Fragment>
 
+                        <div className="brand-edit-modal-tool-bar">
+                            <input disabled type="text" value={value ? value.label : ""}></input>
+                            <button onClick={onClose}> Feito </button>
+                        </div> 
+
                         <BrandsListPage value={value} onClick={handleClick} onSelection={onInput}></BrandsListPage>
                       
-                        <FormRow label="Marca Selecionada:">
-                            <input disabled type="text" value={value ? value.label : ""}></input>
-                        </FormRow>
-                        
-
-                        <AdminCommonToolBar>
-
-
-                            <button style={{marginTop: 8}} onClick={onClose}> Feito </button>
-                        </AdminCommonToolBar>
                       
                     </React.Fragment>
                 }

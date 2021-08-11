@@ -32,17 +32,7 @@ const MENU_STRUCT = [
                 icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
                 back: "/admins/panel",
             },
-            {
-                title: "Adicionar",  to: "/admins/products/create",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/products",
-            },
-            {
-                title: "Adicionar",  to: "/admins/products/update",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/products",
-                hide: true
-            },
+          
             {
                 title: "Categorias", to: "/admins/categories",
                 icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
@@ -50,14 +40,39 @@ const MENU_STRUCT = [
             },
             {
                 title: "Adicionar Categoria", to: "/admins/categories/create",
-                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
                 back: "/admins/categories",
                 hide: true
+
             },
             {
                 title: "Editar Categoria", to: "/admins/categories/update",
                 icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
                 back: "/admins/categories",
+                hide: true
+            },
+            {
+                title: "Adicionar Item", to: "/admins/items/create",
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                back: "/admins/products",
+
+            },
+            {
+                title: "Editar Item", to: "/admins/items/update",
+                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
+                back: "/admins/products",
+                hide: true
+            },
+
+            {
+                title: "Adicionar Produto",  to: "/admins/products/create",
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                back: "/admins/products",
+            },
+            {
+                title: "Editar",  to: "/admins/products/update",
+                icon: <AiFillPlusCircle></AiFillPlusCircle>,
+                back: "/admins/products",
                 hide: true
             },
         ]

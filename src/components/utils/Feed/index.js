@@ -58,10 +58,11 @@ export default ({ component: Component, state, children, onClick }) =>{
     return (
         <div className="app-feed">
 
-            {children}
 
             <ResulInfo total={ feed.total } count={feed.data.length} subTotal={feed.subTotal} > </ResulInfo>
 
+            {children}
+            
             <div className={`app-feed-flow`}>
                 { feed.data.map((n,i)=>{
                     return <Component key={i} data={n} onClick={onClick}> </Component> 

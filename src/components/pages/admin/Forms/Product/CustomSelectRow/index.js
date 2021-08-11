@@ -26,7 +26,6 @@ export default ({label, error, value , onInput}) =>{
 
             <FormRow label={label} error={error}>
                 <div className="flex-row w100 aln-center ">
-                    <button className="custom-selection-button" onClick={()=>setShowModal(true)}> <CgSelect></CgSelect> </button>
                 
                     <AppSelector 
                         onLoad={ListBrandsScrew}
@@ -34,6 +33,7 @@ export default ({label, error, value , onInput}) =>{
                         component={BrandItemView}
                         onInput={onInput}>
                     </AppSelector>
+                    <button className="custom-selection-button" onClick={()=>setShowModal(true)}> <CgSelect></CgSelect> </button>
                 </div>
             </FormRow>
 
