@@ -1,0 +1,13 @@
+.akustb-forecast-selector{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+.akustb-forecast-selector select{
+    width: 100%;
+
+    padding: 0 12px;
+}
+

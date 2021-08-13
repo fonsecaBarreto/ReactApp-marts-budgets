@@ -3,7 +3,7 @@ import '../style.css'
 import './style.css'
 
 import { listBrandsService } from '../../../../../services/mart-product-search-service'
-import { batch } from 'react-redux'
+
 
 export default ({state}) =>{
 

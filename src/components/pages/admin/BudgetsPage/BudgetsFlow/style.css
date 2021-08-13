@@ -1,0 +1,29 @@
+.budget-list-flow{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 8px;
+    padding: 20px 0;
+    border-radius: 2px;
+}
+
+
+
+
+@media only screen and (max-width: 1360px) {
+    .budget-list-flow{
+
+        grid-template-columns: repeat(2,1fr);
+
+    }
+    
+}
+
+
+@media only screen and (max-width: 756px) {
+    .budget-list-flow{
+
+        grid-template-columns: repeat(1,1fr);
+
+    }
+    
+}

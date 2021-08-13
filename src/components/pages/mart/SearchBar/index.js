@@ -13,7 +13,7 @@ export default ({state}) =>{
  
     }
     const search = () => {
-        state.loadFeed(0)
+        state.loadFeed(0, false)
     }
     const handleKeys = (e) =>{
         if(e.key === "Enter") return search()
@@ -29,6 +29,10 @@ export default ({state}) =>{
             <span className="float-bloom">
                <BsSearch></BsSearch>
             </span>
+
+            <button onClick={search}>
+                Buscar
+            </button>
     
         </div>
     )

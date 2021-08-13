@@ -9,7 +9,7 @@ import { MdSecurity } from 'react-icons/md'
 
 
 
-export default ({pages, show, onItemClick, currentPage}) =>{
+export default ({pages, show, currentPage}) =>{
 
 
     const isSelected = (page) => {
@@ -23,7 +23,7 @@ export default ({pages, show, onItemClick, currentPage}) =>{
     return (<aside className={`admin-menu ${show ? 'show' : ''}`}>
         <nav>
             <div className="adm-layout-menu-logo desktop-only">
-     
+
                 <img src={Logo}></img>
                 <span>
                      <MdSecurity></MdSecurity> 
@@ -34,7 +34,7 @@ export default ({pages, show, onItemClick, currentPage}) =>{
                 {              
                     pages.map((p,i)=>{
                         if(!p.hide) return (
-                        <MenuItem { ...p} key={i}  emitClick={onItemClick} selected={isSelected(p)}> </MenuItem>)
+                        <MenuItem { ...p} key={i}   selected={isSelected(p)}> </MenuItem>)
                     })
                 }
       

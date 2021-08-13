@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { BsArrowReturnRight } from 'react-icons/bs'
-export default withRouter(({ history, title, subs, icon, to, emitClick, selected }) =>{
+export default withRouter(({ history, title, subs, icon, to, selected }) =>{
 
     const [ show, setShow ] = useState(false)
     const click = (to, subs) =>{
         to && history.push(to)
         subs && setShow(!show)
-        emitClick(to)
+  
     }
     return (
     <li className={`adm-menu-item ${selected ? 'selected' : ''}`} > 
@@ -19,7 +19,6 @@ export default withRouter(({ history, title, subs, icon, to, emitClick, selected
         { (subs && subs.length > 0 ) &&
             
             <div className={`adm-menu-item-body ${show? 'show' : ""}`}>
-
                 {subs.map((c,i)=>{
                     if(!c.hide) return (
                         <span className={`adm-menu-item-body-sub-item ${i == subs.length - 1 ? 'end' : ''} `}
@@ -29,7 +28,6 @@ export default withRouter(({ history, title, subs, icon, to, emitClick, selected
                         </span>
                     )
                 })}
-
             </div>
         }
     </li>)

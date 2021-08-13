@@ -18,8 +18,8 @@ export default withRouter(({history}) =>{
                 <SearchBar state={state}></SearchBar>
                  
                 <div className="filtering-column ">
-                    <PrimariesCategoriesSelector state={state}></PrimariesCategoriesSelector>
                     <BrandsSelector state={state}></BrandsSelector>
+                    <PrimariesCategoriesSelector state={state}></PrimariesCategoriesSelector>
                 </div>
                 <div>
                    
@@ -31,4 +31,3 @@ export default withRouter(({history}) =>{
         </div>
     )
 })
-{/*   <BrandsSelector state={state}></BrandsSelector> */}

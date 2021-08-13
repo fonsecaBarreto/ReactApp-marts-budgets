@@ -37,6 +37,11 @@
     cursor: default;
     text-align: left;
     min-height: 36px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 
 }
 
@@ -86,9 +91,12 @@
 /*  */
 .acs-status{
     position: absolute;
-    top: 14px;
+    top: 0; bottom: 0;
     left: 12px;
+    margin: auto;
     font-size: 22px;
+    line-height: 22px;
+    height: fit-content;
 }
 .acs-status.success{
     color: rgb(55, 148, 97);

@@ -1,42 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import  './style.css'
 import AdminDropDown from '../AdminDropDown'
-import { IoIosArrowBack, IoMdArrowDropright } from 'react-icons/io'
-import { withRouter } from 'react-router-dom'
-export default withRouter(({ history, admin, pages, currentPage}) =>{
-
-    const [ backRoute, setBackRoute ]  = useState('/admins/panel')
-    const [ title, setTitle ]  = useState('Una Compras - Sistema Administrativo')
-
-    useEffect(()=>{
-      
-        var page = pages.find(p=>p.to === currentPage)
-        if(page) return page.title
-        
-        var title = ""
-        let backroute = "/admins/panel"
-        if(!page){
-            pages.map(p => {
-                if(!p.subs) return
-                p.subs.forEach(sp=>{ 
-                    if(sp.to === currentPage){
-                        if (sp.back) backroute = sp.back
-                        title =  (<React.Fragment> { p.title}  <IoMdArrowDropright/>  {sp.title} </React.Fragment>)
-                    }
-                }) 
-            })
-        }
-        setBackRoute(backroute)
-        setTitle(title)
-
-    },[currentPage])
+import { IoIosArrowBack } from 'react-icons/io'
 
 
+export default ({ admin, title, goBack }) =>{
 
-    const goBack = () => {
-        return history.push(backRoute || '/admins/panel')
-    }
-    
     return (
         <div className="admin-bar app-padding"> 
     
@@ -55,4 +24,4 @@ export default withRouter(({ history, admin, pages, currentPage}) =>{
    
         </div>
     )
-})
+}

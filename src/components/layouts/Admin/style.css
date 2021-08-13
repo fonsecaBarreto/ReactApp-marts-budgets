@@ -77,10 +77,10 @@ main.admin-content{
 
 
 @media only screen and (max-width: 960px){
-    #admin-layout {  grid-template-areas: "header header" "adminBar adminBar" "content content"; }
+    #admin-layout {  grid-template-areas: "header header" "content content" "content content"; }
     header.admin-header{  display: block; }
     .admin-bar {
-        height: 56px;
+        display: none!important;
     }
     .admin-form-page{
 

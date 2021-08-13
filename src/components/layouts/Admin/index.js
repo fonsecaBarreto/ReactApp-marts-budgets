@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './style.css'
+import './utils.css'
 import { withRouter, Link} from "react-router-dom"
 import { useSelector } from 'react-redux'
 
@@ -8,139 +9,55 @@ import AdminMenu from './AdminMenu'
 import AdminBar from './AdminBar'
 
 
-import { AiFillShop, AiTwotoneShopping, AiFillDashboard, AiOutlineUnorderedList, AiFillPlusCircle} from 'react-icons/ai'
-import { FaArchive, FaTimes, FaTruck } from 'react-icons/fa'
+import { IoIosArrowBack, IoMdArrowDropright } from 'react-icons/io'
+import { MENU_STRUCT } from './ADMINS_PAGES'
 
-import { BiPackage} from 'react-icons/bi'
-import { CgNotes } from 'react-icons/cg'
-import { RiPriceTag2Fill } from 'react-icons/ri'
+export const PagesState = ( pages ) =>{
+    const [ backRoute, setBackRoute ]  = useState('/admins/panel')
+    const [ title, setTitle ]  = useState('Una Compras - Sistema Administrativo')
+    const setConfig = (currentPage) =>{
+        var page = pages.find(p=>p.to === currentPage)
+        var title = page ? page.title : ""
+        let backroute = page?.back ? page.back : "/admins/panel"
+        if(!page){
+            pages.map(p => {
+                if(!p.subs) return 
+                p.subs.forEach(sp=>{ 
+                    if(sp.to === currentPage){
+                        if (sp.back) backroute = sp.back
+                        title =  (<React.Fragment> { p.title}  <IoMdArrowDropright/>  {sp.title} </React.Fragment>)
+                    }
+                }) 
+            })
+        }
 
+        setBackRoute(backroute)
+        setTitle(title)
+    }
+    return { title, backRoute, setConfig }
+}
 
-const MENU_STRUCT = [
-
-    {
-        title: "Painel", to: "/admins/panel",
-        icon: <AiFillDashboard></AiFillDashboard>,
-    },
-   
-    {
-        title: "Produtos",
-        icon: <BiPackage></BiPackage>,
-        subs: [
-            {
-                title: "Listagem",  to: "/admins/products",
-                icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-                back: "/admins/panel",
-            },
-          
-            {
-                title: "Categorias", to: "/admins/categories",
-                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
-                back: "/admins/panel",
-            },
-            {
-                title: "Adicionar Categoria", to: "/admins/categories/create",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/categories",
-                hide: true
-
-            },
-            {
-                title: "Editar Categoria", to: "/admins/categories/update",
-                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
-                back: "/admins/categories",
-                hide: true
-            },
-            {
-                title: "Adicionar Item", to: "/admins/items/create",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/products",
-
-            },
-            {
-                title: "Editar Item", to: "/admins/items/update",
-                icon: <RiPriceTag2Fill></RiPriceTag2Fill>,
-                back: "/admins/products",
-                hide: true
-            },
-
-            {
-                title: "Adicionar Produto",  to: "/admins/products/create",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/products",
-            },
-            {
-                title: "Editar",  to: "/admins/products/update",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/products",
-                hide: true
-            },
-        ]
-    },
-    {
-        title: "Estabelecimentos",
-        icon: <AiFillShop></AiFillShop>,
-    
-        subs: [
-            {
-                title: "Listagem",  to: "/admins/marts",
-                icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-                back: "/admins/panel",
-            },
-            {
-                title: "Adicionar",  to: "/admins/marts/create",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/marts",
-        
-            },
-            {
-                title: "Editar",  to: "/admins/marts/update",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/marts",
-                hide: true
-            },
-        ]
-    },
-    {
-        title: "Fornecedores",
-        icon: <FaTruck></FaTruck>,
-        subs: [
-            {
-                title: "Listagem",  to: "/admins/providers",
-                icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-                back: "/admins/panel",
-            },
-            {
-                title: "Adicionar",  to: "/admins/providers/create",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/providers",
-     
-            },
-            {
-                title: "Editar",  to: "/admins/providers/update",
-                icon: <AiFillPlusCircle></AiFillPlusCircle>,
-                back: "/admins/providers",
-                hide: true
-            },
-        ]
-    },
-   
-   /*  {
-        title: "Orçamentos",   to: "/admins/budgets",
-        icon: <CgNotes></CgNotes>,
-    }, */
-]
 
 export default withRouter(({ history, children}) =>{
 
     const { mart, admin } = useSelector(state => state.global)
+
+    const { title, backRoute, setConfig } = PagesState(MENU_STRUCT)
+
     const [ currentPage, setCurrentPage ] = useState(null)
     const [ showMenu, setShowMenu ] = useState(false)
 
-    const handleClick = (to) =>{
+ 
+
+    useEffect(()=>{
+        setConfig(currentPage)
         setShowMenu(false)
-       /*  setCurrentPage(to) */
+    },[currentPage])
+
+    const goBack = () => {
+        return history.push(backRoute || '/admins/panel')
     }
+
     useEffect(()=>{
         if(!history.location) return 
         setCurrentPage(history.location.pathname) 
@@ -149,11 +66,11 @@ export default withRouter(({ history, children}) =>{
     return (
     <div id="admin-layout">
 
-        <AdminHeader toggle={()=>setShowMenu(!showMenu)}></AdminHeader>
+        <AdminHeader toggle={()=>setShowMenu(!showMenu)}  title={title} goBack={goBack}></AdminHeader>
 
-        <AdminBar pages={MENU_STRUCT} currentPage={currentPage} ></AdminBar>
+        <AdminBar title={title} goBack={goBack} ></AdminBar>
 
-        <AdminMenu pages={MENU_STRUCT} currentPage={currentPage} show={showMenu} onItemClick={handleClick} ></AdminMenu>
+        <AdminMenu pages={MENU_STRUCT} currentPage={currentPage} show={showMenu}></AdminMenu>
 
         <main className="admin-content">
             {children}
