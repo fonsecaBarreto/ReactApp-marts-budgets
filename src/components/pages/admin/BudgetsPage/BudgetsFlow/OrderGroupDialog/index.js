@@ -26,16 +26,17 @@ export default ({group, setGroup}) =>{
             <div className="orderGroup-modal">
 
                 <div>
-
                     <OrdersGroupListview group={group} singleView ></OrdersGroupListview>
-       
+                </div>
+                <div className="orderGroup-modal-metrics">
+                    <label> Total de pedidos :
+                        <span style={{paddingLeft: 5}}>{orders.length}</span>
+                    </label>
+             
                 </div>
 
-
                 <div>
-                    
                     <OrderTable orders={orders}></OrderTable>
-      
                 </div>
             </div>  
         </Dialog>

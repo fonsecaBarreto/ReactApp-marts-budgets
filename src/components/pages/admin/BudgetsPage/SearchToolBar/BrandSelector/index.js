@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './style.css'
 import AppSelector from '../../../../../utils/AppInputs/AppSelector'
 import { ListBrandsScrew } from '../../../../../../services/brand-service'
 
 export default ({ queriesState, toSearch }) =>{
 
+    const [ wasCalledOnce, setWasCalledOnce ]= useState(false)
     const { queries, setBrands } = queriesState
+
+    useEffect(()=>{ 
+        if(wasCalledOnce === false){ 
+            return setWasCalledOnce(true)
+        }
+        toSearch()
+
+    },[queries.brands])
 
     return (
 

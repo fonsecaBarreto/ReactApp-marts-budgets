@@ -16,8 +16,8 @@ export default ({ordersgroups}) =>{
                 {
                     ordersgroups.length === 0 ? <span> Nada encontrado </span> :
                     
-                    ordersgroups.map(g=>(
-                        <OrdersGroupListview group={g} onClick={handleClick}></OrdersGroupListview>
+                    ordersgroups.map((g,i)=>(
+                        <OrdersGroupListview key={i} group={g} onClick={handleClick}></OrdersGroupListview>
                         ))
                     }
             </div>

@@ -20,7 +20,8 @@ export default ({queriesState, toSearch }) =>{
             <label> Pesquise pelo produto </label>
             <div className=" akustb-row">
 
-                <input type="text" value={queries.product_name} onInput={handleInput} onKeyDown={handleKeyDown}></input>
+                <input style={{paddingLeft: 12}} type="text" value={queries.product_name} onInput={handleInput} onKeyDown={handleKeyDown}
+                placeholder={"Nome do Item, Produto ou EAN"}></input>
 
                 <button  onClick={toSearch} > <BsSearch></BsSearch> 
                     <span className="desktop-only"> </span>

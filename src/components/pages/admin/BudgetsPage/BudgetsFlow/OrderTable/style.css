@@ -1,0 +1,67 @@
+/* flexes */
+.orders-table, .ot-order-row, .ot-order-row label {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.orders-table{
+    flex-direction: column;
+    gap: 6px;
+}
+/* labels */
+.ot-order-row label{
+    font-size: 16px;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.ot-order-row label > :nth-child(1){
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/*  --- */
+.ot-order-row  {
+    flex-direction: row;
+    gap: 10px;
+    padding: 4px 12px;
+    border: solid 1px #ddd;
+    border-radius: 4px;
+}
+
+.ot-order-row > :nth-child(1) {
+    font-size: 32px;
+    line-height: 0px;
+    margin: auto;
+}
+.ot-order-row > :nth-child(2) {
+    width: 100%;
+}
+
+.ot-order-row > :nth-child(3) {
+    width: 100%;
+    margin: auto;
+}
+
+.forecast-highlight{
+    background-color: rgb(27, 87, 177,.3);
+    border-radius: 4px;
+    font-size: 15px!important;
+    line-height: 16px!important;
+    color: rgb(19, 19, 19);
+    padding: 0px 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+
+@media only screen and (max-width: 756px){
+    /* labels */
+    .ot-order-row  {
+        flex-direction: column;
+        gap: 0;
+    }
+}

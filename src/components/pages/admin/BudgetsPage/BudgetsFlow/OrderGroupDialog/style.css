@@ -20,6 +20,14 @@
 }
 
 /*  */
+
+.orderGroup-modal-metrics{
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    padding: 8px 2px;
+}
+
 @media only screen and (max-width: 960px){
     .orderGroup-modal{
         width: 100%;

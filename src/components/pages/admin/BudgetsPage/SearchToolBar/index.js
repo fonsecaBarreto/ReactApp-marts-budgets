@@ -40,7 +40,7 @@ export default withRouter( ({ queriesState, toSearch  }) => {
                 <ForecastPicker  queriesState={queriesState} toSearch={toSearch} ></ForecastPicker>
                 <ProductNameSearch queriesState={queriesState} toSearch={toSearch} ></ProductNameSearch>
                 
-          {/*       <input className="aftb-search-bar" onKeyDown={handleKeyDown} style={{paddingLeft: 10}} value={text} onInput={handleInput} placeholder={label || ''}></input> 
+          {/*       <input className="aftb-search-bar" onKeyDown={handleKeyDown}  value={text} onInput={handleInput} placeholder={label || ''}></input> 
                 { children && children} */}
 
 
