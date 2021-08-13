@@ -24,4 +24,14 @@
     .orderGroup-modal{
         width: 100%;
     }
+    .orderGroup-modal > :nth-child(1){
+        padding: 0
+    }
+
+    .orderGroup-modal > :nth-child(1) img{
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+    }
+    
 }

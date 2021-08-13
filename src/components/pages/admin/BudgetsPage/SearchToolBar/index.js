@@ -36,9 +36,9 @@ export default withRouter( ({ queriesState, toSearch  }) => {
 
             <div className={`akustb-grid`}>
 
-                <ProductNameSearch queriesState={queriesState} toSearch={toSearch} ></ProductNameSearch>
-                <ForecastPicker  queriesState={queriesState} toSearch={toSearch} ></ForecastPicker>
                 <BrandSelector queriesState={queriesState} toSearch={toSearch} ></BrandSelector>
+                <ForecastPicker  queriesState={queriesState} toSearch={toSearch} ></ForecastPicker>
+                <ProductNameSearch queriesState={queriesState} toSearch={toSearch} ></ProductNameSearch>
                 
           {/*       <input className="aftb-search-bar" onKeyDown={handleKeyDown} style={{paddingLeft: 10}} value={text} onInput={handleInput} placeholder={label || ''}></input> 
                 { children && children} */}

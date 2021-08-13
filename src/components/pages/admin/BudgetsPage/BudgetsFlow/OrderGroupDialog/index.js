@@ -5,7 +5,7 @@ import basketImage from '../../../../../../assets/basket.png'
 import Dialog from '../../../../../utils/Dialog'
 
 import OrderTable from '../OrderTable'
-
+import OrdersGroupListview from '../OrdersGroupListview'
 export default ({group, setGroup}) =>{
     const [image, setImage ] = useState(basketImage)
 
@@ -26,14 +26,9 @@ export default ({group, setGroup}) =>{
             <div className="orderGroup-modal">
 
                 <div>
-                    <img src={image}></img>
-                    <div className="flex-column">
-                        <span> {description} </span>
-                        <span className="muted"> {item.label} </span>
-                        <span className="muted smaller"> {presentation} </span>
-                        <span> {brand.label} </span>
-                    </div>
-                    <span className="order-amount"> {quantities} </span>
+
+                    <OrdersGroupListview group={group} singleView ></OrdersGroupListview>
+       
                 </div>
 
 

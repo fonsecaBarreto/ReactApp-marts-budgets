@@ -14,17 +14,14 @@
 }
 
 .akustb-product-name-search-input button {
-    width: 100px;
-    height: 46px;
+    height: 46px; width: 46px;
     background-color: var(--admin-aside-color);
-    border-radius: 6px;
+    border-radius: 8px;
     color: white;
     border: none;
     font-weight: bold;
     display: flex; flex-direction: row; align-items: center; justify-content: center;
-    gap: 6px;
-    padding: 0 20px;
-
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 960px){

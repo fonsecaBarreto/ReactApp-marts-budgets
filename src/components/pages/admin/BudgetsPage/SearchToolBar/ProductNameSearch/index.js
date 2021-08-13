@@ -23,7 +23,7 @@ export default ({queriesState, toSearch }) =>{
                 <input type="text" value={queries.product_name} onInput={handleInput} onKeyDown={handleKeyDown}></input>
 
                 <button  onClick={toSearch} > <BsSearch></BsSearch> 
-                    <span className="desktop-only"> Buscar </span>
+                    <span className="desktop-only"> </span>
                 </button>
             </div>
         </div>

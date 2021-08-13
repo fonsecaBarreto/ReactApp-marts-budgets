@@ -5,14 +5,13 @@
 
 .admin-ku-search-tool-bar .akustb-grid{
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr 3fr;
     grid-template-rows: auto;
     height: fit-content;
     justify-content: flex-end;
     align-items: flex-end;
     gap: 6px;
 }
-
 
 .admin-ku-search-tool-bar .akustb-grid .akustb-wrapper{
     width: 100%;
@@ -21,7 +20,6 @@
     flex-direction: column;
     gap: 4px;
 }
-
 
 .admin-ku-search-tool-bar .akustb-grid input, select{
     border-radius: 6px;
@@ -41,18 +39,16 @@
     flex-direction: row;
     gap: 4px;
 }
-/* 
+
 @media only screen and (max-width: 1424px){
     .admin-ku-search-tool-bar .akustb-grid{
-        grid-template-columns: 2fr 3fr 4fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
-
-} */
+} 
 
 @media only screen and (max-width: 960px){
     .admin-ku-search-tool-bar .akustb-grid{
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
     }
-
 }

@@ -7,24 +7,24 @@ export default ({orders}) =>{
     
         <div className="orders-table">
 
-            <table  className="orders-table">
-                <tr>
-                    <th>Estabelecimento</th>
-                    <th>Prvisão de compra</th>
-                    <th>Realizado em</th>
-                    <th>Quantidade</th>
-                </tr>
+       
+                <div className="oth">
+                    <span>Estabelecimento</span>
+                    <span>Prvisão de compra</span>
+                    <span>Realizado em</span>
+                    <span>Quantidade</span>
+                </div>
                { 
                 orders.map(o =>(
-                    <tr>
-                        <td>{o.mart.label}</td>
-                        <td>{o.forecast}</td>
-                        <td>{o.created_at}</td>
-                        <td>{o.quantity}</td>
-                    </tr>
+                    <div className="otb">
+                        <span>{o.mart.label}</span>
+                        <span>{o.forecast}</span>
+                        <span>{o.created_at}</span>
+                        <span>{o.quantity}</span>
+                    </div>
                 ))
                }
-            </table> 
+
         </div>
     )
 }

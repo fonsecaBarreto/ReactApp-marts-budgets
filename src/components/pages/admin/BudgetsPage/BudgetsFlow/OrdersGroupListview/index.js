@@ -3,7 +3,7 @@ import './style.css'
 import { getFilePath } from '../../../../../../services/utils-service'
 import basketImage from '../../../../../../assets/basket.png'
 
-export default ({group, onClick}) =>{
+export default ({group, onClick, singleView}) =>{
     const [image, setImage ] = useState(basketImage)
 
     useEffect(()=>{
@@ -15,7 +15,7 @@ export default ({group, onClick}) =>{
     }, [group, group.product ])
 
     const handleItemClick = () =>{
-        onClick(group)
+        onClick && onClick(group)
     }
 
     const { quantities, product, orders } = group
@@ -23,7 +23,7 @@ export default ({group, onClick}) =>{
 
     return (
 
-            <div className="order-group-list-view" onClick={handleItemClick}>
+            <div className={`order-group-list-view ${singleView ? 'single' : ''}`} onClick={handleItemClick}>
 
                 <img src={image}></img>
 
@@ -33,7 +33,8 @@ export default ({group, onClick}) =>{
                     <span className="muted small"> {presentation} </span>
                 </div>
                 
-                <span className="order-amount"> {quantities} </span>
+                <span className="order-amount"> 
+                    <span className="oa-c"> {quantities}  </span> pedidos</span>
             
             </div>
       
