@@ -6,11 +6,11 @@ export default ({children, className}) =>{
     return (
         <div className={`admin-common-tool-bar ${className}`}>
             <div className="admin-common-tool-bar-content ">
-                { children } 
+                { React.Children.map(children, (x, i) =>{
+                    return (x)
+                })}
             </div> 
         </div>
     )
-
-
 
 }

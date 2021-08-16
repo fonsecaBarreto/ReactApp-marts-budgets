@@ -11,6 +11,7 @@ export const MENU_STRUCT = [
     {
         title: "Painel", to: "/admins/panel",
         icon: <AiFillDashboard></AiFillDashboard>,
+        hide: true,
     },
 
     {

@@ -22,6 +22,10 @@ export default ({state}) =>{
         state.setBrands(queryBrands)
     }
 
+    const search = () => {
+        state.loadFeed(0, false)
+    }
+
     const clearList = () =>{  state.setBrands([]) }
 
     useEffect(()=>{
@@ -36,7 +40,7 @@ export default ({state}) =>{
 
     return (
         <div className="search-selector">
-               <span className="search-selector-title"> Marcas </span>
+            <span className="search-selector-title"> Marcas </span>
            { loading ? "loading" :
             <nav>
                 <ul>
@@ -56,6 +60,7 @@ export default ({state}) =>{
                 </ul>
             </nav>
             }
+            <button className="soft-btn desktop-only" onClick={search}>Aplicar</button>
         </div>
     )
 }

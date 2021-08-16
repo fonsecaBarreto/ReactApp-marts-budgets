@@ -46,7 +46,6 @@ export const removeCategoriesService = async ( id ) => {
 }
 
 export const saveCategoriesService = async ( inputs ) => {
-  console.log(inputs)
   const { id, name, category_id } = inputs
 
   const METHOD = id ? 'PUT' : 'POST' 

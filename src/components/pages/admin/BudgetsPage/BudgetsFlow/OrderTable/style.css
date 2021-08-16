@@ -1,5 +1,5 @@
 /* flexes */
-.orders-table, .ot-order-row, .ot-order-row label {
+.orders-table, .ot-order-row, .ot-order-row label, .ot-order-row > :nth-child(1)  {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -8,7 +8,7 @@
 
 .orders-table{
     flex-direction: column;
-    gap: 6px;
+    gap: 2px;
 }
 /* labels */
 .ot-order-row label{
@@ -32,9 +32,11 @@
 }
 
 .ot-order-row > :nth-child(1) {
-    font-size: 32px;
+    font-size: 18px;
     line-height: 0px;
     margin: auto;
+    width: fit-content;
+    align-items: center;
 }
 .ot-order-row > :nth-child(2) {
     width: 100%;

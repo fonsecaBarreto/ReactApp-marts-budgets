@@ -119,8 +119,7 @@ export default withRouter(( { setLoading, inputs, errors, setErrors, handleInput
 
             <button onClick={submit} className="una-login-form-button" >  Cadastrar  </button>
 
-           <button className="light-button" onClick={toggleMode}> 
-                Já sou Cadastrado </button> 
+            <button className="light-button" onClick={toggleMode}> Já sou Cadastrado </button> 
 
         </form>
     )

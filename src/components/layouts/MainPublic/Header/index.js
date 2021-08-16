@@ -6,7 +6,10 @@ import Logo from '../../../../assets/logo.svg'
 import HeaderLink from './HeaderLink'
 import { withRouter } from 'react-router-dom'
 
+import { ImExit } from 'react-icons/im'
+import { FaUserCircle } from 'react-icons/fa'
 
+import { logoutService } from '../../../../services/mart-login-service'
 export default withRouter(({toggleMenu, history, admin, mart}) => {
 
 
@@ -25,7 +28,6 @@ export default withRouter(({toggleMenu, history, admin, mart}) => {
     }
     
     useEffect(()=>{
-        console.log(history.location)
         if(["/home",'/home/'].includes(history.location.pathname) ){
             setCurrentPage(history.location.pathname+history.location.hash)
         }
@@ -48,20 +50,36 @@ export default withRouter(({toggleMenu, history, admin, mart}) => {
                    
                         <ul >
                             <HeaderLink to="/inicio" currentPage={currentPage}>Inicio</HeaderLink>
-                            <HeaderLink to="/admin" currentPage={currentPage}>Admin</HeaderLink>
-                            <HeaderLink to="/marts/orcamento" currentPage={currentPage}>Mercado</HeaderLink>
-                          {/*   <HeaderLink to="/inicio/#sobre" currentPage={currentPage}>Sobre</HeaderLink>
-                            <HeaderLink to="/inicio/#contato" currentPage={currentPage}>Contato</HeaderLink> */}
+                            <HeaderLink to="/inicio/#objetivos" currentPage={currentPage}>objetivos</HeaderLink>
+                            <HeaderLink to="/inicio/#sobre" currentPage={currentPage}>Sobre</HeaderLink>
+                           {/*  <HeaderLink to="/inicio/#contato" currentPage={currentPage}>Contato</HeaderLink>  */}
                          {
                             mart ?
-                                <button className="signup-button" onClick={()=>goTo('/marts/orcamento')}> Cotar </button> 
+                                <React.Fragment>
+                                
+                                    {
+                                        history.location.pathname !== "/marts/orcamento" ?
+                                        <button className="mart-area-button" onClick={()=>goTo('/marts/orcamento')}> 
+                                            <FaUserCircle></FaUserCircle>
+                                            Area do Cliente
+                                        </button> 
+                                    :
+
+                                        <button className="mart-area-button" onClick={logoutService}>
+                                            <ImExit></ImExit>
+                                        </button>
+                                    }
+
+                                </React.Fragment>
                             :
+                            history.location.pathname !== "/login" &&
                             <button className="signup-button" onClick={()=>goTo('/login')}> cadastrar-se </button> 
                          } 
+
                         </ul>
                     </nav>
              
-                    <button className="toggle-button mobile-only" > <FaBars></FaBars> </button>
+                    <button className="toggle-button mobile-only" onClick={toggleMenu} > <FaBars></FaBars> </button>
                 </section>
         
             </div>

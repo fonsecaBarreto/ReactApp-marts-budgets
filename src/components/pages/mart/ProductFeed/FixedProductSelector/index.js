@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './style.css'
-import { getFilePath } from '../../../../../services/utils-service'
-import basketImage from '../../../../../assets/basket.png'
+
 import { makeOrder } from '../../../../../services/order-service'
 import WarningDialog, { WarningState } from '../../../../utils/WarningDialog'
+import BudgetRow from './BudgetRow'
+import ProductInfoView from './ProductInfoView'
+import ProductConfirmation from './ProductConfirmation'
 const INITIAL_DATA = { 
     forecast: "",
-    quantity: 0
+    quantity: 1
 }
+
 
 export const SelectorState = () =>{
     const [ data, setData ] = useState(INITIAL_DATA)
@@ -30,30 +33,25 @@ export const SelectorState = () =>{
 
 
 
-export default ({product, data, handleInputs, clear}) =>{
+export default (props) =>{
 
-
+    const [ aboutToBeOrdered, setOboutToBeOdered ] = useState(null)
+    const { product, data, handleInputs, clear }  = props
     const dialogState = WarningState()
-    const [ image, setImage] = useState(null)
 
     const { quantity, forecast } = data
 
-    useEffect(()=>{
-        if(!product) return
-        if(product?.image){
-            setImage(getFilePath(product.image,'mart'))
-        }else{
-            setImage(basketImage)
-        }
 
-    },[product])
-
+    const confirmOrder = () =>{
+        return setOboutToBeOdered(product)
+    }
     const toOrder = async () =>{
         try{
-
-            const { id } = product
+            const { id } = aboutToBeOrdered
             await makeOrder({ product_id: id, forecast, quantity })
             dialogState.showSuccess("Pedido feito com sucesso!")
+            clear()
+       
         }catch(err){
             console.log(err)
             switch(err.name){
@@ -61,6 +59,8 @@ export default ({product, data, handleInputs, clear}) =>{
                 default: dialogState.showFailure(err.message)
             }
         }
+        setOboutToBeOdered(null)
+
     }
 
 
@@ -70,47 +70,15 @@ export default ({product, data, handleInputs, clear}) =>{
             {
                 product &&
                 <div className="fixed-product-selector">
-                    <div className="fpscontainer app-container flex-row">
-
-                        <div>
-                            <img src={image}></img>
-                        </div>
-                        <div className="flex-column espec-column">
-
-                            <span>
-                                <span className="font-bold"> Especificação: </span>
-                                {product.description}
-                            </span>
-                            <span>
-                                <span className="font-bold"> Especificação: </span>
-                                {product.presentation}
-                            </span>
-                            <span>
-                                <span className="font-bold"> Marca: </span>
-                                {product.brand.label}
-                            </span>
-            
-                        </div>
-
-                        <div className="budget-row">
-                            <label> Qtd.
-                                <input type="number" value={quantity} onInput={e=>handleInputs.setQuantity(e.target.value)}></input>
-                            </label>
-
-                            <label> Previsão de compra
-                                <input type="date" id="start" name="trip-start" value={forecast}  onChange={e=>handleInputs.setForecast(e.target.value)}
-                                    /* min="2018-01-01" max="2018-12-31" *//>
-                            </label>
-
-                            <button onClick={toOrder}> cotar</button>
-                        </div>
-
-
-                            <button onClick={clear}> Cancelar</button>
+                    <div className="fpscontainer app-container">
+                  
+                        <ProductInfoView product={product}></ProductInfoView> 
+                        <BudgetRow {...props } toOrder={confirmOrder}></BudgetRow>
                     </div>
                 </div>
             }
 
+           { aboutToBeOrdered && <ProductConfirmation product={aboutToBeOrdered} setProduct={setOboutToBeOdered} toOrder={toOrder}></ProductConfirmation>}
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         </React.Fragment>
     )

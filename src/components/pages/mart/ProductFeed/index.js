@@ -3,7 +3,7 @@ import './style.css'
 import { ItemsSearchService } from '../../../../services/mart-product-search-service'
 import ProductItemClientView from "./ProductItemClientview"
 import FixedProductSelector, { SelectorState } from './FixedProductSelector'
-
+import LoadingComp from '../../../../components/utils/LoadingComp'
 const INITIAL_DATA = { 
     total: 0,
     subTotal: 0, // total to the searchs
@@ -17,8 +17,7 @@ const INITIAL_QUERIES = {
 }
 
 export const FeedState = () =>{
-
-
+    
     const [ queries, setQueries] = useState(INITIAL_QUERIES)
     const [ data, setData ] = useState(INITIAL_DATA)
     const [ loading, setLoading ] = useState(false)
@@ -72,15 +71,15 @@ export default ({state}) =>{
         <div className="mart-product-feed">
 
             <div className='mart-item-feed-flow'>
-                { data.items.map(i=>{
-                    if( i.products?.length) return ( <ProductItemClientView item={i} onProduct={selectorState.open}> </ProductItemClientView> )
+                { data.items.map((i,index)=>{
+                    if( i.products?.length) return ( <ProductItemClientView key={index} item={i} onProduct={selectorState.open}> </ProductItemClientView> )
                 })} 
             </div> 
 
             <React.Fragment>
                 <div ref={lastItemRef}> </div>
-                {loading && <span className="app-custom-selector-item-wrapper"> Procurando </span> }
-                {(!loading && data.items.length === 0 ) && <span className="app-custom-selector-item-wrapper muted">  Nada encontrado </span> }   
+                { loading && <LoadingComp></LoadingComp> }
+                {(!loading && data.items.length === 0 ) && <span className="mart-feed-base-text muted">  Nada encontrado </span> }   
             </React.Fragment>
 
             <FixedProductSelector {...selectorState }></FixedProductSelector>

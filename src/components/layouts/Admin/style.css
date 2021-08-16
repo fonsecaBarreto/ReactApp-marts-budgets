@@ -76,6 +76,7 @@ main.admin-content{
   
 
 
+
 @media only screen and (max-width: 960px){
     #admin-layout {  grid-template-areas: "header header" "content content" "content content"; }
     header.admin-header{  display: block; }
@@ -86,6 +87,13 @@ main.admin-content{
 
         padding: 0 12px;
     }
+
+ /*    .admin-tool-bar-grid{
+        display: grid;
+        grid-template-columns: 1fr  ;
+        grid-template-rows:  auto;
+    }
+     */
 
     
 }

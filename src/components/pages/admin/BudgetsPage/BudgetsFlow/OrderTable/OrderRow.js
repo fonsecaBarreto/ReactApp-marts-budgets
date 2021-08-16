@@ -1,25 +1,19 @@
 import React from 'react'
-import { AiFillShop } from 'react-icons/ai'
+import { IoMdArrowDropright } from 'react-icons/io'
 
-export default ({order}) =>{
+export default ({order, index}) =>{
 
     return (
 
         <div className="ot-order-row">
 
-            <div className="desktop-only">
-                <AiFillShop></AiFillShop>
-            </div>
-
+            <span >
+                {index + 1} <IoMdArrowDropright></IoMdArrowDropright>
+            </span>
             <div>
                 <label> Cliente
                         <span>{order.mart.label}</span>
                 </label>   
-    
-        
-            
-               
-
                 <label> realizada em:
                     <span >{new Date(order.created_at).toDateString()}</span>
                 </label>   

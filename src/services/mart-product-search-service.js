@@ -48,7 +48,7 @@ export const ItemsSearchService = async (params, offset) => {
   return data
 }
 
-
+/* 
 export const ProductsSearchService = async (params, pageIndex) => {
 
   const  { categories, brands, text } = params
@@ -69,3 +69,4 @@ export const ProductsSearchService = async (params, pageIndex) => {
   const { data } = await martsProductsApi.send({method: "get", url:`/search/${query}`}) 
   return data
 }
+ */

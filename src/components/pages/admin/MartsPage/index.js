@@ -9,6 +9,11 @@ import SearchBar from '../../../utils/Feed/SearchBar'
 import { listMartsWithFilterService } from '../../../../services/mart-service'
 import MartItem from './Item'
 
+
+import { RiFileExcel2Line } from 'react-icons/ri'
+import AdminToolBarGrid from "../../../utils/Admin-tool-bar-grid"
+import { downloadXls } from '../../../../services/utils-service'
+
 export default withRouter(({history}) =>{
 
     const [ currentMart, setCurrentMart ] = useState(null)
@@ -41,19 +46,29 @@ export default withRouter(({history}) =>{
         <div id="admin-marts-page">
 
             <div className="app-container">
-                <SearchBar 
-                    onAdd={add}
-                    label="Nome, Telefone ou E-mail " 
-                    toSearch={()=> loadFeed(0, false)} 
-                    text={feed.queries.text}
-                    onText={handleText}> 
 
-                    <select className="status-select-box" onChange={handleChange} value={feed.queries.status || 0}  >
-                        <option value={2}> Pendentes</option>
-                        <option value={1}> Ativos</option>
-                        <option value={0}> Todos </option>
-                    </select>
-                </SearchBar>
+                <AdminToolBarGrid>
+
+                    <SearchBar 
+                        onAdd={add}
+                        label="Nome, Telefone ou E-mail " 
+                        toSearch={()=> loadFeed(0, false)} 
+                        text={feed.queries.text}
+                        onText={handleText}> 
+
+                        <select className="status-select-box" onChange={handleChange} value={feed.queries.status || 0}  >
+                            <option value={2}> Pendentes</option>
+                            <option value={1}> Ativos</option>
+                            <option value={0}> Todos </option>
+                        </select>
+                    </SearchBar>
+
+                    <a href={downloadXls('marts')} className="soft-btn opt-btn">
+                        <RiFileExcel2Line></RiFileExcel2Line>  Download
+                    </a>
+             
+                </AdminToolBarGrid>
+
              
                 <AppFeed state={feedState} component={MartItem} onClick={openModal}> </AppFeed> 
      

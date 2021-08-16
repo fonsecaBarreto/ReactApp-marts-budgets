@@ -9,7 +9,7 @@ import AdminMenu from './AdminMenu'
 import AdminBar from './AdminBar'
 
 
-import { IoIosArrowBack, IoMdArrowDropright } from 'react-icons/io'
+import { IoMdArrowDropright } from 'react-icons/io'
 import { MENU_STRUCT } from './ADMINS_PAGES'
 
 export const PagesState = ( pages ) =>{
@@ -46,8 +46,6 @@ export default withRouter(({ history, children}) =>{
 
     const [ currentPage, setCurrentPage ] = useState(null)
     const [ showMenu, setShowMenu ] = useState(false)
-
- 
 
     useEffect(()=>{
         setConfig(currentPage)

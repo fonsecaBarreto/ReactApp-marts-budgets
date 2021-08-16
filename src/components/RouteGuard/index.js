@@ -27,23 +27,41 @@ const Guard = withRouter(({ history, access, location, component: Component, pat
 
       dispatch(setLoading(true)) 
 
-      if(!access) dispatch(setLoading(false))
-      else if(access === "martonly" && mart) dispatch(setLoading(false))
-      else if(access === "adminonly" && admin) dispatch(setLoading(false))
+      if(!access) { 
 
-      Promise.all([  
-        !mart &&
-        AuthMart()
-          .then(r=>dispatch(setMart(r)))
-          .catch( err => { if(access == "martonly") return history.push(`/login?e=${err.message}`);  }),  
-        !admin &&
-        AuthAdmin()
-          .then(r=>dispatch(setAdmin(r)))
-          .catch( err => { if(access == "adminonly") return history.push(`/admins/login?e=${err.message}`); })
-      ])
-      .finally(() =>{ 
-        dispatch(setLoading(false)) 
-      })
+        dispatch(setLoading(false))
+
+        Promise.all([  
+          !mart &&
+          AuthMart()
+            .then(r=>dispatch(setMart(r)))
+            .catch( err => console.log(err)),  
+          !admin &&
+          AuthAdmin()
+            .then(r=>dispatch(setAdmin(r)))
+            .catch( err => console.log(err))
+        ])
+        .finally(() =>{ 
+          dispatch(setLoading(false)) 
+        })
+
+      }else if(access === 'martonly'){
+        if(mart) return dispatch(setLoading(false))
+      
+          AuthMart()
+            .then(r=>dispatch(setMart(r)))
+            .catch( err => history.push(`/login?e=${err.message}`) )
+            .finally(_=> dispatch(setLoading(false)) )
+    
+      }else if( access === "adminonly"){
+        if(admin) return dispatch(setLoading(false))
+
+          AuthAdmin()
+            .then(r=>dispatch(setAdmin(r)))
+            .catch( err => history.push(`/admins/login?e=${err.message}`) )
+            .finally(_=> dispatch(setLoading(false)) )
+      
+      }
   }
 
   return <Route location={location} {...rest} render={(props) => ( <Component { ...props } path={path} /> )} ></Route>

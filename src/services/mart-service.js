@@ -6,15 +6,12 @@ export const martApi = MakeApi(`${global.base_url}/marts`, errorHandler, global.
 
 export const addressApi = MakeApi(`${global.base_url}/addresses`, errorHandler, global.storage_key_admin)
 
-
-
 export const updateAddressService = async (inputs) =>{
   const { id, address, address_region, address_number, address_postalcode, address_city, uf,  details } = inputs;
   const body = { address, address_region, address_number, address_postalcode, address_city, uf,  details }
   const { data } =await addressApi.send({method: "PUT", url:`/${id}`, data: body})
   return data
 }
-
 
 export const listMartsWithFilterService = async (params={}) => {
   const offset = params.offset || 0

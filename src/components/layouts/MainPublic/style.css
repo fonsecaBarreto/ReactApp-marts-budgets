@@ -1,9 +1,9 @@
 #primary-layout{
     position: relative; 
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-columns: auto 1fr;
-    grid-template-areas: "header header" "content content";
+    grid-template-areas: "header header" "content content" "footer footer";
     box-sizing: border-box!important;
 }
 
@@ -12,6 +12,12 @@
     position: fixed; top: 0; z-index: 99;
     background-color: white;
     display: flex;flex-direction: column; justify-content: flex-start;
+}
+
+#primary-footer{
+    grid-area: footer;
+
+
 }
 
 #primary-layout.fixedHeader #primary-header {

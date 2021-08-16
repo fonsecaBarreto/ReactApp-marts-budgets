@@ -3,6 +3,7 @@
   --main-color: #007CDC;
   --main-light-color: #1388e2;
   --main-bg-color: #E3EDFF;
+  --second-color: rgb(8, 62, 122);
 }
 
 @font-face {
@@ -213,4 +214,37 @@ body {
 
 .bd-red{
   border: solid 2px red;
+}
+
+.soft-btn{
+  position: relative;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.excel-btn{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgb(38, 146, 61);
+  color: white;
+  padding: 0 24px;
+  font-size: 16px;
+  line-height: 0;
+  gap: 20px;
+}
+
+
+.soft-btn:hover::after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(240, 255, 240, 0.1);
 }

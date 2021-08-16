@@ -1,0 +1,28 @@
+
+.become-member{
+    padding-bottom: 100px;
+   
+}
+
+.become-member  h1{
+    color: var(--main-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 0px 2px 2px #0005;
+    font-size: 52px;
+
+ }
+
+
+.become-member .become-member-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+}
+
+.become-member .become-member-grid p{
+   font-size: 22px;
+   line-height: 26px;
+   max-width: 800px;
+   margin: auto;
+}

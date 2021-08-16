@@ -30,7 +30,7 @@ export default ({state}) =>{
                <BsSearch></BsSearch>
             </span>
 
-            <button onClick={search}>
+            <button onClick={search} className="mart-bsb-submit">
                 Buscar
             </button>
     

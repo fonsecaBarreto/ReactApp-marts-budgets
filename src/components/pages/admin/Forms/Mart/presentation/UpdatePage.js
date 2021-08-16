@@ -45,7 +45,7 @@ export default withRouter(({history}) =>{
         setLoading(true)
         try{
             const result = await findMartService(id)
-            if(!result) throw { message: "Não foi possivel encontrar Estabelecimento requerido"}
+            if(!result) throw { message: "Não foi possivel encontrar cadastro de Estabelecimento requerido"}
             rootState.inputs.setData(result)
             if(result.address){
                 addressState.inputs.setData(result.address)
@@ -59,26 +59,12 @@ export default withRouter(({history}) =>{
         setLoading(false)
     }
 
-    const update = async () => {
-        setLoading(true)
-        try{
-            const result = await saveMartService(rootState.inputs.data)
-            rootState.clearAll()
-            rootState.inputs.setData(result)
-            dialogState.showSuccess("Informações de Estabelecimento atualizadas com sucesso.")
-        } catch(err) {
-            if(err.params) rootState.errorsState.setErrors(err.params)
-            dialogState.showFailure(err.message)
-        } 
-        setLoading(false)
-    }
-
     const remove = async () => {
         setLoading(true)
         try{
             await removeMartService(rootState.inputs.data.id)
             rootState.clearAll()
-            dialogState.showSuccess("Estabelecimento Deletado com sucesso.","","", () => history.push("/admins/marts")  )
+            dialogState.showSuccess("Cadastro de Estabelecimento deletado com sucesso.","","", () => history.push("/admins/marts")  )
         } catch(err) {
             if(err.params) rootState.errorsState.setErrors(err.params)
             dialogState.showFailure(err.message)
@@ -86,12 +72,33 @@ export default withRouter(({history}) =>{
         setLoading(false)
     }
 
-    const updateAddress = async () => {
+    const update = async () => {
+        setLoading(true)
+        try{
+            const result = await saveMartService(rootState.inputs.data)
+            const addressResult = await updateAddressService(addressState.inputs.data)
+            rootState.clearAll()
+            addressState.clearAll()
+            addressState.inputs.setData(addressResult) 
+            rootState.inputs.setData(result)
+            dialogState.showSuccess("Cadastro de Estabelecimento atualizado com sucesso.")
+        } catch(err) {
+            if(err.params) {
+                rootState.errorsState.setErrors(err.params)
+                addressState.errorsState.setErrors(err.params)
+            } 
+            dialogState.showFailure(err.message)
+        } 
+        setLoading(false)
+    }
+
+
+  /*   const updateAddress = async () => {
         setLoading(true)
         try{
             const result = await updateAddressService(addressState.inputs.data)
         
-           addressState.clearAll()
+            addressState.clearAll()
             addressState.inputs.setData(result) 
             dialogState.showSuccess("Endereço Atualizado com sucesso.")
         } catch(err) {
@@ -100,13 +107,12 @@ export default withRouter(({history}) =>{
         } 
         setLoading(false)
     }
-
+ */
 
     return (
         <div id="admin-mart-update-page" className={`admin-form-page ${loading? 'freeze' : ''}`}>
           
             <AdminCommonToolBar>
-                <button onClick={updateAddress}> Atualizar Endereço</button>
                 <button onClick={update}>  Atualizar </button>
                 <button className="warning" onClick={remove}>  Deletar </button>
             </AdminCommonToolBar>
@@ -114,7 +120,6 @@ export default withRouter(({history}) =>{
             <RootForm { ...rootState }> </RootForm>
 
             <AddressForm {...addressState}></AddressForm>
-
 
             { annexes?.length > 0 && <div>
                     <h4 style={{textAlign:"left", margin: "4px"}}> Anexos:</h4>

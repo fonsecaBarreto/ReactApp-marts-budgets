@@ -1,57 +1,58 @@
 .picv-product-view{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
     height: fit-content;
-    background-color: rgba(255, 255, 255, 0.699);
-    border: solid 1px #ddd;
+    border: solid 1px #bbb;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 8px 10px;
     gap: 4px;
+    background-color: white;
+    box-shadow: 0px 1px 1px #0002;
 }
 
 .picv-product-view:hover{
     background-color: rgb(255, 255, 255);
     cursor: pointer;
-    box-shadow: inset 0px 0px 1px 2px rgba(38, 101, 236, 0.493); 
+    box-shadow: inset 0px 0px 0px 2px rgba(38, 101, 236, 0.4); 
+    transform: scale(1);
 }
 
 .picv-product-view > *{
-
     text-align: left;
     width: fit-content;
     font-weight: bold;
     border-radius: 6px;
 }
 
-
 .picv-product-view > :nth-child(1){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
     font-size: 15px;
 }
-.picv-product-view > :nth-child(2){
-    font-size: 12px;
-    padding: 1px 8px;
-    color: #888;
 
-
+.picv-product-view > :nth-child(1)  > :nth-child(1){
+    font-size: 16px;
+    background-color: white;
+    padding:0 6px;
+    border-radius: 6px;
 }
-.picv-product-view > :nth-child(3){
+
+.picv-product-view > :nth-child(1)  > :nth-child(2){
     font-size: 14px;
-    padding: 0px 8px;
-    color: rgba(59, 135, 223, 1);
-    border: solid 2px  rgba(59, 135, 223,1);
-   /*  margin-left: auto;
-    margin-right: 0; */
+    line-height: 14px;
+    padding: 1px 8px;
+    color: rgb(48, 50, 53);
+    border-radius: 2px;
+    border: solid 2px rgba(182, 23, 71, 0.4);
+    border-radius: 5px;
+    margin-right: 0;
+    margin-left: auto;
 
 }
-.picv-product-view > :nth-child(4){
 
-    display: flex; align-items: center; justify-content: center;
-    height: 28px; width: 28px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}

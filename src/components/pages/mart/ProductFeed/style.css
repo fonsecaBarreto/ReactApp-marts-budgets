@@ -3,10 +3,10 @@
     grid-row: 2 span;
     display: flex;
     flex-direction: column;
-    padding-bottom: 200px;
+    padding-bottom: 300px;
+    padding-top: 23px;
 
 }
-
 
 .mart-item-feed-flow{
     width: 100%;
@@ -15,7 +15,6 @@
     gap: 12px;
     row-gap: 8px;
     margin-bottom: 20px;
-
 }
 
 
@@ -27,4 +26,6 @@
     }
     
 }
+
+
 

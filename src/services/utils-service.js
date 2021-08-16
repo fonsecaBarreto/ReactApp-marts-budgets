@@ -10,3 +10,7 @@ export const getFilePath = (name, access="admin") => {
     return `${global.base_url}/files?v=${name}&a=${token}`
 }
 
+export const downloadXls = (name) =>{
+    const token = localStorage.getItem(global.storage_key_admin )
+    return `${global.base_url}/data/download/excel/${name}?a=${token}`
+}

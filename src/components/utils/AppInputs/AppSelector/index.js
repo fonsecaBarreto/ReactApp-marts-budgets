@@ -19,7 +19,6 @@ export const SelectorState = (onLoad) =>{
     useEffect(()=>{ handleOnLoad(0, true) },[ ]) //going to load from offset 0, with no queries
 
     const handleOnLoad = async ( offset = 0, clear = false) => {
-        console.log("loading")
         if(clear === true) setData(prev => ( { ...INITIAL_DATA } ));
         setLoading(true)
         try{

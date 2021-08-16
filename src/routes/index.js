@@ -36,7 +36,10 @@ function Routes (){
 
         <Guard path="/change-password" exact >  <ChangePassword> </ChangePassword> </Guard>
 
-        <Guard path="/login" exact>  <MartLoginPage >  </MartLoginPage> </Guard>
+        <Guard path="/login" exact> 
+            <MartLoginPage >  </MartLoginPage> 
+        </Guard> 
+        
         <Guard path="/login/saudacoes" exact> <PrimaryLayout>  <MartLoginGreetings >  </MartLoginGreetings></PrimaryLayout> </Guard>
 
         <Guard path="/marts/orcamento" exact access="martonly">

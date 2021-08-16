@@ -1,24 +1,24 @@
 #home-page{
-    background-color: rgb(68, 95, 184);
+    font-family: "Noir", Verdana, sans-serif;
+    background-color: #dce7f7;
 }
 
 #home{
-    height: 40vh;
     width: 100%;
-    background-color: rgb(57, 78, 146);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: local;
-    padding-top: 200px;
 }
+
 #sobre{
-    height: 60vh;
     width: 100%;
-    background-color: rgb(171, 185, 230);
 }
 #contato{
-    height: 80vh;
     width: 100%;
-    background-color: rgb(171, 185, 230);
+}
+
+.home-section{
+    position: relative;
+    padding:  80px 16px 0;
 }

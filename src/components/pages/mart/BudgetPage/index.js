@@ -11,17 +11,16 @@ export default withRouter(({history}) =>{
     const state = FeedState()
     return (
         <div id="budget-page">
-
-
-            <div className="budget-page-search-content budget-page-container">
+        
+            <div className="budget-page-search-content budget-page-container app-container">
        
-                <SearchBar state={state}></SearchBar>
                  
                 <div className="filtering-column ">
                     <BrandsSelector state={state}></BrandsSelector>
                     <PrimariesCategoriesSelector state={state}></PrimariesCategoriesSelector>
                 </div>
-                <div>
+                <div className="main-column">
+                    <SearchBar state={state}></SearchBar>
                    
                     <ProductFeed state={state}></ProductFeed> 
                 </div> 

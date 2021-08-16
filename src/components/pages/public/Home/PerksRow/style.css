@@ -1,0 +1,109 @@
+
+@keyframes cardShowsUp {
+    0% { transform: scale(.92) translateX(-100%)};
+    92% {  transform: scale(1.2) }
+    100% {  transform: scale(1) }
+  }
+  
+
+.perks-row{
+    display: flex;
+    align-content: center; 
+    justify-content: center;
+    gap: 20px;
+    row-gap: 56px;
+    flex-wrap: wrap; flex-direction: row;
+    margin-top: 90px;
+}
+
+
+
+.perks-row .perks-card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+    justify-content: flex-start;
+    background-color: white;
+    padding: 20px 8px;
+    width: 30%;
+    font-size: 18px;
+    box-shadow: 0px 2px 4px 1px #0005;
+    border-radius: 6px;
+/*     animation-name: cardShowsUp;
+    animation-duration: .5s; */
+    cursor: default;
+}
+.perks-row .perks-card:hover{
+
+    transform: scale(1.03);
+    transition: all .35s;
+    box-shadow: 0px 1px 2px 1px #0005;
+}
+
+
+.perks-row .perks-card:nth-child(1){
+    margin-top: 80px;
+}
+.perks-row .perks-card:nth-child(2){
+    margin-top: 40px;
+}
+
+.perks-row .perks-card:nth-child(3){
+    margin-top: 0;
+
+}
+
+
+.perks-row .perks-card .pcimg-vp{
+    position: relative;
+    height: 160px;
+    width: 100%;
+/*     animation-name: cardShowsUp;
+    animation-duration: .2s; */
+}
+
+.perks-row .perks-card .pcimg-vp img{
+    width: 100%;
+    height: auto;
+    max-height: 240px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+
+.perks-row .perks-card > :nth-child(2){
+    color: black;
+    font-weight: bold;
+    white-space: normal;
+    text-align: left;
+    font-size: 24px;
+    line-height: 26px;
+    max-height: 40px;
+    display: block; 
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: center;
+    margin: 12px 0 8px;
+ 
+}
+.perks-row .perks-card > :nth-child(3){
+    padding-bottom: 16px;
+
+}
+
+@media only screen and (max-width: 960px){
+    .perks-row .perks-card{
+        width: 100%;
+        margin-top: 0!important;
+    }
+
+    
+    
+    
+}

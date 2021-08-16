@@ -25,11 +25,8 @@ export default () =>{
         setLoading(true)
         try{
             const result = await listOrders(toolBarState.queriesState.queries)
-            console.log(result)
             setData(result)
-        }catch(err){
-            console.log(err.message)
-        }
+        }catch(err){ console.log(err.message) }
         setLoading(false)
     }
 

@@ -4,24 +4,42 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr auto;
-    
-}
-.float-bloom{
-    position: absolute;
-    top: 18px;
-    left: 22px;
-    z-index: 1;
-    font-size: 18px;
-    color: #888;
+    gap: 8px;
 
 }
+
+.float-bloom{
+    position: absolute;
+    top: 0;  bottom: 0;
+    margin: auto;
+    left: 20px;
+    font-size: 16px;
+    color: #888;
+    height: fit-content;
+}
 .mart-budget-search-bar .mart-bsb-input{
-    height: 52px;
-    border-radius: 32px;
+    height: 48px;
+    border-radius: 12px;
     padding-left: 56px;
+    border: solid 1px #ddd;
+    font-size: 18px;
+
+    width: 100%
 }
 .mart-budget-search-bar .mart-bsb-submit{
-    height: 52px;
+    height: 46px;
+    width: 120px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    
+}
+.mart-budget-search-bar .mart-bsb-submit:hover{
+    background-color: var(--main-light-color);
 }
 
 .mart-budget-tags  {
@@ -38,4 +56,9 @@
     background-color: rgb(209, 209, 209);
     padding: 2px 8px;
     border-radius: 6px;
+}
+
+.mart-feed-base-text{
+    font-size: 20px;
+    color: #666;
 }

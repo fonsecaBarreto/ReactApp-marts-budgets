@@ -23,12 +23,16 @@ export default ({item, onProduct}) =>{
        
             </div>
             <div className={`picv-body ${hide ? 'hide' : ''}`} >
-                {
-                    ( products?.length > 0) && 
-                    products.map((p,i)=>{
-                        return <ProductView key={i} product={p} onClick={onProduct}></ProductView>
-                    })
-                }
+
+                <div className="picv-body-flow">
+
+                    {
+                        ( products?.length > 0) && 
+                        products.map((p,i)=>{
+                            return <ProductView key={i} product={p} onClick={onProduct}></ProductView>
+                        })
+                    }
+                </div>
             </div>
         </div>
     )

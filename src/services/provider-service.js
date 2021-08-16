@@ -39,6 +39,13 @@ export const saveProviderService = async ( inputs ) => {
 
   const resp = await providerApi.send({method: METHOD, url:URL, data })
   return resp.data
-
 }
+
+export const updateProvidersAddress = async (provider_id, inputs) => {
+  const { address, address_region, address_number, address_postalcode, address_city, uf,  details } = inputs;
+  const body = { address, address_region, address_number, address_postalcode, address_city, uf,  details }
+  const { data } = await providerApi.send({method: "PATCH", url:`/address/${provider_id}`, data: body})
+  return data
+}
+
 

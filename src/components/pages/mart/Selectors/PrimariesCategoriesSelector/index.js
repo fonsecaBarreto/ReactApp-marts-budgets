@@ -30,6 +30,12 @@ export default ({state}) =>{
     const clearList = () =>{
         state.setCategories([])
     }
+
+    const search = () => {
+        state.loadFeed(0, false)
+    }
+
+
     useEffect(()=>{
         if(categories.length == 0 ){
             setLoading(true)
@@ -59,6 +65,8 @@ export default ({state}) =>{
                 </ul>
             </nav>
             }
+            <button className="soft-btn desktop-only" onClick={search}>Aplicar</button>
         </div>
+
     )
 }
