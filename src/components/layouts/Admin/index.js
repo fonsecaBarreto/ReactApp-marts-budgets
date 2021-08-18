@@ -64,14 +64,6 @@ export default withRouter(({ history, children}) =>{
         setCurrentPage(history.location.pathname) 
     },[history, history.location])
 
-    const scrol = () => {
-       /*  reftest.current.scrollIntoView({ behavior: 'smooth' })
- */
-
-        reftest.current.scrollTo({
-            top: 0, 
-            behavior: 'smooth'});
-    }
 
     return (
     <div id="admin-layout">

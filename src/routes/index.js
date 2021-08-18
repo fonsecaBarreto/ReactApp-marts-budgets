@@ -19,15 +19,20 @@ import PrimaryLayout from '../components/layouts/MainPublic'
 import NotFoundPage from '../components/pages/NotFoundPage'
 import ChangePassword from '../components/pages/ChangePassword'
 
+
+/* admins */
+
+import AdminLoginPage from '../components/pages/admin/AdminLogin'
+
+
+/* guard */
 import Guard from '../components/RouteGuard'
 import AdminRoutes from './admins'
-
 function Routes (){
   return ( 
     <Router>
 
-      <AdminRoutes></AdminRoutes>
-     
+
       <Switch>
 
         <Route path="/" exact> <Redirect to="/inicio" /> </Route>
@@ -44,9 +49,23 @@ function Routes (){
 
         <Guard path="/marts/orcamento" exact access="martonly">
            <PrimaryLayout fixedHeader > <MartBudgetPage ></MartBudgetPage> </PrimaryLayout>
-        </Guard>
+        </Guard> 
 
-        {/* <Guard path="/*"> <NotFoundPage></NotFoundPage></Guard>   */}
+        {/* NOT FOUND  */}
+        <Route path="/notfound" exact> <NotFoundPage></NotFoundPage></Route>   
+        
+        {/* ADMINS */}
+        <Route path="/admin" exact> <Redirect to="/admins/panel" /> </Route> 
+
+        <Guard path="/admins/login" exact> <AdminLoginPage></AdminLoginPage>  </Guard> 
+
+        <Route path="/admins/:path?">
+
+          <AdminRoutes ></AdminRoutes> 
+        
+        </Route>
+        
+       <Route path="/*" > <Redirect to="/notfound" /> </Route>  
         
       </Switch>
     </Router>

@@ -35,35 +35,38 @@ import CategoryEditPage from '../components/pages/admin/Forms/Category/CategoryE
 
 export default () => {
     return (
+      <AdminLayout>
 
-      <Switch>
-        <Route path="/admin" exact> <Redirect to="/admins/marts" /> </Route>
-        <Guard path="/admins/login" exact>  <AdminLoginPage> </AdminLoginPage> </Guard>
-        {/* admin only */}
-        <Guard path="/admins/panel" exact access="adminonly" >  <AdminLayout>  <AdminDashBoardPage >  </AdminDashBoardPage>  </AdminLayout></Guard>
-        <Guard path="/admins/budgets" exact access="adminonly" >  <AdminLayout>  <BudgetsPage >  </BudgetsPage>  </AdminLayout></Guard>
+        <Switch >
 
-        <Guard path="/admins/products" exact access="adminonly" >  <AdminLayout>  <ProductsPage >  </ProductsPage>  </AdminLayout></Guard>
+          <Guard path="/admins/login" exact> <AdminLoginPage></AdminLoginPage>  </Guard> 
 
-        <Guard path="/admins/items/create" exact access="adminonly" >  <AdminLayout>  <ItemCreatePage >  </ItemCreatePage>  </AdminLayout></Guard>
-        <Guard path="/admins/items/update" exact access="adminonly" >  <AdminLayout>  <ItemUpdatePage >  </ItemUpdatePage>  </AdminLayout></Guard>
+          <Guard path="/admins/panel" exact access="adminonly" >   <AdminDashBoardPage >  </AdminDashBoardPage> </Guard>
+          <Guard path="/admins/budgets" exact access="adminonly" >   <BudgetsPage >  </BudgetsPage>  </Guard>
 
-        <Guard path="/admins/products/create" exact access="adminonly" >  <AdminLayout>  <ProductCreatePage >  </ProductCreatePage>  </AdminLayout></Guard>
-        <Guard path="/admins/products/update" exact access="adminonly" >  <AdminLayout>  <ProductUpdatePage >  </ProductUpdatePage>  </AdminLayout></Guard>
+          <Guard path="/admins/products" exact access="adminonly" >    <ProductsPage >  </ProductsPage>  </Guard>
 
-        <Guard path="/admins/marts" exact access="adminonly" >  <AdminLayout>  <MartsPage >  </MartsPage>  </AdminLayout></Guard>
-        <Guard path="/admins/marts/create" exact access="adminonly" >  <AdminLayout>  <MartCreatePage >  </MartCreatePage>  </AdminLayout></Guard>
-        <Guard path="/admins/marts/update" exact access="adminonly" >  <AdminLayout>  <MartUpdatePage >  </MartUpdatePage>  </AdminLayout></Guard>
+          <Guard path="/admins/items/create" exact access="adminonly" >   <ItemCreatePage >  </ItemCreatePage> </Guard>
+          <Guard path="/admins/items/update" exact access="adminonly" >    <ItemUpdatePage >  </ItemUpdatePage> </Guard>
 
-        <Guard path="/admins/providers" exact access="adminonly" >  <AdminLayout>  <ProvidersPage >  </ProvidersPage>  </AdminLayout></Guard>
-        <Guard path="/admins/providers/create" exact access="adminonly" >  <AdminLayout>  <ProviderCreatePage >  </ProviderCreatePage>  </AdminLayout></Guard>
-        <Guard path="/admins/providers/update" exact access="adminonly" >  <AdminLayout>  <ProviderUpdatePage >  </ProviderUpdatePage>  </AdminLayout></Guard>
+          <Guard path="/admins/products/create" exact access="adminonly" >  <ProductCreatePage >  </ProductCreatePage>  </Guard>
+          <Guard path="/admins/products/update" exact access="adminonly" >   <ProductUpdatePage >  </ProductUpdatePage>  </Guard>
+
+          <Guard path="/admins/marts" exact access="adminonly" >   <MartsPage >  </MartsPage>  </Guard>
+          <Guard path="/admins/marts/create" exact access="adminonly" >    <MartCreatePage >  </MartCreatePage> </Guard>
+          <Guard path="/admins/marts/update" exact access="adminonly" >    <MartUpdatePage >  </MartUpdatePage>  </Guard>
+
+          <Guard path="/admins/providers" exact access="adminonly" >    <ProvidersPage >  </ProvidersPage>  </Guard>
+          <Guard path="/admins/providers/create" exact access="adminonly" >   <ProviderCreatePage >  </ProviderCreatePage>  </Guard>
+          <Guard path="/admins/providers/update" exact access="adminonly" >    <ProviderUpdatePage >  </ProviderUpdatePage>  </Guard>
 
 
-        <Guard path="/admins/categories" exact access="adminonly" >  <AdminLayout>  <CategoriesPage >  </CategoriesPage>  </AdminLayout></Guard>
-        <Guard path="/admins/categories/create" exact access="adminonly" >  <AdminLayout>  <CategoryEditPage >  </CategoryEditPage>  </AdminLayout></Guard>
-        <Guard path="/admins/categories/update" exact access="adminonly" >  <AdminLayout>  <CategoryEditPage >  </CategoryEditPage>  </AdminLayout></Guard>
-      </Switch>
+          <Guard path="/admins/categories" exact access="adminonly" >    <CategoriesPage >  </CategoriesPage> </Guard>
+          <Guard path="/admins/categories/create" exact access="adminonly" >  <CategoryEditPage >  </CategoryEditPage> </Guard>
+          <Guard path="/admins/categories/update" exact access="adminonly" >   <CategoryEditPage >  </CategoryEditPage>  </Guard>
+      
+        </Switch>
+      </AdminLayout>
 
     )
-}
+} 

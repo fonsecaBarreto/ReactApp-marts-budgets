@@ -1,6 +1,42 @@
 #admin-dash-board{
-    background-color: rgb(236, 227, 245);
-    padding: 0;
-    margin: 0;
-    min-height: 100vh;
+
+    height: 100%;
+    overflow-y:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding:  16px 16px 300px;
+}
+
+.latest-entities-grid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    max-width: 1224px;
+    gap: 12px;
+}
+
+
+.order-latest-item{
+    line-height: 1.06em;
+    display: flex;
+    flex-direction: column;
+
+}
+.order-latest-item > :nth-child(2){
+    color: #666;
+    font-size: 15px;
+    
+}
+@media screen and (max-width: 960px) {
+    
+    .latest-entities-grid{
+      
+        grid-template-columns: 1fr ;
+        grid-template-rows: auto;
+
+    }
 }

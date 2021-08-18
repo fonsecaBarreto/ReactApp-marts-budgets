@@ -18,19 +18,20 @@
 }
 
 .admin-drop-down-body{
-    height: fit-content; min-width: 180px;
+    height: fit-content; min-width: 140px;
     box-shadow: 0px 2px 2px 2px #0002;
     display: none; position: absolute;
     top: calc(100% + 8px);
     right: calc(100% - 52px);
     background-color: white;
-    border-radius: 6px;
+    border-radius: 5px;
     border: solid 1px #bbb;
+    z-index: 99999;
 }
 
 .admin-drop-down-body .addb-item{
     width: 100%;
-    padding: 10px;
+    padding: 6px 8px;
     height: fit-content;
     cursor: pointer;
 }

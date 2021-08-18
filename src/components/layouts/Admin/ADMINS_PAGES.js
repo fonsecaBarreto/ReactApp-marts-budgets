@@ -1,6 +1,6 @@
 
-import { AiFillShop, AiTwotoneShopping, AiFillDashboard, AiOutlineUnorderedList, AiFillPlusCircle} from 'react-icons/ai'
-import { FaArchive, FaTimes, FaTruck } from 'react-icons/fa'
+import { AiFillShop, AiFillDashboard, AiOutlineUnorderedList, AiFillPlusCircle} from 'react-icons/ai'
+import { FaTruck } from 'react-icons/fa'
 
 import { BiPackage} from 'react-icons/bi'
 import { CgNotes } from 'react-icons/cg'
@@ -8,16 +8,15 @@ import { RiPriceTag2Fill } from 'react-icons/ri'
 
 export const MENU_STRUCT = [
 
-   /*  {
-        title: "Painel", to: "/admins/products",
+    {
+        title: "Painel", to: "/admins/panel",
         icon: <AiFillDashboard></AiFillDashboard>,
-        hide: true,
-    }, */
+    },
 
     {
         title: "Orçamentos",   to: "/admins/budgets",
         icon: <CgNotes></CgNotes>,
-        back: "/admins/products",
+        back: "/admins/panel",
     },
    
     {
@@ -27,7 +26,7 @@ export const MENU_STRUCT = [
             {
                 title: "Listagem",  to: "/admins/products",
                 icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-                back: "/admins/products",
+                back: "/admins/panel",
             },
           
             {
@@ -82,7 +81,7 @@ export const MENU_STRUCT = [
             {
                 title: "Listagem",  to: "/admins/marts",
                 icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-                back: "/admins/products",
+                back: "/admins/panel",
             },
             {
                 title: "Adicionar",  to: "/admins/marts/create",
@@ -105,7 +104,7 @@ export const MENU_STRUCT = [
             {
                 title: "Listagem",  to: "/admins/providers",
                 icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-                back: "/admins/products",
+                back: "/admins/panel",
             },
             {
                 title: "Adicionar",  to: "/admins/providers/create",

@@ -17,7 +17,7 @@ const Guard = withRouter(({ history, access, location, component: Component, pat
     window.scroll({
       top: 0, 
       left: 0, 
-      behavior: 'smooth'
+      behavior: 'auto'
     });
   },[ path ]) 
 
