@@ -1,0 +1,39 @@
+/* admin form page */
+
+.admin-form-page{
+    position: relative;
+    height: 100%;
+}
+section.form-flow{
+    height: 100%;
+    overflow-y: auto;
+    padding: 32px 12px 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+
+
+.admin-form-page.freeze::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    margin: auto;
+    width: 100%; height: 100%;
+    background-color: rgba(250, 250, 250, 0.4);
+    background-repeat: no-repeat;
+    background-position: center 120px;
+    z-index: 99; 
+}  
+  
+@media only screen and (max-width: 960px){
+
+/*     .admin-form-page{
+
+        padding: 0 12px;
+    } */
+
+   
+}

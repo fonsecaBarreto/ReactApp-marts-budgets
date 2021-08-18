@@ -1,20 +1,10 @@
 
-
-
-
 #admin-budget-page{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: auto 1fr;
+    justify-content: flex-start;
     gap: 18px;
+    height: 100%;
+    overflow-y:  auto;
 }
-
-/* @media only screen and (max-width: 1024px) {
-
-    #admin-budget-page{
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        gap: 18px;
-    }
-} */

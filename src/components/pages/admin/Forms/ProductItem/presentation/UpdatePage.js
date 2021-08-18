@@ -9,7 +9,7 @@ import RootForm, { FormState } from '../RootForm';
 
 import { getFilePath } from '../../../../../../services/utils-service'
 import { findItemsService, saveItemsService, removeItemsService } from '../../../../../../services/item-service'
-
+import TopWrapperGrid from '../../../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
 
 export default withRouter(({history}) =>{
 
@@ -78,12 +78,17 @@ export default withRouter(({history}) =>{
     return (
         <div id="admin-item-update-page" className={`admin-form-page ${loading? 'freeze' : ''}`}>
           
-            <AdminCommonToolBar>
-                <button onClick={update}>  Atualizar </button>
-                <button className="warning" onClick={remove}>  Deletar </button>
-            </AdminCommonToolBar>
+            <TopWrapperGrid>
+                <AdminCommonToolBar>
+                    <button onClick={update}>  Atualizar </button>
+                    <button className="warning" onClick={remove}>  Deletar </button>
+                </AdminCommonToolBar>
+            </TopWrapperGrid>
 
-            <RootForm { ...rootState }></RootForm>   
+            <section className="form-flow">
+
+                <RootForm { ...rootState }></RootForm>   
+            </section>
 
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         

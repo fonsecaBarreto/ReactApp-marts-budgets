@@ -18,12 +18,20 @@ export default withRouter( ({ toSearch, text, onText, label, onAdd, children}) =
     return (
         <div className="app-feed-tool-bar">
             <div className={`aftb-grid`}>
-                <button className="aftb-add-button" onClick={onAdd}>   <IoIosAddCircle></IoIosAddCircle> </button>
-                <input className="aftb-search-bar" onKeyDown={handleKeyDown} style={{paddingLeft: 10}} value={text} onInput={handleInput} placeholder={label || ''}></input> 
-                { children && children}
-                <button className="aftb-search-btn" onClick={toSearch} > <BsSearch></BsSearch> 
-                    <span className="desktop-only"> Buscar </span>
-                </button>
+                <button className="aftb-add-button" onClick={onAdd}>   <IoIosAddCircle></IoIosAddCircle>  Novo </button>
+
+                <div>
+
+
+                    { children && children}
+
+                
+                    <input className="aftb-search-bar" onKeyDown={handleKeyDown} style={{paddingLeft: 10}} value={text} onInput={handleInput} placeholder={label || ''}></input> 
+                    <button className="aftb-search-btn desktop-only" onClick={toSearch} > <BsSearch></BsSearch> 
+                        <span className="desktop-only"> Buscar </span>
+                    </button>
+                </div>
+             
             </div>
         </div>
     )

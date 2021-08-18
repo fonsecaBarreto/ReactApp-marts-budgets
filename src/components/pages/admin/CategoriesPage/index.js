@@ -8,6 +8,7 @@ import LoadingComp from "../../../utils/LoadingComp"
 
 import TreeView, { TestComp } from '../../../utils/TreeView'
 import CategoryItem from "./CategoryItem"
+import TopWrapperGrid from '../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
 
 export const CategoryState = () =>{
 
@@ -39,21 +40,25 @@ export default withRouter(({history}) =>{
         return categories.map(c=>({...c, root: true}))
     }
     return (
+
+
         <div id="admin-category-page">
-            <div className="app-container">
-  
+       
+            <TopWrapperGrid>
                 <AdminCommonToolBar>
                     <button onClick={add}> 
                         Novo
                     </button> 
                 </AdminCommonToolBar>
+            </TopWrapperGrid>
+  
 
-                { loading  ? <LoadingComp></LoadingComp> :
-                    <div className="w100 mt-m">
-                        <TreeView tree={mapCategoriesTree(categories)} component={CategoryItem} useCheckBox={false}></TreeView>
-                    </div>
-                }
-            </div>
+            { loading  ? <LoadingComp></LoadingComp> :
+                <div className="category-tree-from-page">
+                    <TreeView tree={mapCategoriesTree(categories)} component={CategoryItem} useCheckBox={false}></TreeView>
+                </div>
+            }
+         
         </div>
     )
 })

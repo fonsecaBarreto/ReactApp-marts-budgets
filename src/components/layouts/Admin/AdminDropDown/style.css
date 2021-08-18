@@ -1,11 +1,10 @@
 .admin-drop-down{
     position: relative;
     height: fit-content;
-
 }
 
 .admin-drop-down  .admb-user-img{
-    height: 48px; width: 48px;
+    height: 42px; width: 42px;
     overflow: hidden;
     border-radius: 50%;
     border: solid 2px #aaa;

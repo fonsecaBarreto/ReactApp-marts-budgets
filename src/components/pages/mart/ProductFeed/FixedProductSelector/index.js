@@ -35,30 +35,31 @@ export const SelectorState = () =>{
 
 export default (props) =>{
 
+    const [ sending, setSending ] = useState(false)
     const [ aboutToBeOrdered, setOboutToBeOdered ] = useState(null)
     const { product, data, handleInputs, clear }  = props
     const dialogState = WarningState()
 
     const { quantity, forecast } = data
 
-
     const confirmOrder = () =>{
         return setOboutToBeOdered(product)
     }
+
     const toOrder = async () =>{
+        setSending(true)
         try{
             const { id } = aboutToBeOrdered
             await makeOrder({ product_id: id, forecast, quantity })
             dialogState.showSuccess("Pedido feito com sucesso!")
             clear()
-       
         }catch(err){
-            console.log(err)
             switch(err.name){
                 case "InvalidRequestBodyError" :  dialogState.showFailure("Forneça a quantidade e a previsão do pedido"); break;
                 default: dialogState.showFailure(err.message)
             }
         }
+        setSending(false)
         setOboutToBeOdered(null)
 
     }
@@ -78,7 +79,7 @@ export default (props) =>{
                 </div>
             }
 
-           { aboutToBeOrdered && <ProductConfirmation product={aboutToBeOrdered} setProduct={setOboutToBeOdered} toOrder={toOrder}></ProductConfirmation>}
+           { aboutToBeOrdered && <ProductConfirmation freeze={sending} product={aboutToBeOrdered} setProduct={setOboutToBeOdered} toOrder={toOrder}></ProductConfirmation>}
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         </React.Fragment>
     )

@@ -10,17 +10,6 @@
 }
 
 
-.admin-tool-bar-grid .opt-btn{
-    display: flex; flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    height: 50px;
-    padding: 0 16px;
-    background-color: rgba(214, 214, 214, 0.678);
-
-}
-
 @media only screen and (max-width: 960px){
   
 

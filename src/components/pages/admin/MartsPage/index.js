@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom"
 import React from "react"
 
 import AppFeed, { FeedState } from '../../../utils/Feed'
+import ResulInfo from '../../../utils/Feed/ResulInfo'
 import SearchBar from '../../../utils/Feed/SearchBar'
 import { listMartsWithFilterService } from '../../../../services/mart-service'
 import MartItem from './Item'
@@ -13,7 +14,8 @@ import MartItem from './Item'
 import { RiFileExcel2Line } from 'react-icons/ri'
 import AdminToolBarGrid from "../../../utils/Admin-tool-bar-grid"
 import { downloadXls } from '../../../../services/utils-service'
-
+import TopWrapperGrid from '../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
+import BottomWrapperGrid from '../../../layouts/Admin/common/ListPageWrapper/BottomWrapperGrid'
 export default withRouter(({history}) =>{
 
     const [ currentMart, setCurrentMart ] = useState(null)
@@ -45,34 +47,33 @@ export default withRouter(({history}) =>{
     return (
         <div id="admin-marts-page">
 
-            <div className="app-container">
 
-                <AdminToolBarGrid>
+            <TopWrapperGrid>
+                <SearchBar 
+                    onAdd={add}
+                    label="Pesquise pelo Nome, Telefone ou E-mail " 
+                    toSearch={()=> loadFeed(0, false)} 
+                    text={feed.queries.text}
+                    onText={handleText}> 
 
-                    <SearchBar 
-                        onAdd={add}
-                        label="Nome, Telefone ou E-mail " 
-                        toSearch={()=> loadFeed(0, false)} 
-                        text={feed.queries.text}
-                        onText={handleText}> 
+                     <select className="status-select-box" onChange={handleChange} value={feed.queries.status || 0}  >
+                        <option value={2}> Pendentes</option>
+                        <option value={1}> Ativos</option>
+                        <option value={0}> Todos </option>
+                    </select> 
+                </SearchBar>
+            </TopWrapperGrid>
 
-                        <select className="status-select-box" onChange={handleChange} value={feed.queries.status || 0}  >
-                            <option value={2}> Pendentes</option>
-                            <option value={1}> Ativos</option>
-                            <option value={0}> Todos </option>
-                        </select>
-                    </SearchBar>
-
-                    <a href={downloadXls('marts')} className="soft-btn opt-btn">
-                        <RiFileExcel2Line></RiFileExcel2Line>  Download
-                    </a>
-             
-                </AdminToolBarGrid>
-
-             
-                <AppFeed state={feedState} component={MartItem} onClick={openModal}> </AppFeed> 
+            <AppFeed className="app-container" state={feedState} component={MartItem} onClick={openModal}> </AppFeed> 
      
-            </div>
+            <BottomWrapperGrid>  
+
+                <section className="app-padding">
+                    <ResulInfo total={ feedState.feed.total } count={feedState.feed.data.length} subTotal={feedState.feed.subTotal} > </ResulInfo>
+                    <a href={downloadXls('marts')}>  <RiFileExcel2Line></RiFileExcel2Line>  Download  </a>
+                </section>
+
+            </BottomWrapperGrid>
 
            { currentMart && <ItemDialogView 
                 mart={currentMart}

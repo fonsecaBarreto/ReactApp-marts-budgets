@@ -11,6 +11,8 @@ import RootForm, { FormState } from '../RootForm';
 import { findProductService, saveProductservice, removeProductService } from '../../../../../../services/products-service'
 import { getFilePath } from '../../../../../../services/utils-service'
 
+import TopWrapperGrid from '../../../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
+
 export default withRouter(({history}) =>{
 
     const [ loading, setLoading ] = useState(false)
@@ -77,13 +79,20 @@ export default withRouter(({history}) =>{
 
     return (
         <div id="admin-product-update-page" className={`admin-form-page ${loading? 'freeze' : ''}`}>
-          
-            <AdminCommonToolBar>
-                <button onClick={update}>  Atualizar </button>
-                <button className="warning" onClick={remove}>  Deletar </button>
-            </AdminCommonToolBar>
+            
+            <TopWrapperGrid>
 
-            <RootForm { ...rootState }></RootForm>   
+                <AdminCommonToolBar>
+                    <button onClick={update}>  Atualizar </button>
+                    <button className="warning" onClick={remove}>  Deletar </button>
+                </AdminCommonToolBar>
+            </TopWrapperGrid>
+
+            <section className="form-flow">
+
+
+                <RootForm { ...rootState }></RootForm>   
+            </section>
 
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         

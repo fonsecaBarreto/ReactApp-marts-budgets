@@ -10,6 +10,8 @@ import { findProviderService, saveProviderService, removeProviderService, update
 
 import RootForm, { FormState } from '../RootForm';
 import AddressForm, { FormState as AddressFormState } from '../../AddressForm';
+import TopWrapperGrid from '../../../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
+
 
 export default withRouter(({history}) =>{
 
@@ -96,14 +98,21 @@ export default withRouter(({history}) =>{
     return (
         <div id="admin-provider-update-page" className={`admin-form-page ${loading? 'freeze' : ''}`}>
           
-            <AdminCommonToolBar>
-                <button onClick={update}>  Atualizar </button>
-                <button className="warning" onClick={remove}>  Deletar </button>
-            </AdminCommonToolBar>
 
-            <RootForm { ...rootState }></RootForm>
-           
-            <AddressForm {...addressState}></AddressForm> 
+
+            <TopWrapperGrid>
+
+                <AdminCommonToolBar>
+                    <button onClick={update}>  Atualizar </button>
+                    <button className="warning" onClick={remove}>  Deletar </button>
+                </AdminCommonToolBar>
+
+            </TopWrapperGrid>
+
+            <section className="form-flow">
+                <RootForm { ...rootState }></RootForm>
+                <AddressForm {...addressState}></AddressForm> 
+            </section>
 
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         

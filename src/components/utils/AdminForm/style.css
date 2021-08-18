@@ -8,11 +8,14 @@
     border-radius: 6px;
     position: relative;
     box-shadow: 0px 0px 1px 1px #0002; 
+    max-width: 1224px;
+    margin: 0 auto;
 }
 
 .admin-form{
     width: 100%;
     display: flex; flex-direction: column; align-content: flex-start; justify-content: flex-start;
+
 }
 
 .admin-form-container .admin-form  .ad-title{

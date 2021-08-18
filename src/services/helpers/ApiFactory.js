@@ -16,7 +16,6 @@ export function MakeApi(base_url, errorHelper, storage_key){
         return result
       }catch(err){ throw errorHelper(err) } */
 
-
       return new Promise((resolve, reject) => {
         setTimeout( async ()=>{
           try{ 

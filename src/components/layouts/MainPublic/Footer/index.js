@@ -33,7 +33,7 @@ export default withRouter(({toggleMenu, history, admin, mart}) => {
             </div>
             <div className="footer-consideration">
                 <div className="app-container">
-                <span >Copyright©2021, UnaCompras. Todos os direitos reservados.</span>
+                    <p >Copyright©2021, UnaCompras. Todos os direitos reservados.</p>
                 </div>
             </div>
 

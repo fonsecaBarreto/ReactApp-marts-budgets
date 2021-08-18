@@ -49,7 +49,6 @@
 
 body {
   margin: 0;
-  overflow-y: scroll;
    -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 
   font-family: "Oxygen", 'Times New Roman', Times, serif;

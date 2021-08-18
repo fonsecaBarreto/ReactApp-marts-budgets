@@ -35,7 +35,7 @@ export const FeedState = (loadFunction, queries) =>{
     return { feed, setFeed, loading, setLoading, loadFeed, setQueries}
 }
 
-export default ({ component: Component, state, children, onClick }) =>{
+export default ({ className, component: Component, state, children, onClick }) =>{
 
     const { feed, setFeed, loading, loadFeed } = state
 
@@ -56,11 +56,8 @@ export default ({ component: Component, state, children, onClick }) =>{
   
 
     return (
-        <div className="app-feed">
-
-
-            <ResulInfo total={ feed.total } count={feed.data.length} subTotal={feed.subTotal} > </ResulInfo>
-
+        <div className={`app-feed app-padding`}>
+        
             {children}
             
             <div className={`app-feed-flow`}>

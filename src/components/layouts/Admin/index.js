@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './style.css'
 import './utils.css'
+import './boots.css'
 import { withRouter, Link} from "react-router-dom"
 import { useSelector } from 'react-redux'
 
@@ -47,6 +48,8 @@ export default withRouter(({ history, children}) =>{
     const [ currentPage, setCurrentPage ] = useState(null)
     const [ showMenu, setShowMenu ] = useState(false)
 
+    var reftest = useRef()
+
     useEffect(()=>{
         setConfig(currentPage)
         setShowMenu(false)
@@ -61,16 +64,27 @@ export default withRouter(({ history, children}) =>{
         setCurrentPage(history.location.pathname) 
     },[history, history.location])
 
+    const scrol = () => {
+       /*  reftest.current.scrollIntoView({ behavior: 'smooth' })
+ */
+
+        reftest.current.scrollTo({
+            top: 0, 
+            behavior: 'smooth'});
+    }
+
     return (
     <div id="admin-layout">
 
-        <AdminHeader toggle={()=>setShowMenu(!showMenu)}  title={title} goBack={goBack}></AdminHeader>
+        <AdminHeader toggle={()=>setShowMenu(!showMenu)}  title={title} goBack={goBack}></AdminHeader> 
 
+  
         <AdminBar title={title} goBack={goBack} ></AdminBar>
 
         <AdminMenu pages={MENU_STRUCT} currentPage={currentPage} show={showMenu}></AdminMenu>
 
-        <main className="admin-content">
+        
+        <main className="admin-content" ref={reftest}>
             {children}
         </main>
   

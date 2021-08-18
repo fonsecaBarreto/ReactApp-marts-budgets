@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 
 import { BsDot } from 'react-icons/bs'
 
-export const ListProductView = ({product, index}) =>{
+export const ListProductView = ({className, product, index}) =>{
     const history = useHistory()
     const { id, description, brand, presentation} = product
 
@@ -13,8 +13,7 @@ export const ListProductView = ({product, index}) =>{
         history.push(`/admins/products/update?id=${id}`)
     }
     return (
-        <div className="listing-product-view " onClick={update}>
-            <span>{index}</span>
+        <div className={`listing-product-view ${className} `} onClick={update}>
             <div> {description} </div>
             <div> {brand.label} </div>
             <div> {presentation} </div>

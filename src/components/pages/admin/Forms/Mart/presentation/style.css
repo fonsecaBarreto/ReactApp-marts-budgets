@@ -1,12 +1,16 @@
 
 
 #admin-mart-create-page{
+    position: relative;
+    height: 100%;
 
 
 }
 
 #admin-mart-update-page{
-
+    position: relative;
+    height: 100%;
+    
 
 }
 

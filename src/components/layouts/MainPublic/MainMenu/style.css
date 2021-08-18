@@ -13,68 +13,18 @@
     display: flex;
     flex-direction: column;
     box-shadow: 2px 2px 4px 4px #0004;
-    
 }
-
-.main-menu > button{
-    margin-right: 0;
-    margin-left: auto;
-    height: 60px;
-    width: 60px;
-    background-color: transparent;
-    font-size: 22px;
-    color:white;
-    margin-right: 20px;
-    margin-top: 10px;
-    
-}
-.main-menu ul{
-    text-decoration: none;
-    list-style: none;
+.main-menu > section{
+    width: 100%;
+    padding: 0 32px;
+    height: 72px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    padding: 0;
-    gap: 4px;
+    justify-content: flex-end;
 }
-
-/* Menu item */
-
-.main-menu ul li.main-menu-item{
-    width: 100%;
-    -webkit-user-select: none; /* Safari */        
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
-    display: flex;
-    flex-direction: column;
-    font-size: 22px;
-    padding: 0px 8px;
-}
-.main-menu ul li.main-menu-item .main-menu-item-row{
-    position: relative;
-    display: flex; flex-direction: row; align-items: center; justify-content: flex-start;
-    gap: 8px;  padding: 6px 32px;
-    cursor: pointer;
-    color: rgb(235, 235, 235);
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-}
-
-.main-menu ul li.main-menu-item .main-menu-item-row:hover {
-    transition: all .02s ease-in;
-    background-color: rgba(0, 0, 0, 0.1);
-    color: rgb(255, 255, 255);
-}
-
-
-
-
 
 @media only screen and (max-width: 960px){  
-  
 
     .main-menu{
         padding: 0px 0;

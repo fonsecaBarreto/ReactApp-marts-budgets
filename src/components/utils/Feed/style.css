@@ -1,5 +1,8 @@
 .app-feed{
-    margin-top: 5px;
+    height: 100%;
+    padding-top: 16px;
+    padding-bottom: 300px;
+    overflow-y: auto;
 }
 
 .app-feed-flow{
@@ -7,6 +10,7 @@
     min-height: fit-content;
     gap: 6px;
     padding: 0;
+   
 }
 
 .result-info-bar{
@@ -14,7 +18,7 @@
     flex-direction: row;
     align-items:center;
     gap: 10px;
-    font-size: 13px;
-    padding: 0 8px 12px;
-    color: #444;
+    font-size: 14px;
+    height: 100%;
+    color: white
 }

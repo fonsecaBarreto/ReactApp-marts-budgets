@@ -1,17 +1,16 @@
 
 #admin-marts-page{
-    min-height: 100vh;
+    position: relative;
+    height: 100%;
 }   
 
 .status-select-box{
-    background-color: rgb(229, 229, 229);
-    width: 120px; height: 48px;
-    border: none;
-    color: rgb(58, 58, 58);
-    border: solid 1px #ddd;
-    font-size: 16px;
+    height: 100%!important;
+    background-color: rgb(229, 229, 229)!important;
+    width: 120px; 
     cursor: pointer;
-    padding: 0 10px;
+    padding: 0 10px; 
+
 }
 
 .status-select-box:hover{

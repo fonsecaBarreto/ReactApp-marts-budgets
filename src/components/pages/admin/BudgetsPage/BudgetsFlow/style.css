@@ -1,9 +1,14 @@
 .budget-list-flow{
     display: grid;
     grid-template-columns: repeat(2,1fr);
+    grid-template-rows: auto;
     gap: 8px;
     padding: 0 0;
     border-radius: 2px;
+    height: fit-content;
+    padding-bottom: 300px;
+
+
 }
 
 

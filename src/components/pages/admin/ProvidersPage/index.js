@@ -3,12 +3,15 @@ import { withRouter } from "react-router-dom"
 import './style.css'
 import { listProvidersWithFilterService } from '../../../../services/provider-service'
 import ProviderItem from './Item'
-import { AiOutlinePlus } from 'react-icons/ai'
+import ResulInfo from '../../../utils/Feed/ResulInfo'
 import AppFeed, { FeedState } from '../../../utils/Feed'
 import SearchBar from '../../../utils/Feed/SearchBar'
 import { RiFileExcel2Line } from 'react-icons/ri'
-import AdminToolBarGrid from "../../../utils/Admin-tool-bar-grid"
+
 import { downloadXls } from '../../../../services/utils-service'
+
+import TopWrapperGrid from '../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
+import BottomWrapperGrid from '../../../layouts/Admin/common/ListPageWrapper/BottomWrapperGrid'
 export default withRouter(({history}) =>{
 
     const feedState = FeedState(listProvidersWithFilterService, {text:""})
@@ -26,29 +29,27 @@ export default withRouter(({history}) =>{
 
     return (
         <div id="admin-provider-page">
-            <div className="app-container">
-                <AdminToolBarGrid>
 
+                <TopWrapperGrid>
                     <SearchBar 
                         onAdd={add}
-                        label="Nome, Telefone ou E-mail " 
+                        label="Pesquise por Nome, Telefone ou E-mail " 
                         toSearch={()=> loadFeed(0, false)} 
                         text={feed.queries.text}
                         onText={handleText}> 
                     </SearchBar>
-                    <a href={downloadXls('providers')} className="soft-btn opt-btn">
-                     
-                        <RiFileExcel2Line></RiFileExcel2Line>
-                        Download
-                   
-                    </a>
-             
-                </AdminToolBarGrid>
+                </TopWrapperGrid>
 
-             
                 <AppFeed state={feedState} component={ProviderItem}> </AppFeed> 
+
+                <BottomWrapperGrid>  
+                    <section className="app-padding">
+                        <ResulInfo total={ feedState.feed.total } count={feedState.feed.data.length} subTotal={feedState.feed.subTotal} > </ResulInfo>
+                        <a href={downloadXls('providers')} className="soft-btn opt-btn"> <RiFileExcel2Line></RiFileExcel2Line> Download  </a>
+                    </section>
+                </BottomWrapperGrid>
      
-            </div>
+         
         </div>
     )
 })

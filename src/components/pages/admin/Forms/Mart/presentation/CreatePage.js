@@ -8,6 +8,7 @@ import AdminCommonToolBar from '../../../../../layouts/Admin/AdminCommonToolBar'
 import RootForm, { FormState } from '../RootForm';
 import SecurityForm, { FormState as SecurityFormState } from '../SecurityForm'
 import AddressForm, { FormState as AddressFormState } from '../../AddressForm';
+import TopWrapperGrid from '../../../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
 
 import { saveMartService } from '../../../../../../services/mart-service'
 
@@ -48,14 +49,19 @@ export default withRouter(({history}) =>{
 
     return (
         <div id="admin-mart-create-page" className={`admin-form-page ${loading? 'freeze' : ''}`}>
-          
-            <AdminCommonToolBar>
-                <button onClick={create}>  Cadastrar </button>
-            </AdminCommonToolBar>
 
-            <RootForm { ...rootState }></RootForm>
-            <SecurityForm { ...securityState }></SecurityForm>
-            <AddressForm {...addressState}></AddressForm>
+
+            <TopWrapperGrid>
+                <AdminCommonToolBar>
+                    <button onClick={create}>  Cadastrar </button>
+                </AdminCommonToolBar> 
+            </TopWrapperGrid>
+
+            <section className="form-flow">
+                <RootForm { ...rootState }></RootForm>
+                <SecurityForm { ...securityState }></SecurityForm>
+                <AddressForm {...addressState}></AddressForm>
+            </section>
 
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         

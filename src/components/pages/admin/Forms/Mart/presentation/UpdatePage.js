@@ -6,7 +6,6 @@ import queryString from 'query-string';
 
 import WarningDialog, { WarningState } from '../../../../../utils/WarningDialog'
 import AdminCommonToolBar from '../../../../../layouts/Admin/AdminCommonToolBar'
-import LoadingComp from '../../../../../utils/LoadingComp';
 
 import RootForm, { FormState } from '../RootForm';
 import SecurityForm, { FormState as SecurityFormState } from '../SecurityForm'
@@ -17,6 +16,9 @@ import { saveMartService, removeMartService, findMartService, updateAddressServi
 import { getFilePath } from '../../../../../../services/utils-service'
 
 import { AiOutlinePaperClip } from 'react-icons/ai'
+
+import TopWrapperGrid from '../../../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
+
 
 export default withRouter(({history}) =>{
 
@@ -112,28 +114,35 @@ export default withRouter(({history}) =>{
     return (
         <div id="admin-mart-update-page" className={`admin-form-page ${loading? 'freeze' : ''}`}>
           
+
+          <TopWrapperGrid>
             <AdminCommonToolBar>
                 <button onClick={update}>  Atualizar </button>
                 <button className="warning" onClick={remove}>  Deletar </button>
             </AdminCommonToolBar>
+        </TopWrapperGrid>
 
-            <RootForm { ...rootState }> </RootForm>
+            <section className="form-flow">
 
-            <AddressForm {...addressState}></AddressForm>
+                <RootForm { ...rootState }> </RootForm>
+                <AddressForm {...addressState}></AddressForm>
 
-            { annexes?.length > 0 && <div>
-                    <h4 style={{textAlign:"left", margin: "4px"}}> Anexos:</h4>
-                    {annexes.map((a,i) =>{
-                        return (
-                            <a href={getFilePath(a.name)} key={i} target='_blank' className="mart-annex-item">
-                                <span className={'font-bold '}>  <AiOutlinePaperClip></AiOutlinePaperClip> 
-                                    {a.name} 
-                                </span> 
-                            </a>
-                        )
-                    })}
-                </div> }
+                { annexes?.length > 0 && 
+                    <div className="app-container">
+                        <h4 style={{textAlign:"left", margin: "4px"}}> Anexos:</h4>
+                        {annexes.map((a,i) =>{
+                            return (
+                                <a href={getFilePath(a.name)} key={i} target='_blank' className="mart-annex-item">
+                                    <span className={'font-bold '}>  <AiOutlinePaperClip></AiOutlinePaperClip> 
+                                        {a.name} 
+                                    </span> 
+                                </a>
+                            )
+                        })}
+                    </div> 
+                }
          
+            </section>
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         
         </div>

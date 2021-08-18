@@ -3,7 +3,8 @@ import './style.css'
 import Dialog from '../../../../../utils/Dialog'
 import { getFilePath } from '../../../../../../services/utils-service'
 import basketImage from '../../../../../../assets/basket.png'
-export default ({ product, setProduct, toOrder }) =>{
+import LoadingComp from '../../../../../utils/LoadingComp'
+export default ({ product, setProduct, toOrder, freeze }) =>{
 
     const [ image, setImage] = useState(null)
     useEffect(()=>{
@@ -17,28 +18,29 @@ export default ({ product, setProduct, toOrder }) =>{
     },[product])
 
     return (
-        <Dialog show={product} onClose={()=>setProduct(null)} title="Confirme a ordem!">
-            <div className="budget-product-confirmation-dialog">
-                {/* <h3>
-                    Deseja prosseguir ? 
-                </h3> */}
-                <span></span>
-                <div>
-                    <img src={image}></img> 
-                     <ul>
-                        <li> <span> {product.item.label} - {product.description}</span> </li>
-                        <li> <label> Apresentação: </label> <span >    {product.presentation}  </span> </li>
-                        <li> <label> Marca: </label> <span>  {product.brand.label} </span> </li>
-                        <li>  <label> EAN: </label> <span>  {product.ean} </span>  </li> 
-                    </ul>
- 
-                </div>
+        <Dialog show={product} onClose={()=>setProduct(null)} title={freeze ? "Enviando pedido..." : "Confirme a ordem!"}>
 
-                <div>
-                    <button onClick={()=>setProduct(null)} className="cancel"> cancelar </button>
-                    <button  onClick={toOrder}> confirmar </button>
+            { freeze ? <LoadingComp></LoadingComp>  :
+          
+                <div className="budget-product-confirmation-dialog">
+                    <span></span>
+                    <div>
+                        <img src={image}></img> 
+                        <ul>
+                            <li> <span> {product.item.label} - {product.description}</span> </li>
+                            <li> <label> Apresentação: </label> <span >    {product.presentation}  </span> </li>
+                            <li> <label> Marca: </label> <span>  {product.brand.label} </span> </li>
+                            <li> <label> EAN: </label> <span>  {product.ean} </span>  </li> 
+                        </ul>
+    
+                    </div>
+
+                    <div>
+                        <button onClick={()=>setProduct(null)} className="cancel"> cancelar </button>
+                        <button  onClick={toOrder}> confirmar </button>
+                    </div>
                 </div>
-            </div>
+            }
         </Dialog>
     )
 }

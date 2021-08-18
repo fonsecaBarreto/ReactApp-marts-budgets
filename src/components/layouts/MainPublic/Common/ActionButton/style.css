@@ -1,0 +1,40 @@
+
+button.main-layout-action-btn{
+    position: relative;
+    display: flex; flex-direction: row; align-items: center; justify-content: flex-start; 
+    width: fit-content; height: fit-content;
+    background-color: transparent;
+    gap: 10px;
+    white-space: nowrap;
+    font-size: 18px;color: white;
+
+    border: none;
+    cursor: pointer;
+
+    border-radius: 20px;
+    padding: 8px 24px;
+    margin: 0;
+    font-size: 18px;
+    text-align: center;
+    background-color: var(--second-color)
+}
+
+button.main-layout-action-btn:hover::after{
+    position: absolute; top: 0;left: 0;
+    content: "";
+    width: 100%; height: 100%;
+    border-radius: 20px;
+    border: none;
+    background-color: rgba(240, 255, 240, 0.1);
+  }
+
+  @media only screen and (max-width: 960px) {
+    button.main-layout-action-btn{
+        width: 100%;
+        height: 56px;
+        font-size: 20px;
+        text-transform: uppercase;
+        justify-content:center;
+
+    }
+  }

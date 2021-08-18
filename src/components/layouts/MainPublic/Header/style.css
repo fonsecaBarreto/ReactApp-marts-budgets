@@ -39,46 +39,6 @@ header#primary-header.colorful{
 }
 
 
-.primary-header-content section.section-two nav ul  {
-    flex-direction: row;
-    display: flex; align-items: center; justify-content: flex-end; 
-    gap: 6px;
-}
-
-.primary-header-content section.section-two nav ul li.header-link {
-    display: inline;
-    color: white;
-    font-size: 17px;
-    font-weight: 500;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding: 6px 12px;
-    transition: all .05s ease-in;
-    position: relative;
-}
-
-.primary-header-content section.section-two nav ul li.header-link::after{
-    content: "";
-    position: absolute;
-    top: 0; right: 0;
-    left: 0; bottom: 0;
-    margin: auto;
-    width: 50%;
-    height: calc(100% );
-    border-bottom: solid 3px rgb(255, 255, 255, 0);
-    transition: all .15s ease-in-out;
-}
-.primary-header-content section.section-two nav ul li.header-link.active::after {
-    width: 100%;
-    border-bottom: solid 3px rgb(255, 255, 255,.8);
-} 
-
-
-
-.primary-header-content section.section-two nav ul li.header-link:hover::after{
-   border-bottom: solid 3px white;
-   width: calc(100% );
-}
 
 .signup-button{
     padding: 10px 20px;
@@ -93,56 +53,10 @@ header#primary-header.colorful{
 }
 .signup-button:hover{  transition: all .02s ease-in;}
 
-.mart-area-button{
-    display: flex; align-items: center; justify-content: flex-start; 
-    flex-direction: row;
-    width: fit-content;
-    white-space: nowrap;
-    gap: 10px;
-    font-size: 18px;
-    color: white;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    height: fit-content;
-    border-radius: 24px;
-    padding: 8px 16px;
-    margin-left: 16px;
-    background-color: var(--second-color)
-}
-
-.mart-area-button:hover{
-
-    background-color: white;
-    color: rgb(22, 53, 88);
-    transition: all .2s ease-in-out;
-}
-
-
 
 .ph-logo{
     width: 150px;
 }
+
 /* toggle button */
 
-
-.toggle-button{
-    display: flex; align-items: center; justify-content: center; 
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: transparent;
-    font-size: 28px;
-    color: #efefef;
-    border: solid 1px #efefef;
-    transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.toggle-button:hover{
-    font-size: 28px;
-    color: white;
-    border: solid 1px #eee;
-    color: rgb(255, 255, 255);
-    border: solid 1px rgb(255, 255, 255);
-}

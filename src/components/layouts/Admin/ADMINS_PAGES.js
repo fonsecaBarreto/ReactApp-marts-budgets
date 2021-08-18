@@ -8,16 +8,16 @@ import { RiPriceTag2Fill } from 'react-icons/ri'
 
 export const MENU_STRUCT = [
 
-    {
-        title: "Painel", to: "/admins/panel",
+   /*  {
+        title: "Painel", to: "/admins/products",
         icon: <AiFillDashboard></AiFillDashboard>,
         hide: true,
-    },
+    }, */
 
     {
         title: "Orçamentos",   to: "/admins/budgets",
         icon: <CgNotes></CgNotes>,
-        back: "/admins/panel",
+        back: "/admins/products",
     },
    
     {
@@ -27,7 +27,7 @@ export const MENU_STRUCT = [
             {
                 title: "Listagem",  to: "/admins/products",
                 icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-                back: "/admins/panel",
+                back: "/admins/products",
             },
           
             {
@@ -82,7 +82,7 @@ export const MENU_STRUCT = [
             {
                 title: "Listagem",  to: "/admins/marts",
                 icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-                back: "/admins/panel",
+                back: "/admins/products",
             },
             {
                 title: "Adicionar",  to: "/admins/marts/create",
@@ -105,7 +105,7 @@ export const MENU_STRUCT = [
             {
                 title: "Listagem",  to: "/admins/providers",
                 icon: <AiOutlineUnorderedList></AiOutlineUnorderedList>,
-                back: "/admins/panel",
+                back: "/admins/products",
             },
             {
                 title: "Adicionar",  to: "/admins/providers/create",

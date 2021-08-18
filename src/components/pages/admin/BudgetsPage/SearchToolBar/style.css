@@ -1,6 +1,7 @@
 .admin-ku-search-tool-bar{
     width: 100%;
     height: fit-content;
+    margin-top: 12px;
 }
 
 .admin-ku-search-tool-bar .akustb-grid{

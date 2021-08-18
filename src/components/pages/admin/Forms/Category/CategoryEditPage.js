@@ -7,7 +7,7 @@ import LoadingComp from '../../../../utils/LoadingComp';
 import queryString from 'query-string';
 
 import { CategoryState, RootForm, PrimaryUpdateForm } from './Forms'
-
+import TopWrapperGrid from '../../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
 export default withRouter(({history}) =>{
 
     const state = CategoryState()
@@ -65,26 +65,19 @@ export default withRouter(({history}) =>{
     const { id, category_id } = state.inputs
 
     return ( 
-        <div id="create-category-page"> 
-       
-            { loading  ===true ? <LoadingComp></LoadingComp> :
+        <div id="create-category-page"  className={`admin-form-page ${loading || freeze? 'freeze' : ''}`}> 
+
+            <TopWrapperGrid>
+                <AdminCommonToolBar >
+                   {id &&  <button className={`warning `}  onClick={removeHandler}>  Deletar </button> }
+                    <button  onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button> 
+                </AdminCommonToolBar>
+            </TopWrapperGrid>
+
+            <section className="form-flow">
+                <RootForm {...state} ></RootForm> 
+            </section>
             
-                <div className="app-container">
-                
-                    
-                  
-                    <RootForm {...state} ></RootForm>
-                 
-
-                    <AdminCommonToolBar freeze={freeze}>
-                        {id &&  <button className={`warning ${freeze ? 'freeze' : ''}`}  onClick={removeHandler}>  Deletar </button> }
-                        <button className={`${freeze ? 'freeze' : ''}`} onClick={()=>{ id ? update() : create() }}>  { id ? "Atualizar" : "Cadastrar" }  </button>
-                    </AdminCommonToolBar>
-
-
-
-                </div>
-            }
            
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         </div>

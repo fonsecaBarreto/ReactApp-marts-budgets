@@ -7,7 +7,7 @@ import AdminCommonToolBar from '../../../../../layouts/Admin/AdminCommonToolBar'
 import WarningDialog, { WarningState } from '../../../../../utils/WarningDialog'
 import RootForm, { FormState } from '../RootForm';
 import { saveItemsService } from '../../../../../../services/item-service'
-
+import TopWrapperGrid from '../../../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
 export default withRouter(({history}) =>{
 
     const [ loading, setLoading ] = useState(false)
@@ -39,12 +39,16 @@ export default withRouter(({history}) =>{
 
     return (
         <div id="admin-item-create-page" className={`admin-form-page ${loading? 'freeze' : ''}`}>
-          
-            <AdminCommonToolBar>
-                <button onClick={create}>  Cadastrar </button>
-            </AdminCommonToolBar>
+            
+            <TopWrapperGrid>
+                <AdminCommonToolBar>
+                    <button onClick={create}>  Cadastrar </button>
+                </AdminCommonToolBar>
+            </TopWrapperGrid>
 
-            <RootForm { ...rootState }></RootForm>   
+            <section className="form-flow">
+                <RootForm { ...rootState }></RootForm>   
+            </section>
 
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         
