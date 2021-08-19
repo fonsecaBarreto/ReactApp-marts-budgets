@@ -52,11 +52,18 @@ main.admin-content{
 
 @media only screen and (max-width: 960px){
 
-    :root {
-        --admin-header-height: 76px;
+    :root {  --admin-header-height: 76px; }
+
+    #admin-layout {  
+        grid-template-areas: "header header" "content content" ;
+       /*  grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr; */
     }
-    #admin-layout {  grid-template-areas: "header header" "content content" }
-    header.admin-header{  display: block; }
+
+    header.admin-header { 
+         display: block; 
+    }
+
     .admin-bar {
         display: none!important;
     }

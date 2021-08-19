@@ -56,9 +56,9 @@ export default withRouter(({history}) =>{
             <section className="form-flow">
     
                 <RootForm { ...rootState }></RootForm>
-            
                 <AddressForm {...addressState}></AddressForm> 
             </section>
+            
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
         
         </div>
