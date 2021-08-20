@@ -1,0 +1,34 @@
+.mart-product-feed{
+    padding:  0;
+    grid-row: 2 span;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 200px;
+}
+
+.mart-item-feed-flow{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
+    row-gap: 8px;
+    margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 1024px){
+
+    .mart-product-feed-flow{
+        grid-template-columns: repeat(2, 1fr);
+        grid-row: 1 span;
+    }
+
+    .mart-product-feed{
+        padding-bottom: 300px;
+
+    }
+    
+}
+
+
+

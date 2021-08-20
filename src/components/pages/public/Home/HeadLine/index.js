@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './style.css'
-import Banner from '../../../../../assets/headline-truck.svg'
+import Banner from '../../../../../assets/cardue.png'
 import HeadLineCurve from '../../../../../assets/headline-curve.svg' 
 import { useHistory } from 'react-router-dom'
 export default () =>{
@@ -14,9 +14,9 @@ export default () =>{
             <div className="app-container">
                
                 <div className="head-line-text-container">
-                    <h1> Torne-se um membro</h1>
-                    <h3> Descubra as Vantagens de ser <span className="hashUna"> #Una </span> </h3>
-                    <button className="soft-btn" onClick={goTo}> Cadastrar-se</button>
+                    <h1> A praticidade de comprar ao melhor preço</h1>
+                    <h3> Uma plataforma digital para empresários reduzirem custos, conectando o comprador ao fornecedor, simplificando o processo de compras. </h3>
+                    <button className="soft-btn" onClick={goTo}> Saiba mais</button>
                 </div> 
                 <img src={Banner}></img> 
 

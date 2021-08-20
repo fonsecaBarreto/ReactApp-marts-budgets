@@ -4,6 +4,8 @@ import './style.css'
 import { withRouter } from 'react-router-dom'
 import Logo from '../../../../assets/logo2.svg'
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa'
+import { FiPhone } from  'react-icons/fi'
+import { AiOutlineMail } from  'react-icons/ai'
 export default withRouter(({toggleMenu, history, admin, mart}) => {
 
      
@@ -20,8 +22,12 @@ export default withRouter(({toggleMenu, history, admin, mart}) => {
                 <section> 
 
                     <ul className="footer-contact">
-                        <li> Endereço</li>
-                        <li> email | Telefone</li>
+                        <li> Rodovia amaral peixoto, 2511 - km 179 loja 01 - barra de macaé. Macaé-RJ. CEP 27973-030.</li>
+                        <li> 
+                            <span> <AiOutlineMail></AiOutlineMail> 
+                                adm@unacompras.com.br </span>
+                            <span> <FiPhone></FiPhone>(22) 99231-7557 </span>
+                        </li>
                     </ul>
                     <nav className="footer-social-nav">
                         <span className="social-icon"><FaInstagram></FaInstagram></span>

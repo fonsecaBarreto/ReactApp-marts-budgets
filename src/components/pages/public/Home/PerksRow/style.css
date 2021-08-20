@@ -13,7 +13,7 @@
     gap: 20px;
     row-gap: 56px;
     flex-wrap: wrap; flex-direction: row;
-    margin-top: 90px;
+    margin-top: 120px;
 }
 
 
@@ -26,12 +26,10 @@
     justify-content: flex-start;
     background-color: white;
     padding: 20px 8px;
-    width: 30%;
+    width: 32%;
     font-size: 18px;
     box-shadow: 0px 2px 4px 1px #0005;
     border-radius: 6px;
-/*     animation-name: cardShowsUp;
-    animation-duration: .5s; */
     cursor: default;
 }
 .perks-row .perks-card:hover{
@@ -41,18 +39,7 @@
     box-shadow: 0px 1px 2px 1px #0005;
 }
 
-/* 
-.perks-row .perks-card:nth-child(1){
-    margin-top: 80px;
-}
-.perks-row .perks-card:nth-child(2){
-    margin-top: 40px;
-}
- */
-.perks-row .perks-card:nth-child(3){
-    margin-top: 0;
 
-}
 
 
 .perks-row .perks-card .pcimg-vp{
@@ -80,7 +67,7 @@
     font-weight: bold;
     white-space: normal;
     text-align: left;
-    font-size: 24px;
+    font-size: 25px;
     line-height: 26px;
     max-height: 40px;
     display: block; 
@@ -90,6 +77,14 @@
     overflow: hidden;
     text-align: center;
     margin: 12px 0 8px;
+    text-transform: unset;
+ 
+}
+
+.perks-row .perks-card > :nth-child(3){
+    
+    font-size: 20px;
+
  
 }
 .perks-row .perks-card > :nth-child(3){

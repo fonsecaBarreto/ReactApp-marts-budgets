@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import './style.css'
-import FormRow from '../../../../utils/FormRow'
+
 import StrictInfoRow from "./StrictInfoRow"
 import { signUpService } from '../../../../../services/mart-login-service'
 import { withRouter } from 'react-router-dom'
@@ -8,6 +8,7 @@ import InputMask from 'react-input-mask';
 import AddressForm from "../AddressForm/index.js"
 import LoginFormRow, { MakeTextInput } from "../LoginFormRow"
 import UploadsComp, { UploadState } from '../UploadsComp'
+
 const INITIAL_ADDRESS_DATA ={
     address:"", 
     address_region: "", 
@@ -117,27 +118,10 @@ export default withRouter(( { setLoading, inputs, errors, setErrors, handleInput
 
             <StrictInfoRow value={transfer_allowed} setValue={setTransfer_allowed}></StrictInfoRow>
 
-            <button onClick={submit} className="una-login-form-button" >  Cadastrar  </button>
+            <button onClick={submit} className="una-login-form-button" >  Criar Conta grátis  </button>
 
             <button className="light-button" onClick={toggleMode}> Já sou Cadastrado </button> 
 
         </form>
     )
 })
-
-
-
-{/*
-
-            <FormRow label="Telefone Celular" error={errors?.['phone']}>
-                <InputMask placeholder="text" className="text-input" mask="(99) 99999-9999" maskChar={" "} value={phone} onChange={e=>handleInputs('phone',e.target.value)}/>
-            </FormRow> */}
-
-            
-            {/* <FormRow label="E-mail financeiro" error={errors?.['financial_email']}>
-                <input value={financial_email} type="text" onInput={e=>handleInputs('financial_email',e.target.value)}></input>
-            </FormRow>
-            
-            <FormRow label="Razão social" error={errors?.['corporate_name']}>
-                <input value={corporate_name} type="text" onInput={e=>handleInputs('corporate_name',e.target.value)}></input>
-            </FormRow> */}

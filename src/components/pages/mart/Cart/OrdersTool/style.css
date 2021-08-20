@@ -1,0 +1,95 @@
+
+.budget-row{
+    margin-right: 0;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: 82px 200px auto 50px;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    gap: 8px;
+    grid-template-areas: "qtd forecast order cancel" ;
+}
+
+.budget-row > .budget-row-comp{
+    position: relative;
+    display: flex; flex-direction: column; align-items: flex-start;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.budget-row > .budget-row-comp:nth-child(1){  grid-area: qtd; }
+.budget-row > .budget-row-comp:nth-child(2){ grid-area: forecast; }
+.budget-row > .budget-row-comp:nth-child(3){ grid-area: order; }
+.budget-row > .budget-row-comp:nth-child(4){ grid-area: cancel; }
+
+
+.budget-row-comp label {
+    height: 16px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: -22px; left: 0; 
+}
+
+.budget-row-comp input, .budget-row-comp button {
+  /*   display: flex; flex-direction: column; align-items: center; justify-content: center; */
+    height: 100%;  width: 100%;
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    padding: 0 6px;
+    font-size: 16px;
+    height: 45px;
+    margin: 0;
+    text-align: center;
+}
+
+.budget-row button{
+    position: relative;
+    cursor: pointer;
+    padding: 0 32px;
+    background-color: var(--second-color);
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.budget-row .br-cancel{
+    background-color: rgb(160, 28, 57)!important;
+    padding: 0;
+    line-height: 0;
+    width: 100%;
+}
+
+
+.budget-row button:hover::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+}
+
+
+@media only screen and (max-width: 1024px){
+
+
+   
+    .budget-row{
+        grid-template-columns: 1fr 3fr;
+        grid-row: 1fr 1fr;
+        grid-template-areas: "qtd forecast" "cancel order" ;
+    }
+
+    .budget-row button{
+        padding: 0 16px;
+    }  
+
+}

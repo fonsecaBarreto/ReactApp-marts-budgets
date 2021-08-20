@@ -25,8 +25,8 @@ export default function MainPublicLayout({children, fixedHeader}) {
                 {children}   
             </main>
 
-            <Footer> </Footer>
-      
+          {/*   <Footer> </Footer> */}
+  
         </div>
     )
 }

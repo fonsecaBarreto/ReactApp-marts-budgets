@@ -1,0 +1,86 @@
+.confirm-item-view-row{
+    width: 100%;
+    color: black;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 10px;
+    border: solid 1px #ddd;
+    padding: 10px 0 ;
+}
+
+
+.confirm-item-view-row > img{
+    object-fit: cover;
+    width: 320px;
+    height: 320px;
+    margin: auto;
+    background-color: white;
+    overflow: hidden;
+   
+}
+
+
+.confirm-item-view-row ul{
+    border-top: solid 1px #ddd;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    row-gap: 6px;
+    padding: 0 0px;
+    text-align: left;
+    padding: 10px ;
+    list-style: none;
+}
+ 
+
+.confirm-item-view-rowul li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; 
+    gap: 4px;
+}
+
+
+.confirm-item-view-rowul li label{
+   font-size: 15px;
+   
+
+}
+.confirm-item-view-row ul li span{
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+    font-size: 17px;
+    list-style: 20px;
+    white-space: normal;
+    text-align: left;
+}
+ 
+.confirm-item-view-row ul li span:nth-child(1){
+    font-size: 18px;
+}
+ 
+
+
+
+@media only screen and (max-width: 960px){
+
+ 
+}
+
+@media only screen and (max-width: 756px){
+    .confirm-item-view-row > img{
+
+        width: 240px;
+        height: 240px;
+
+    }
+}

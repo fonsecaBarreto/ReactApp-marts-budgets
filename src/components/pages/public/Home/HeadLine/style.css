@@ -1,6 +1,8 @@
 @keyframes truckAppears {
-    0% { transform: translateX(100%) };
-    100% {  transform: translateX(0) }
+    0% { transform: translateX(-300%) ;
+    opacity: 0; };
+    100% {  transform: translateX(0);
+    opacity: 1; }
   }
   
 #head-line{
@@ -15,7 +17,7 @@
     background: linear-gradient(180deg, rgb(67, 152, 223) 0%, rgba(25,128,208,1) 70%, rgba(0,124,220,1) 100%); 
 }
 
-#head-line::after{
+#head-line::after {
     content: "";
     z-index: 99;
     position: absolute;
@@ -24,17 +26,16 @@
     height: 5vw;
     width: 100%;
     background-image: url(../../../../../assets//curve.svg);
-
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-
 }
  
 
 #head-line > :nth-child(1){
+    overflow-x: hidden;
     display: grid;
-    grid-template-columns: 1fr 480px;
+    grid-template-columns: 1fr 460px;
     grid-template-rows: 1fr;
     align-items: center;
     justify-content: center;
@@ -46,49 +47,47 @@
 
 }
 
-
 #head-line img{
     animation-name: truckAppears;
-    animation-duration: 1.2s;
+    animation-duration: 2s;
     height: 100%;
 }
 
 .head-line-text-container{
-    font-family: "Noir" ;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     color: white;
     text-transform: unset;
     margin: auto;
-    text-shadow: 2px 2px 8px #0002;
-
-}
-
-.head-line-text-container > *{
-    line-height: 1em;
-    margin: 0;
-    padding: 0;
-
+    padding: 0 20px;
 }
 
 .head-line-text-container > h1{
     text-transform: uppercase;
-   line-height: 1em;
-   margin: 0;
-   padding: 0;
-   font-size: 72px;
-   line-height: .9em;
+    line-height: 1em;
+    margin-bottom: 12px;
+    font-size: 48px;
+    text-align: left;
+    text-shadow: 0px 2px 2px  #0004;
 }
+
 .head-line-text-container > h3{
     line-height: 1em;
     margin: 0;
     padding: 0;
-    font-size: 28px;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: left;
     font-weight: normal;
+    text-shadow: 0px 1px 1px  #000a;
  }
 
  .hashUna{
-     color: rgb(9, 5, 58);
-     font-weight: bolder;
+    color: rgb(9, 5, 58);
+    font-weight: bolder;
  }
+
  .head-line-text-container > button{
    padding: 8px 90px;
    height: 46px;
@@ -100,17 +99,16 @@
    font-weight: bold;
    margin-top: 28px;
    cursor: pointer;
+
  }
 
  @media only screen and (max-width: 1024px){
 
-    
     #head-line > :nth-child(1){
         grid-template-columns: 1fr 400px;
        /*  height: 600px; */
     }
 
-    
 }
 
 @media only screen and (max-width: 960px){
@@ -150,4 +148,9 @@
         bottom: calc(-5vw + 1px); */
     }
     
+
+    .head-line-text-container > button{
+        width: 100%;
+    
+    }
 }

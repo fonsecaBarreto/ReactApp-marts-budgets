@@ -1,0 +1,40 @@
+
+.budget-page-container{
+    width: 100%;
+    max-width: 100vw;
+    margin: auto;
+}
+
+#budget-page .budget-page-search-content{
+    width: 100%; height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 240px 1fr;
+    gap: 12px;
+    row-gap: 28px;
+    min-height: 100vh;
+    margin-top: 32px;
+}
+
+.filtering-column{
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;
+    height: 100%;
+    gap: 20px;
+}
+
+@media screen and (max-width: 1024px){
+    #budget-page .budget-page-search-content{
+        grid-template-rows:  auto;
+        gap: 20px;
+    } 
+
+    .filtering-column{
+        flex-direction: row;
+        grid-column: span 2;
+    }
+
+    .main-column{
+        grid-column: span 2; 
+    }
+    
+} 

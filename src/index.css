@@ -6,6 +6,26 @@
   --second-color: rgb(8, 62, 122);
 }
 
+
+
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(./assets//fonts/Montserrat/Montserrat-Thin.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url(./assets//fonts/Montserrat/Montserrat-Medium.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url(./assets//fonts/Montserrat/Montserrat-Bold.ttf);
+  font-weight: 600;
+}
+
+/*  */
 @font-face {
   font-family: "Oxygen";
   src: url(./assets//fonts/Oxygen/Oxygen-Light.ttf);
@@ -48,6 +68,7 @@
 
 
 body {
+
   margin: 0;
    -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 

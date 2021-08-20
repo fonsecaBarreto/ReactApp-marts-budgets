@@ -1,0 +1,77 @@
+.mart-budget-search-bar{
+    position: relative;
+    grid-column: 2 span;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    margin-right: 0;
+    margin-left: auto;
+    height: 46px;
+
+}
+
+.float-bloom{
+    position: absolute;
+    top: 0;  bottom: 0;
+    margin: auto;
+    left: 16px;
+    font-size: 16px;
+    color: #888;
+    height: fit-content;
+}
+.mart-budget-search-bar .mart-bsb-input{
+
+    border-radius: 12px;
+    padding-left: 48px;
+    border: solid 1px #ddd;
+    font-size: 18px;
+    width: fit-content;
+    min-width: 500px;
+    height: 100%;
+
+    }
+.mart-budget-search-bar .mart-bsb-submit{
+    height: 100%;
+    width: 120px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    
+}
+.mart-budget-search-bar .mart-bsb-submit:hover{
+    background-color: var(--main-light-color);
+}
+
+.mart-budget-tags  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4px;
+    gap: 2px;
+}
+
+.search-tag{
+    font-size: 10px;
+    background-color: rgb(209, 209, 209);
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.mart-feed-base-text{
+    font-size: 20px;
+    color: #666;
+}
+
+@media only screen and (max-width: 960px) {
+    .mart-budget-search-bar .mart-bsb-input{
+
+        min-width: unset;
+        width: 100%;
+    }
+}

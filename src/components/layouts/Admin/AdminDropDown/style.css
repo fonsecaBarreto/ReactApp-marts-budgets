@@ -1,7 +1,20 @@
 .admin-drop-down{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     position: relative;
     height: fit-content;
+    z-index: 1;
+    gap: 10px;
+    padding: 2px 12px;
+    border-radius: 12px;
+    cursor: pointer;
 }
+
+.admin-drop-down:hover{
+    box-shadow: 0px 0px 0px 2px rgba(6, 63, 110, 0.2);
+}
+
 
 .admin-drop-down  .admb-user-img{
     height: 42px; width: 42px;
@@ -17,7 +30,7 @@
     width: 100%;
 }
 
-.admin-drop-down-body{
+/* .admin-drop-down-body{
     height: fit-content; min-width: 140px;
     box-shadow: 0px 2px 2px 2px #0002;
     display: none; position: absolute;
@@ -27,7 +40,7 @@
     border-radius: 5px;
     border: solid 1px #bbb;
     z-index: 99999;
-}
+} */
 
 .admin-drop-down-body .addb-item{
     width: 100%;
@@ -36,6 +49,6 @@
     cursor: pointer;
 }
 
-.admin-drop-down-body.show{
+/* .admin-drop-down-body.show{
     display: flex;
-}
+} */

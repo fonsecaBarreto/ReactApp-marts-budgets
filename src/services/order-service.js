@@ -7,8 +7,8 @@ export const orderAPi = MakeApi(`${global.base_url}/orders`, errorHandler, globa
 
 export const makeOrder = async (inputs) =>{
 
-  const { forecast, quantity, product_id } = inputs;
-  const body = {  forecast, quantity, product_id  }
+  const { forecast, quantity, product } = inputs;
+  const body = {  forecast, quantity, product_id: product.id  }
   const { data } =await orderAPi.send({method: "POST", url:`/make`, data: body})
   return data
 }

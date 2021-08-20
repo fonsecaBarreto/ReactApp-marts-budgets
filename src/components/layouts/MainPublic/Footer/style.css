@@ -6,24 +6,12 @@
     z-index: 999;
     font-family: "Noir", Verdana, sans-serif;
 }
-.footer-consideration{
-    height: fit-content;
-    padding: 10px 0;
-    background-color: rgb(44, 44, 44);
-}
-.footer-consideration p {
-    color: rgb(228, 228, 228);
-    font-size: 15px;
-    line-height: 20px;
-    padding: 0;
-    
-    margin: 0 auto
-}
+
+
 
 
 .footer-main-content{
     z-index: 0;
-    height: 180px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -54,24 +42,51 @@
     max-width: 300px;
 }
 
-
+/* phone aand content */
 
 .footer-main-content section ul.footer-contact{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     text-decoration: none;
     list-style: none;
-    max-width: 200px;
     margin: auto;
     padding: 0;
 }
 
 .footer-main-content section ul.footer-contact li{
+
     width: 100%;
     text-align: center;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     padding: 4px 0;
+    column-gap: 20px;
 }
+
+
+.footer-main-content section ul.footer-contact li:nth-child(2){
+
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: center;
+    gap: 4px;
+}
+
+
+ .footer-main-content section ul.footer-contact li span{
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: center;
+    column-gap: 10px;
+    line-height: 1em;
+
+} 
+
+
+/* social media */
 
 .footer-main-content section nav.footer-social-nav{
     display: flex;
@@ -81,6 +96,7 @@
     width: fit-content;
     margin: auto;
     gap: 12px;
+    margin-top: 6px;
 }
 
 .footer-main-content section nav.footer-social-nav > *{
@@ -95,6 +111,20 @@
     background-color: white;
 }
 
+/* copyright */
+.footer-consideration{
+    height: fit-content;
+    padding: 10px 0;
+    background-color: rgb(44, 44, 44);
+}
+.footer-consideration p {
+    color: rgb(228, 228, 228);
+    font-size: 15px;
+    line-height: 20px;
+    padding: 0;
+    margin: 0 auto
+}
+
 @media only screen and (max-width: 960px){
     .footer-main-content{
 
@@ -102,6 +132,7 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
+        row-gap: 20px;
 
     }
 
@@ -125,3 +156,4 @@
 
     
 }
+

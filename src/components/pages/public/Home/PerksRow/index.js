@@ -4,29 +4,30 @@ import SomeImage from '../../../../../assets/camera.png'
 import TeamImage from '../../../../../assets/team.svg'
 import GoalsImage from '../../../../../assets/goals.svg'
 import GroceryImage from '../../../../../assets/groceries.svg'
+import Tuck from '../../../../../assets/headline-truck.svg'
 
 import VisibilitySensor from 'react-visibility-sensor'
 const ROW_STRUCT = [
     {
-        image:TeamImage,
+        image:Tuck,
         title: "O que fazemos?",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum velit in volutpat viverra. Suspendisse pulvinar nibh vitae est dictum congue. "
+        description: "Conectamos fornecedores e compradores, reduzindo custos."
     },
     {
         image:GoalsImage,
-        title: "Objetivos",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum velit in volutpat viverra. Suspendisse pulvinar nibh vitae est dictum congue. "
+        title: "Oportunidades",
+        description: "Desfrute das vantagens de fazer parte de um grupo que compra junto."
     },
     {
         image:GroceryImage,
         title: "Publico alvo.",
-        description: "Lorem ipsum dolor sit amet,  Suspendisse pulvinar nibh vitae est dictum congue. consectetur adipiscing elit. Vivamus rutrum velit in volutpat viverra. Suspendisse pulvinar nibh vitae est dictum congue. "
+        description: "Mercados, padarias e estabelecimentos que procuram melhorar suas compras"
     },
 ]
 
 export default () =>{
     return (
-        <div className="perks-row home-section">
+        <div className="perks-row">
             {
                 ROW_STRUCT.map( (col, i)=>(
                     <div className="perks-card" key={i}>

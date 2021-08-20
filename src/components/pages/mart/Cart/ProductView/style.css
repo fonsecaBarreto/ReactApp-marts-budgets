@@ -1,0 +1,99 @@
+
+
+.product-info-view{
+    width: 100%;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column: 1fr;
+    gap: 8px;
+    font-family: "Oxygen", 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 140px;
+}
+
+.product-info-view-cancel{
+    margin: auto;cursor: pointer;
+    width: 36px;  height: 36px;
+    border-radius: 50%;
+}
+
+.product-info-view .piv-image-vp{
+    position: relative;
+    width: 140px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.product-info-view .piv-image-vp img{
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background-color: white;
+    border-radius: 5px;
+}
+ 
+.product-info-view  ul{
+    height: 100%; width: 100%;
+    padding: 8px;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: auto;
+    max-height: 100%;
+    text-align: left;
+ 
+ 
+}
+
+
+.product-info-view  ul li{
+    line-height: 1.3em;
+    font-size: 16px;
+}
+
+.product-info-view  ul li span{
+    display: inline;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+    font-size: 15px;
+    white-space: normal;
+    text-align: left;
+    /* max-height: 20px; */
+
+   /*  display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+
+ 
+ }
+ 
+
+
+ .product-info-view  ul li:nth-child(1) > span{
+    font-size: 18px;
+   
+ }
+   
+
+@media only screen and (max-width: 756px){
+    .product-info-view{
+
+        height: 150px;
+    }
+
+    .product-info-view .piv-image-vp{
+
+        width: 92px;
+        height: 92px;
+        margin: auto;
+      
+    }
+}

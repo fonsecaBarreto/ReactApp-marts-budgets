@@ -21,6 +21,7 @@
     height: var(--admin-header-height);
     width: 100%;
     background-color: rgb(245, 245, 245);
+    z-index: 0;
 }
 
 header.admin-header{
@@ -48,6 +49,7 @@ main.admin-content{
     margin: 0;
     height: calc( 100vh - var(--admin-header-height) );
     overflow-y: hidden;
+    z-index: 1;
 }
 
 @media only screen and (max-width: 960px){

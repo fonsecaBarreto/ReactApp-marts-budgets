@@ -1,32 +1,61 @@
-import React from "react"
+import React, { useState } from "react"
 import './style.css'
 import { withRouter } from 'react-router-dom'
-import ProductFeed, { FeedState } from "../ProductFeed"
-import PrimariesCategoriesSelector from "../Selectors/PrimariesCategoriesSelector"
-import BrandsSelector from "../Selectors/BrandsSelector"
-import SearchBar from  '../SearchBar'
+import Content from '../Content'
+import WarningDialog, { WarningState } from '../../../utils/WarningDialog'
+import { OrderState } from './OrderState'
+import Cart from "../Cart"
+import OrderConfirmation from '../ConfirmationDialog'
+import { makeOrder } from '../../../../services/order-service'
+export default () =>{
+    
+    const [ showConfirmation, setShowConfirmation ] = useState(false)
+    const dialogState = WarningState()
+    const orderState = OrderState(dialogState)
 
-export default withRouter(({history}) =>{
+    const handleSelectedItem = (product) =>{
+        orderState.open(product)
+    }
 
-    const state = FeedState()
+    const done = () =>{
+        setShowConfirmation(true)
+    }
+
+    const toOrder = async () =>{
+
+        const {setSending, clear, data } = orderState
+        setSending(true)
+         try{
+            await makeOrder(data)
+            setShowConfirmation(false)
+            dialogState.showSuccess("Pedido feito com sucesso!","", "",()=>{
+                clear() 
+            })
+          
+        }catch(err){
+            switch(err.name){
+                case "InvalidRequestBodyError" :  dialogState.showFailure("Forneça a quantidade e a previsão do pedido"); break;
+                default: dialogState.showFailure(err.message)
+            }
+        }
+        setSending(false)  
+    } 
+
+
     return (
         <div id="budget-page">
         
-            <div className="budget-page-search-content budget-page-container app-container">
-       
-                 
-                <div className="filtering-column ">
-                    <BrandsSelector state={state}></BrandsSelector>
-                    <PrimariesCategoriesSelector state={state}></PrimariesCategoriesSelector>
-                </div>
-                <div className="main-column">
-                    <SearchBar state={state}></SearchBar>
-                   
-                    <ProductFeed state={state}></ProductFeed> 
-                </div> 
+            <section>
+                <Content onItem={handleSelectedItem}></Content>
+            </section>
 
-            </div>
+            <aside>
+                <Cart orderState={orderState} toOrder={done}></Cart> 
+            </aside>
+
+            <OrderConfirmation show={showConfirmation} onClose={()=>setShowConfirmation(false)} orderState={orderState} toOrder={toOrder}></OrderConfirmation>
+            <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
           
         </div>
     )
-})
+}

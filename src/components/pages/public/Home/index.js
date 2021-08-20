@@ -6,6 +6,8 @@ import BecomeMember from "./BecomeMember"
 import HeadLine from "./HeadLine"
 import { CgEnter } from "react-icons/cg"
 
+import LayoutFooter from '../../../layouts/MainPublic/Footer'
+import MainContent from "./MainContent"
 export default withRouter(({history}) =>{
 
     const inicio = useRef()
@@ -46,10 +48,15 @@ export default withRouter(({history}) =>{
     return (
         <div id="home-page">
 
+                
 
-            <div ref={inicio} id="home">
+             <div ref={inicio} id="home">
                 <HeadLine></HeadLine>
             </div>
+
+
+            <MainContent></MainContent>
+            
             <div ref={goals} id="goals">
             
            
@@ -66,7 +73,9 @@ export default withRouter(({history}) =>{
                         <BecomeMember></BecomeMember>
                     </div>
                
-            </div>
+            </div> 
+
+            <LayoutFooter></LayoutFooter>
         </div>
     )
 })
