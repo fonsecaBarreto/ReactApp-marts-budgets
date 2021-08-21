@@ -1,9 +1,9 @@
 #primary-layout{
     position: relative; 
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr auto auto;
     grid-template-columns: 1fr;
-    grid-template-areas: "header" "content";
+    grid-template-areas: "header" "content" "footer";
     box-sizing: border-box!important;
     z-index: 0;
 }
@@ -24,7 +24,7 @@
 
 #primary-footer{
     grid-area: footer;
-    z-index: 0;
+    z-index: 1;
 }
 
 #primary-content{
@@ -33,7 +33,7 @@
     height: 100%;
     position: relative;
     box-sizing: border-box;
-    z-index: 1;
+    z-index: 0;
 }
 
 .aside-menu {

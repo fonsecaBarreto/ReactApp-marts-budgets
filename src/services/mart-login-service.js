@@ -19,11 +19,10 @@ export const changePassword = async (inputs) =>{
 }
 
 export const signUpService = async (inputs) =>  {
+
+
   const { name, email, cnpj_cpf, phone, transfer_allowed, responsible_name, address, annexeses} = inputs
 
-
-  
-  
   const formData = new FormData()
 
   for (const i of Object.keys(annexeses)) {

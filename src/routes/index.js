@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 
 /* Public */
 import MartLoginPage from '../components/pages/public/MartLogin'
-import MartLoginGreetings from '../components/pages/public/MartLogin/Greetings'
+
 /* Mart */
 import MartBudgetPage from '../components/pages/mart/BudgetPage'
 
@@ -45,7 +45,6 @@ function Routes (){
             <MartLoginPage >  </MartLoginPage> 
         </Guard> 
         
-        <Guard path="/login/saudacoes" exact> <PrimaryLayout>  <MartLoginGreetings >  </MartLoginGreetings></PrimaryLayout> </Guard>
 
         <Guard path="/marts/orcamento" exact access="martonly">
            <PrimaryLayout fixedHeader > <MartBudgetPage ></MartBudgetPage> </PrimaryLayout>

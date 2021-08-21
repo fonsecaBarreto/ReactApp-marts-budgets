@@ -1,8 +1,9 @@
 .product-cart{
     width: 100%;
-    box-shadow: -4px 0px 6px 4px #0005;
+    box-shadow: -1px 0px 4px 4px #0004;
     background-color: var(--main-color);
     padding: 5px 16px;
+    border-bottom: solid 1px #aaa;
 }
 
 .product-cart section{

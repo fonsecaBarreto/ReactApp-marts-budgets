@@ -50,7 +50,7 @@ export default ({ mart, className }) =>{
                         <ActionButton icon={<FaUserCircle></FaUserCircle>} label={"Area do Cliente"} onClick={()=>goTo('/marts/orcamento')}></ActionButton>
                     :
                         <ActionButton icon={ <ImExit></ImExit>} label={"Sair"} onClick={logoutService}></ActionButton>
-                    : notLoginPage() && <ActionButton label={"Entrar"} onClick={()=>goTo('/login')}></ActionButton>
+                    : notLoginPage() && <ActionButton label={"Cadastre-se Gratis"} onClick={()=>goTo('/login')}></ActionButton>
                 }
             </section>
         </nav>

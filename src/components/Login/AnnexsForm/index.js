@@ -8,8 +8,10 @@ const fileInput = document.createElement('input')
 fileInput.type="file"
 fileInput.multiple = true
 
-export const UploadState = () =>{
+
+export const AnnexState = () =>{
     const [files, setFiles ] = useState([])
+    const [ errors, setErrors] = useState([])
 
     const appendFiles = (newValues) =>{
         setFiles(prev => ([...prev, ...newValues ]))
@@ -21,19 +23,15 @@ export const UploadState = () =>{
         setFiles(spliced)
     }
 
-    return ( { files, setFiles, appendFiles, removeFileByIndex })
+    return ( { files, setFiles, appendFiles, removeFileByIndex, errorsState: { errors, setErrors }, })
 }
 
 
-export default ({ files, setFiles, appendFiles, removeFileByIndex, errors }) => {
+export default ({state}) =>{
+    
+    const { files, appendFiles, removeFileByIndex, errorsState } = state
 
-    const [ wheresError, setWheresError ] = useState('')
-
-    useEffect(()=>{
-        if(errors?.['annexs']){
-            setWheresError(errors['annexs'])
-        }
-    },[errors])
+   const { errors, setErrors } = errorsState
 
     const submit = (e) =>{
         e.preventDefault();
@@ -45,7 +43,8 @@ export default ({ files, setFiles, appendFiles, removeFileByIndex, errors }) => 
         }  
     }
 
-    return (<div className="login-uploads-componenet">
+    return (
+    <div className="login-uploads-componenet">
 
         <div className="login-uploads-info">
             <h4> Seu cadastro passará por uma validação: </h4>
@@ -67,7 +66,7 @@ export default ({ files, setFiles, appendFiles, removeFileByIndex, errors }) => 
             <div className="lup-body">
                 {  
                     files.map((f,i)=>{
-                        return ( <Item f={f} key={i} index={i} onDelete={removeFileByIndex} warning={ wheresError && wheresError == f.name ? true : false}></Item> )
+                        return ( <Item f={f} key={i} index={i} onDelete={removeFileByIndex} warning={ errors?.length > 0 && errors.includes(f.name) ? true : false}></Item> )
                     })
                 }
             </div>

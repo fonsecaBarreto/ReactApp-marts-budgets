@@ -1,5 +1,5 @@
 @keyframes truckAppears {
-    0% { transform: translateX(-300%) ;
+    0% { transform: translateX(200%) ;
     opacity: 0; };
     100% {  transform: translateX(0);
     opacity: 1; }
@@ -14,7 +14,7 @@
     padding: 72px 0 0;
     z-index: 0;
     background: rgb(52,146,221);
-    background: linear-gradient(180deg, rgb(67, 152, 223) 0%, rgba(25,128,208,1) 70%, rgba(0,124,220,1) 100%); 
+    background: linear-gradient(180deg, rgb(73, 159, 230) 0%, rgba(25,128,208,1) 70%, rgba(0,124,220,1) 100%); 
 }
 
 #head-line::after {
@@ -33,7 +33,6 @@
  
 
 #head-line > :nth-child(1){
-    overflow-x: hidden;
     display: grid;
     grid-template-columns: 1fr 460px;
     grid-template-rows: 1fr;
@@ -50,7 +49,8 @@
 #head-line img{
     animation-name: truckAppears;
     animation-duration: 2s;
-    height: 100%;
+    width: 100%;
+    height: auto;
 }
 
 .head-line-text-container{

@@ -7,6 +7,7 @@ import { OrderState } from './OrderState'
 import Cart from "../Cart"
 import OrderConfirmation from '../ConfirmationDialog'
 import { makeOrder } from '../../../../services/order-service'
+import MainFooter from '../../../layouts/MainPublic/Footer'
 export default () =>{
     
     const [ showConfirmation, setShowConfirmation ] = useState(false)
@@ -55,7 +56,7 @@ export default () =>{
 
             <OrderConfirmation show={showConfirmation} onClose={()=>setShowConfirmation(false)} orderState={orderState} toOrder={toOrder}></OrderConfirmation>
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
-          
+            
         </div>
     )
 }

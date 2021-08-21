@@ -74,8 +74,8 @@ export default withRouter(({history}) =>{
                     </div>
                
             </div> 
-
-            <LayoutFooter></LayoutFooter>
+{/* 
+            <LayoutFooter></LayoutFooter> */}
         </div>
     )
 })
