@@ -7,7 +7,7 @@ export default () =>{
 
     const  history = useHistory()
     const goTo = () =>{
-        /* return history.push('/login?v=signup') */
+        return history.push('/inicio/#objetivos') 
     }
     return (
         <div id="head-line" >

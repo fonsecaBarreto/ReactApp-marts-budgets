@@ -11,9 +11,9 @@ import MainContent from "./MainContent"
 export default withRouter(({history}) =>{
 
     const inicio = useRef()
+    const cadastro = useRef()
     const goals = useRef()
     const sobre = useRef()
-    const contato = useRef()
 
 
     useEffect(()=>{
@@ -26,13 +26,18 @@ export default withRouter(({history}) =>{
             };break;
 
             case "#objetivos" :{
-                offset = -90;
+                offset = -150;
                 y = goals.current.getBoundingClientRect().top + window.pageYOffset + offset;
             };break;
             case "#sobre" : {
                 y = sobre.current.getBoundingClientRect().top + window.pageYOffset + offset;
              /*    contato.current.scrollIntoView({behavior: 'smooth'}) */
             };break;    
+            case "#cadastro" : {
+                offset = -90;
+                y = cadastro.current.getBoundingClientRect().top + window.pageYOffset + offset;
+            
+            };break;   
             default: inicio.current.scrollIntoView({behavior: 'smooth'});  
         }
 
@@ -48,34 +53,26 @@ export default withRouter(({history}) =>{
     return (
         <div id="home-page">
 
-                
-
              <div ref={inicio} id="home">
                 <HeadLine></HeadLine>
             </div>
 
-
-            <MainContent></MainContent>
+            <div ref={cadastro}>
+             <MainContent ></MainContent>
             
+            </div>
             <div ref={goals} id="goals">
-            
-           
                 <div className="app-container">
                     <PerksRow></PerksRow> 
                 </div> 
-                    
-
             </div>
 
             <div ref={sobre}  id="sobre">
-      
-                    <div className="app-container">
-                        <BecomeMember></BecomeMember>
-                    </div>
-               
+                <div className="app-container">
+                    <BecomeMember></BecomeMember>
+                </div>
             </div> 
-{/* 
-            <LayoutFooter></LayoutFooter> */}
+
         </div>
     )
 })

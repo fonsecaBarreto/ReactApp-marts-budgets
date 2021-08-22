@@ -1,3 +1,8 @@
 .main-content-left-side{
-    
+    box-sizing: border-box;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 }
+

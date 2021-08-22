@@ -1,10 +1,3 @@
-.login-form.signup-form{ 
-    width: 100%; 
-    padding: 32px 22px;
-    background-color: white;
-    border-radius: 5px;
-
-}
 
 
 .strict-info-content{
@@ -13,34 +6,11 @@
     align-items: flex-start;
     justify-content: flex-start;
     gap: 12px;
-}
-
-/*   */
-.login-warnin-texts{
-    text-align: left;
-}
-
-.login-warnin-texts h4{
-    line-height: 1.3em;
-    margin: 0;
-    color: #111;
-    display: block;
-    margin-bottom: 6px;
-}
-
-.login-warnin-texts span{
-    line-height: 1em;
-    margin: 0;
-    color: #333;
-    display: block;
-}
-
-/*  */
-.strict-info-content input[type=file]{
-    height: fit-content;
+    margin-top: 12px;
 }
 
 /* Checbox */
+
 .login-check-box{
     display: flex; 
     flex-direction: row;
@@ -54,7 +24,7 @@
     padding: 0;
     height: fit-content;
     transform : scale(1.3);
- } 
+} 
  
 .login-check-box label{
      text-align: left;

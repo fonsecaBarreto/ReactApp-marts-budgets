@@ -33,8 +33,6 @@ export default ({ state }) =>{
 
         <LoginFormGrid columns={[]}>
 
-   
-
                 <LoginFormRow label="Nome da Empresa *" error={errors?.['name']} >
                     <input type={'text'} placeholder="Nome "
                         value={name} onInput={e=>handleInputs('name', e.target.value)}></input>

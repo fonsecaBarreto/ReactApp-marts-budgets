@@ -134,8 +134,14 @@
 @media screen and (max-width: 960px) {
     .login-card{
         width: 100%;
+        
     }
-    
+/*     .login-card > section > :nth-child(2) {
+
+        min-height: 100vh;
+        
+    }
+     */
     .una-login-form-button{
         height: 56px;
         width: 100%;

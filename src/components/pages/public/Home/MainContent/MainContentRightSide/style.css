@@ -2,14 +2,31 @@
     
 }
 
+.main-content-right-side ul {
+    
+    padding-left: 6px;
+    list-style: none;
+}
+
+
 .main-content-right-side li{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-start;
+    text-align: left;
     margin: 0;
     text-align: left;
-    font-size: 21px;
+    font-size: 20px;
     line-height: 1.1em;
-    padding-bottom: 8px;
-    margin-bottom: 0px;
+    margin-bottom: 22px;
     font-weight: normal;
     color: var(--second-color);
     text-shadow: 2px 0px 3px 4px #000;
+    column-gap: 10px;
+
+}
+
+.main-content-right-side li > :nth-child(1){
+    font-size: 28px;
 }

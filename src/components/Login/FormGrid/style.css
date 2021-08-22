@@ -1,6 +1,6 @@
 
 .new-login-form-grid{
-    width: 100%; height: 100%;
+    width: 100%; height: fit-content;
     display: grid;
     column-gap: 15px;
     row-gap: 8px;

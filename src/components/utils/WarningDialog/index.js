@@ -10,50 +10,54 @@ const DIALOG_INITIAL_DATA = {
     title: "",
     content: ""
 }
+
+export const MakeFailure = (message, description, title, done) => ({ 
+    ...DIALOG_INITIAL_DATA, show: true,
+    title:"Atenção!" || title, 
+    onResult: done,
+    content: (
+        <React.Fragment>
+            <span className="wd-icon"> 
+                <FiAlertCircle></FiAlertCircle>
+            </span>
+            <span className="wd-bold">{message}</span>
+            <br/>
+            {description && <span className="wd-small"> 
+                {description}
+            </span>}
+    </React.Fragment>)
+})
+
+export const MakeSuccess = (message, description, title, done) => ({ 
+    ...DIALOG_INITIAL_DATA, show: true,
+    title:"Sucesso!" || title, 
+    onResult: done,
+    content:(
+        <React.Fragment>
+            <span className="wd-icon"> 
+                <SuccessAnimation></SuccessAnimation>
+            </span>
+            <span className="wd-bold">{message}</span> <br/>
+            { description && <span className="wd-small"> {description} </span> }
+        </React.Fragment>
+    )
+})
+
+
+export const MakeMessage = (message, title) =>  ({ 
+    ...DIALOG_INITIAL_DATA, show: true,
+    title:"Sucesso!" || title, 
+    content: message
+})
+  
   
 export function WarningState(){
     const [ dialogconfig, setDialogConfig ] = useState({ ...DIALOG_INITIAL_DATA})
     const closeDialog = () =>  setDialogConfig ({ ...DIALOG_INITIAL_DATA })
-
-    const showMessage = (message, title) =>  setDialogConfig ({ 
-        ...DIALOG_INITIAL_DATA, show: true,
-        title:"Sucesso!" || title, 
-        content: message
-    })
-
-    const showSuccess = (message, description, title, done) =>  setDialogConfig ({ 
-        ...DIALOG_INITIAL_DATA, show: true,
-        title:"Sucesso!" || title, 
-        onResult: done,
-        content:(
-            <React.Fragment>
-                <span className="wd-icon"> 
-                    <SuccessAnimation></SuccessAnimation>
-                </span>
-                <span className="wd-bold">{message}</span> <br/>
-                { description && <span className="wd-small"> {description} </span> }
-            </React.Fragment>)
-    })
-
-    const showFailure = (message, description, title, done) =>  setDialogConfig ({ 
-        ...DIALOG_INITIAL_DATA, show: true,
-        title:"Atenção!" || title, 
-        onResult: done,
-        content: (
-            <React.Fragment>
-                <span className="wd-icon"> 
-                    <FiAlertCircle></FiAlertCircle>
-                </span>
-                <span className="wd-bold">{message}</span>
-                <br/>
-                {description && <span className="wd-small"> 
-                    {description}
-                </span>}
-        </React.Fragment>)
-    })
-
+    const showMessage = (message, title) =>  setDialogConfig (MakeMessage(message, title))
+    const showSuccess = (message, description, title, done) =>  setDialogConfig (MakeSuccess(message, description, title, done))
+    const showFailure = (message, description, title, done) =>  setDialogConfig (MakeFailure(message, description, title, done))
     return { closeDialog, showFailure, showSuccess, showMessage, dialogconfig }
-
 }
 
 

@@ -17,6 +17,7 @@
 }
 
 .login-input-wrapper input{
+    height: 50px!important; 
     border-top-left-radius: 0!important;
     border-bottom-left-radius: 0!important;
 }
@@ -35,7 +36,7 @@
 }
 
 
-
+/* 
 @media only screen and (max-width: 960px){
 
     .login-input-wrapper .liw-icon {
@@ -44,6 +45,6 @@
         padding: 14px;
     }
     .login-form.signin-form input{ 
-        height: 56px;
+        height: 56px!important;
     }
-}
+} */

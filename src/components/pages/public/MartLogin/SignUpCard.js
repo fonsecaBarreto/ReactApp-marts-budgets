@@ -17,7 +17,8 @@ export default ({show, toggleMode, dialogState, onError }) =>{
     const submit = async (e) =>{
         e.preventDefault()
         setLoading(true)
-
+        signUpFormState.errorsState.setErrors({})
+        addressFormState.errorsState.setErrors({})
         try{
             const data = { 
                 ...signUpFormState.inputsState.data, 
@@ -30,9 +31,10 @@ export default ({show, toggleMode, dialogState, onError }) =>{
             dialogState.showSuccess( 
                 "Cadastrado com successo!", 
                 "Obrigado pela confiança, entraremos em contato em breve!",
-                "Sucesso!", () => {  history.push("/login?v=signin") })
+                "Sucesso!", () => {  history.push("/") })
 
         }catch(err){
+        
             if(err.params) {
                 signUpFormState.errorsState.setErrors(err.params)
                 if(err.params.address){

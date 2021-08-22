@@ -13,7 +13,7 @@ import SignInCard from './SignInCard'
 export default () =>{
     const history = useHistory()
     const dialogState = WarningState()
-    const [ toSignup, setToSignup ] = useState(true)
+    const [ toSignup, setToSignup ] = useState(false)
 
     const toggleMode = (e) =>{
         e.preventDefault()
@@ -32,18 +32,6 @@ export default () =>{
         
     },[history, history.location])
 
-/*
-
-
-    const handleSignInSuccess = () => { history.push("/marts/orcamento") }
-
-    const handleForgotSuccess = () =>{
-        dialogState.showSuccess( 
-            "...", 
-            "Você recebera em instantes um E-mail para redefinição de senha",
-            "Sucesso!",
-            async () => {  history.push("/") })
-    } */
 
     const handleErrors = (err) =>{
         

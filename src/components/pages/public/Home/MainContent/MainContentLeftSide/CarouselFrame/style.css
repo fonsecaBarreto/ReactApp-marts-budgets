@@ -1,0 +1,82 @@
+@keyframes example {
+    from {  opacity: 0; }
+    to { }
+}
+
+.login-carousel-frame{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 8px;
+
+}
+
+.login-carousel-frame .login-carousel-frame-section{ /* header */
+    width: 100%;
+    padding: 24px 28px 0;
+
+}
+
+.login-carousel-frame .login-carousel-frame-section:nth-child(2){ /* body */
+    overflow-y: auto;
+    padding: 22px 20px;
+    height: 440px; 
+    
+
+}
+
+.login-carousel-frame .login-carousel-frame-section:nth-child(2)::-webkit-scrollbar {
+    width: 5px;
+    background-color: rgba(241, 241, 241, 0.555);
+}
+ 
+
+.login-carousel-frame .login-carousel-frame-section:nth-child(2)::-webkit-scrollbar-thumb {
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid rgb(197, 197, 197);  /* creates padding around scroll thumb */
+}
+
+.login-carousel-frame .login-carousel-frame-section:nth-child(2) > :nth-child(1){ /* body */
+
+    animation-name: example;
+    animation-duration: .5s;
+}
+
+
+.login-carousel-frame .login-carousel-frame-section:nth-child(3){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+ 
+    padding: 4px 12px 18px;
+}
+
+.login-carousel-btn{
+    color: white;
+    border-radius: 12px;
+    padding: 8px 40px;
+    border: none;
+    height: fit-content;
+    background-color: var(--main-color);
+}
+
+.login-next-btn{
+    margin-left: auto;
+    margin-right: 0;
+
+}
+
+.login-prev-btn{
+    margin-right: auto;
+    margin-left: 0;
+} 
+
+@media screen and (max-width: 960px) {
+    .login-carousel-frame .login-carousel-frame-section:nth-child(2){ /* body */
+        height: 500px; 
+    }
+    
+}
