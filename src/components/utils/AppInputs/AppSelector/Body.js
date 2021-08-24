@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from "react"
-
+import { HiOutlineEmojiSad } from 'react-icons/hi'
 
 export default ({state, component:Component, onItemClick}) => {
 
     const { data, text, setText, show, setShow, loading,  handleOnLoad } = state
 
-    /* intersection observer */
     const observer = useRef()
     const lastItemRef = useCallback(node => {
         if (loading) return
@@ -33,9 +32,9 @@ export default ({state, component:Component, onItemClick}) => {
 
                 <div ref={lastItemRef}> </div>
         
-                {  loading && <span className="app-custom-selector-item-wrapper"> Procurando </span> }
+                {  loading && <span className="app-custom-selector-item-wrapper option-muted"> Procurando... </span> }
 
-                {  !loading && data.data.length === 0  && <span className="app-custom-selector-item-wrapper muted">  Nada encontrado </span> } 
+                {  !loading && data.data.length === 0  && <span className="app-custom-selector-item-wrapper option-muted">  Nada encontrado  <HiOutlineEmojiSad></HiOutlineEmojiSad> </span> } 
             </div>
         </div>
     )

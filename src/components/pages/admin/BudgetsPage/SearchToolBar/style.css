@@ -1,7 +1,6 @@
 .admin-ku-search-tool-bar{
     width: 100%;
     height: fit-content;
-    margin-top: 12px;
 }
 
 .admin-ku-search-tool-bar .akustb-grid{
@@ -19,19 +18,19 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 }
 
 .admin-ku-search-tool-bar .akustb-grid input, select{
     border-radius: 6px;
     border: solid 1px #ddd;
-    height: 48px!important;
+    height: 36px!important;
 }
 
 .admin-ku-search-tool-bar .akustb-grid .akustb-wrapper label{
     text-align: left;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1em;
 }
 

@@ -29,11 +29,16 @@ export const saveItemsService = async ( inputs ) => {
 
 }
 
-export const listItemsWithFilterService = async (params={}) => {
-  const offset = params.offset || 0
-  const queries = params.queries || {}
-  const text = queries.text || ''
-  const { data } = await productItemApi.send({method: "get", url:`/list?v=${text}&o=${offset}`}) 
+export const listItemsWithFilterService = async (params) => {
+
+  const { offset, queries } = params
+  const item = queries.item || ''
+  const product = queries.product || ''
+  const brands = queries.brands 
+
+  var query  = `?item=${item}&product=${product}&o=${offset || 0}&b=${brands[0].value}`
+
+  const { data } = await productItemApi.send({method: "get", url:`/list${query}`}) 
   return data
 }
 

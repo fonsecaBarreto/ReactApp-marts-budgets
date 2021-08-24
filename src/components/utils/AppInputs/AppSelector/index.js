@@ -34,7 +34,7 @@ export const SelectorState = (onLoad) =>{
 
 
 
-export default ({onLoad, value,  onInput, component:Component, }) =>{
+export default ({onLoad, value,  onInput, component:Component,disabled }) =>{
     const state = SelectorState(onLoad)
     const { data, text, setText, show, setShow, loading,  handleOnLoad} = state
 
@@ -58,7 +58,7 @@ export default ({onLoad, value,  onInput, component:Component, }) =>{
     }
 
     return (
-        <div className="app-custom-selector" ref={componentRef}>
+        <div className={`app-custom-selector ${disabled ? 'disabled' : ''}`} ref={componentRef}>
        
             <span className={`acs-status ${(value.label && value.value) ? 'success' : '' }`}>
                 { (value.label && value.value) ? <AiOutlineCheckCircle/> : <HiOutlineSearchCircle/> }

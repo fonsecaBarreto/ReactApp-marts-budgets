@@ -4,6 +4,7 @@
     background-color: var(--main-color);
     padding: 5px 16px;
     border-bottom: solid 1px #aaa;
+    z-index: 2;
 }
 
 .product-cart section{

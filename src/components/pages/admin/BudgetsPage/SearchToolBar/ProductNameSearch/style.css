@@ -14,7 +14,7 @@
 }
 
 .akustb-product-name-search-input button {
-    height: 46px; width: 46px;
+    height: 36px; width: 52px;
     background-color: var(--admin-aside-color);
     border-radius: 8px;
     color: white;

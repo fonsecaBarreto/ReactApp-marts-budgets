@@ -15,26 +15,32 @@ import { RiFileExcel2Line } from 'react-icons/ri'
 import { downloadXls } from '../../../../services/utils-service'
 import TopWrapperGrid from '../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
 import BottomWrapperGrid from '../../../layouts/Admin/common/ListPageWrapper/BottomWrapperGrid'
+
+import MxWrapper from '../../../layouts/Admin/common/AdminMaxWrapper'
+
+import DarkFlexRowfrom from '../../../layouts/Admin/common/AdminMaxWrapper/includes/DarkFlexRow'
+
 export default withRouter(({history}) =>{
 
     const [ currentMart, setCurrentMart ] = useState(null)
 
     const feedState = FeedState(listMartsWithFilterService,{ text:"", status:0 })
-    const { feed, setFeed, loadFeed, setQueries } = feedState
+
+    const { feed, queries, setFeed, loadFeed, handleQueries } = feedState
 
     const updateMart = (mart) =>{
           loadFeed(0,false)
     } 
 
     const handleText = (value) =>{
-        setFeed(prev=> ( { ...prev, queries : { ...prev.queries, text: value } } )) 
+        handleQueries('text', value)
     }
     const handleChange = e => {
-        setQueries({status: e.target.value})
-
+        handleQueries('status', e.target.value)
     };
 
     const openModal = (a) =>{
+        console.log(a)
         if(a?.key && a.key === "open"){
             setCurrentMart(a.data)
         }
@@ -44,42 +50,36 @@ export default withRouter(({history}) =>{
     const add = () =>{ history.push('/admins/marts/create')  }
 
     return (
-        <div id="admin-marts-page">
+        <React.Fragment>
 
-
-            <TopWrapperGrid>
-                <SearchBar 
-                    onAdd={add}
-                    label="Pesquise pelo Nome, Telefone ou E-mail " 
-                    toSearch={()=> loadFeed(0, false)} 
-                    text={feed.queries.text}
-                    onText={handleText}> 
-
-                     <select className="status-select-box" onChange={handleChange} value={feed.queries.status || 0}  >
-                        <option value={2}> Pendentes</option>
-                        <option value={1}> Ativos</option>
-                        <option value={0}> Todos </option>
-                    </select> 
-                </SearchBar>
-            </TopWrapperGrid>
+        <MxWrapper>
+            <SearchBar 
+                onAdd={add}
+                label="Pesquise pelo Nome, Telefone ou E-mail " 
+                toSearch={()=> loadFeed(0, false)} 
+                text={queries.text}
+                onText={handleText}> 
+                <select className="status-select-box" onChange={handleChange} value={queries.status || 0}  >
+                    <option value={2}> Pendentes</option> <option value={1}> Ativos</option> <option value={0}> Todos </option>
+                </select> 
+            </SearchBar>
+          
 
             <AppFeed className="app-container" state={feedState} component={MartItem} onClick={openModal}> </AppFeed> 
      
-            <BottomWrapperGrid>  
-
-                <section className="app-padding">
-                    <ResulInfo total={ feedState.feed.total } count={feedState.feed.data.length} subTotal={feedState.feed.subTotal} > </ResulInfo>
-                    <a href={downloadXls('marts')}>  <RiFileExcel2Line></RiFileExcel2Line>  Download  </a>
-                </section>
-
-            </BottomWrapperGrid>
+            <DarkFlexRowfrom>  
+                <ResulInfo total={ feedState.feed.total } subTotal={feedState.feed.subTotal} > </ResulInfo>
+                <a href={downloadXls('marts')}>  <RiFileExcel2Line></RiFileExcel2Line>  Download  </a>
+            </DarkFlexRowfrom>
+        </MxWrapper>
 
            { currentMart && <ItemDialogView 
                 mart={currentMart}
                 setMart ={setCurrentMart}
                 updateMart={updateMart}
                 ></ItemDialogView>} 
+
        
-        </div>
+        </React.Fragment>
     )
 })

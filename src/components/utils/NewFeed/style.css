@@ -1,7 +1,8 @@
 .app-feed{
     height: 100%;
-    padding-top: 6px;
+    padding-top: 16px;
     padding-bottom: 300px;
+    overflow-y: auto;
 }
 
 .app-feed-flow{

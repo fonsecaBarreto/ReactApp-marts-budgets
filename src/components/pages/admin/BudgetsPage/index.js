@@ -4,6 +4,12 @@ import { listOrders } from '../../../../services/order-service'
 import SearchToolBar, { ToolBarState } from './SearchToolBar'
 import BudgetsFlow from './BudgetsFlow'
 import LoadingComp from '../../../utils/LoadingComp'
+import AdminMaxWrapper from '../../../layouts/Admin/common/AdminMaxWrapper'
+import DarkFlexRow from '../../../layouts/Admin/common/AdminMaxWrapper/includes/DarkFlexRow'
+
+import { RiFileExcel2Line } from 'react-icons/ri'
+import { downloadXls } from '../../../../services/utils-service'
+
 const INITIAL_DATA = {
     total: 0, // total of orders on system
     ordersTotal: 0,// total of orders on search,
@@ -34,13 +40,14 @@ export default () =>{
         loadProduct()
     },[])
 
-    return (<div  id="admin-budget-page" className="app-padding">
-
-            <SearchToolBar {...toolBarState} toSearch={loadProduct}> </SearchToolBar>
- 
-            {
-                loading ? <LoadingComp></LoadingComp>:
-                <BudgetsFlow ordersgroups={data.groups}></BudgetsFlow>
-            }
-    </div>)
+    return (<AdminMaxWrapper>
+        <SearchToolBar {...toolBarState} toSearch={loadProduct}> </SearchToolBar>
+        {
+            loading ? <LoadingComp></LoadingComp>:
+            <BudgetsFlow ordersgroups={data.groups}></BudgetsFlow>  
+        } 
+        <DarkFlexRow>
+            <a href={downloadXls('orders')}>  <RiFileExcel2Line></RiFileExcel2Line>  Download  </a>
+        </DarkFlexRow>
+    </AdminMaxWrapper>)
 }

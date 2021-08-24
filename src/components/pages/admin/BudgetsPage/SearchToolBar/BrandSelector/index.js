@@ -13,7 +13,6 @@ export default ({ queriesState, toSearch }) =>{
             return setWasCalledOnce(true)
         }
         toSearch()
-
     },[queries.brands])
 
     return (
@@ -23,7 +22,7 @@ export default ({ queriesState, toSearch }) =>{
                 <AppSelector 
                     onLoad={ListBrandsScrew}
                     value={queries.brands[0]}
-                    component={BrandItemView}
+                    component={( ({entry}) => (entry.name))}
                     onInput={result =>{
                         if(!result) return setBrands([{label: "", value: ""}])
                         setBrands([{ label: result.name, value: result.id }])
@@ -32,14 +31,4 @@ export default ({ queriesState, toSearch }) =>{
          
         </div>
     )
-}
-
-export const BrandItemView = ({entry}) => {
-    const { name } = entry
-    return (
-    <span className="brand-screw-item-view">
-        <span className="font-bold  ">
-            {name}
-        </span>
-    </span>)
 }

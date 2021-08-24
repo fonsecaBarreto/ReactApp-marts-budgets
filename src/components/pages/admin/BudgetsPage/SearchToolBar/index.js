@@ -33,17 +33,10 @@ export default withRouter( ({ queriesState, toSearch  }) => {
  
     return (
         <div className="admin-ku-search-tool-bar">
-
             <div className={`akustb-grid`}>
-
                 <BrandSelector queriesState={queriesState} toSearch={toSearch} ></BrandSelector>
                 <ForecastPicker  queriesState={queriesState} toSearch={toSearch} ></ForecastPicker>
                 <ProductNameSearch queriesState={queriesState} toSearch={toSearch} ></ProductNameSearch>
-                
-          {/*       <input className="aftb-search-bar" onKeyDown={handleKeyDown}  value={text} onInput={handleInput} placeholder={label || ''}></input> 
-                { children && children} */}
-
-
             </div>
         </div>
     )

@@ -19,11 +19,11 @@
     text-align: left;
     font-size: 20px;
     line-height: 1.1em;
-    margin-bottom: 22px;
+    margin-bottom: 24px;
     font-weight: normal;
     color: var(--second-color);
     text-shadow: 2px 0px 3px 4px #000;
-    column-gap: 10px;
+    column-gap: 12px;
 
 }
 

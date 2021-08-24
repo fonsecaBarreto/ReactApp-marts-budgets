@@ -8,8 +8,11 @@ import Cart from "../Cart"
 import OrderConfirmation from '../ConfirmationDialog'
 import { makeOrder } from '../../../../services/order-service'
 import MainFooter from '../../../layouts/MainPublic/Footer'
+import { showFailure, showSuccess } from '../../../../store/reducers/dialog/actions'
+import { useDispatch } from 'react-redux'
 export default () =>{
     
+    const dispatch = useDispatch()
     const [ showConfirmation, setShowConfirmation ] = useState(false)
     const dialogState = WarningState()
     const orderState = OrderState(dialogState)
@@ -29,14 +32,14 @@ export default () =>{
          try{
             await makeOrder(data)
             setShowConfirmation(false)
-            dialogState.showSuccess("Pedido feito com sucesso!","", "",()=>{
+            dispatch(showSuccess("Pedido feito com sucesso!","", "",()=>{
                 clear() 
-            })
+            }))
           
         }catch(err){
             switch(err.name){
-                case "InvalidRequestBodyError" :  dialogState.showFailure("Forneça a quantidade e a previsão do pedido"); break;
-                default: dialogState.showFailure(err.message)
+                case "InvalidRequestBodyError" :  dispatch(showFailure("Forneça a quantidade e a previsão do pedido")); break;
+                default: dispatch(showFailure(err.message))
             }
         }
         setSending(false)  

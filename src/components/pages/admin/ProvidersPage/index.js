@@ -12,13 +12,18 @@ import { downloadXls } from '../../../../services/utils-service'
 
 import TopWrapperGrid from '../../../layouts/Admin/common/ListPageWrapper/TopWrapperGrid'
 import BottomWrapperGrid from '../../../layouts/Admin/common/ListPageWrapper/BottomWrapperGrid'
+
+
+import MxWrapper from '../../../layouts/Admin/common/AdminMaxWrapper'
+
+import DarkFlexRowfrom from '../../../layouts/Admin/common/AdminMaxWrapper/includes/DarkFlexRow'
 export default withRouter(({history}) =>{
 
     const feedState = FeedState(listProvidersWithFilterService, {text:""})
-    const { feed, setFeed, loadFeed } = feedState
+    const { feed, setFeed, loadFeed, queries, handleQueries } = feedState
 
     const handleText = (value) =>{
-        setFeed(prev=> ( { ...prev, queries : { ...prev.queries, text: value } } )) 
+        handleQueries('text',value)
     }
 
     const add = () =>{ history.push('/admins/providers/create')  }
@@ -28,28 +33,28 @@ export default withRouter(({history}) =>{
     
 
     return (
-        <div id="admin-provider-page">
+        <MxWrapper>
 
-                <TopWrapperGrid>
-                    <SearchBar 
-                        onAdd={add}
-                        label="Pesquise por Nome, Telefone ou E-mail " 
-                        toSearch={()=> loadFeed(0, false)} 
-                        text={feed.queries.text}
-                        onText={handleText}> 
-                    </SearchBar>
-                </TopWrapperGrid>
+             
+                <SearchBar 
+                    onAdd={add}
+                    label="Pesquise por Nome, Telefone ou E-mail " 
+                    toSearch={()=> loadFeed(0, false)} 
+                    text={queries.text}
+                    onText={handleText}> 
+                </SearchBar>
+       
 
                 <AppFeed state={feedState} component={ProviderItem}> </AppFeed> 
 
-                <BottomWrapperGrid>  
-                    <section className="app-padding">
-                        <ResulInfo total={ feedState.feed.total } count={feedState.feed.data.length} subTotal={feedState.feed.subTotal} > </ResulInfo>
-                        <a href={downloadXls('providers')} className="soft-btn opt-btn"> <RiFileExcel2Line></RiFileExcel2Line> Download  </a>
-                    </section>
-                </BottomWrapperGrid>
+                <DarkFlexRowfrom>  
+                
+                    <ResulInfo total={ feedState.feed.total } count={feedState.feed.data.length} subTotal={feedState.feed.subTotal} > </ResulInfo>
+                    <a href={downloadXls('providers')} className="soft-btn opt-btn"> <RiFileExcel2Line></RiFileExcel2Line> Download  </a>
+            
+                </DarkFlexRowfrom>
      
          
-        </div>
+        </MxWrapper>
     )
 })

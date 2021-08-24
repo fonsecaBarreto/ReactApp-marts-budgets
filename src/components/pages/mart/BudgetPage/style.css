@@ -20,6 +20,15 @@
 
 }
 
+#budget-page > section:nth-child(1){
+    position: relative;
+    z-index: 0;
+}
+#budget-page > section:nth-child(1){
+    position: relative;
+    z-index: 2;
+}
+
 #budget-page > aside{
     grid-area: cart;
    
@@ -28,5 +37,6 @@
     width: 100%;
     height: fit-content;
     bottom: 0;
+    z-index: 2;
 }
 

@@ -24,6 +24,7 @@ export default ({state}) =>{
                 value={state.queries.text} 
                 onInput={handleInput} 
                 onKeyDown={handleKeys}></input>
+                
             <span className="float-bloom">
                <BsSearch></BsSearch>
             </span>

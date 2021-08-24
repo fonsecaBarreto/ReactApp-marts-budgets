@@ -4,6 +4,8 @@ import './style.css'
 import { AiOutlineFilePdf, AiOutlineFileImage, AiOutlineFile } from 'react-icons/ai'
 import { AiFillWarning } from 'react-icons/ai'
 import { FaTimes } from 'react-icons/fa'
+
+
 const fileInput = document.createElement('input')
 fileInput.type="file"
 fileInput.multiple = true
@@ -43,6 +45,13 @@ export default ({state}) =>{
         }  
     }
 
+    const getFileFromDrop = (ev) =>{
+        ev.preventDefault()
+        appendFiles(ev.dataTransfer.files)
+    }
+      
+    const preventOver = (ev)=>{ ev.preventDefault() }
+
     return (
     <div className="login-uploads-componenet">
 
@@ -62,15 +71,20 @@ export default ({state}) =>{
             <button onClick={submit}> Adicionar </button>
              <span className="muted "> { files.length == 0 ? "Nenhum Arquivo Selecionado" : `${files.length} arquivos selecionados` } </span> 
         </div>
-        { files.length > 0 && 
-            <div className="lup-body">
-                {  
+     
+            <div className="lup-body" onDragOver={preventOver} onDrop={getFileFromDrop} >
+                {  files.length == 0 ?
+                    <div className="lup-ill-float">
+               
+                        <span> Arraste seu arquivo aqui </span>
+                    </div>
+                    :
                     files.map((f,i)=>{
                         return ( <Item f={f} key={i} index={i} onDelete={removeFileByIndex} warning={ errors?.length > 0 && errors.includes(f.name) ? true : false}></Item> )
                     })
                 }
             </div>
-        }
+     
     </div>)
 }
 

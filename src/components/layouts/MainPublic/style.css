@@ -24,7 +24,7 @@
 
 #primary-footer{
     grid-area: footer;
-    z-index: 1;
+    position: relative;
 }
 
 #primary-content{
@@ -33,7 +33,6 @@
     height: 100%;
     position: relative;
     box-sizing: border-box;
-    z-index: 0;
 }
 
 .aside-menu {

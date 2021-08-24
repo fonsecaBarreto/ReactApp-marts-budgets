@@ -1,8 +1,3 @@
-#admin-products-page{
-  position: relative;
-  height: 100%;
-
-}
 
 .listing-grid{
     width: 100%;
@@ -16,4 +11,19 @@
     margin-bottom: 6px;
     font-size: 16px;
     font-weight: bold;
+}
+
+
+.product-filter-grid{
+    width: 100%;
+    display: grid!important;
+    grid-template-columns: repeat(3, 1fr) 100px;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.product-filter-grid button{
+    background-color: var(--admin-aside-color);
+    color: white!important;
 }

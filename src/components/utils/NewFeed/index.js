@@ -1,33 +1,21 @@
 import { useState, useEffect, useRef, useCallback } from "react"
 import './style.css'
-import ResulInfo from "./ResulInfo"
 import LoadingComp from "../../utils/LoadingComp"
-import ToolBar from "./SearchBar"
 
 const INITIAL_DATA = {
-    total: 0, //Real amount
-    subTotal: 0, //queries total
-    data: [], // data received,
+    total: 0,
+    subTotal: 0, 
+    data: []
 }
 
-export const FeedState = (loadFunction, initial_queries) =>{
-    
-    const [ feed, setFeed ] = useState({ ...INITIAL_DATA})
-    const [ queries, setQueries ] = useState({...initial_queries})
+export const NewFeedState = (loadFunction) =>{
+    const [ feed, setFeed ] = useState({ ...INITIAL_DATA })
     const [ loading, setLoading ] = useState(false)
-
-    const handleQueries = (key, value) =>{
-        setQueries(prev=>({ ...prev, [key]:value}))
-    }
-
-    useEffect(()=>{ loadFeed(0,false) },[ ]) //going to load from offset 0, with no queries
-
+    useEffect(()=>{ loadFeed(0,false) },[ ]) 
     const loadFeed = ( offset = 0, append=false ) => {
-        
         if(append === false) setFeed(prev => ( { ...prev, subTotal: 0, data: [] } ));
         setLoading(true)
-
-        loadFunction({ offset, queries })
+        loadFunction({ offset })
         .then(result=>{
             if(append === true) return setFeed( prev => ({ ...result, data: [ ...prev.data, ...result.data ]}))
             return setFeed(result)
@@ -35,19 +23,16 @@ export const FeedState = (loadFunction, initial_queries) =>{
         .catch(err=>{console.log(err)})
         .finally(()=>setLoading(false))
     }
-    return { feed, setFeed, loading, setLoading, loadFeed, queries, setQueries, handleQueries}
+    return { feed, setFeed, loading, setLoading, loadFeed }
 }
 
-export default ({ className, component: Component, state, children, onClick }) =>{
-
+export const NewFeedPool = ({component: Component, state, onItemClick}) =>{
     const { feed, setFeed, loading, loadFeed } = state
-
     const observer = useRef()
 
     const lastItemRef = useCallback(node => {
         if (loading) return
         if (observer.current) observer.current.disconnect()
-
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting ) {
                 if(feed.data.length < feed.subTotal) return loadFeed(feed.data.length, true)
@@ -56,22 +41,23 @@ export default ({ className, component: Component, state, children, onClick }) =
 
     }, [loading, feed, feed.data, feed.subTotal])
 
-  
 
     return (
-        <div className={`app-feed app-padding`}>
+
+        <div className={`app-new-feed`}>
         
-            {children}
-            
-            <div className={`app-feed-flow`}>
-                { feed.data && feed.data.map((n,i)=>{
-                    return <Component key={i} data={n} onClick={onClick}> </Component> 
+            <div className={`app-new-feed-flow`}>
+                { feed.data.map((n,i)=>{
+                    return <Component key={i} data={n} onClick={onItemClick}> </Component> 
                 })}
+                <div ref={lastItemRef}> </div>
             </div> 
 
-            <div ref={lastItemRef}> </div>
-
             {  loading && <LoadingComp></LoadingComp> }
+
         </div>
+  
     )
+
+  
 }
