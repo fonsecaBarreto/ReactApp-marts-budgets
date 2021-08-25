@@ -7,12 +7,12 @@ import InputMask from 'react-input-mask';
 import StrictInfoRow from './StrictInfoRow'
 
 const INITIAL_SIGNUP_DATA = {
-    name: "Lucas Fonseca",
-    email: "lucasfonsecab@hotmail.om",
-    cnpj_cpf: "16855177735",
-    phone: "22997836256",
+    name: "",
+    email: "",
+    cnpj_cpf: "",
+    phone: "",
     transfer_allowed: false,
-    responsible_name: "asddasasd"
+    responsible_name: ""
     // financial_email: "",
     // corporate_name: "", 
 }
