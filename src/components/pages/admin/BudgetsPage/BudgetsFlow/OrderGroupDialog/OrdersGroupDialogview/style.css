@@ -1,0 +1,11 @@
+.order-group-dialog-view{
+    position: relative;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    display: grid; 
+    grid-template-columns: 1fr ;
+    grid-template-rows: 1fr;
+    row-gap: 0px;
+    background-color: white;
+    cursor: default;
+} 

@@ -41,14 +41,14 @@ export default () =>{
 
 
                     <LatestEntitiesFlow 
-                        title={'Ultimos Clientes'} 
+                        title={'Últimos Clientes'} 
                         icon={<AiFillShop></AiFillShop>}
                         list={metrics.lastMarts}
                         innerComp={ ({id, name}) =><Link to={`/admins/marts/update?id=${id}`}>{name}</Link>}>
                     </LatestEntitiesFlow>
 
                     <LatestEntitiesFlow 
-                        title={'Ultimos Pedidos'} 
+                        title={'Últimos Pedidos'} 
                         icon={<CgNotes></CgNotes>}
                         list={metrics.lastOrders}
                         innerComp={ ({product, mart, quantity}) =>

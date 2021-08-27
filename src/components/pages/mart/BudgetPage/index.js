@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import './style.css'
-import { withRouter } from 'react-router-dom'
+import { withRouter, useHistory} from 'react-router-dom'
 import Content from '../Content'
 import WarningDialog, { WarningState } from '../../../utils/WarningDialog'
 import { OrderState } from './OrderState'
@@ -9,13 +9,26 @@ import OrderConfirmation from '../ConfirmationDialog'
 import { makeOrder } from '../../../../services/order-service'
 import MainFooter from '../../../layouts/MainPublic/Footer'
 import { showFailure, showSuccess } from '../../../../store/reducers/dialog/actions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 export default () =>{
-    
+
+    const { mart }  = useSelector(state=>state.global) 
+    const history = useHistory()
     const dispatch = useDispatch()
     const [ showConfirmation, setShowConfirmation ] = useState(false)
     const dialogState = WarningState()
     const orderState = OrderState(dialogState)
+
+
+
+    useEffect(()=>{
+        if(!mart) return
+        console.log(mart)
+        if(mart?.checkList.first_suggestions == false){
+            history.push('/marts/sugestao')
+        }
+    },[mart])
+
 
     const handleSelectedItem = (product) =>{
         orderState.open(product)

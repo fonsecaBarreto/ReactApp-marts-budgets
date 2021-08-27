@@ -3,9 +3,9 @@ import './style.css'
 import { AiFillEye } from 'react-icons/ai'
 export default ({product, onClick}) =>{
 
-    const { description, presentation, brand } = product
+    const { description, presentation, brand, distac } = product
     return (
-        <div className="picv-product-view" onClick={()=>onClick(product)}>
+        <div className={`picv-product-view  ${distac ? 'distac' : ''}`} onClick={()=>onClick(product)}>
             
 
             <div>

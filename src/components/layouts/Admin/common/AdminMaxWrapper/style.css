@@ -28,10 +28,12 @@
 
 
 @media only screen and (max-width: 960px){
-    .admin-max-wrapper > *{
-        padding: 2px 12px;
+
+    .admin-max-wrapper > section{
+        padding: 6px 12px;
     
     }
+
 }
 
 .mx-wrapper-footer{

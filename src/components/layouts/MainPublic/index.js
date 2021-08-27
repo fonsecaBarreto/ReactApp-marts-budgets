@@ -19,8 +19,8 @@ export default function MainPublicLayout({children, fixedHeader}) {
           
             <Header admin={admin} mart={mart} toggleMenu={toggleMenu} ></Header>
 
-            <FloatMenu show={showMenu} toggleMenu={toggleMenu}  mart={mart}></FloatMenu>
 
+            <FloatMenu show={showMenu} toggleMenu={toggleMenu}  mart={mart}></FloatMenu>
             <main id="primary-content" >
                 {children}   
             </main>

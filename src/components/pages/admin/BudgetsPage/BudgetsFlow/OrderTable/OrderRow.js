@@ -8,18 +8,18 @@ export default ({order, index}) =>{
         <div className="ot-order-row">
 
             <span >
-                {index + 1} <IoMdArrowDropright></IoMdArrowDropright>
+                <span> {index + 1} </span>
+                <IoMdArrowDropright></IoMdArrowDropright>
             </span>
+            
             <div>
-                <label> Cliente
+                <label> Cliente:
                         <span>{order.mart.label}</span>
                 </label>   
                 <label> realizada em:
                     <span >{new Date(order.created_at).toDateString()}</span>
                 </label>   
-            </div>
-        
-            <div>
+                
 
                 <label> Qtd.: 
                     <span>{order.quantity}</span>
@@ -27,6 +27,10 @@ export default ({order, index}) =>{
                 <label> Previsão:
                     <span className="forecast-highlight" >{new Date(order.forecast).toDateString()}</span>
                 </label>  
+
+                <label> id:
+                    <span >{order.id}</span>
+                </label>   
             </div>
         </div>
     )

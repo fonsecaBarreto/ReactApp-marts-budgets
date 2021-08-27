@@ -1,0 +1,36 @@
+#suggestion-page{
+    height: 100%;
+    padding-top: 36px;
+
+}
+
+.suggestion-page-container{
+
+}
+
+.suggestion-page-container> section > h2{
+    font-size: 32px;
+    text-align: left;
+    text-shadow: 0px 2px 2px  #0002;
+    color: var(--second-color);
+    margin: 0;
+    color: var(--main-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    column-gap: span 2;
+    line-height: 1em;
+} 
+
+
+.suggestion-page-container > section > h3{
+    font-size: 18px;
+    text-align: left;
+    text-shadow: 0px 2px 2px  #0002;
+    color: var(--second-color);
+    margin: 0;
+    color: var(--second-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    column-gap: span 2;
+    margin-bottom: 10px;
+} 

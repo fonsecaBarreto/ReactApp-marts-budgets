@@ -9,11 +9,12 @@
 
 #admin-layout{
     min-height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas: "menu adminBar" "menu content";
-    background: var(--admin-bg-color)
+    background: var(--admin-bg-color);
 }
 
 .admin-bar {
@@ -42,6 +43,7 @@ aside.admin-menu{
     grid-area: menu;
     height: 100vh;
     background-color: var( --admin-aside-color );
+    overflow-y: auto;
 }
 
 main.admin-content{

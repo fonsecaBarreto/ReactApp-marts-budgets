@@ -6,8 +6,6 @@ header#primary-header{
     transition: all .3s;
     z-index: 999;
     font-family: "Noir", Verdana, sans-serif;
-    
-
 }
 
 header#primary-header.colorful{
@@ -55,7 +53,7 @@ header#primary-header.colorful{
 
 
 .ph-logo{
-    width: 150px;
+    width: 200px;
 }
 
 /* toggle button */

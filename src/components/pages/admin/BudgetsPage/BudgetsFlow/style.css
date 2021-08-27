@@ -2,34 +2,18 @@
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: auto;
-    gap: 8px;
-    padding: 0 0;
+    row-gap: 4px;
+    column-gap: 6px;
     border-radius: 2px;
-    height: fit-content;
-   
+    height: fit-content; 
 }
-
-
-
 
 @media only screen and (max-width: 1360px) {
     .budget-list-flow{
-
         grid-template-columns: repeat(1,1fr);
-
     }
     
 }
-
-@media only screen and (max-width: 960px) {
-    .budget-list-flow{
-
-        grid-template-columns: repeat(2,1fr);
-
-    }
-    
-}
-
 
 @media only screen and (max-width: 756px) {
     .budget-list-flow{

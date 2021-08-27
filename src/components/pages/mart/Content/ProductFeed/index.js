@@ -3,11 +3,12 @@ import './style.css'
 import { ItemsSearchService } from '../../../../../services/mart-product-search-service'
 import ProductItemClientView from "./ItemView"
 import LoadingComp from '../../../../../components/utils/LoadingComp'
-
+import { BsSearch } from 'react-icons/bs'
 const INITIAL_DATA = { 
     total: 0,
     subTotal: 0, // total to the searchs
-    items: []
+    items: [],
+    related_items: []
 }
 
 const INITIAL_QUERIES = {
@@ -66,17 +67,51 @@ export default ({ state, onItem }) =>{
         <React.Fragment>
 
             <div className="mart-product-feed">
-
+         
                 <div className='mart-item-feed-flow'>
-                    { data.items.map((i,index)=>{
-                        if( i.products?.length) return ( <ProductItemClientView key={index} item={i} onClick={onItem}> </ProductItemClientView> )
-                    })} 
+
+
+
+
+                    { data.related_items.length > 0 && (
+                        <React.Fragment>
+                            <span className="mart-item-feed-guide-header-text">
+                                <BsSearch></BsSearch>
+                                Produtos Encontrados : </span>
+
+                            { data.related_items.map((i,index)=>{
+                            if( i.products?.length) return ( <ProductItemClientView key={index} item={i} onClick={onItem}> </ProductItemClientView> )
+                            
+                            
+                            })}
+                        </React.Fragment>)
+                    } 
+
+                    { data.items.length > 0 && (
+                            <React.Fragment>
+                                <span className="mart-item-feed-guide-header-text">
+                                <BsSearch></BsSearch>
+                                Itens Encontrados: </span>
+
+                                { data.items.map((i,index)=>{
+                                    if( i.products?.length) return ( <ProductItemClientView key={index} item={i} onClick={onItem}> </ProductItemClientView> )
+                        })} 
+                            </React.Fragment>)
+                    } 
+         
+
+
+
+                
+
+
+                   
                 </div> 
 
                 <React.Fragment>
                     <div ref={lastItemRef}> </div>
                     { loading && <LoadingComp></LoadingComp> }
-                    {(!loading && data.items.length === 0 ) && <span className="mart-feed-base-text muted">  Nada encontrado </span> }   
+                    {(!loading && data.items.length === 0 && data.related_items.length === 0 ) && <span className="mart-feed-base-text muted">  Não encontramos nenhum item relacionado a sua pesquisa </span> }   
                 </React.Fragment>
 
             </div>

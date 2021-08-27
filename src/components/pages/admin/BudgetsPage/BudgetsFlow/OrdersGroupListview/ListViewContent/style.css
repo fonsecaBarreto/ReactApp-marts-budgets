@@ -1,0 +1,90 @@
+.order-group-list-view .order-group-list-view-content{
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-rows: 1fr;    
+    column-gap: 4px;
+    padding: 4px 0;
+}
+
+.order-group-list-view .order-group-list-view-content > section{
+    display: flex; flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 3px 6px;
+}
+
+.order-group-list-view .order-group-list-view-content > section:nth-child(1){
+    align-items: center;
+}
+
+.order-group-list-view .order-group-list-view-content > section:nth-child(1) img{
+   width: 64px;
+   height: 64px;
+   object-fit: cover;
+}
+
+
+.order-group-list-view .order-group-list-view-content > section:nth-child(1) button{
+    width: 56px;
+    font-size: 22px;
+
+}
+.order-group-list-view .order-group-list-view-content > section:nth-child(1) button:hover{
+    background-color: var(--admin-aside-color);
+    color: white;
+    transition: all .06s ease-in-out;
+
+}
+
+
+
+.order-group-list-view .order-group-list-view-content > section:nth-child(2){
+    flex-direction: column;
+    text-align: left;font-weight: bold;
+
+
+}
+.order-group-list-view .order-group-list-view-content > section:nth-child(2) > a{
+
+    color: rgb(10, 35, 105);
+
+}
+
+
+.order-group-list-view .order-group-list-view-content > section:nth-child(3){
+    flex-direction: row;
+    align-items: center;
+    font-weight: bold;
+
+}
+
+
+
+
+@media only screen and (max-width: 1360px) {
+
+    .order-group-list-view .order-group-list-view-content{
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: 1fr auto auto;
+    }
+
+    .order-group-list-view .order-group-list-view-content > section:nth-child(2){
+        grid-column: span 2;
+    }
+
+   .order-group-list-view .order-group-list-view-content > section:nth-child(3){
+        grid-column: span 2;
+    }
+
+    .order-group-list-view .order-group-list-view-content > section:nth-child(3) > *{
+        background-color: rgb(226, 226, 226);
+        flex: 1;
+        border: solid 1px #fff;
+        border-radius: 12px;
+
+
+    }
+
+    
+}

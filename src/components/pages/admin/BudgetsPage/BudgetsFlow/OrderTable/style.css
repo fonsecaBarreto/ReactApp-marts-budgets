@@ -1,3 +1,4 @@
+
 /* flexes */
 .orders-table, .ot-order-row, .ot-order-row label, .ot-order-row > :nth-child(1)  {
     display: flex;
@@ -8,36 +9,54 @@
 
 .orders-table{
     flex-direction: column;
-    gap: 2px;
+    gap: 5px;
+    padding: 12px 0;
 }
+
 /* labels */
 .ot-order-row label{
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 18px;
     flex-direction: row;
     gap: 5px;
+    color: rgb(10, 35, 105);
+    font-weight: bold;
 }
 
 .ot-order-row label > :nth-child(1){
-    font-weight: bold;
+   font-weight: normal;
     font-size: 16px;
+    color: rgb(29, 29, 29);
+    text-align: left;
 }
 
 /*  --- */
 .ot-order-row  {
+    position: relative;
     flex-direction: row;
-    gap: 10px;
-    padding: 4px 12px;
-    border: solid 1px #ddd;
+    gap: 5px;
+    padding: 6px 12px;
     border-radius: 4px;
+    background-color: rgb(240, 240, 240);
 }
 
-.ot-order-row > :nth-child(1) {
-    font-size: 18px;
+.ot-order-row > span:nth-child(1) {
+    font-size: 20px;
+    width: fit-content;
+    margin: auto;
+
+}
+.ot-order-row > :nth-child(1) > span {
+    font-size: 20px;
     line-height: 0px;
     margin: auto;
-    width: fit-content;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    color: rgb(0, 0, 0);
+    border-radius: 30%;
 }
+
 .ot-order-row > :nth-child(2) {
     width: 100%;
 }
@@ -56,14 +75,13 @@
     padding: 0px 10px;
     margin-top: auto;
     margin-bottom: auto;
-
 }
 
 
 @media only screen and (max-width: 756px){
     /* labels */
     .ot-order-row  {
-        flex-direction: column;
+        flex-direction: row;
         gap: 0;
     }
 }

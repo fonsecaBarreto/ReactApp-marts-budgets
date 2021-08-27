@@ -55,3 +55,15 @@
 
 }
 
+
+/* distac related items */
+.picv-product-view.distac{
+    box-shadow: inset 0px 0px 2px 3px rgba(7, 103, 194, 0.2);
+}
+
+.picv-product-view.distac > :nth-child(1) > :nth-child(1){
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 0, 0.2);
+    padding: 0 5px;
+}

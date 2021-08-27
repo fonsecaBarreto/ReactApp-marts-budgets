@@ -6,7 +6,7 @@ import MartLoginPage from '../components/pages/public/MartLogin'
 
 /* Mart */
 import MartBudgetPage from '../components/pages/mart/BudgetPage'
-
+import SuggestionPage from '../components/pages/mart/SuggestionPage';
 /* public */
 import PublicHomePage from '../components/pages/public/Home'
 
@@ -48,6 +48,9 @@ function Routes (){
 
         <Guard path="/marts/orcamento" exact access="martonly">
            <PrimaryLayout fixedHeader > <MartBudgetPage ></MartBudgetPage> </PrimaryLayout>
+        </Guard> 
+        <Guard path="/marts/sugestao" exact access="martonly">
+           <PrimaryLayout fixedHeader > <SuggestionPage ></SuggestionPage> </PrimaryLayout>
         </Guard> 
 
         {/* NOT FOUND  */}

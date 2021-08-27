@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './style.css'
-import ListViewBottom from './ListViewBottom'
-import ListViewContent from './ListViewContent'
+
+import ListViewContent from './DialogViewContent'
 export default ({group, onClick, singleView}) =>{
 
 
     return (
 
-        <div className={`order-group-list-view`} >
+        <div className={`order-group-dialog-view`} >
             <ListViewContent group={group} onClick={onClick}></ListViewContent>
-         {/*    <ListViewBottom group={group}></ListViewBottom> */}
+
         </div>
       
     )

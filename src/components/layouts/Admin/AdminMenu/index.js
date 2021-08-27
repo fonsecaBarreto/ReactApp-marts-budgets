@@ -27,7 +27,7 @@ export default ({pages, show, currentPage}) =>{
                 <img src={Logo}></img>
                 <span>
                      <MdSecurity></MdSecurity> 
-                     Sistemas Administrativo 
+                     Sistema Administrativo 
                 </span>
             </div>
             <ul>

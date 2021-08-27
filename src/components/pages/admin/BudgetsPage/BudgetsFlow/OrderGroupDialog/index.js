@@ -5,7 +5,7 @@ import basketImage from '../../../../../../assets/basket.png'
 import Dialog from '../../../../../utils/Dialog'
 
 import OrderTable from '../OrderTable'
-import OrdersGroupListview from '../OrdersGroupListview'
+import OrdersGroupDialogview from './OrdersGroupDialogview'
 export default ({group, setGroup}) =>{
     const [image, setImage ] = useState(basketImage)
 
@@ -25,12 +25,16 @@ export default ({group, setGroup}) =>{
         <Dialog show={group} onClose={()=>setGroup(null)}>
             <div className="orderGroup-modal">
 
-                <div>
-                    <OrdersGroupListview group={group} singleView ></OrdersGroupListview>
+               <div>
+                    <OrdersGroupDialogview group={group} ></OrdersGroupDialogview>
                 </div>
                 <div className="orderGroup-modal-metrics">
-                    <label> Total de pedidos :
-                        <span style={{paddingLeft: 5}}>{orders.length}</span>
+                    <label> Pedidos:
+                        <input disabled type="text" style={{paddingLeft: 5}} value={orders.length}></input>
+                    </label>
+
+                    <label> Unidades:
+                        <input disabled type="text" style={{paddingLeft: 5}} value={quantities}></input>
                     </label>
              
                 </div>

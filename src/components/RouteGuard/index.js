@@ -21,8 +21,6 @@ const Guard = withRouter(({ history, access, location, component: Component, pat
     });
   },[ path ]) 
 
- 
-
   const login = async (access) =>{
 
       dispatch(setLoading(true)) 
@@ -46,12 +44,12 @@ const Guard = withRouter(({ history, access, location, component: Component, pat
         })
 
       }else if(access === 'martonly'){
-        if(mart) return dispatch(setLoading(false))
-      
+          if(mart) return dispatch(setLoading(false) )
+
           AuthMart()
             .then(r=>dispatch(setMart(r)))
             .catch( err => history.push(`/login?e=${err.message}`) )
-            .finally(_=> dispatch(setLoading(false)) )
+            .finally(_=>{ dispatch(setLoading(false))} )
     
       }else if( access === "adminonly"){
         if(admin) return dispatch(setLoading(false))

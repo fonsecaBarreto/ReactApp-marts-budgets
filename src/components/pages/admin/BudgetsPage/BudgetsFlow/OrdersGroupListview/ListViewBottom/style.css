@@ -1,0 +1,19 @@
+.order-group-list-view .order-list-view-bottom {
+    font-size: 15px;
+    color: rgb(0, 0, 0)!important;
+    cursor: text;
+    width: 100%;
+    background-color: rgba(26, 98, 165, 0.479);
+    text-align: left;
+    padding: 2px 16px;
+    font-weight: bold;
+}
+
+
+.order-group-list-view .order-list-view-bottom button {
+    font-size: 12px;
+    width:fit-content;
+    height: 20px;
+}
+
+

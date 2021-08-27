@@ -14,7 +14,19 @@
     row-gap: 8px;
     margin-bottom: 20px;
 }
-
+.mart-item-feed-guide-header-text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 0 6px;
+    text-align: left;
+    color: #666;
+    font-weight: 14px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-top: 12px;
+}
 
 @media screen and (max-width: 1024px){
 
