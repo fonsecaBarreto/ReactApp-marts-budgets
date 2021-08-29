@@ -19,15 +19,23 @@ const INITIAL_QUERIES = {
 
 export const FeedState = () =>{
     
-    const [ queries, setQueries] = useState(INITIAL_QUERIES)
-    const [ data, setData ] = useState(INITIAL_DATA)
+    const [ queries, setQueries] = useState({...INITIAL_QUERIES})
+    const [ data, setData ] = useState({ ...INITIAL_DATA})
     const [ loading, setLoading ] = useState(false)
+
+ 
 
     useEffect(()=>{ loadFeed(0) },[ ]) //going to load from page 0, with no queries
 
     const setCategories = (categories) => { setQueries(prev => ({ ...prev, categories }))}
     const setBrands = (brands) => { setQueries(prev => ({ ...prev, brands }))}
     const setText = (text) => { setQueries(prev => ({ ...prev, text }))}
+
+    const clearQueries = () => {
+        setCategories([])
+        setBrands([])
+        setText("")
+    }
 
     const loadFeed = async ( offset = 0, append = false ) => {
         setLoading(true) 
@@ -42,7 +50,7 @@ export const FeedState = () =>{
     }
    
 
-    return { data, setData, queries, setQueries, loading, setLoading, loadFeed, setCategories, setBrands, setText }
+    return { clearQueries, data, setData, queries, setQueries, loading, setLoading, loadFeed, setCategories, setBrands, setText }
 }
 
 

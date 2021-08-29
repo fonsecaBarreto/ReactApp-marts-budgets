@@ -6,46 +6,60 @@ import WarningDialog, { WarningState } from '../../../utils/WarningDialog'
 import { OrderState } from './OrderState'
 import Cart from "../Cart"
 import OrderConfirmation from '../ConfirmationDialog'
+import RatingDialog from '../RatingDialog'
 import { makeOrder } from '../../../../services/order-service'
-import MainFooter from '../../../layouts/MainPublic/Footer'
+
 import { showFailure, showSuccess } from '../../../../store/reducers/dialog/actions'
+import { pushLatestOrders } from '../../../../store/reducers/marts/actions'
 import { useDispatch, useSelector} from 'react-redux'
+import LastOrdersRow from "../LastOrdersRow"
 export default () =>{
 
+    const [ sessionOrdersCount, setSessionOrdersCount ] = useState(0)
     const { mart }  = useSelector(state=>state.global) 
     const history = useHistory()
     const dispatch = useDispatch()
     const [ showConfirmation, setShowConfirmation ] = useState(false)
+    const [ showRatingDialog, setShowRatingDialog] = useState(false)
     const dialogState = WarningState()
     const orderState = OrderState(dialogState)
 
-
+    useEffect(()=>{
+        let isMounted = true;    
+        return () => { 
+            isMounted = false 
+        }; // cl
+    },[])
 
     useEffect(()=>{
         if(!mart) return
-        console.log(mart)
         if(mart?.checkList.first_suggestions == false){
             history.push('/marts/sugestao')
         }
     },[mart])
 
+    useEffect(()=>{
+        if(sessionOrdersCount > 1){
+            setShowRatingDialog(true)
+        }
+    },[sessionOrdersCount])
 
     const handleSelectedItem = (product) =>{
         orderState.open(product)
     }
 
-    const done = () =>{
-        setShowConfirmation(true)
-    }
+    const done = () =>{ setShowConfirmation(true)  }
 
     const toOrder = async () =>{
 
         const {setSending, clear, data } = orderState
         setSending(true)
          try{
-            await makeOrder(data)
+            const latestOrder = await makeOrder(data)
             setShowConfirmation(false)
             dispatch(showSuccess("Pedido feito com sucesso!","", "",()=>{
+                setSessionOrdersCount(prev=>(prev + 1))
+                dispatch(pushLatestOrders(latestOrder))
                 clear() 
             }))
           
@@ -63,6 +77,8 @@ export default () =>{
         <div id="budget-page">
         
             <section>
+                
+                <LastOrdersRow onItem={handleSelectedItem}></LastOrdersRow>
                 <Content onItem={handleSelectedItem}></Content>
             </section>
 
@@ -72,6 +88,7 @@ export default () =>{
 
             <OrderConfirmation show={showConfirmation} onClose={()=>setShowConfirmation(false)} orderState={orderState} toOrder={toOrder}></OrderConfirmation>
             <WarningDialog config={dialogState.dialogconfig} onClose={dialogState.closeDialog}></WarningDialog>
+            <RatingDialog show={showRatingDialog} onClose={() => setShowRatingDialog(false)}></RatingDialog>
             
         </div>
     )

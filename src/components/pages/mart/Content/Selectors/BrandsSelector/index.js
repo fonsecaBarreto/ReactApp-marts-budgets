@@ -5,6 +5,7 @@ import './style.css'
 import { listBrandsService } from '../../../../../../services/mart-product-search-service'
 import { AiOutlineTags } from 'react-icons/ai'
 import { MdExpandMore, MdExpandLess } from 'react-icons/md'
+
 export default ({state}) =>{
     const [ showOnMobile, setShowOnMobile ] = useState(false)
     const [ loading, setLoading ] = useState(false)

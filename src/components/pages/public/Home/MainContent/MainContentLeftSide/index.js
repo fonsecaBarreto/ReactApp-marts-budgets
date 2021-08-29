@@ -88,7 +88,7 @@ export default () =>{
         { title: "Informações", beforeNext: afterInfo},
         { title: "Endereço"},
         { title: "Anexos", beforeNext: submit, nextLabel:"Finalizar"},
-        { title: ""}, 
+        { title: "Bem-vindo"}, 
     ]
 
     return (

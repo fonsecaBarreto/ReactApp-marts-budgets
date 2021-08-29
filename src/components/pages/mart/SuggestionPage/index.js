@@ -1,30 +1,22 @@
 import React, { useEffect, useState } from "react"
 import './style.css'
-import SuggestionForm, { SuggestionFormState } from './SuggestionForm'
+
+import HeaderSection from "./HeaderSection"
+import BottomSection from "./BottomSection"
+import ContentSection from "./ContentSection"
+import { SuggestionFormState } from './SuggestionForm'
+import { useSelector } from 'react-redux'
+
 export default () =>{
-
+    const { mart } = useSelector(state => state.global)
     const state  = SuggestionFormState()
-    const { inputsState, add } = state
-
     return (
         <div id="suggestion-page">
-
             <div className=" suggestion-page-container app-container">
-                <section>
-                    <h2> Bem Vindo ao Una Compras</h2>
-                    <h3> dee-nos sugestões de até 05 produtos mais usados semanalmente pelo seu estabelecimento </h3>
-                </section>
-                <section>
-                    {   
-                        inputsState.data?.length > 0 && inputsState.data.map((j,i)=>{
-                            return ( <SuggestionForm key={i} state={state} index={i}></SuggestionForm>)
-                        })
-                    }
-                    <button onClick={add} > +</button>
-                </section>
-
+                <HeaderSection mart={mart}></HeaderSection>
+                <ContentSection  mart={mart} state={state}></ContentSection>
+                <BottomSection state={state}></BottomSection>
             </div>
-       
         </div>
     )
 }

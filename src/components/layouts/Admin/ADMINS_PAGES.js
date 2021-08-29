@@ -20,6 +20,20 @@ export const MENU_STRUCT = [
     },
    
     {
+        title: "Sugestões",   to: "/admins/suggestions",
+        icon: <CgNotes></CgNotes>,
+        back: "/admins/panel",
+        hide: true
+    },
+
+    {
+        title: "Avaliações",   to: "/admins/rating",
+        icon: <CgNotes></CgNotes>,
+        back: "/admins/panel",
+        hide: true
+    },
+   
+    {
         title: "Produtos",
         icon: <BiPackage></BiPackage>,
         subs: [

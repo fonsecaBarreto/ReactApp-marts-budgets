@@ -1,0 +1,67 @@
+/* first section header */
+.suggestion-page-container > section:nth-child(1){
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 4px;
+    column-gap: 10px;
+}
+
+/* header */
+
+.suggestion-page-container> section:nth-child(1) > .iconasd{
+    grid-row: span 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: var(--main-color);
+} 
+
+.suggestion-page-container> section:nth-child(1) > h2{
+    font-size: 30px;
+    text-align: left;
+    color: var(--second-color);
+    margin: 0;
+    color: var(--main-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    column-gap: span 1;
+    line-height: 1em;
+} 
+
+
+.suggestion-page-container > section:nth-child(1) > h3{
+    font-size: 18px;
+    text-align: left;
+
+    color: var(--second-color);
+    margin: 0;
+    color: var(--second-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    grid-column: span 1;
+} 
+
+@media screen and (max-width: 960px) {
+    
+    .suggestion-page-container> section:nth-child(1) > h2{
+        font-size: 28px;
+        grid-column: span 2;
+
+    } 
+    
+    
+    .suggestion-page-container > section:nth-child(1) > h3{
+        font-size: 16px;
+        grid-column: span 2;
+
+    } 
+
+
+    .suggestion-page-container> section:nth-child(1) > .iconasd{
+        display: none;
+    } 
+
+}

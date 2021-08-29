@@ -23,6 +23,9 @@
 #budget-page > section:nth-child(1){
     position: relative;
     z-index: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 #budget-page > section:nth-child(1){
     position: relative;

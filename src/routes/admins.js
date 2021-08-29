@@ -32,7 +32,9 @@ import ItemUpdatePage from '../components/pages/admin/Forms/ProductItem/presenta
 
 import CategoryEditPage from '../components/pages/admin/Forms/Category/CategoryEditPage'
 
-
+/* suggestiosn */
+import SuggestionPage from '../components/pages/admin/SuggestionsPage'
+import RatingPage from '../components/pages/admin/RatingPage'
 export default () => {
     return (
       <AdminLayout>
@@ -42,8 +44,14 @@ export default () => {
           <Guard path="/admins/login" exact> <AdminLoginPage></AdminLoginPage>  </Guard> 
 
           <Guard path="/admins/panel" exact access="adminonly" >   <AdminDashBoardPage >  </AdminDashBoardPage> </Guard>
+
+          <Guard path="/admins/suggestions" exact access="adminonly" >   <SuggestionPage >  </SuggestionPage> </Guard>
+          <Guard path="/admins/rating" exact access="adminonly" >   <RatingPage >  </RatingPage> </Guard>
+
           <Guard path="/admins/budgets" exact access="adminonly" >   <BudgetsPage >  </BudgetsPage>  </Guard>
 
+
+          
           <Guard path="/admins/products" exact access="adminonly" >    <ProductsPage >  </ProductsPage>  </Guard>
 
           <Guard path="/admins/items/create" exact access="adminonly" >   <ItemCreatePage >  </ItemCreatePage> </Guard>
@@ -59,7 +67,6 @@ export default () => {
           <Guard path="/admins/providers" exact access="adminonly" >    <ProvidersPage >  </ProvidersPage>  </Guard>
           <Guard path="/admins/providers/create" exact access="adminonly" >   <ProviderCreatePage >  </ProviderCreatePage>  </Guard>
           <Guard path="/admins/providers/update" exact access="adminonly" >    <ProviderUpdatePage >  </ProviderUpdatePage>  </Guard>
-
 
           <Guard path="/admins/categories" exact access="adminonly" >    <CategoriesPage >  </CategoriesPage> </Guard>
           <Guard path="/admins/categories/create" exact access="adminonly" >  <CategoryEditPage >  </CategoryEditPage> </Guard>

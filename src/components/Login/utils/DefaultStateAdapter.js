@@ -4,7 +4,12 @@ export default (initial_data) =>{
     const [ data, setData ] = useState({ ...initial_data })
     const [ errors, setErrors ]= useState({})
     const [ loading, setLoading ] = useState(false)
-    const handleInputs = (key,value) => setData(prev => ({  ...prev,  [key]:value  }))
+    const handleInputs = (key,value, capital) => {
+        if(capital){
+            value = value.replace(/\b\w/g, c => c.toUpperCase());
+        }
+        setData(prev => ({  ...prev,  [key]:value  }))
+    }
     const clearAll = () =>{ 
         setData({ ...initial_data }); 
         setErrors({})

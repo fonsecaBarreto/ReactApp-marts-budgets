@@ -19,7 +19,7 @@ export default ({image, label, value, to}) =>{
             </section>
             <section>
 
-                <span>{value}  <span>{label}</span> </span>
+                <span>{value}  <span>{`${label}${value == 1 ? '' : 's'}`}</span> </span>
                
             </section>
         </div>

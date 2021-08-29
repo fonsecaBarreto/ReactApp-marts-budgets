@@ -14,7 +14,6 @@
     gap: 12px;
     row-gap: 28px;
     min-height: 100vh;
-    margin-top: 32px;
     z-index: 09;
 }
 
@@ -33,6 +32,17 @@
 .main-column{
     width: 100%;
     height: 100%;
+}
+
+.suggestions-button{
+    width: 100%;
+    height: 40px;
+    color: var(--main-light-color);
+    background-color: rgb(250, 250, 250);
+    border-radius: 12px;
+    border: solid 1px #ccc;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 1024px){

@@ -1,0 +1,54 @@
+.suggestion-page-container > section:nth-child(2){
+    position: relative;
+    width: 100%;
+}
+
+.suggestion-page-container > section:nth-child(2) h3{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    column-gap: 8px;
+    font-size: 20px;
+    line-height: 1em;
+    text-align: left;
+    color: #333;
+    margin: 0;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.suggestion-page-container > section:nth-child(2) h3 > :nth-child(1){  font-size: 16px; color: #555;}
+
+.suggestion-page-container > section:nth-child(2) .sug-list-flow{
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+}
+
+/* float btn  */
+
+button.suggestion-plust-add-btn{
+    height: 50px;
+    width: 50px;
+    border: none;
+    margin: 12px;
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: #fff;
+    font-size: 28px;
+    border-radius: 50%;
+}
+
+
+@media screen and (max-width: 960px) {
+    
+    .suggestion-page-container > section:nth-child(2) h3{
+        font-size: 18px;
+        text-align: left;
+        color: #333;
+        font-weight: normal;
+    
+    }
+
+}

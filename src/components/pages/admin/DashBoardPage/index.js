@@ -39,7 +39,6 @@ export default () =>{
 
                 <div className="latest-entities-grid">
 
-
                     <LatestEntitiesFlow 
                         title={'Últimos Clientes'} 
                         icon={<AiFillShop></AiFillShop>}
@@ -54,15 +53,10 @@ export default () =>{
                         innerComp={ ({product, mart, quantity}) =>
                         (   
                             <div className="order-latest-item">
-
                                 <span> {quantity}x - {product.label} </span>
                                 <span> por {mart.label} </span>
-
                             </div>
-                            
-                        )
-                        
-                        }>
+                        )}>
                     </LatestEntitiesFlow>
                 </div>
 

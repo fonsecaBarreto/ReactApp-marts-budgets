@@ -3,11 +3,11 @@ import './style.css'
 import DefaultStateAdapter from "../utils/DefaultStateAdapter"
 import LoginFormGrid from '../FormGrid'
 import LoginFormRow from "../NewLoginFormRow"
-
 import { HiSearchCircle } from 'react-icons/hi'
-
 import { searchCep } from "../utils/SearchForCep"
 import { UFS } from './UFS.json'
+
+import InputMask from 'react-input-mask';
 
 const INITIAL_ADDRESS_DATA ={
     address:"", 
@@ -56,10 +56,10 @@ export default ({ state }) =>{
             <LoginFormRow label="CEP *" error={errors?.['address_postalcode']} value={address_postalcode}> 
 
                 <div className="cep-row">
-                    <input type={'text'}  placeholder={'CEP *'} 
+                    <InputMask className="text-input" type={'text'}  placeholder={'CEP *'}  mask="99999-999"  disableUnderline
                         value={address_postalcode} 
                         onInput={e=> { handleInputs('address_postalcode',e.target.value) } }>    
-                    </input>
+                    </InputMask>
                     <button onClick={handleCep}> <HiSearchCircle></HiSearchCircle> </button>    
                 </div>
             </LoginFormRow> 
@@ -74,7 +74,7 @@ export default ({ state }) =>{
             <LoginFormRow label="Logradouro *" error={errors?.['address']} >
                 <input type={'text'} placeholder={'Exemplo: Rua Silva'}
                     value={address}  
-                    onInput={e=>  handleInputs('address',e.target.value) } >
+                    onInput={e=>  handleInputs('address',e.target.value, true) } >
                 </input>
             </LoginFormRow>  
 
@@ -88,21 +88,21 @@ export default ({ state }) =>{
             <LoginFormRow  label="Bairro *" error={errors?.['address_region']}>
                 <input type={'text'} placeholder={"Exemplo: Bairro das Flores"}
                     value={address_region}
-                    onInput ={ e=> { handleInputs('address_region',e.target.value) }}> 
+                    onInput ={ e=> { handleInputs('address_region',e.target.value, true) }}> 
                 </input>
             </LoginFormRow>
 
             <LoginFormRow label="Cidade *" error={errors?.['address_city']} > 
                 <input type={'text'} placeholder={"Exemplo: Macaé"}
                     value={address_city}
-                    onInput ={ e=> { handleInputs('address_city',e.target.value) }}> 
+                    onInput ={ e=> { handleInputs('address_city',e.target.value, true) }}> 
                 </input>
             </LoginFormRow>  
 
             <LoginFormRow label="Complemento" error={errors?.['details']} > 
                 <input type={'text'} placeholder={"Exemplo: Proximo a fármacia"}
                     value={details}
-                    onInput ={ e=> { handleInputs('details',e.target.value) }}> 
+                    onInput ={ e=> { handleInputs('details',e.target.value, true) }}> 
                 </input>
             </LoginFormRow>  
 

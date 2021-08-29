@@ -22,7 +22,7 @@
 .login-carousel-frame .login-carousel-frame-section:nth-child(2){ /* body */
     overflow-y: auto;
     padding: 22px 20px;
-    height: 420px; 
+    min-height: 420px; 
     
 
 }

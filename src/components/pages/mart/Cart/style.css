@@ -1,9 +1,18 @@
+
+@keyframes cartAppears {
+    0% { transform: translateY(100%); opacity: .5;}
+    100% { opacity: 1;  transform: translateY(0);}
+  }
+
 .product-cart{
     width: 100%;
     box-shadow: -1px 0px 4px 4px #0004;
     background-color: var(--main-color);
     padding: 5px 16px;
     border-bottom: solid 1px #aaa;
+    animation-name: cartAppears;
+    animation-duration: .25s;
+    animation-timing-function: ease ;
     z-index: 2;
 }
 

@@ -1,36 +1,20 @@
 #suggestion-page{
     height: 100%;
     padding-top: 36px;
+    padding-bottom: 90px;
+    min-height: calc(100vh - 60px);
 
 }
+
+
 
 .suggestion-page-container{
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    row-gap: 20px;
 
 }
-
-.suggestion-page-container> section > h2{
-    font-size: 32px;
-    text-align: left;
-    text-shadow: 0px 2px 2px  #0002;
-    color: var(--second-color);
-    margin: 0;
-    color: var(--main-color);
-    text-transform: uppercase;
-    font-weight: bold;
-    column-gap: span 2;
-    line-height: 1em;
-} 
-
-
-.suggestion-page-container > section > h3{
-    font-size: 18px;
-    text-align: left;
-    text-shadow: 0px 2px 2px  #0002;
-    color: var(--second-color);
-    margin: 0;
-    color: var(--second-color);
-    text-transform: uppercase;
-    font-weight: bold;
-    column-gap: span 2;
-    margin-bottom: 10px;
-} 

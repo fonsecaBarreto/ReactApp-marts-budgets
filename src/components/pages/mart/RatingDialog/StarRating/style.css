@@ -1,0 +1,41 @@
+
+@keyframes starAppears {
+    0% { opacity: 0.6;}
+    100% { opacity: 1;}
+  }
+
+.star-rating-pool{
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 12px;
+    width: 100%;
+    column-gap: 6px;
+}
+
+.star-rating-pool .star-rating-item{
+    display: flex; flex-direction: row; align-items: center; justify-content: center;
+    width: 100%;
+    width: 46px;
+    height: 46px;
+    color: var(--main-color);
+    font-size: 50px;
+    cursor: pointer;
+
+}
+.star-rating-pool .star-rating-item > *{
+
+    animation-name: starAppears;
+    animation-duration: .2s;
+    animation-timing-function: ease-in-out ;
+}
+
+
+
+.star-rating-pool .star-rating-item:hover{
+    transition: .1s ease-in-out;
+    color: var(--main-light-color);
+ 
+}

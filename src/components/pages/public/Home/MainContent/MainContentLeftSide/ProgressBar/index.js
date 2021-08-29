@@ -13,17 +13,20 @@ export default ({ pageStruct, pageIndex }) =>{
 
     return   (
         <div className="carousel-frame-container">
-
-            <div className="carousel-frame-progress">
-                <div className="carousel-frame-progress-inner" style={{'width':progress + "%"}}></div>
-            {
-                pageStruct.map((tag,i)=>(
-                    <div key={i} style={{'left': i   / ( pageStruct.length  - 1 ) * 100 + "%" }} className={`carousel-frame-progress-tag ${ (pageIndex >= i ) ?  'select' : ''}`}>
-                        <span> { pageStruct[i].title } </span> 
-                        </div>      
+            <div className="cfc-progress-bar-container">
+                <div className="cfc-progress-bar">
+                    <div className="carousel-frame-progress-inner" style={{'width':progress + "%"}}></div>
+                </div>
+                <div className="cfc-progress-bar-aux">
+                {
+                    pageStruct.map((tag,i)=>(
+                        <div key={i} className="cfc-aux-tag" style={{'left': i   / ( pageStruct.length  - 1 ) * 100 + "%" }} >
+                            <div  className={`cfc-aux-tag-pointer" ${ (pageIndex >= i ) ?  'select' : ''}`}> </div>      
+                            <span className="cfpi-label-tag"> { pageStruct[i].title } </span>
+                        </div>
                     ))
-                    
-                } 
+                }
+                </div>
             </div>
         </div>
     )
