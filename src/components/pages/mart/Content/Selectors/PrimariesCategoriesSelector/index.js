@@ -44,7 +44,7 @@ export default ({ state }) =>{
     return (
         <div className="search-selector">
             <span className="search-selector-title"> <AiFillTags></AiFillTags> Categorias </span>
-           { loading ? "loading" :
+           { loading ? "Carregando..." :
            <React.Fragment>
                 <button className="soft-btn  mobile-only" onClick={()=>setShowOnMobile(!showOnMobile)}> 
 

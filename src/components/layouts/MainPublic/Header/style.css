@@ -53,8 +53,11 @@ header#primary-header.colorful{
 
 
 .ph-logo{
-    width: 200px;
+    width: 190px;
+    transform: translateY(2px);
+    cursor: pointer;
 }
+
 
 /* toggle button */
 

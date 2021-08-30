@@ -4,8 +4,8 @@ import ListView from './LatestOrdersListView'
 import { listLatests } from '../../../../services/marts/orders'
 import { useSelector, useDispatch } from 'react-redux'
 import { setLatestOrders } from '../../../../store/reducers/marts/actions'
-
-export default ({ onItem }) =>{
+import { FcRefresh } from 'react-icons/fc'
+export default ({ onItem,  }) =>{
     const dispatch = useDispatch()
     const { latestOrders } = useSelector(state=>state.marts)
     useEffect(()=>{
@@ -16,14 +16,21 @@ export default ({ onItem }) =>{
         }
     },[]) 
     return (
-        <div className="marts-budget-page-last-orders">
-            <h4> Ultimos Orçamentos Realizados:</h4>
-            <div className="marts-budget-page-last-orders-vp">
-                <div className="marts-budget-page-last-orders-tray">
-                    { latestOrders.map((o,i)=> { return ( <ListView key={i} order={o} onClick={onItem}></ListView> )  }) } 
-                </div> 
-            </div>
+       
+        <React.Fragment>
 
-        </div>
+            { latestOrders?.length > 0 &&
+                <div className="marts-budget-page-last-orders ">
+                    <h4> <FcRefresh> </FcRefresh>Ultimos Orçamentos Realizados:</h4>
+                    <div className="marts-budget-page-last-orders-vp">
+                    <div className="marts-budget-page-last-orders-tray">
+                    { latestOrders.map((o,i)=> { return ( <ListView key={i} order={o} onClick={onItem}></ListView> )  }) } 
+                    </div> 
+                    </div>
+                
+                </div>
+            }
+        </React.Fragment>
     )
+    
 }

@@ -17,26 +17,7 @@ export default () =>{
     const annexState = AnnexState()
     const [ loading, setLoading ] = useState(false)
     const [ forceIndex, setForceIndex ] = useState(null)
-   /*  const [ loading, setLoading ] = useState(false)
-    const signupState = SignUpState()
 
-    const handleErrors = (err) =>{
-        switch(err.name){
-            case "InvalidFileBufferError": {
-                dialogState.showFailure("Atenção!",err.message)
-            };break;
-            default: dialogState.showFailure(err.message)
-        }
-    }
-
-    const handleSuccess = (data) => {
-        dialogState.showSuccess( 
-            "Cadastrado com successo!", 
-            "Obrigado pela confiança, entraremos em contato em breve!",
-            "Sucesso!",
-            async () => {  history.push("/login") })
-    }
- */
     const afterInfo = () =>{
         return true
     }
@@ -62,7 +43,6 @@ export default () =>{
             return true
 
         }catch(err){
-            console.log("deu ruim")
             var whereIsTheError = 0
             if(err.params) {
                 signUpFormState.errorsState.setErrors(err.params)
@@ -88,7 +68,7 @@ export default () =>{
         { title: "Informações", beforeNext: afterInfo},
         { title: "Endereço"},
         { title: "Anexos", beforeNext: submit, nextLabel:"Finalizar"},
-        { title: "Bem-vindo"}, 
+        { title: "Fim"}, 
     ]
 
     return (

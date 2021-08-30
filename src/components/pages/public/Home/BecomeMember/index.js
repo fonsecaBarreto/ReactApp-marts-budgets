@@ -9,11 +9,11 @@ export default () =>{
             <h1> UNA, você no jogo dos grandes.</h1>
             <div className="become-member-grid">
             
-                <p> Cansado de de um jogo desleal?</p>
+               {/*  <p> Cansado de de um jogo desleal?</p>
             
                 <div>
 
-                </div>
+                </div> */}
             </div>
         </div>
     )

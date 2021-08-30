@@ -3,11 +3,12 @@ import './style.css'
 
 import { FaBars } from 'react-icons/fa'
 import Logo from '../../../../assets/logo.svg'
-import { withRouter } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import PageNavigator from '../Common/PageNavigator'
 import ToggleButton from '../Common/ToggleButton'
-export default withRouter(({toggleMenu, history, admin, mart}) => {
-
+import { withRouter } from 'react-router-dom'
+export default ({toggleMenu, admin, mart}) => {
+    const history = useHistory()
     const [colorFull, setColorFull] = useState(false)
     useEffect(()=>{ window.addEventListener("scroll", handleScroll);},[])
 
@@ -20,8 +21,8 @@ export default withRouter(({toggleMenu, history, admin, mart}) => {
     return (
         <header id="primary-header" className={colorFull? 'colorful': ''}>
             <div className="primary-header-content app-container">
-                <section className="section-one">
-                    <img className="ph-logo"  src={Logo} alt="logo"></img> 
+                <section className="section-one" >
+                    <img className="ph-logo"  src={Logo} alt="logo" onClick={()=>history.push("/")}></img> 
                 </section>
                 <section className="section-two">
                     <PageNavigator mart={mart} className="desktop-only"></PageNavigator> {/* is going to hanlde responsive from inside */}
@@ -31,4 +32,4 @@ export default withRouter(({toggleMenu, history, admin, mart}) => {
             </div>
         </header>
     )
-})
+}

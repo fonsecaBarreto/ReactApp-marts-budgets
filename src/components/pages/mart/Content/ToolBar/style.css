@@ -1,0 +1,74 @@
+.marts-budget-tool-bar{
+    position: relative;
+    padding: 2px;
+    background-color: white;
+    border-radius: 5px 5px;
+    border: solid 1px #ddd;
+}
+.marts-budget-tool-bar > section:nth-child(1){
+    position: relative;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-right: 0;
+    margin-left: auto;
+    height: fit-content;
+    background-color: rgba(201, 230, 243, 0.39);
+    overflow: none;
+}
+
+
+.marts-budget-tool-bar > section:nth-child(1) > div:nth-child(1){
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: flex-start;
+   width: 100%;
+   padding: 0 22px;
+}
+
+
+.suggestions-button{
+    width: fit-content;
+    color: var(--main-light-color);
+    background-color: rgb(250, 250, 250);
+    border-radius: 12px;
+    border: solid 1px #ccc;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 2px 22px;
+    height: fit-content;
+}
+
+
+
+
+
+@media only screen and (max-width: 960px){
+    .marts-budget-tool-bar > section:nth-child(1){
+ 
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+
+        
+
+    }
+    .marts-budget-tool-bar > section:nth-child(1) > div:nth-child(1){
+       display: none;
+     }
+
+    .suggestions-button{
+
+/*         width: fit-content;
+        color: var(--main-light-color);
+        background-color: rgb(250, 250, 250);
+        border-radius: 12px;
+        border: solid 1px #ccc;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 2px 22px;
+        height: fit-content; */
+    }
+    
+}

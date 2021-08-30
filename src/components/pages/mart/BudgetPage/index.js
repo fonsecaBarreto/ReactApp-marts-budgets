@@ -39,7 +39,7 @@ export default () =>{
     },[mart])
 
     useEffect(()=>{
-        if(sessionOrdersCount > 1){
+        if(sessionOrdersCount > 6){
             setShowRatingDialog(true)
         }
     },[sessionOrdersCount])
@@ -76,8 +76,7 @@ export default () =>{
     return (
         <div id="budget-page">
         
-            <section>
-                
+            <section className="app-padding">
                 <LastOrdersRow onItem={handleSelectedItem}></LastOrdersRow>
                 <Content onItem={handleSelectedItem}></Content>
             </section>
