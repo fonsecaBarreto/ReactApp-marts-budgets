@@ -22,7 +22,6 @@ export default ({ group, onClick }) =>{
         <div className={`order-group-list-view-content`} >
                 
             <section>   
-           {/*       <img src={image}></img>  */}
                <button className="soft-btn" onClick={handleItemClick}> <AiFillFolderOpen></AiFillFolderOpen></button>  
             </section>
             <section>

@@ -9,6 +9,7 @@ import { signUpService } from '../../../../../../services/mart-login-service'
 
 import {  useDispatch } from 'react-redux'
 import { showFailure, showSuccess } from '../../../../../../store/reducers/dialog/actions'
+import HandShakeImage from '../../../../../../assets/handshake.jpg'
 export default () =>{
     const dispatch  = useDispatch()
     const history = useHistory()
@@ -39,7 +40,6 @@ export default () =>{
                 "Cadastrado com successo!", 
                 "Obrigado pela confiança, entraremos em contato em breve!",
                 "Sucesso!"))
-
             return true
 
         }catch(err){
@@ -59,22 +59,22 @@ export default () =>{
             dispatch(showFailure(err.message))
 
             return false
-            //handle ERor qui
+        }finally {
+            setLoading(false)
         }
-        setLoading(false)
     } 
 
     const pageStruct = [
         { title: "Informações", beforeNext: afterInfo},
         { title: "Endereço"},
-        { title: "Anexos", beforeNext: submit, nextLabel:"Finalizar"},
-        { title: "Fim"}, 
+        { title: "Anexos",  beforeNext: submit,  nextLabel:"Finalizar"},
+        { title: "Fim", hideButtons: true}, 
     ]
 
     return (
         <div className="main-content-left-side">
-            {forceIndex}
-            <CarouselFrame pageStruct={pageStruct} forceIndex={forceIndex} setForceIndex={setForceIndex}>
+        
+            <CarouselFrame pageStruct={pageStruct} forceIndex={forceIndex} setForceIndex={setForceIndex} loading={loading}>
     
                 <SignUpForm state={signUpFormState}></SignUpForm>
             
@@ -82,7 +82,14 @@ export default () =>{
 
                 <AnnexsForm state={annexState}></AnnexsForm> 
 
-                <span> Obrigado</span>
+                <span className="congratspanel">
+                    <img src={HandShakeImage}></img>
+                    <h2> Obrigado!</h2> 
+                    <h3> Suas informações passarão por um processo de validação </h3>
+                    <span>Receberá em breve um E-mail de confirmação</span>
+
+
+                </span>
             </CarouselFrame>
                 
         </div>

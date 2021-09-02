@@ -11,37 +11,37 @@ import { CgNotes } from 'react-icons/cg'
 const ITEMS = [
     {
         image: <AiFillShop></AiFillShop>,
-        label: "Cliente",
+        label: ["Cliente","Clientes"],
         value: 0,
         to: "/admins/marts"
     },
     {
         image: <BiPackage></BiPackage>,
-        label: "Produto",
+        label: ["Produto",'Produtos'],
         value: 0,
         to: "/admins/products"
     },
     {
         image: <FaTruck></FaTruck>,
-        label: "Fornecedore",
+        label: ["Fornecedor","Fornecedores"],
         value: 0,
         to: "/admins/providers"
     },
     {
         image: <CgNotes></CgNotes>,
-        label: "Orçamento",
+        label: ["Orçamento","Orçamentos"],
         value: 0,
         to: "/admins/budgets"
     },
     {
         image: <AiOutlineInfoCircle></AiOutlineInfoCircle>,
-        label: "Sugestõe",
+        label: ["Sugestão","Sugestoes"],
         value: 0,
         to: "/admins/suggestions"
     },
     {
         image: <AiFillStar></AiFillStar>,
-        label: "Avaliaçõe",
+        label: ["Avaliação","Avaliações"],
         value: 0,
         to: "/admins/rating"
     },

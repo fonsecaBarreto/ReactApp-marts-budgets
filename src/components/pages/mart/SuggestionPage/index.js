@@ -14,7 +14,7 @@ export default () =>{
         <div id="suggestion-page">
             <div className=" suggestion-page-container app-container">
                 <HeaderSection mart={mart}></HeaderSection>
-                <ContentSection  mart={mart} state={state}></ContentSection>
+                <ContentSection mart={mart} state={state}></ContentSection>
                 <BottomSection state={state}></BottomSection>
             </div>
         </div>

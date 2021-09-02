@@ -3,24 +3,13 @@ import './style.css'
 import { useHistory } from 'react-router-dom'
 
 export default ({image, label, value, to}) =>{
-
     const history = useHistory()
-
-    const goto = () =>{
-        history.push(to)
-    }
-
+    const goto = () => { history.push(to) }
     return (
         <div className="metrics-total-table-item" onClick={goto}>
-            
+            <section> {image}  </section>
             <section>
-                {image}
-           {/*      <img src={image}></img> */}
-            </section>
-            <section>
-
-                <span>{value}  <span>{`${label}${value == 1 ? '' : 's'}`}</span> </span>
-               
+                <span>{value}  <span>{`${value == 1 ? label[0] : label[1]}`}</span> </span>
             </section>
         </div>
     )

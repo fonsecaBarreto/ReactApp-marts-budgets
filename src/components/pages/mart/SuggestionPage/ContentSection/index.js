@@ -20,8 +20,8 @@ export default ({ state, mart }) =>{
             <h3>
                 <FaInfoCircle></FaInfoCircle>
                  {
-                firstSuggestions == false ? 'A baixo, informe até 5 produtos mais usados semanalmente pelo seu estabelecimento.'
-                : "A baixo, preenche os campos com os items que você gostaria de encontra em nosso sistema "
+                firstSuggestions == false ? 'Abaixo, informe até 5 produtos mais usados semanalmente pelo seu estabelecimento. (opcional)'
+                : "Abaixo, preenche os campos com os items que você gostaria de encontra em nosso sistema "
             
             }</h3>
             <div className="sug-list-flow">

@@ -74,6 +74,25 @@
     margin-left: 0;
 } 
 
+.login-carousel-frame.loading{
+    position: relative;
+
+}
+
+.login-carousel-frame.loading::after{
+    content: "";
+    position: relative;
+    width: 100%; height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.466);
+    background-image: url(../../../../../../../assets/loading.svg);
+    background-size: 90px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 @media screen and (max-width: 960px) {
     .login-carousel-frame .login-carousel-frame-section:nth-child(2){ /* body */
         height: 500px; 

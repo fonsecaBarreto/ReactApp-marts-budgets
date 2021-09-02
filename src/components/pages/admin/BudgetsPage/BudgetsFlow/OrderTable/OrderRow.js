@@ -28,9 +28,10 @@ export default ({order, index}) =>{
                     <span className="forecast-highlight" >{new Date(order.forecast).toDateString()}</span>
                 </label>  
 
-                <label> id:
-                    <span >{order.id}</span>
-                </label>   
+                <label> OS:
+                    <span >{order.os}</span>
+                </label> 
+  
             </div>
         </div>
     )

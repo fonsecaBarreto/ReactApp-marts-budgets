@@ -3,7 +3,7 @@ import './style.css'
 
 
 import ProgressBar from '../ProgressBar'
-export default ({children, title, pageStruct, forceIndex, setForceIndex }) =>{
+export default ({children, title, pageStruct, forceIndex, setForceIndex, loading }) =>{
     const [pageIndex, setPageIndex ] = useState(0)
 
     useEffect(()=>{
@@ -24,7 +24,7 @@ export default ({children, title, pageStruct, forceIndex, setForceIndex }) =>{
 
     return (
 
-        <div className="login-carousel-frame">
+        <div className={`login-carousel-frame ${loading? 'loading' : ''}`}>
 
             <div className="login-carousel-frame-section">
                 { title && <h2>{title}</h2>}
@@ -42,10 +42,19 @@ export default ({children, title, pageStruct, forceIndex, setForceIndex }) =>{
 
             <div className="login-carousel-frame-section">
            
-                { (pageIndex > 0) && <button className="soft-btn login-carousel-btn login-prev-btn" onClick={()=>setPageIndex(pageIndex -1 )}>Anterior</button>}
-                { (pageIndex < React.Children.toArray(children).length - 1) && <button className="soft-btn login-carousel-btn login-next-btn" onClick={handleNext}>
-               { pageStruct[pageIndex]?.nextLabel || 'Proximo'}
-                </button>} 
+                {pageStruct[pageIndex]?.hideButtons === true ? <span></span>  :
+                    <React.Fragment>
+
+                        { (pageIndex > 0) && <button className="soft-btn login-carousel-btn login-prev-btn" onClick={()=>setPageIndex(pageIndex -1 )}>Anterior</button>}
+
+                        { (pageIndex < React.Children.toArray(children).length - 1) && <button className="soft-btn login-carousel-btn login-next-btn" onClick={handleNext}>
+                        { pageStruct[pageIndex]?.nextLabel || 'Proximo'}
+                        </button>} 
+                        
+                    </React.Fragment>
+                }
+
+
             </div>  
         </div>
     )

@@ -6,3 +6,20 @@
     grid-template-rows: 1fr;
 }
 
+.congratspanel{
+
+}
+.congratspanel > img:nth-child(1){
+    width: calc(100% - 64px);
+    border-radius: 18px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.congratspanel > h2, h3{
+    margin: 0;
+}
+
+.congratspanel > h2{
+    margin: 10px;
+}

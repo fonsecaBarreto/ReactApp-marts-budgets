@@ -11,11 +11,6 @@ export function MakeApi(base_url, errorHelper, storage_key){
         axiosApi.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       }
 
-  /*     try{ 
-        const result = await axiosApi({ method,url: `${base_url}${url}`, data, headers })
-        return result
-      }catch(err){ throw errorHelper(err) } */
-
       return new Promise((resolve, reject) => {
         setTimeout( async ()=>{
           try{ 
@@ -34,3 +29,7 @@ export function MakeApi(base_url, errorHelper, storage_key){
 
  
 
+  /*     try{ 
+        const result = await axiosApi({ method,url: `${base_url}${url}`, data, headers })
+        return result
+      }catch(err){ throw errorHelper(err) } */
