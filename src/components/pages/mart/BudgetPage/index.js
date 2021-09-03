@@ -39,8 +39,10 @@ export default () =>{
     },[mart])
 
     useEffect(()=>{
-        if(sessionOrdersCount > 6){
-            setShowRatingDialog(true)
+        if(sessionOrdersCount > 2){
+            if(mart?.checkList.first_rating == false){
+                setShowRatingDialog(true)
+            }
         }
     },[sessionOrdersCount])
 

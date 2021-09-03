@@ -8,6 +8,7 @@ export const setMart = value => ({
     payload: value
 })
 
+
 export const setAdmin = value => ({
     type: "SET_ADMIN",
     payload: value

@@ -6,14 +6,17 @@ import FormRow from '../../../utils/FormRow'
 import StarRating from './StarRating'
 import {ImStarFull} from 'react-icons/im'
 import { MakeRating } from '../../../../services/marts/ratings'
-import {  useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { showFailure, showSuccess } from '../../../../store/reducers/dialog/actions'
+import { setMart } from '../../../../store/reducers/global/actions'
+
 const INITIAL_DATA = {
     grade: 0,
     description: ""
 }
 
 export default ({ show, onClose,  }) =>{
+    const { mart } = useSelector((state)=>state.global)
     const dispatch = useDispatch()
     const [ data, setData ] = useState(INITIAL_DATA)
     const setGrade = (value) => setData(prev=>({...prev, grade: value}))
@@ -26,9 +29,9 @@ export default ({ show, onClose,  }) =>{
 
     const handleSubmit = async () =>{
         try{
-
             await MakeRating(data)
             dispatch(showSuccess("Obrigado pela colaboração", "Trabalhamos sempre para melhor atende-lo","Obrigado!",()=>{
+                dispatch(setMart({ ...mart, checkList: { ...mart.checkList, first_rating: true } } ))
                 onClose()
             }))
         }catch(err){
