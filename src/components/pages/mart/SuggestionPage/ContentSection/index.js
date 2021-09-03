@@ -21,7 +21,7 @@ export default ({ state, mart }) =>{
                 <FaInfoCircle></FaInfoCircle>
                  {
                 firstSuggestions == false ? 'Abaixo, informe até 5 produtos mais usados semanalmente pelo seu estabelecimento. (opcional)'
-                : "Abaixo, preenche os campos com os items que você gostaria de encontra em nosso sistema "
+                : "Abaixo, preencha os campos com os itens que você gostaria de encontra em nosso sistema "
             
             }</h3>
             <div className="sug-list-flow">
@@ -32,7 +32,7 @@ export default ({ state, mart }) =>{
                     })
                 }
             </div>
-            { inputsState.data.length < 5 && <button onClick={add} className=" soft-btn suggestion-plust-add-btn"> +</button>}
+            { inputsState.data.length < 5 && <button onClick={add} className="suggestion-plust-add-btn"> +</button>}
         </section>
     )
 }

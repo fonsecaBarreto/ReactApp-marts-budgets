@@ -16,7 +16,6 @@ export default ({toggleMenu, admin, mart}) => {
         if (window.pageYOffset > 8) {setColorFull(true)
         }else{setColorFull(false)}
     }
-    
 
     return (
         <header id="primary-header" className={colorFull? 'colorful': ''}>

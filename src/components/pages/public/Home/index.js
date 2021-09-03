@@ -4,9 +4,6 @@ import { withRouter } from 'react-router-dom'
 import PerksRow from "./PerksRow"
 import BecomeMember from "./BecomeMember"
 import HeadLine from "./HeadLine"
-import { CgEnter } from "react-icons/cg"
-
-import LayoutFooter from '../../../layouts/MainPublic/Footer'
 import MainContent from "./MainContent"
 export default withRouter(({history}) =>{
 
@@ -15,9 +12,7 @@ export default withRouter(({history}) =>{
     const goals = useRef()
     const sobre = useRef()
 
-
     useEffect(()=>{
- 
         let offset = 0
         var y = 0
         switch(history.location.hash){
@@ -29,24 +24,20 @@ export default withRouter(({history}) =>{
                 offset = -150;
                 y = goals.current.getBoundingClientRect().top + window.pageYOffset + offset;
             };break;
+         
+            case "#cadastrar" : {
+                offset = -90;
+                y = cadastro.current.getBoundingClientRect().top + window.pageYOffset + offset;
+            };break;   
+
             case "#sobre" : {
                 y = sobre.current.getBoundingClientRect().top + window.pageYOffset + offset;
              /*    contato.current.scrollIntoView({behavior: 'smooth'}) */
-            };break;    
-            case "#cadastro" : {
-                offset = -90;
-                y = cadastro.current.getBoundingClientRect().top + window.pageYOffset + offset;
-            
-            };break;   
+            };break;  
             default: inicio.current.scrollIntoView({behavior: 'smooth'});  
         }
 
-      
-
-        window.scrollTo({
-            top: y, 
-            behavior: 'smooth'});
-
+        window.scrollTo({ top: y,  behavior: 'smooth'});
 
     },[history.location, history.location.hash ])
 
@@ -67,11 +58,11 @@ export default withRouter(({history}) =>{
                 </div> 
             </div>
 
-            <div ref={sobre}  id="sobre">
+            {/* <div ref={sobre}  id="sobre">
                 <div className="app-container">
                     <BecomeMember></BecomeMember>
                 </div>
-            </div> 
+            </div>  */}
 
         </div>
     )

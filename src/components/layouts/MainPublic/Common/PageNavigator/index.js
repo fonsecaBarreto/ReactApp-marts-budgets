@@ -1,31 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import './style.css'
 import NavListLink from './NavListLink'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation} from 'react-router-dom'
 import ActionButton from '../ActionButton'
 import { FaUserCircle } from 'react-icons/fa'
 import { ImExit } from 'react-icons/im'
 import { logoutService } from '../../../../../services/mart-login-service'
 
 const ITEMS = [
-    { to:"/inicio", label: "Inicio" },
-    { to:"/inicio/#objetivos", label: "Objetivos" },
-    { to:"/inicio/#sobre", label: "Sobre" }
+    { to:"/inicio", hash:"", label: "Inicio" },
+    { to:"/inicio", hash:"#objetivos", label: "Objetivos" },
+    { to:"/inicio", hash:"#cadastrar", label: "Cadastrar Grátis" }
 ]
 
 export default ({ mart, className }) =>{
 
     const history = useHistory()
-    const [currentPage, setCurrentPage ] = useState(null)
+    const location = useLocation()
+    const [currentPage, setCurrentPage ] = useState(['',''])
 
     const goTo = (to) => {  history.push(to)  } 
 
     useEffect(()=>{
-        if(["/inicio",'/inicio/'].includes(history.location.pathname) ){
-            setCurrentPage(history.location.pathname+history.location.hash)
-        }
-        else{ setCurrentPage(history.location.pathname)}
-    },[history.location])
+        setCurrentPage([location.pathname, location.hash])
+    },[location])
 
     const notLoginPage = () =>{
         if(history.location.pathname !== "/login") return true;
@@ -40,7 +38,7 @@ export default ({ mart, className }) =>{
         <nav className={`main-page-navigator ${className}`}>
             <section>
                 <ul>
-                    { ITEMS.map((item, i) =>( <NavListLink {...item} key={i} selected={currentPage === item.to ? true : false}> </NavListLink> ))}
+                    { ITEMS.map((item, i) =>( <NavListLink {...item} key={i} selected={ ( (['inicio','/inicio', '/inicio/']).includes(currentPage?.[0]) && currentPage?.[1] == item.hash ) ? true : false}> </NavListLink> ))}
                 </ul>
             </section>
 
